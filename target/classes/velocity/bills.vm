@@ -1,0 +1,357 @@
+#parse("/velocity/layout.vm")
+#mainLayout()
+
+<style>
+    [data-href] {
+        cursor: pointer;
+    }
+
+    span {
+        border-bottom: ridge;
+    }
+    input,select {
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+
+    <div class ="container content" style="float:left; max-width: 15%; margin-left:50px">
+        <div style="border-bottom: double">
+            <h2>Filters</h2>
+        </div>
+        <br>
+        <span>Issuer </span>
+        <br>
+        <input type="text" id="issuerInput" onkeyup="filter()" placeholder="Search for issuer name">
+        <br>
+        <span>Receiver: </span>
+        <br>
+        <input type="text" id="receiverInput" onkeyup="filter()" placeholder="Search for receiver name">
+        <br>
+        <span>Total: </span>
+        <br>
+        <input type="number" id="minTotalInput" onkeyup="filter()" placeholder="Minimum total"><br>
+        <input type="number" id="maxTotalInput" onkeyup="filter()" placeholder="Maximum total">
+        <br>
+        <span>PC: </span>
+        <br>
+        <input type="text" id="pcInput" onkeyup="filter()" placeholder="Search for Postal Code">
+        <br>
+        <span>Bill type : </span>
+        <br>
+        <select id="billTypeInput" onchange="filter()">
+            <option value="All">All</option>
+            <option value="Ingreso">Ingreso</option>
+            <option value="Egreso">Egreso</option>
+            <option value="Nomina">Nomina</option>
+            <option value="Pago">Pago</option>
+            <option value="Traslado">Traslado</option>
+        </select>
+    </div>
+
+    <div class="container content" style="float:right; max-width: 75%; margin-right:50px">
+        <div style="border-bottom: double">
+            <h2>My Bills</h2>
+        </div>
+
+        <br>
+
+        <table class="table table-hover" id="myTable">
+            #if($bills)
+                <thead class ="thead-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th onclick="sortTable(1)">Lugar</th>
+                    <th onclick="sortTable(2)">Tipo</th>
+                    <th onclick="sortTable(3)">Emisor</th>
+                    <th onclick="sortTable(4)">Receptor</th>
+                    <th onclick="sortTableByNumbers(5)">Total</th>
+                    <th onclick="sortTable(6)">Moneda</th>
+                </tr>
+                </thead>
+                <tbody>
+                    #foreach($bill in $bills)
+                    <tr data-href="$bill.getUUID()">
+                        <td>$bill.getDate()</td>
+                        <td>$bill.getPC()</td>
+                        <td>$bill.getType()</td>
+                        <td>$bill.getIssuerName()</td>
+                        <td>$bill.getReceiverName()</td>
+                        <td>$bill.getTotal()</td>
+                        <td>$bill.getCurrency()</td>
+                    </tr>
+                    #end
+                </tbody>
+            #else
+                <h2>There aren't bills uploaded to the database with your current RFC</h2>
+            #end
+
+        </table>
+    </div>
+
+</body>
+
+<script>
+    function sortTable(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc";
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /*check if the two rows should switch place,
+                based on the direction, asc or desc:*/
+                if (dir == "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch= true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                //Each time a switch is done, increase this count by 1:
+                switchcount ++;
+            } else {
+                /*If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again.*/
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+
+    function sortTableByNumbers(n) {
+        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+        table = document.getElementById("myTable");
+        switching = true;
+        //Set the sorting direction to ascending:
+        dir = "asc";
+        /*Make a loop that will continue until
+        no switching has been done:*/
+        while (switching) {
+            //start by saying: no switching is done:
+            switching = false;
+            rows = table.rows;
+            /*Loop through all table rows (except the
+            first, which contains table headers):*/
+            for (i = 1; i < (rows.length - 1); i++) {
+                //start by saying there should be no switching:
+                shouldSwitch = false;
+                /*Get the two elements you want to compare,
+                one from current row and one from the next:*/
+                x = rows[i].getElementsByTagName("TD")[n];
+                y = rows[i + 1].getElementsByTagName("TD")[n];
+                /*check if the two rows should switch place,
+                based on the direction, asc or desc:*/
+                if (dir == "asc") {
+                    if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch= true;
+                        break;
+                    }
+                } else if (dir == "desc") {
+                    if (Number(x.innerHTML) < Number(y.innerHTML)) {
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                /*If a switch has been marked, make the switch
+                and mark that a switch has been done:*/
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+                //Each time a switch is done, increase this count by 1:
+                switchcount ++;
+            } else {
+                /*If no switching has been done AND the direction is "asc",
+                set the direction to "desc" and run the while loop again.*/
+                if (switchcount == 0 && dir == "asc") {
+                    dir = "desc";
+                    switching = true;
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    /* Input scripts*/
+    function myFunction() {
+        var input, filter, table, tr, td1,td2, i, txtValue1,txtValue2, input2, filter2;
+        input = document.getElementById("issuerInput");
+        filter = input.value.toUpperCase();
+        input2= document.getElementById("receiverInput");
+        filter2 = input2.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td1 = tr[i].getElementsByTagName("td")[3];
+            td2 = tr[i].getElementsByTagName("td")[4];
+            if (td1 && td2) {
+                txtValue1 = td1.textContent || td1.innerText;
+                txtValue2 =td2.textContent || td2.innerText;
+                if (txtValue1.toUpperCase().indexOf(filter) > -1 && txtValue2.toUpperCase().indexOf(filter2)>-1) {
+                    console.log(filter);
+                    console.log(filter2);
+                    tr[i].style.display = "";
+                } else {
+                    console.log("Filtro 1 :" + filter);
+                    console.log("Filtro 2 :" + filter2);
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    var table = document.getElementById("myTable");
+    var tr = table.getElementsByTagName("tr");
+
+    function filter(){
+        console.log("im here");
+        for (var i = 1; i < tr.length; i++) {
+            if (issuerFilter(i) && receiverFilter(i) &&totalFilter(i) && billTypeFilter(i) && pcFilter(i)){
+                tr[i].style.display = "";
+            } else{
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+    function issuerFilter(i) {
+        var input = document.getElementById("issuerInput");
+        var filter = input.value.toUpperCase();
+        var td= tr[i].getElementsByTagName("td")[3];
+        if(td){
+            var txtValue=  td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1){
+                return true;
+            } else{
+                return false;
+            }
+        }
+    }
+
+    function receiverFilter(i) {
+        var input = document.getElementById("receiverInput");
+        var filter = input.value.toUpperCase();
+        var td= tr[i].getElementsByTagName("td")[4];
+        if(td){
+            var txtValue=  td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1){
+                return true;
+            } else{
+                return false;
+            }
+        }
+    }
+
+    function totalFilter(i){
+        var input1 = document.getElementById("minTotalInput");
+        var input2 = document.getElementById("maxTotalInput");
+        var filter1 = Number(input1.value);
+        var filter2 = Number(input2.value);
+        var td= tr[i].getElementsByTagName("td")[5];
+        if(td){
+            var txtValue=  td.textContent || td.innerText;
+            if (input1.value && input2.value){
+                return (Number(txtValue)>=filter1 && Number(txtValue)<=filter2);
+            }
+            if (input1.value){
+                return (Number(txtValue)>=filter1);
+            }
+            if (input2.value){
+                return (Number(txtValue)<=filter2);
+            }
+            else{
+                return true;
+            }
+        }
+    }
+
+    function billTypeFilter(i) {
+        var filter= document.getElementById("billTypeInput").value.toUpperCase();
+        if (filter == "ALL") return true;
+        var td= tr[i].getElementsByTagName("td")[2];
+        if(td){
+            var txtValue=  td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1){
+                return true;
+            } else{
+                return false;
+            }
+        }
+    }
+
+    function pcFilter(i) {
+        var input = document.getElementById("pcInput");
+        var filter = input.value.toUpperCase();
+        var td= tr[i].getElementsByTagName("td")[1];
+        if(td){
+            var txtValue=  td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1){
+                return true;
+            } else{
+                return false;
+            }
+        }
+    }
+
+
+
+    /* Input scripts*/
+    function myFunction2() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("receiverInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[4];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+    jQuery(document).ready(function($) {
+        $('*[data-href]').on('click', function() {
+            window.location = /bills/ + $(this).data("href");
+        });
+    });
+
+</script>

@@ -12,11 +12,9 @@ import javax.servlet.http.Part;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+
 import java.nio.file.StandardOpenOption;
 import java.util.Collection;
-
-import static com.sun.xml.internal.org.jvnet.fastinfoset.EncodingAlgorithmIndexes.UUID;
 import static upload.CFDIVerifier.verify;
 
 public class UploadController {

@@ -1,139 +1,8 @@
+#parse("/velocity/layout.vm")
+#mainLayout()
 <html>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script src="http://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
-
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<style>
-body {
-  font-family: 'Lato', sans-serif;
-}
-
-.overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-}
-
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-}
-
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
-}
-
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-  }
-}
-</style>
-
-
-  <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>FinBook</title>
-	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
-  </head>
-  
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-
-	<a class="nav-link" href="#"><img src="/menu.png" alt="logo" style="height:30px" id="menuIcon" onclick="openNav()"></a>	
-
-		<!-- Brand/logo -->
-	  <a class="navbar-brand" href="/index/">
-		<img src="/favicon2.png" alt="logo" style="height:40px ">
-	  </a>
-	  
-	  <span style="color:#DCDCDC">FinBook</span>
-	  
-	  <!-- Links -->
-	  <ul class="navbar-nav ml-auto">
-	  
-		
-		    <!-- Dropdown -->
-		<li class="nav-item dropdown">
-		  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-			#if($lan== "en")
-				<img src="/engLan.png" alt="logo" style="height:30px ">
-			#else	
-				<img src="/spaLan.png" alt="logo" style="height:30px ">
-			#end	
-		  </a>
-		  <div class="dropdown-menu">
-			<form>
-				#if($lan== "en")
-					<button class="dropdown-item" name="locale" value="es"><img src="/spaLan.png" alt="logo" style="height:30px "></button>
-				#else
-					<button class="dropdown-item" name="locale" value="en"><img src="/engLan.png" alt="logo" style="height:30px "></button>
-				#end	
-			</form>	
-		  </div>
-		</li>
-		  
-
-	  </ul>
-	</nav>
-
-  
-  <body>
-  
-	<div id="myNav" class="overlay">
-	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	  <div class="overlay-content">
-		<a href="/login">Login</a> 
-		<a href="#">About</a>
-		<a href="#">Contact</a>
-	  </div>
-	</div>
-	  
-  
     <script>
-		
-	
 
-		
       function allowDrop(ev){
         ev.preventDefault();
       }
@@ -240,21 +109,12 @@ body {
 				$(this).html("Uploading files, please wait...").animate({'opacity': 1}, 400);});
 		});
 	  });
-	  
-	  function openNav() {
-		  document.getElementById("myNav").style.width = "100%";
-		}
-
-		function closeNav() {
-		  document.getElementById("myNav").style.width = "0%";	
-		}
-
 
     </script>
 
-	<div id="left" style="padding-top:50px">
+	<div id="left">
 	<div class ="container text-center">
-      <div id="dropContainer" style="border:2px dashed darkblue; background-color: white; border-radius: 5px;height:400px; display: flex;justify-content: center;
+      <div id="dropContainer" style="border:2px groove darkblue; background-color: white; border-radius: 5px;height:400px; display: flex;justify-content: center;
 	  align-items: center;" ondragover="allowDrop(event)" ondragenter="allowDrop(event)" ondrop="dropFiles(event)">
 		<img src="/bill2.png" alt="" style="height: 30%; width: 30%; object-fit: contain" />
 		<br>
@@ -305,7 +165,7 @@ body {
 		</div>
 	</div>
 
-	<div class="container" id="right" style="float:right ; width:40% ; padding-top:50px">
+	<div class="container" id="right" style="float:right ; width:40% ; ">
 		<h2>File uploads <span class="badge badge-success">
 		<a id="fileUploadsNum" href="#" title=" New files uploaded" data-toggle="popover" data-trigger="hover" data-content="Hover over filename to check upload info" style="color:white"></a></span></h2>
 		<table class="table" id ="fileTable" style = "overflow-y:scroll;height:70%;display:block">
@@ -463,25 +323,5 @@ body {
 
   </div>
   </body>
-  
 
-
-  
-  <footer class="page-footer font-small blue" style="  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-  padding-bottom: 50px;">
-
-	  <!-- Copyright -->
-	  <div class="footer-copyright text-center py-3">© 2019 Copyright:
-		<a href="finbook.io"> FinBook</a>
-		<img src="/favicon.png" alt="" style="height: 2.5%; width: 2.5%; object-fit: contain" />
-	  </div>
-	  <!-- Copyright -->
-
-  </footer>
-  
-
-  
 </html>

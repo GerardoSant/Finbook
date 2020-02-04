@@ -1,195 +1,36 @@
+#parse("/velocity/layout.vm")
+#mainLayout()
 <html>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script src="http://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
-
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-<style>
-body {
-  font-family: 'Lato', sans-serif;
-}
-
-.overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-}
-
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-}
-
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
-}
-
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-  }
-}
-</style>
-
-
-  <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>FinBook</title>
-	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
-  </head>
-  
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-
-	<a class="nav-link"><img src="/menu.png" alt="logo" style="height:30px" id="menuIcon" onclick="openNav()"></a>	
-
-		<!-- Brand/logo -->
-	  <a class="navbar-brand" href="/index/">
-		<img src="/favicon2.png" alt="logo" style="height:40px ">
-	  </a>
-	  
-	  <span style="color:#DCDCDC">FinBook</span>
-	  
-	  <!-- Links -->
-	  <ul class="navbar-nav ml-auto">
-	  
-		
-		    <!-- Dropdown -->
-		<li class="nav-item dropdown">
-		  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-			#if($lan== "en")
-				<img src="/engLan.png" alt="logo" style="height:30px ">
-			#else	
-				<img src="/spaLan.png" alt="logo" style="height:30px ">
+	<body>
+			#if($loggedOut)
+				<div class ="container content" style="background-color:lightblue">
+					<h6>$msg.get("LOG_OUT")</h6>
+				</div>
 			#end
-		  </a>
-		  <div class="dropdown-menu">
-			<form>
-				#if($lan== "en")
-					<button class="dropdown-item" name="locale" value="es"><img src="/spaLan.png" alt="logo" style="height:30px "></button>
-				#else
-					<button class="dropdown-item" name="locale" value="en"><img src="/engLan.png" alt="logo" style="height:30px "></button>
-				#end	
-			</form>	
-		  </div>
-		</li>
-		  
-
-	  </ul>
-	</nav>
-
-  
-  <body>
-  
-	<div id="myNav" class="overlay">
-	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	  <div class="overlay-content">
-		#if($currentUser)
-			<form action="/logout" method="post" id="logOutForm">
-				<a href= "#" onclick=submitLogOutForm()>Log out</a>
-			</form>
-		#else
-			<a href="/login">Login</a> 
-		#end
-		<a href="#">About</a>
-		<a href="#">Contact</a>
-	  </div>
-	</div>
-	
-	<div class="container">
-	  <h2>Login</h2>
-	  <form action="/login" method="post">
-		<div class="form-group">
-		  <label for="Username">Username:</label>
-		  <input class="form-control" id="username" placeholder="Enter username" name="username">
+			#if($redirected)
+				<div class ="container content" style="background-color:lightcoral">
+					<h6>$msg.get("LOG_REDIRECT")</h6>
+				</div>
+			#end
+		<div class="container content">
+		  <h2>Login</h2>
+		  <form action="/login" method="post">
+			<div class="form-group" style="float:none">
+			  <label for="Username">Username:</label>
+			  <input class="form-control" id="username" placeholder="Enter username" name="username">
+			</div>
+			<div class="form-group">
+			  <label for="pwd">Password:</label>
+			  <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+			</div>
+			<div class="form-group form-check">
+			  <label class="form-check-label">
+				<input class="form-check-input" type="checkbox" name="remember"> Remember me
+			  </label>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		  </form>
 		</div>
-		<div class="form-group">
-		  <label for="pwd">Password:</label>
-		  <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-		</div>
-		<div class="form-group form-check">
-		  <label class="form-check-label">
-			<input class="form-check-input" type="checkbox" name="remember"> Remember me
-		  </label>
-		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
-	  </form>
-	</div>
-
-	
-	
    </body>
-	
-	
-	
-	<script>
-		function openNav() {
-		  document.getElementById("myNav").style.width = "100%";
-		}
-
-		function closeNav() {
-		  document.getElementById("myNav").style.width = "0%";
-		}
-		
-		function submitLogOutForm(){
-			document.getElementById("logOutForm").submit();
-		}
-</script>
-	
-  <footer class="page-footer font-small blue" style="  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
-  padding-bottom: 50px;">
-
-	  <!-- Copyright -->
-	  <div class="footer-copyright text-center py-3">© 2019 Copyright:
-		<a href="finbook.io"> FinBook</a>
-		<img src="/favicon.png" alt="" style="height: 2.5%; width: 2.5%; object-fit: contain" />
-	  </div>
-	  <!-- Copyright -->
-
-  </footer>
-  
-
-  
 </html>	
 	
