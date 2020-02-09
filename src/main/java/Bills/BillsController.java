@@ -1,6 +1,7 @@
 package Bills;
 
 import Bills.Location.GeoNamesLocationLoader;
+import Bills.MailSender.SMTPMailSender;
 import login.LoginController;
 import spark.Request;
 import spark.Response;
@@ -27,6 +28,7 @@ public class BillsController {
         Bill bill = new BillsDao(request.session().attribute("currentUser")).getBillByUUID(getParamUUID(request));
         model.put("bill",bill);
         model.put("redirected", removeSessionAttrLoginRedirect(request));
+        model.put("emailSent", removeSessionAttrEmailSent(request));
         model.put("location", new GeoNamesLocationLoader().load(bill.getPC(),"ES"));
         return ViewUtil.render(request, model, Path.Template.BILLS_ONE);
     };
@@ -44,11 +46,14 @@ public class BillsController {
     public static Route oneBillSendEmail = (Request request, Response response) -> {
         //LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
-        Bill bill = new BillsDao("45").getBillByUUID(getParamUUID(request));
+        Bill bill = new BillsDao(getSessionCurrentUser(request)).getBillByUUID(getParamUUID(request));
         model.put("bill",bill);
-        response.redirect("/bills/" + getParamUUID(request));
-        System.out.println("Mail sent to " +  getParamEmail(request));
         request.session().attribute("redirected", true);
+        try{
+            new SMTPMailSender().send(bill, getParamEmail(request), getSessionCurrentUser(request));
+            request.session().attribute("emailSent", true);
+        } catch(Exception e){ }
+        response.redirect("/bills/" + getParamUUID(request));
         return null;
     };
 }

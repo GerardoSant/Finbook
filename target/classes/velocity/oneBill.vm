@@ -3,9 +3,15 @@
 <html>
 <body>
 	#if($redirected)
-		<div class ="container content" style="background-color:lightblue">
-			<h6>You have succesfully sent the e-mail</h6>
-		</div>
+		#if($emailSent)
+			<div class ="container content" style="background-color:lightblue">
+				<h6>You have succesfully sent the e-mail</h6>
+			</div>
+		#else
+			<div class ="container content" style="background-color:lightcoral">
+				<h6>There was an error while sending the e-mail</h6>
+			</div>
+		#end
 	#end
 
 	<div class="content container" style="margin-bottom:50px">

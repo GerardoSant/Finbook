@@ -13,6 +13,7 @@ public class Path {
         @Getter public static final String ONE_BILL = "/bills/:uuid";
         @Getter public static final String DOWNLOAD_ONE_BILL= "/bills/:uuid/bill.xml";
         @Getter public static final String ONE_BILL_EMAIL= "/bills/:uuid/:email/";
+        @Getter public static final String SHINY_EXAMPLE= "/shiny";
     }
 
     public static class Template {
@@ -21,5 +22,6 @@ public class Path {
         public static final String BILLS = "velocity/bills.vm";
         public static final String BILLS_ONE = "velocity/oneBill.vm";
         public static final String NOT_FOUND= "velocity/notFound.vm";
+        public static final String EXAMPLE_SHINY= "velocity/exampleShiny.vm";
     }
 }

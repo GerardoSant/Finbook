@@ -40,5 +40,11 @@ public class RequestUtil {
         return loginRedirect!=null;
     }
 
+    public static boolean removeSessionAttrEmailSent(Request request){
+        Object emailSent = request.session().attribute("emailSent");
+        request.session().removeAttribute("emailSent");
+        return emailSent!=null;
+    }
+
 
 }
