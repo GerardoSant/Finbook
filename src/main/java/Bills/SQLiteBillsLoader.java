@@ -1,9 +1,11 @@
 package Bills;
 
 import java.sql.*;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SQLiteBillsLoader implements BillsLoader {
@@ -24,12 +26,17 @@ public class SQLiteBillsLoader implements BillsLoader {
     private List<Bill> dbBillList(ResultSet resultSet) throws SQLException, ParseException {
         List<Bill> billsList = new ArrayList<>();
         while(resultSet.next()){
-            billsList.add(new Bill(resultSet.getString("UUID"),new SimpleDateFormat("dd-MM-yyyy").parse(resultSet.getString("Date")),
+            billsList.add(new Bill(resultSet.getString("UUID"),parseDate((resultSet.getString("Date"))),
                     resultSet.getInt("PC"),resultSet.getString("type"),
                     resultSet.getString("issuerName"),resultSet.getString("issuerRFC"),resultSet.getString("receiverName"), resultSet.getString("receiverRFC"),
                     resultSet.getDouble("total"), resultSet.getString("currency"), resultSet.getString("xml")));
         }
         return billsList;
+    }
+
+    private Date parseDate(String date) throws ParseException {
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        return df.parse(date);
     }
 
 
