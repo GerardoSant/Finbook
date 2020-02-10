@@ -12,7 +12,8 @@ public class SQLiteBillsLoader implements BillsLoader {
 
 
     public List<Bill> selectAll(String RFC){
-        String sql = "SELECT * FROM Bills where issuerRFC=" + RFC + " OR " + "receiverRFC=" + RFC;
+        RFC="\"" + RFC + "\"";
+        String sql = "SELECT * FROM facturas where issuerRFC=" + RFC + " OR " + "receiverRFC=" + RFC;
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)){
@@ -26,7 +27,7 @@ public class SQLiteBillsLoader implements BillsLoader {
     private List<Bill> dbBillList(ResultSet resultSet) throws SQLException, ParseException {
         List<Bill> billsList = new ArrayList<>();
         while(resultSet.next()){
-            billsList.add(new Bill(resultSet.getString("UUID"),parseDate((resultSet.getString("Date"))),
+            billsList.add(new Bill(resultSet.getString("UUID"),parseDate(resultSet.getString("Date")),
                     resultSet.getInt("PC"),resultSet.getString("type"),
                     resultSet.getString("issuerName"),resultSet.getString("issuerRFC"),resultSet.getString("receiverName"), resultSet.getString("receiverRFC"),
                     resultSet.getDouble("total"), resultSet.getString("currency"), resultSet.getString("xml")));
@@ -35,14 +36,15 @@ public class SQLiteBillsLoader implements BillsLoader {
     }
 
     private Date parseDate(String date) throws ParseException {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return df.parse(date);
     }
 
 
     public Connection connect() {
         // SQLite connection string
-        String url = "jdbc:sqlite:C:\\Users\\pezpo\\Desktop\\SQLite\\Bills.db";
+        //String url = "jdbc:sqlite:C:\\Users\\pezpo\\Desktop\\SQLite\\Bills.db";
+        String url = "jdbc:sqlite:C:\\Users\\pezpo\\Desktop\\SQLite\\facturasSQLite.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);

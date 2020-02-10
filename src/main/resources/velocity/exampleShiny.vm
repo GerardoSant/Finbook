@@ -1,7 +1,7 @@
 #parse("/velocity/layout.vm")
 #mainLayout()
 <body>
-    <iframe src="http://127.0.0.1:7673/?rfc=$currentUser" height="100%" width="100%" style="border:none" >
+    <iframe src="http://127.0.0.1:7673/?rfc=$currentUser" height="80%" width="100%" style="border:none" >
         <p>Your browser does not support iframes.</p>
     </iframe>
 </body>

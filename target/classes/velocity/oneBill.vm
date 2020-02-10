@@ -110,7 +110,8 @@
 		jQuery(document).ready(function($) {
 			$("#send").on('click', function() {
 				console.log("hejka");
-				window.location = /bills/ + $bill.getUUID() + "/" + document.getElementById("email").value + "/";
+				var str= "$bill.getUUID()";
+				window.location = /bills/ + str + "/" + document.getElementById("email").value + "/";
 			});
 		});
 	</script>

@@ -12,6 +12,9 @@
     input,select {
         margin-top: 10px;
     }
+
+
+
 </style>
 
 <body>
@@ -56,38 +59,40 @@
         </div>
 
         <br>
-
-        <table class="table table-hover" id="myTable">
-            #if($bills)
-                <thead class ="thead-dark">
-                <tr>
-                    <th>Fecha</th>
-                    <th onclick="sortTable(1)">Lugar</th>
-                    <th onclick="sortTable(2)">Tipo</th>
-                    <th onclick="sortTable(3)">Emisor</th>
-                    <th onclick="sortTable(4)">Receptor</th>
-                    <th onclick="sortTableByNumbers(5)">Total</th>
-                    <th onclick="sortTable(6)">Moneda</th>
-                </tr>
-                </thead>
-                <tbody>
-                    #foreach($bill in $bills)
-                    <tr data-href="$bill.getUUID()">
-                        <td>$bill.getDate()</td>
-                        <td>$bill.getPC()</td>
-                        <td>$bill.getType()</td>
-                        <td>$bill.getIssuerName()</td>
-                        <td>$bill.getReceiverName()</td>
-                        <td>$bill.getTotal()</td>
-                        <td>$bill.getCurrency()</td>
+        <div style="overflow-y: scroll; height:60%">
+            <table class="table table-hover fixed_header" id="myTable" style="">
+                #if($bills)
+                    <thead class ="thead-dark">
+                    <tr>
+                        <th>Fecha</th>
+                        <th onclick="sortTable(1)">Lugar</th>
+                        <th onclick="sortTable(2)">Tipo</th>
+                        <th onclick="sortTable(3)">Emisor</th>
+                        <th onclick="sortTable(4)">Receptor</th>
+                        <th onclick="sortTableByNumbers(5)">Total</th>
+                        <th onclick="sortTable(6)">Moneda</th>
                     </tr>
-                    #end
-                </tbody>
-            #else
-                <h2>There aren't bills uploaded to the database with your current RFC</h2>
-            #end
+                    </thead>
+                    <tbody>
+                        #foreach($bill in $bills)
+                        <tr data-href="$bill.getUUID()">
+                            <td>$bill.getDate()</td>
+                            <td>$bill.getPC()</td>
+                            <td>$bill.getType()</td>
+                            <td>$bill.getIssuerName()</td>
+                            <td>$bill.getReceiverName()</td>
+                            <td>$bill.getTotal()</td>
+                            <td>$bill.getCurrency()</td>
+                        </tr>
+                        #end
+                    </tbody>
+                #else
+                    <h2>There aren't bills uploaded to the database with your current RFC</h2>
+                #end
 
-        </table>
+            </table>
+        </div>
+
     </div>
 
 </body>
