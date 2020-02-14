@@ -1,6 +1,9 @@
 import Bills.BillsController;
 import Shiny.ShinyController;
 import index.IndexController;
+import spark.Request;
+import spark.Response;
+import spark.Route;
 import spark.utils.IOUtils;
 import upload.UploadController;
 import login.LoginController;
@@ -17,7 +20,6 @@ public class Server {
     public static void main(String[] args) {
 
 
-
         //Configure Spark
         staticFiles.location("/public");
         staticFiles.expireTime(600L);
@@ -31,7 +33,10 @@ public class Server {
 
         // Set up routes
 
-        get("/" , (request, response) -> { response.redirect("/index/"); return null;});
+        get("/", (request, response) -> {
+            response.redirect("/index/");
+            return null;
+        });
         get(Path.Web.INDEX, IndexController.serveIndexPage);
         get(Path.Web.LOGIN, LoginController.serveLoginPage);
         get(Path.Web.BILLS, BillsController.fetchAllBills);
@@ -44,7 +49,7 @@ public class Server {
         post(Path.Web.LOGIN, LoginController.handleLoginPost);
         post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
 
-        get("*",                     ViewUtil.notFound);
+        get("*", ViewUtil.notFound);
 
 
     }
