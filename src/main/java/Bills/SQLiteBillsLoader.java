@@ -28,9 +28,9 @@ public class SQLiteBillsLoader implements BillsLoader {
         List<Bill> billsList = new ArrayList<>();
         while(resultSet.next()){
             billsList.add(new Bill(resultSet.getString("UUID"),parseDate(resultSet.getString("Date")),
-                    resultSet.getInt("PC"),resultSet.getString("type"),
+                    resultSet.getInt("PC"),resultSet.getString("type"),resultSet.getString("use"),resultSet.getString("concept"),
                     resultSet.getString("issuerName"),resultSet.getString("issuerRFC"),resultSet.getString("receiverName"), resultSet.getString("receiverRFC"),
-                    resultSet.getDouble("total"), resultSet.getString("currency"), resultSet.getString("xml")));
+                    resultSet.getDouble("subtotal"),resultSet.getDouble("taxRate"),resultSet.getDouble("total"), resultSet.getString("currency"), resultSet.getString("xml")));
         }
         return billsList;
     }

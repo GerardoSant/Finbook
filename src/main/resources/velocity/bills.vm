@@ -81,7 +81,7 @@
                             <td>$bill.getType()</td>
                             <td>$bill.getIssuerName()</td>
                             <td>$bill.getReceiverName()</td>
-                            <td>$bill.getTotal()</td>
+                            <td>$math.roundTo(2, $bill.getTotal())</td>
                             <td>$bill.getCurrency()</td>
                         </tr>
                         #end

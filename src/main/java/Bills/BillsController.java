@@ -3,6 +3,7 @@ package Bills;
 import Bills.Location.GeoNamesLocationLoader;
 import Bills.MailSender.SMTPMailSender;
 import login.LoginController;
+import org.apache.velocity.tools.generic.MathTool;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -17,6 +18,7 @@ public class BillsController {
     public static Route fetchAllBills = (Request request, Response response) -> {
         LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
+        model.put("math", new MathTool());
         model.put("bills", new BillsDao(request.session().attribute("currentUser")).getAllBills());
         //model.put("bills", new BillsDao("45").getAllBills());
         return ViewUtil.render(request,model, Path.Template.BILLS);

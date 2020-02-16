@@ -1,4 +1,5 @@
 import Bills.BillsController;
+import Reports.ReportController;
 import Shiny.ShinyController;
 import index.IndexController;
 import spark.Request;
@@ -43,6 +44,7 @@ public class Server {
         get(Path.Web.ONE_BILL, BillsController.fetchOneBill);
         get(Path.Web.DOWNLOAD_ONE_BILL, BillsController.downloadOneBill);
         get(Path.Web.ONE_BILL_EMAIL, BillsController.oneBillSendEmail);
+        get(Path.Web.REPORT_INVESTMENTS, ReportController.investmentReport);
         get(Path.Web.SHINY_EXAMPLE, ShinyController.shinyExample);
 
         post(Path.Web.UPLOAD, UploadController.handleUploadPost);

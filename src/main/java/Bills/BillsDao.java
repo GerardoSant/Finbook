@@ -17,7 +17,7 @@ public class BillsDao {
     }
 
 
-    public Iterable<Bill> getAllBills(){ return bills; }
+    public List<Bill> getAllBills(){ return bills; }
 
     public Bill getBillByUUID(String s) {
         return bills.stream().filter(bill-> bill.getUUID().equals(s)).findFirst().orElse(null);
