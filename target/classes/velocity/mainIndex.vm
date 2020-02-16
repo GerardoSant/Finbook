@@ -1,0 +1,57 @@
+#parse("/velocity/layout.vm")
+#mainLayout()
+<html>
+	<style>
+		.box{
+			margin-top: 1%;
+			margin-bottom: 1%;
+			max-width:45%;
+			height:35%;
+			cursor:pointer
+		}
+		.box:hover {
+			transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+		}
+
+		.leftbox {
+			float: left;
+			margin-left: 3%;
+		}
+		.rightbox{
+			float: right;
+			margin-right: 3%;
+		}
+
+		.xd {
+			background: #fff;
+			box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+		}
+
+		@media screen and (max-width: 992px) {
+			.box {
+				max-width: 90%;
+				margin-bottom:2%
+			}
+			.leftbox{
+				float: none;
+				margin-left:5%;
+				margin-right:3%
+			}
+			.rightbox{
+				float: none;
+				margin-left:5%;
+				margin-right:3%;
+			}
+		}
+	</style>
+	<body>
+		<div>
+			<div class="container xd box leftbox"></div>
+			<div class="container xd box rightbox"></div>
+			<div class="container xd box leftbox"></div>
+			<div class="container xd box rightbox"></div>
+		</div>
+	</body>
+
+</html>	
+	

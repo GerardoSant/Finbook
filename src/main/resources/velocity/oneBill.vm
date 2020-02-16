@@ -31,6 +31,14 @@
 		</div>
 		<div class="row">
 			<div class="col">
+				<h5>Use</h5> <p>$bill.getUse()</p>
+			</div>
+			<div class="col">
+				<h5>Concept</h5> <p>$bill.getConcept()</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
 				<h5>Postal Code</h5> <p>$bill.getPC()</p>
 			</div>
 			<div class="col">
@@ -60,7 +68,15 @@
 		</div>
 		<div class="row">
 			<div class="col">
+				<h5>Subtotal</h5> <p>$bill.getSubtotal()</p>
+			</div>
+			<div class="col">
 				<h5>Total</h5> <p>$bill.getTotal()</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h5>Tax rate</h5> <p>$bill.getTaxRate()</p>
 			</div>
 			<div class="col">
 				<h5>Currency</h5> <p>$bill.getCurrency()</p>

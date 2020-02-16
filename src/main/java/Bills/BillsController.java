@@ -28,6 +28,7 @@ public class BillsController {
         HashMap<String, Object> model = new HashMap<>();
         //Bill bill = new BillsDao("45").getBillByUUID(getParamUUID(request));
         Bill bill = new BillsDao(request.session().attribute("currentUser")).getBillByUUID(getParamUUID(request));
+        System.out.println(bill);
         model.put("bill",bill);
         model.put("redirected", removeSessionAttrLoginRedirect(request));
         model.put("emailSent", removeSessionAttrEmailSent(request));

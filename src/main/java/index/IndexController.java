@@ -19,4 +19,8 @@ public class IndexController{
         System.out.println(getSessionLocale(request));
         return ViewUtil.render(request, model, Path.Template.INDEX);
     };
+    public static Route serveMainIndexPage = (Request request, Response response) ->{
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(request, model, Path.Template.MAININDEX);
+    };;
 }
