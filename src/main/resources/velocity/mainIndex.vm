@@ -7,11 +7,17 @@
 			margin-bottom: 1%;
 			max-width:45%;
 			height:35%;
-			cursor:pointer
+			font-size:200%;
+			box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+			cursor:pointer;
+			font-family: "Times New Roman";
+			background-color: #ffffff;
+			border: solid 1px black;
 		}
 		.box:hover {
 			transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 		}
+
 
 		.leftbox {
 			float: left;
@@ -22,10 +28,14 @@
 			margin-right: 3%;
 		}
 
-		.xd {
-			background: #fff;
-			box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+		.center{
+			display:flex;
+			justify-content: center;
+			align-items: center;
+
 		}
+
+
 
 		@media screen and (max-width: 992px) {
 			.box {
@@ -43,15 +53,38 @@
 				margin-right:3%;
 			}
 		}
+
+		[data-href] {
+			cursor: pointer;
+		}
+
+
+
 	</style>
 	<body>
 		<div>
-			<div class="container xd box leftbox"></div>
-			<div class="container xd box rightbox"></div>
-			<div class="container xd box leftbox"></div>
-			<div class="container xd box rightbox"></div>
+			<div class="container box leftbox center" data-href="/bills">
+				<div><p><img src="bills.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>
+			</div>
+			<div class="container box rightbox center" data-href="/reports/investments">
+				<div><p><img src="bill2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReports</p></div>
+			</div>
+			<div class="container box leftbox center" data-href="/shiny">
+				<div><p><img src="statistics.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRatios and statistics</p></div>
+			</div>
+			<div class="container box rightbox center" data-href="/index/">
+				<div><p><img src="upload2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUpload bills</p></div>
+			</div>
 		</div>
 	</body>
+
+	<script>
+		jQuery(document).ready(function($) {
+			$('*[data-href]').on('click', function() {
+				window.location = $(this).data("href");
+			});
+		});
+	</script>
 
 </html>	
 	

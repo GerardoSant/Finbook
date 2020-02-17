@@ -24,7 +24,7 @@ public class LoginController {
     public static Route handleLoginPost = (request, response) -> {
         Map<String, Object> model = new HashMap<>();
         request.session().attribute("currentUser", getQueryUsername(request));
-        response.redirect(Path.Web.BILLS);
+        response.redirect(Path.Web.MAIN_INDEX);
         return null;
     };
 
