@@ -3,6 +3,9 @@
 <html>
     <script src="https://unpkg.com/jspdf@1.5.3/dist/jspdf.min.js"></script>
     <script src="https://unpkg.com/jspdf-autotable@3.2.13/dist/jspdf.plugin.autotable.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
 
     <style>
         [data-href] {
@@ -45,6 +48,43 @@
             font-style: italic;
         }
 
+        .rightbox{
+            float:right;
+            width:55%;
+            margin-right:5%;
+            margin-bottom:5%
+
+        }
+
+        .leftbox{
+            position:fixed;
+            float:left;
+            width: 30%;
+            margin-left: 5%;
+            height:75%;
+            margin-bottom:5%
+        }
+
+        footer {
+            display: none;
+        }
+
+        @media screen and (max-width: 992px) {
+            .rightbox{
+                float:none;
+                width:90%;
+                margin-right:0%;
+                margin-left: 5%;
+
+            }
+            .leftbox{
+                position:static;
+                float:none;
+                width:90%;
+
+            }
+        }
+
 
 
 
@@ -54,30 +94,31 @@
     </style>
 
     <body>
-        <div class = "container content" style="">
-            <div style="border-bottom: double;">
-                <h2>Investment report</h2>
-            </div>
+        <div class="rightbox">
+            <div class = "container content">
+                <div style="border-bottom: double;">
+                    <h2>Investment report</h2>
+                </div>
 
-            <br>
+                <br>
 
-            <table class="table table-hover fixed_header" id="myTable" style="">
-                <thead>
+                <table class="table table-hover fixed_header" id="myTable" style="">
+                    <thead>
                     <tr>
                         <th>Investments</th>
                         <th>Base</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <tr id="buildings" class="opener">
                         <td>Buildings</td>
                         <td>$report.getBuildingsBase()</td>
                     </tr>
                         #foreach($bill in $report.getBuildings())
-                            <tr data-href="$bill.getUUID()" class="hidden buildings bill">
-                                <td><li>$bill.getConcept()</li></td>
-                                <td>$bill.getSubtotal()</td>
-                            </tr>
+                        <tr data-href="$bill.getUUID()" class="hidden buildings bill">
+                            <td><li>$bill.getConcept()</li></td>
+                            <td>$bill.getSubtotal()</td>
+                        </tr>
                         #end
                     <tr id="furniture" class="opener">
                         <td>Furniture and office equipment</td>
@@ -153,13 +194,27 @@
                         <td><b>All investments</b></td>
                         <td style="">$report.getBase()</td>
                     </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
 
+            </div>
         </div>
-        <div class="container content" style="margin-top:20px; margin-bottom:50px">
-            <img id="pdf" src="/pdf.png" style="max-height:50px">
+
+        <div class="leftbox" style="margin-right:5%">
+            <div class="container content" style="height:30%; margin-bottom:5%">
+                <div><h3 style="border-bottom:double">Investment period</h3></div>
+            </div>
+            <div class="container content" style="height:70%">
+                <div>
+                    <h3 style="border-bottom:double">Investment Chart</h3>
+                </div>
+                <div id="piechart" style="height:90%"></div>
+            </div>
         </div>
+
+
+
+
     </body>
 
     <script>
@@ -174,15 +229,47 @@
                 $(itemsToToggleClass).toggleClass("hidden");
                 //$(itemsToToggleClass).last().css( "border-bottom", "groove" );
             });
-            $("#pdf").on('click', function(){
-                var doc = new jsPDF();
-                console.log("hey");
-                doc.autoTable({ html: '#myTable' });
-                doc.save('table.pdf')
 
-            })
 
         });
+    </script>
+
+
+    <script>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        var data;
+        var options;
+        var chart;
+
+        function drawChart() {
+            data = google.visualization.arrayToDataTable([
+                ['Investment', 'Base'],
+                ['Buildings',     $report.getBuildingsBase()],
+                ['Office',      $report.getOfficeEquipmentBase()],
+                ['Computation',  $report.getTransportEquipmentBase()],
+                ['Models&Tools', $report.getModelsAndToolsBase()],
+                ['Telephone',    $report.getTelephoneCommunicationsBase()],
+                ['Satellite', $report.getSatelliteCommunicationsBase()],
+                ['Machinery&Others', $report.getOtherMachineryAndEquipmentBase()]
+            ]);
+
+            options = {
+                title: 'My Daily Activities'
+            };
+
+            chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+        function resize () {
+            chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+        window.onload = resize;
+        window.onresize = resize;
     </script>
 
 
