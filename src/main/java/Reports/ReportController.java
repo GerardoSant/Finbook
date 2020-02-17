@@ -20,7 +20,8 @@ public class ReportController {
         HashMap<String, Object> model = new HashMap<>();
         //InvestmentsReport report = new InvestmentsReport(new BillsDao(request.session().attribute("currentUser")).getAllBills(), getSessionCurrentUser(request));
         InvestmentsReport report = new InvestmentsReport(new BillsDao("E-5756930").getAllBills(),"E-5756930");
-        System.out.println(report.getBase());
+        System.out.println(request.queryParams("periodStart"));
+        System.out.println(request.queryParams("periodEnd"));
         model.put("report",report);
 
         return ViewUtil.render(request,model, Path.Template.INVESTMENT_REPORT);

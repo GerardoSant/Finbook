@@ -17,35 +17,23 @@
             font-size:117%
         }
 
-        span {
-            border-bottom: ridge;
-        }
-        input,select {
-            margin-top: 10px;
-        }
-
         .opener {
             cursor: pointer;
             font-size:115%;
 
         }
 
-        .opened {
-            border-bottom: groove
-        }
-
         .hidden {
             display:none;
+        }
+
+        .containerTitle{
+            border-bottom: double;
         }
 
         .bill {
             font-style: italic;
             background-color: #ebfcfc;
-
-        }
-
-        .italic {
-            font-style: italic;
         }
 
         .rightbox{
@@ -60,6 +48,7 @@
             position:fixed;
             float:left;
             width: 30%;
+            margin-right:5%;
             margin-left: 5%;
             height:75%;
             margin-bottom:5%
@@ -85,18 +74,12 @@
             }
         }
 
-
-
-
-
-
-
     </style>
 
     <body>
         <div class="rightbox">
             <div class = "container content">
-                <div style="border-bottom: double;">
+                <div class="containerTitle">
                     <h2>Investment report</h2>
                 </div>
 
@@ -200,13 +183,39 @@
             </div>
         </div>
 
-        <div class="leftbox" style="margin-right:5%">
-            <div class="container content" style="height:30%; margin-bottom:5%">
-                <div><h3 style="border-bottom:double">Investment period</h3></div>
-            </div>
-            <div class="container content" style="height:70%">
+        <div class="leftbox">
+            <div class="container content" style="height:35%; margin-bottom:5%">
                 <div>
-                    <h3 style="border-bottom:double">Investment Chart</h3>
+                    <h3 class="containerTitle">Investment period</h3>
+                    <br>
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period start</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="periodStart">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period end</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="periodEnd">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" value="Submit" class="btn btn-secondary" style="float:right">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="container content" style="height:65%">
+                <div>
+                    <h3 class="containerTitle">Investment Chart</h3>
                 </div>
                 <div id="piechart" style="height:90%"></div>
             </div>
