@@ -1,5 +1,7 @@
 package Bills;
 
+import util.DateParser;
+
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -36,8 +38,7 @@ public class SQLiteBillsLoader implements BillsLoader {
     }
 
     private Date parseDate(String date) throws ParseException {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return df.parse(date);
+        return new DateParser("yyyy-MM-dd HH:mm:ss").parseDate(date);
     }
 
 

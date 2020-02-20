@@ -3,10 +3,13 @@ package Reports;
 import Bills.Bill;
 import Bills.SQLiteBillsLoader;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class InvestmentsReport {
+    private Date periodStart;
+    private Date periodEnd;
     private double base;
     private List<Bill> buildings;
     private double buildingsBase;
@@ -26,21 +29,16 @@ public class InvestmentsReport {
     private double otherMachineryAndEquipmentBase;
     private String RFC;
 
-    public static void main(String[] args) {
-        List<Bill> billList = new SQLiteBillsLoader().loadBills("E-5756930");
-        System.out.println("Bills in billList");
-        billList.forEach(bill -> System.out.print(bill));
-        System.out.println("\nBills in investments");
-        InvestmentsReport report = new InvestmentsReport(billList,"E-5756930");
-        report.getBuildings().forEach(bill -> System.out.print(bill));
-        System.out.println(report.getBuildingsBase());
-        report.getOfficeEquipment().forEach(bill -> System.out.print(bill));
-        System.out.println("\n"+report.getOfficeEquipmentBase());
-        System.out.println(report.getBase());
+
+    public InvestmentsReport(List<Bill> billList, String RFC, Date periodStart, Date periodEnd) {
+        this.periodStart = periodStart;
+        this.periodEnd= periodEnd;
+        this.RFC= RFC;
+        billList= billsFromPeriod(billList);
+        calculateReportFields(billList);
     }
 
-    public InvestmentsReport(List<Bill> billList, String RFC) {
-        this.RFC= RFC;
+    private void calculateReportFields(List<Bill> billList) {
         this.buildings = filterByUseCode(billList, "I01");
         this.buildingsBase = calculateBase(this.buildings);
         this.officeEquipment = filterByUseCode(billList, "I02");
@@ -58,6 +56,10 @@ public class InvestmentsReport {
         this.otherMachineryAndEquipment = filterByUseCode(billList, "I08");
         this.otherMachineryAndEquipmentBase = calculateBase(this.otherMachineryAndEquipment);
         this.base= buildingsBase+officeEquipmentBase+transportEquipmentBase+computationalEquipmentBase+modelsAndToolsBase+telephoneCommunicationsBase+satelliteCommunicationsBase+otherMachineryAndEquipmentBase;
+    }
+
+    private List<Bill> billsFromPeriod(List<Bill> billList){
+        return billList.stream().filter(bill -> bill.getDate().compareTo(periodStart)>=0 && bill.getDate().compareTo(periodEnd)<=0).collect(Collectors.toList());
     }
 
     private List<Bill> filterByUseCode(List<Bill> billList, String useCode) {
@@ -134,5 +136,13 @@ public class InvestmentsReport {
 
     public double getBase() {
         return base;
+    }
+
+    public Date getPeriodStart() {
+        return periodStart;
+    }
+
+    public Date getPeriodEnd() {
+        return periodEnd;
     }
 }

@@ -203,7 +203,7 @@
                                     <p>Period start</p>
                                 </div>
                                 <div class="col-8">
-                                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="periodStart">
+                                    <input class="form-control" type="date" value="2011-08-19" id="pStart" name="periodStart">
                                 </div>
                             </div>
                             <div class="row">
@@ -211,7 +211,7 @@
                                     <p>Period end</p>
                                 </div>
                                 <div class="col-8">
-                                    <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="periodEnd">
+                                    <input class="form-control" type="date" value="2011-08-19" id="pEnd" name="periodEnd">
                                 </div>
                             </div>
                             <div class="row">
@@ -290,6 +290,33 @@
 
         window.onload = resize;
         window.onresize = resize;
+    </script>
+
+    <script>
+        function getPeriodStartParsedDate() {
+            var year = $report.getPeriodStart().getYear() +1900;
+            console.log(year);
+            var month = $report.getPeriodStart().getMonth() +1;
+            console.log(month);
+            if (month < 10) month = "0" + month;
+            var day = $report.getPeriodStart().getDate()+0;
+            if (day < 10) day = "0" + day;
+            return year + "-" + month + "-" + day;
+        }
+
+        function getPeriodEndParsedDate() {
+            var year = $report.getPeriodEnd().getYear() +1900;
+            console.log(year);
+            var month = $report.getPeriodEnd().getMonth() +1;
+            console.log(month);
+            if (month < 10) month = "0" + month;
+            var day = $report.getPeriodEnd().getDate()+0;
+            if (day < 10) day = "0" + day;
+            return year + "-" + month + "-" + day;
+        }
+
+        document.getElementById('pStart').value = getPeriodStartParsedDate();
+        document.getElementById('pEnd').value = getPeriodEndParsedDate();
     </script>
 
 
