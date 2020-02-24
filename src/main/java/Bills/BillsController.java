@@ -11,6 +11,7 @@ import util.Path;
 import util.ViewUtil;
 
 import java.util.HashMap;
+import java.util.List;
 
 import static util.RequestUtil.*;
 
@@ -58,5 +59,13 @@ public class BillsController {
         } catch(Exception e){ }
         response.redirect("/bills/" + getParamUUID(request));
         return null;
+    };
+    public static Route billsTimeline = (Request request, Response response) -> {
+        //LoginController.ensureUserIsLoggedIn(request,response);
+        HashMap<String, Object> model = new HashMap<>();
+        List<Bill> billList = new BillsDao(getSessionCurrentUser(request)).getAllBills();
+        model.put("bills", billList);
+        model.put("even", true);
+        return ViewUtil.render(request, model, Path.Template.BILLS_TIMELINE);
     };
 }

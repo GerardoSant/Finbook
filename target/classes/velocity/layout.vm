@@ -17,212 +17,212 @@
 
 <style>
 
-html {
-	position: relative;
-	font-family: 'Lato', sans-serif;
-	min-height:100%;
-}
+	html {
+		position: relative;
+		font-family: 'Lato', sans-serif;
+		min-height:100%;
+	}
 
 
-header {
+	header {
 
 
 
-}
+	}
 
-nav {
-	background-color:darkgrey;
-	border-bottom: 1px solid grey;
-	margin-bottom: 50px;
-	box-shadow: 0 1px 0 0 rgba(0,0,0,.6);
-}
+	nav {
+		background-color:darkgrey;
+		border-bottom: 1px solid grey;
+		margin-bottom: 50px;
+		box-shadow: 0 1px 0 0 rgba(0,0,0,.6);
+	}
 
-body {
-	##margin-top: 120px;
-	position: relative;
-	background-color:#F8F8F8;
-	padding-bottom: 10px;
+	body {
+		##margin-top: 120px;
+		position: relative;
+		background-color:#F8F8F8;
+		padding-bottom: 10px;
 
-}
-
-
-footer {
-	clear:both;
-	left: 0;
-	position: absolute;
-	bottom: 0;
-	line-height: 40px;
-	width: 100%;
-	text-align: center;
-	background: #fff;
-	border-top: 1px solid black;
-	font-size: 14px;
-
-}
-
-.content {
-	background: #fff;
-	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
-	padding: 15px 15px 30px;
-}
+	}
 
 
-.overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-}
+	footer {
+		clear:both;
+		left: 0;
+		position: absolute;
+		bottom: 0;
+		line-height: 40px;
+		width: 100%;
+		text-align: center;
+		background: #fff;
+		border-top: 1px solid black;
+		font-size: 14px;
 
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-}
+	}
 
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
+	.content {
+		background: #fff;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+		padding: 15px 15px 30px;
+	}
 
-.overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
-}
 
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-}
+	.overlay {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		background-color: rgb(0,0,0);
+		background-color: rgba(0,0,0, 0.9);
+		overflow-x: hidden;
+		transition: 0.5s;
+	}
 
-@media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
-  }
-}
+	.overlay-content {
+		position: relative;
+		top: 25%;
+		width: 100%;
+		text-align: center;
+		margin-top: 30px;
+	}
 
-.menuOpener{
-	cursor:pointer
-}
-.menuOpener:hover{
-	transform : scale(1.10)
-}
+	.overlay a {
+		padding: 8px;
+		text-decoration: none;
+		font-size: 36px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+	}
+
+	.overlay a:hover, .overlay a:focus {
+		color: #f1f1f1;
+	}
+
+	.overlay .closebtn {
+		position: absolute;
+		top: 20px;
+		right: 45px;
+		font-size: 60px;
+	}
+
+	@media screen and (max-height: 450px) {
+		.overlay a {font-size: 20px}
+		.overlay .closebtn {
+			font-size: 40px;
+			top: 15px;
+			right: 35px;
+		}
+	}
+
+	.menuOpener{
+		cursor:pointer
+	}
+	.menuOpener:hover{
+		transform : scale(1.10)
+	}
 
 </style>
 
-  <head>
+<head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>FinBook</title>
 	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
-  </head>
+</head>
 
-  <header>
-  <nav class="navbar navbar-expand-sm">
+<header>
+	<nav class="navbar navbar-expand-sm">
 
-	<a class="nav-link menuOpener" ><img src="/menu.png" alt="logo" style="height:20px" id="menuIcon" onclick="openNav()"></a>
+		<a class="nav-link menuOpener" ><img src="/menu.png" alt="logo" style="height:20px" id="menuIcon" onclick="openNav()"></a>
 
 		<!-- Brand/logo -->
-	  #if($currentUser)
-		  <a class="navbar-brand" href="/main">
-			  <img src="/favicon2.png" alt="logo" style="height:30px ">
-		  </a>
-	  #else
-		  <a class="navbar-brand" href="/index/">
-			  <img src="/favicon2.png" alt="logo" style="height:30px ">
-		  </a>
-	  #end
+		#if($currentUser)
+			<a class="navbar-brand" href="/main">
+				<img src="/favicon2.png" alt="logo" style="height:30px ">
+			</a>
+		#else
+			<a class="navbar-brand" href="/index/">
+				<img src="/favicon2.png" alt="logo" style="height:30px ">
+			</a>
+		#end
 
-	  <span style="color:white">FinBook</span>
+		<span style="color:white">FinBook</span>
 
-	  <!-- Links -->
-	  <ul class="navbar-nav ml-auto">
+		<!-- Links -->
+		<ul class="navbar-nav ml-auto">
 
-		    <!-- Dropdown -->
-		<li class="nav-item dropdown">
-		  <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-			#if($lan== "en")
-				<img src="/engLan.png" alt="logo" style="height:30px ">
-			#else
-				<img src="/spaLan.png" alt="logo" style="height:30px ">
-			#end
-		  </a>
-		  <div class="dropdown-menu">
-			<form>
-				#if($lan== "en")
-					<button class="dropdown-item" name="locale" value="es"><img src="/spaLan.png" alt="logo" style="height:20px "></button>
-				#else
-					<button class="dropdown-item" name="locale" value="en"><img src="/engLan.png" alt="logo" style="height:20px "></button>
-				#end
-			</form>
-		  </div>
-		</li>
-	  </ul>
+			<!-- Dropdown -->
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+					#if($lan== "en")
+						<img src="/engLan.png" alt="logo" style="height:30px ">
+					#else
+						<img src="/spaLan.png" alt="logo" style="height:30px ">
+					#end
+				</a>
+				<div class="dropdown-menu">
+					<form>
+						#if($lan== "en")
+							<button class="dropdown-item" name="locale" value="es"><img src="/spaLan.png" alt="logo" style="height:20px "></button>
+						#else
+							<button class="dropdown-item" name="locale" value="en"><img src="/engLan.png" alt="logo" style="height:20px "></button>
+						#end
+					</form>
+				</div>
+			</li>
+		</ul>
 	</nav>
-	  <div id="myNav" class="overlay">
-		  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		  <div class="overlay-content">
-			  #if($currentUser)
-				  <form action="/logout" method="post" id="logOutForm">
-					  <a href= "#" onclick=submitLogOutForm()>Log out</a>
-				  </form>
-			  #else
-				  <a href="/login">Login</a>
-			  #end
-			  <a href="#">About</a>
-			  <a href="#">Contact</a>
-		  </div>
-	  </div>
-  </header>
+	<div id="myNav" class="overlay">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div class="overlay-content">
+			#if($currentUser)
+				<form action="/logout" method="post" id="logOutForm">
+					<a href= "#" onclick=submitLogOutForm()>Log out</a>
+				</form>
+			#else
+				<a href="/login">Login</a>
+			#end
+			<a href="#">About</a>
+			<a href="#">Contact</a>
+		</div>
+	</div>
+</header>
 
-	<script>
-	  function openNav() {
-		  document.getElementById("myNav").style.width = "100%";
-		}
+<script>
+	function openNav() {
+		document.getElementById("myNav").style.width = "100%";
+	}
 
-		function closeNav() {
-		  document.getElementById("myNav").style.width = "0%";	
-		}
+	function closeNav() {
+		document.getElementById("myNav").style.width = "0%";
+	}
 
-	  function submitLogOutForm(){
-		  document.getElementById("logOutForm").submit();
-	  }
-
-
-    </script>
+	function submitLogOutForm(){
+		document.getElementById("logOutForm").submit();
+	}
 
 
-  <body>
-
-  </body>
+</script>
 
 
-  
-  <footer>
-	  <!-- Copyright -->
-	  <div>© 2019 Copyright:
+<body>
+
+</body>
+
+
+
+<footer>
+	<!-- Copyright -->
+	<div>© 2019 Copyright:
 		<a href="finbook.io"> FinBook</a>
 		<img src="/favicon.png" alt="" style="height: 2.5%; width: 2.5%; object-fit: contain" />
-	  </div>
-	  <!-- Copyright -->
-  </footer>
-  
+	</div>
+	<!-- Copyright -->
+</footer>
 
-  
+
+
 </html>
 #end

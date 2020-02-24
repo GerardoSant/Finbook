@@ -37,6 +37,7 @@ public class Server {
         get(Path.Web.ONE_BILL, BillsController.fetchOneBill);
         get(Path.Web.DOWNLOAD_ONE_BILL, BillsController.downloadOneBill);
         get(Path.Web.ONE_BILL_EMAIL, BillsController.oneBillSendEmail);
+        get(Path.Web.BILLS_TIMELINE, BillsController.billsTimeline);
         get(Path.Web.REPORT_INVESTMENTS, ReportController.investmentReport);
         get(Path.Web.REPORT_PROFITANDLOSSES, ReportController.profitAndLossesReport);
         get(Path.Web.SHINY_EXAMPLE, ShinyController.shinyExample);
