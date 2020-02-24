@@ -64,16 +64,16 @@
 	<body>
 		<div>
 			<div class="container box leftbox center" data-href="/bills">
-				<div><p><img src="bills.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>
+				<div><p><img src="myBills2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>
 			</div>
 			<div class="container box rightbox center" data-href="/reports/investments">
-				<div><p><img src="bill2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReports</p></div>
+				<div><p><img src="reports2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReports</p></div>
 			</div>
 			<div class="container box leftbox center" data-href="/shiny">
-				<div><p><img src="statistics.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRatios and statistics</p></div>
+				<div><p><img src="statistics2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRatios and statistics</p></div>
 			</div>
 			<div class="container box rightbox center" data-href="/index/">
-				<div><p><img src="upload2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUpload bills</p></div>
+				<div><p><img src="uploadBills2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUpload bills</p></div>
 			</div>
 
 		</div>

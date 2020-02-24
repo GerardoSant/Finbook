@@ -45,6 +45,7 @@ body {
 
 }
 
+
 footer {
 	clear:both;
 	left: 0;
@@ -115,6 +116,14 @@ footer {
   right: 35px;
   }
 }
+
+.menuOpener{
+	cursor:pointer
+}
+.menuOpener:hover{
+	transform : scale(1.10)
+}
+
 </style>
 
   <head>
@@ -126,7 +135,7 @@ footer {
   <header>
   <nav class="navbar navbar-expand-sm">
 
-	<a class="nav-link" ><img src="/menu.png" alt="logo" style="height:20px" id="menuIcon" onclick="openNav()"></a>
+	<a class="nav-link menuOpener" ><img src="/menu.png" alt="logo" style="height:20px" id="menuIcon" onclick="openNav()"></a>
 
 		<!-- Brand/logo -->
 	  #if($currentUser)

@@ -7,9 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InvestmentsReport {
-    private Date periodStart;
-    private Date periodEnd;
+public class InvestmentsReport extends Report {
     private double base;
     private List<Bill> buildings;
     private double buildingsBase;
@@ -27,13 +25,11 @@ public class InvestmentsReport {
     private double satelliteCommunicationsBase;
     private List<Bill> otherMachineryAndEquipment;
     private double otherMachineryAndEquipmentBase;
-    private String RFC;
+
 
 
     public InvestmentsReport(List<Bill> billList, String RFC, Date periodStart, Date periodEnd) {
-        this.periodStart = periodStart;
-        this.periodEnd= periodEnd;
-        this.RFC= RFC;
+        super(periodStart, periodEnd,RFC);
         billList= billsFromPeriod(billList);
         calculateReportFields(billList);
     }
@@ -58,17 +54,10 @@ public class InvestmentsReport {
         this.base= buildingsBase+officeEquipmentBase+transportEquipmentBase+computationalEquipmentBase+modelsAndToolsBase+telephoneCommunicationsBase+satelliteCommunicationsBase+otherMachineryAndEquipmentBase;
     }
 
-    private List<Bill> billsFromPeriod(List<Bill> billList){
-        return billList.stream().filter(bill -> bill.getDate().compareTo(periodStart)>=0 && bill.getDate().compareTo(periodEnd)<=0).collect(Collectors.toList());
-    }
-
     private List<Bill> filterByUseCode(List<Bill> billList, String useCode) {
         return billList.stream().filter(bill -> bill.getUse().equals(useCode) && bill.getReceiverRFC().equals(this.RFC)).collect(Collectors.toList());
     }
 
-    private double calculateBase(List<Bill> billList){
-        return billList.stream().map(bill -> bill.getSubtotal()).reduce(0.0, (subtotal, bill) -> subtotal + bill);
-    };
 
     public List<Bill> getBuildings() {
         return buildings;
@@ -138,11 +127,4 @@ public class InvestmentsReport {
         return base;
     }
 
-    public Date getPeriodStart() {
-        return periodStart;
-    }
-
-    public Date getPeriodEnd() {
-        return periodEnd;
-    }
 }

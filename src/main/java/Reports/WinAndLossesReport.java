@@ -57,8 +57,7 @@ public class WinAndLossesReport {
         return billList.stream().filter(bill -> bill.getUse().equals(useCode) && bill.getReceiverRFC().equals(this.RFC)).collect(Collectors.toList());
     }
 
-
-
+    
     private List<Bill> filterByReturns(List<Bill> billList){
         return billList.stream().filter(bill-> bill.getIssuerRFC().equals(this.RFC) && bill.getType().equals("egreso")).collect(Collectors.toList());
     }
