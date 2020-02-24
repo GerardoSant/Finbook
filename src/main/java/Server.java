@@ -2,18 +2,11 @@ import Bills.BillsController;
 import Reports.ReportController;
 import Shiny.ShinyController;
 import index.IndexController;
-import spark.Request;
-import spark.Response;
-import spark.Route;
-import spark.utils.IOUtils;
 import upload.UploadController;
 import login.LoginController;
 import util.Filters;
 import util.Path;
 import util.ViewUtil;
-
-import java.io.File;
-import java.io.InputStream;
 
 import static spark.Spark.*;
 
@@ -45,7 +38,7 @@ public class Server {
         get(Path.Web.DOWNLOAD_ONE_BILL, BillsController.downloadOneBill);
         get(Path.Web.ONE_BILL_EMAIL, BillsController.oneBillSendEmail);
         get(Path.Web.REPORT_INVESTMENTS, ReportController.investmentReport);
-        get(Path.Web.REPORT_WINANDLOSSES, ReportController.winAndLossesReport);
+        get(Path.Web.REPORT_PROFITANDLOSSES, ReportController.profitAndLossesReport);
         get(Path.Web.SHINY_EXAMPLE, ShinyController.shinyExample);
         get(Path.Web.MAIN_INDEX, IndexController.serveMainIndexPage);
 

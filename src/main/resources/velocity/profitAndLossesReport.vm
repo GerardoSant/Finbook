@@ -105,7 +105,7 @@
         <div class="rightbox">
             <div class = "container content">
                 <div class="containerTitle">
-                    <h2>Win and Losses report</h2>
+                    <h2>Profit and Losses report</h2>
                 </div>
 
                 <br>
@@ -203,7 +203,7 @@
         <div class="leftbox">
             <div class="container content" style="margin-bottom:5%">
                 <div>
-                    <h4 class="containerTitle">Win and Losses period</h4>
+                    <h4 class="containerTitle">Profit and Losses period</h4>
                     <br>
                     <div>
                         <form>
@@ -235,7 +235,7 @@
             </div>
             <div class="container content" style="height:60%; margin-bottom:5%">
                 <div>
-                    <h4 class="containerTitle">Win and Losses Chart</h4>
+                    <h4 class="containerTitle">Profit and Losses Chart</h4>
                 </div>
                 <div id="piechart" style="height:90%"></div>
             </div>

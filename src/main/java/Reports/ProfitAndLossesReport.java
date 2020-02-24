@@ -2,18 +2,17 @@ package Reports;
 
 import Bills.Bill;
 import Bills.BillsDao;
-import Bills.SQLiteBillsLoader;
 import util.PeriodFinder;
 
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WinAndLossesReport extends Report {
+public class ProfitAndLossesReport extends Report {
 
     public static void main(String[] args) {
         List<Bill> billList = new BillsDao("C-6480477").getAllBills();
-        WinAndLossesReport report = new WinAndLossesReport(billList,"C-6480477", new PeriodFinder(billList).findPeriodStart(),
+        ProfitAndLossesReport report = new ProfitAndLossesReport(billList,"C-6480477", new PeriodFinder(billList).findPeriodStart(),
                 new PeriodFinder(billList).findPeriodEnd());
         report.getExternalServices().forEach(bill-> System.out.println(bill));
         System.out.println(report.getExternalServicesBase());
@@ -39,7 +38,7 @@ public class WinAndLossesReport extends Report {
     private double personnelExpenses;
 
 
-    public WinAndLossesReport(List<Bill> billList, String RFC, Date periodStart, Date periodEnd) {
+    public ProfitAndLossesReport(List<Bill> billList, String RFC, Date periodStart, Date periodEnd) {
         super(periodStart, periodEnd, RFC);
         billList= billsFromPeriod(billList);
         this.grossSales = filterBySales(billList);
