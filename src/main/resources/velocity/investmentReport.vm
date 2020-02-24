@@ -276,7 +276,7 @@
             ]);
 
             options = {
-                title: 'My Daily Activities'
+                title: 'Investments'
             };
 
             chart = new google.visualization.PieChart(document.getElementById('piechart'));

@@ -27,9 +27,24 @@
             display:none;
         }
 
+        .mainResult{
+            border-top:ridge;
+            border-bottom:ridge;
+            background-color: #f7f7f7;
+            font-size:115%;
+            font-weight: bold;
+        }
+
+        .comboResult{
+            font-style: italic;
+            text-decoration: underline;
+        }
+
         .containerTitle{
             border-bottom: double;
         }
+
+
 
         .bill {
             font-style: italic;
@@ -74,6 +89,8 @@
             }
         }
 
+
+
         @media screen and (max-height: 650px) {
 
             .leftbox{
@@ -88,7 +105,7 @@
         <div class="rightbox">
             <div class = "container content">
                 <div class="containerTitle">
-                    <h2>Investment report</h2>
+                    <h2>Win and Losses report</h2>
                 </div>
 
                 <br>
@@ -96,95 +113,87 @@
                 <table class="table table-hover fixed_header" id="myTable">
                     <thead>
                     <tr>
-                        <th>Investments</th>
+                        <th>Accounting name</th>
                         <th>Base</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr id="buildings" class="opener">
-                        <td>Buildings</td>
-                        <td>$report.getBuildingsBase()</td>
-                    </tr>
-                        #foreach($bill in $report.getBuildings())
-                        <tr data-href="$bill.getUUID()" class="hidden buildings bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                        <tr class="mainResult">
+                            <td>Sales and incomes</td>
+                            <td>$report.getSalesAndIncomesBase()</td>
                         </tr>
-                        #end
-                    <tr id="furniture" class="opener">
-                        <td>Furniture and office equipment</td>
-                        <td>$report.getOfficeEquipmentBase()</td>
-                    </tr>
-                        #foreach($bill in $report.getOfficeEquipment())
-                        <tr data-href="$bill.getUUID()" class="hidden furniture bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                        <tr style="font-size:115%">
+                            <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales" data-content="Base= Gross sales base - Sales returns base">Net sales</a></td>
+                            <td>$report.getNetSalesBase()</td>
                         </tr>
-                        #end
-                    <tr id="transport" class="opener">
-                        <td>Transport equipment</td>
-                        <td>$report.getTransportEquipmentBase()</td>
-                    </tr>
-                        #foreach($bill in $report.getTransportEquipment())
-                        <tr data-href="$bill.getUUID()" class="hidden transport bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                        <tr id="grossSales" class="opener">
+                            <td>Gross sales</td>
+                            <td>$report.getGrossSalesBase()</td>
                         </tr>
-                        #end
-                    <tr id="computational" class="opener">
-                        <td>Computational equipment and accesories</td>
-                        <td>$report.getComputationalEquipmentBase()</td>
-                    </tr>
-                        #foreach($bill in $report.getComputationalEquipment())
-                        <tr data-href="$bill.getUUID()" class="hidden computational bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            #foreach($bill in $report.getGrossSales())
+                            <tr data-href="$bill.getUUID()" class="hidden grossSales bill">
+                                <td><li>$bill.getConcept()</li></td>
+                                <td>$bill.getSubtotal()</td>
+                            </tr>
+                            #end
+                        <tr id="salesReturns" class="opener">
+                            <td>Sales returns</td>
+                            <td>$report.getSalesReturnsBase()</td>
                         </tr>
-                        #end
-                    <tr id="models" class="opener">
-                        <td>Models and Tools</td>
-                        <td>$report.getModelsAndToolsBase()</td>
-                    </tr>
-                        #foreach($bill in $report.getModelsAndTools())
-                        <tr data-href="$bill.getUUID()" class="hidden models bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            #foreach($bill in $report.getSalesReturns())
+                            <tr data-href="$bill.getUUID()" class="hidden salesReturns bill">
+                                <td><li>$bill.getConcept()</li></td>
+                                <td>$bill.getSubtotal()</td>
+                            </tr>
+                            #end
+                        <tr class = "mainResult">
+                            <td>Purchases and expenses</td>
+                            <td>$report.getPurchasesAndExpensesBase()</td>
                         </tr>
-                        #end
-                    <tr id="telephone" class="opener">
-                        <td>Telephone communications</td>
-                        <td>$report.getTelephoneCommunicationsBase()</td>
-                    </tr>
-                        #foreach($bill in $report.getTelephoneCommunications())
-                        <tr data-href="$bill.getUUID()" class="hidden telephone bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                        <tr style="font-size: 115%">
+                            <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net purchases" data-content="Base= Gross purchases base - Purchases returns base">Net purchases</a></td>
+                            <td>$report.getNetPurchasesBase()</td>
                         </tr>
-                        #end
-                    <tr id="satellite" class="opener">
-                        <td>Satellite communications</td>
-                        <td>$report.getSatelliteCommunicationsBase()</td>
-                    </tr>
-                        #foreach($bill in $report.getSatelliteCommunications())
-                        <tr data-href="$bill.getUUID()" class="hidden satellite bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                        <tr id="grossPurchases" class="opener">
+                            <td>Gross purchases</td>
+                            <td>$report.getGrossPurchasesBase()</td>
                         </tr>
-                        #end
-                    <tr id="other" class="opener">
-                        <td>Other machinery and equipment</td>
-                        <td>$report.getOtherMachineryAndEquipmentBase()</td>
-                    </tr>
-                        #foreach($bill in $report.getOtherMachineryAndEquipment())
-                        <tr data-href="$bill.getUUID()" class="hidden other bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            #foreach($bill in $report.getGrossPurchases())
+                            <tr data-href="$bill.getUUID()" class="hidden grossPurchases bill">
+                                <td><li>$bill.getConcept()</li></td>
+                                <td>$bill.getSubtotal()</td>
+                            </tr>
+                            #end
+                        <tr id="purchasesReturns" class="opener">
+                            <td>Purchases returns</td>
+                            <td>$report.getPurchasesReturnsBase()</td>
                         </tr>
-                        #end
-                    <tr style="border-top:ridge;border-bottom:ridge;background-color: #f7f7f7; font-size:115%">
-                        <td><b>All investments</b></td>
-                        <td style="">$report.getBase()</td>
-                    </tr>
+                            #foreach($bill in $report.getPurchasesReturns())
+                            <tr data-href="$bill.getUUID()" class="hidden purchasesReturns bill">
+                                <td><li>$bill.getConcept()</li></td>
+                                <td>$bill.getSubtotal()</td>
+                            </tr>
+                            #end
+                        <tr id="externalServices" class="opener">
+                            <td>External services</td>
+                            <td>$report.getExternalServicesBase()</td>
+                        </tr>
+                            #foreach($bill in $report.getExternalServices())
+                            <tr data-href="$bill.getUUID()" class="hidden externalServices bill">
+                                <td><li>$bill.getConcept()</li></td>
+                                <td>$bill.getSubtotal()</td>
+                            </tr>
+                            #end
+                        <tr id="salariesAndWages" class="opener">
+                            <td>Salaries and Wages</td>
+                            <td>$report.getSalariesAndWagesBase()</td>
+                        </tr>
+                            #foreach($bill in $report.getSalariesAndWages())
+                            <tr data-href="$bill.getUUID()" class="hidden salariesAndWages bill">
+                                <td><li>$bill.getConcept()</li></td>
+                                <td>$bill.getSubtotal()</td>
+                            </tr>
+                            #end
                     </tbody>
                 </table>
 
@@ -194,7 +203,7 @@
         <div class="leftbox">
             <div class="container content" style="margin-bottom:5%">
                 <div>
-                    <h4 class="containerTitle">Investment period</h4>
+                    <h4 class="containerTitle">Win and Losses period</h4>
                     <br>
                     <div>
                         <form>
@@ -226,7 +235,7 @@
             </div>
             <div class="container content" style="height:60%; margin-bottom:5%">
                 <div>
-                    <h4 class="containerTitle">Investment Chart</h4>
+                    <h4 class="containerTitle">Win and Losses Chart</h4>
                 </div>
                 <div id="piechart" style="height:90%"></div>
             </div>
@@ -265,18 +274,13 @@
 
         function drawChart() {
             data = google.visualization.arrayToDataTable([
-                ['Investment', 'Base'],
-                ['Buildings',     $report.getBuildingsBase()],
-                ['Office',      $report.getOfficeEquipmentBase()],
-                ['Computation',  $report.getTransportEquipmentBase()],
-                ['Models&Tools', $report.getModelsAndToolsBase()],
-                ['Telephone',    $report.getTelephoneCommunicationsBase()],
-                ['Satellite', $report.getSatelliteCommunicationsBase()],
-                ['Machinery&Others', $report.getOtherMachineryAndEquipmentBase()]
+                ['Money', 'Base'],
+                ['Sales and incomes', $report.getSalesAndIncomesBase()],
+                ['Purchases and expenses',    $report.getPurchasesAndExpensesBase()]
             ]);
 
             options = {
-                title: 'Investments'
+                title: 'Sales vs Expenses'
             };
 
             chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -317,6 +321,12 @@
 
         document.getElementById('pStart').value = getPeriodStartParsedDate();
         document.getElementById('pEnd').value = getPeriodEndParsedDate();
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
     </script>
 
 

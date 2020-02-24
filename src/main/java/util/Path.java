@@ -16,7 +16,7 @@ public class Path {
         @Getter public static final String SHINY_EXAMPLE= "/shiny";
         @Getter public static final String MAIN_INDEX = "/main";
         @Getter public static final String REPORT_INVESTMENTS = "/reports/investments";
-
+        @Getter public static final String REPORT_WINANDLOSSES = "/reports/winandlosses";
 
     }
 
@@ -29,5 +29,6 @@ public class Path {
         public static final String NOT_FOUND= "velocity/notFound.vm";
         public static final String EXAMPLE_SHINY= "velocity/exampleShiny.vm";
         public static final String INVESTMENT_REPORT= "velocity/investmentReport.vm";
+        public static final String WINANDLOSSES_REPORT= "velocity/winAndLossesReport.vm";
     }
 }
