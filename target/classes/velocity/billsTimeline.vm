@@ -110,17 +110,57 @@
 
 	/* The actual content */
 	.box {
-		padding: 20px 30px;
-		background-color: white;
+		border:0px;
 		position: relative;
-		border-radius: 6px;
+		border-radius:2px;
 		cursor: pointer;
 		box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-
 	}
 
+	.box h2{
+		padding:10px;
+	}
+	.box h4,h5{
+		padding:10px;
+	}
+	.green {
+		border-top:2px solid rgb(198,239,206);
+		background-color: rgb(198,239,206);
+	}
+	.green h2{
+		color:rgb(44,97,0);
+	}
+
+	.orange {
+		border-top:2px solid rgb(255,235,156);
+		background-color: rgb(255,235,156);
+	}
+	.orange h2{
+		color:rgb(156,101,36);
+	}
+
+	.red {
+		border-top:2px solid rgb(255,199,206);
+		background-color: rgb(255,199,206);
+	}
+	.red h2{
+		color:rgb(156,01,6);
+	}
+
+	.blue {
+		border-top:2px solid rgb(155,194,230);
+		background-color: rgb(155,194,230);
+	}
+	.blue h2{
+		color:white;
+	}
+
+
+
+
 	.box:hover{
-		transform: scale(1.05)
+		transform: scale(1.05);
+		z-index: 1;
 	}
 
 	/* Media queries - Responsive timeline on screens less than 600px wide */
@@ -168,16 +208,37 @@
 			<div class="billContainer right">
 			#set($even=true)
 		#end
-				<div class="box">
-					<h2>$bill.getDate()</h2>
-					<p>$bill.getConcept()</p>
-					<p>$bill.getTotal()</p>
+				#if($bill.getType()!="nomina" && $bill.getIssuerRFC()==$RFC)
+					<div class="box green" data-href="$bill.getUUID()">
+				#elseif ($bill.getType()=="nomina" && $bill.getIssuerRFC()==$RFC)
+					<div class="box orange" data-href="$bill.getUUID()">
+				#elseif($bill.getUse()=="G01" || $bill.getUse()=="G02" || $bill.getUse()=="G03")
+					<div class="box red" data-href="$bill.getUUID()">
+				#else
+					<div class="box blue" data-href="$bill.getUUID()">
+				#end
+
+					<div>
+						<h2>$date.format("MMM dd, yyyy H:MM:SS a",$bill.getDate())</h2>
+					</div>
+					<div style="background-color: white; ">
+						<h4>$bill.getConcept()</h4>
+						<div style="padding-left:70%; width:100%; box-sizing:border-box"><h5>$math.roundTo(2, $bill.getTotal()) $bill.getCurrency()</h5></div>
+					</div>
 				</div>
 			</div>
 	#end
 </div>
 
 </body>
+
+<script>
+	jQuery(document).ready(function($) {
+		$('*[data-href]').on('click', function(){
+			console.log("hey");
+			window.location = /bills/ + $(this).data("href");
+		})});
+</script>
 
 </html>	
 	

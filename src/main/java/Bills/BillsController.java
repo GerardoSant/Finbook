@@ -3,6 +3,7 @@ package Bills;
 import Bills.Location.GeoNamesLocationLoader;
 import Bills.MailSender.SMTPMailSender;
 import login.LoginController;
+import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import spark.Request;
 import spark.Response;
@@ -63,9 +64,14 @@ public class BillsController {
     public static Route billsTimeline = (Request request, Response response) -> {
         //LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
-        List<Bill> billList = new BillsDao(getSessionCurrentUser(request)).getAllBills();
+        //List<Bill> billList = new BillsDao(getSessionCurrentUser(request)).getAllBills();
+        List<Bill> billList = new BillsDao("E-5756930").getAllBills();
         model.put("bills", billList);
         model.put("even", true);
+        model.put("math", new MathTool());
+        model.put("date", new DateTool());
+        //model.put("RFC", getSessionCurrentUser(request));
+        model.put("RFC", "E-5756930");
         return ViewUtil.render(request, model, Path.Template.BILLS_TIMELINE);
     };
 }
