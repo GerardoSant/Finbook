@@ -33,6 +33,7 @@ public class ReportController {
         return ViewUtil.render(request, model, Path.Template.PROFITANDLOSSES_REPORT);
     };
 
+
     private static ProfitAndLossesReport generateWinAndLossesReport(Request request) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
         return request.queryParams("periodStart")== null ?

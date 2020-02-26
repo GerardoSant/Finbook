@@ -43,6 +43,7 @@ public class Server {
         get(Path.Web.SHINY_EXAMPLE, ShinyController.shinyExample);
         get(Path.Web.MAIN_INDEX, IndexController.serveMainIndexPage);
         get(Path.Web.BILLS_INDEX, IndexController.serveBillsIndexPage);
+        get(Path.Web.REPORTS_INDEX, IndexController.serveReportsIndexPage);
 
         post(Path.Web.UPLOAD, UploadController.handleUploadPost);
         post(Path.Web.LOGIN, LoginController.handleLoginPost);
