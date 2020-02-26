@@ -6,8 +6,8 @@
 			margin-top: 1%;
 			margin-bottom: 1%;
 			max-width:45%;
-			height:35%;
-			font-size:200%;
+			height:70%;
+			font-size:300%;
 			box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
 			cursor:pointer;
 			font-family: "Times New Roman";
@@ -16,6 +16,9 @@
 		}
 		.box:hover {
 			transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+		}
+		.box img{
+			height:20%;
 		}
 
 
@@ -40,7 +43,11 @@
 		@media screen and (max-width: 992px) {
 			.box {
 				max-width: 90%;
-				margin-bottom:2%
+				margin-bottom:2%;
+				font-size:200%
+			}
+			.box img{
+				height:40%;
 			}
 			.leftbox{
 				float: none;
@@ -63,17 +70,11 @@
 	</style>
 	<body>
 		<div>
-			<div class="container box leftbox center" data-href="/main/bills">
-				<div><p><img src="/bills2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>
+			<div class="container box leftbox center" data-href="/bills">
+				<div><p><img src="/myBills2.png">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>
 			</div>
-			<div class="container box rightbox center" data-href="/reports/investments">
-				<div><p><img src="/reports2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReports</p></div>
-			</div>
-			<div class="container box leftbox center" data-href="/shiny">
-				<div><p><img src="statistics2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRatios and statistics</p></div>
-			</div>
-			<div class="container box rightbox center" data-href="/index/">
-				<div><p><img src="uploadBills2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUpload bills</p></div>
+			<div class="container box rightbox center" data-href="/timeline">
+				<div><p><img src="/timeline.png">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTimeline</p></div>
 			</div>
 
 		</div>

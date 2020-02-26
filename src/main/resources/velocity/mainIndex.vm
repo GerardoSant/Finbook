@@ -63,11 +63,11 @@
 	</style>
 	<body>
 		<div>
-			<div class="container box leftbox center" data-href="/bills">
-				<div><p><img src="myBills2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>
+			<div class="container box leftbox center" data-href="/main/bills">
+				<div><p><img src="/bills2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>
 			</div>
 			<div class="container box rightbox center" data-href="/reports/investments">
-				<div><p><img src="reports2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReports</p></div>
+				<div><p><img src="/reports2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspReports</p></div>
 			</div>
 			<div class="container box leftbox center" data-href="/shiny">
 				<div><p><img src="statistics2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRatios and statistics</p></div>

@@ -22,5 +22,10 @@ public class IndexController{
     public static Route serveMainIndexPage = (Request request, Response response) ->{
         Map<String, Object> model = new HashMap<>();
         return ViewUtil.render(request, model, Path.Template.MAININDEX);
-    };;
+    };
+
+    public static Route serveBillsIndexPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(request, model, Path.Template.BILLSINDEX);
+    };
 }
