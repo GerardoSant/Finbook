@@ -1,6 +1,6 @@
 #parse("/velocity/layout.vm")
 #mainLayout()
-<body>
+<body class="main">
     <div class="container content" style="text-align: center">
         <img src="/error.png" alt="logo" style="height:20%">
         <br>

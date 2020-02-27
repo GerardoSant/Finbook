@@ -101,7 +101,7 @@
 
     </style>
 
-    <body>
+    <body class="main">
         <div class="rightbox">
             <div class = "container content">
                 <div class="containerTitle">

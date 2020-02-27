@@ -67,6 +67,11 @@
 	}
 
 
+	.main {
+		transition: margin-left .5s;
+	}
+
+
 	.overlay {
 		height: 100%;
 		width: 0;
@@ -132,7 +137,7 @@
 	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 </head>
 
-<header>
+<header id="main" class="xd">
 	<nav class="navbar navbar-expand-sm">
 
 		<a class="nav-link menuOpener" ><img src="/menu.png" alt="logo" style="height:20px" id="menuIcon" onclick="openNav()"></a>
@@ -192,11 +197,22 @@
 
 <script>
 	function openNav() {
-		document.getElementById("myNav").style.width = "100%";
+		if (innerWidth<600){
+			document.getElementById("myNav").style.width = "100%";
+		} else{
+			document.getElementById("myNav").style.width = "250px";
+			document.getElementsByClassName("main")[0].style.marginLeft = "250px";
+			document.getElementsByClassName("main")[1].style.marginLeft = "250px";
+		}
+
+		//document.getElementById("myNav").style.width = "100%";
 	}
 
 	function closeNav() {
-		document.getElementById("myNav").style.width = "0%";
+		document.getElementById("myNav").style.width = "0";
+		document.getElementsByClassName("main")[0].style.marginLeft = 0;
+		document.getElementsByClassName("main")[1].style.marginLeft = 0;
+		//document.getElementById("myNav").style.width = "0%";
 	}
 
 	function submitLogOutForm(){

@@ -1,7 +1,7 @@
 #parse("/velocity/layout.vm")
 #mainLayout()
 <html>
-<body>
+<body class="main">
 	#if($redirected)
 		#if($emailSent)
 			<div class ="container content" style="background-color:lightblue">

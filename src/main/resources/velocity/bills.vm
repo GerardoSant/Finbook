@@ -19,7 +19,7 @@
 
 </style>
 
-<body>
+<body class="main">
 
     <div class ="container content" style="float:left; max-width: 15%; margin-left:50px">
         <div style="border-bottom: double">

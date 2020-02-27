@@ -1,7 +1,7 @@
 #parse("/velocity/layout.vm")
 #mainLayout()
 <html>
-	<body>
+	<body class="main">
 			#if($loggedOut)
 				<div class ="container content" style="background-color:lightblue">
 					<h6>$msg.get("LOG_OUT")</h6>

@@ -196,7 +196,7 @@
 	}
 </style>
 </head>
-<body>
+<body class="main">
 
 <div class="timeline">
 	#foreach($bill in $bills)

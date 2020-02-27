@@ -63,7 +63,7 @@
 
 
 	</style>
-	<body>
+	<body class="main">
 		<div>
 			<div class="container box leftbox center" data-href="/main/bills">
 				<div><p><img src="/bills2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>

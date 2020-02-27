@@ -69,7 +69,7 @@
 
 
 	</style>
-	<body>
+	<body class="main">
 		<div>
 			<div class="container box leftbox center" data-href="/bills">
 				<div><p><img src="/myBills2.png">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>
