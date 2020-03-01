@@ -72,10 +72,12 @@
 	<body class="main">
 		<div>
 			<div class="container box leftbox center" data-href="/bills">
-				<div><p><img src="/myBills2.png">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p></div>
+				<img src="/myBills2.png">
+				<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMy Bills</p>
 			</div>
 			<div class="container box rightbox center" data-href="/timeline">
-				<div><p><img src="/timeline.png">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTimeline</p></div>
+				<img src="/timeline.png">
+				<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTimeline</p>
 			</div>
 
 		</div>

@@ -18,6 +18,10 @@
 			transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 		}
 
+		.box img{
+			height:40%;
+		}
+
 
 		.leftbox {
 			float: left;
@@ -73,18 +77,21 @@
 	<body class="main">
 		<div>
 			<div class="container box leftbox center" data-href="/reports/investments">
-				<div><p><img src="/bills2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvestments</p></div>
+				<img src="/bills2.png">
+				<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspInvestments</p>
 			</div>
 			<div class="container box rightbox center" data-href="/reports/profitandlosses">
-				<div><p><img src="/reports2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspProfit & Loss</p></div>
+				<img src="/reports2.png">
+				<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspProfit & Loss</p>
 			</div>
 			<div class="container box leftbox center" data-href="/reports/amortization">
-				<div><p><img src="/statistics2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAmortization</p></div>
+				<img src="/statistics2.png">
+				<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAmortization</p>
 			</div>
 			<div class="container box rightbox center" data-href="/reports/consolidation">
-				<div><p><img src="/uploadBills2.png" style="height:40%;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspConsolidation</p></div>
+				<img src="/uploadBills2.png">
+				<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspConsolidation</p>
 			</div>
-
 		</div>
 	</body>
 

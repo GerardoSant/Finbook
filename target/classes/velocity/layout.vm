@@ -140,7 +140,7 @@
 <header id="main" class="xd">
 	<nav class="navbar navbar-expand-sm">
 
-		<a class="nav-link menuOpener" ><img src="/menu.png" alt="logo" style="height:20px" id="menuIcon" onclick="openNav()"></a>
+		<a class="nav-link menuOpener" ><img src="/menu.png" alt="logo" style="height:20px" id="openMenuBtn" onclick="openNav()"></a>
 
 		<!-- Brand/logo -->
 		#if($currentUser)
@@ -180,7 +180,7 @@
 		</ul>
 	</nav>
 	<div id="myNav" class="overlay">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="javascript:void(0)" id="closeMenuBtn" class="closebtn" onclick="closeNav()">&times;</a>
 		<div class="overlay-content">
 			#if($currentUser)
 				<form action="/logout" method="post" id="logOutForm">
@@ -233,7 +233,6 @@
 	<!-- Copyright -->
 	<div>© 2019 Copyright:
 		<a href="finbook.io"> FinBook</a>
-		<img src="/favicon.png" alt="" style="height: 2.5%; width: 2.5%; object-fit: contain" />
 	</div>
 	<!-- Copyright -->
 </footer>
