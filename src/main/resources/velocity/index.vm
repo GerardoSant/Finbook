@@ -91,7 +91,7 @@
 		});
 		$("#modalClose").on("click",function(){
 			console.log("modalclosed");
-			$('#dropContainer').animate({ backgroundColor: '#FFFFFF'},0);
+			$('#dropContainer').animate({ backgroundColor: 'rgb(247,250,252)'},0);
 			$('#uploadForm').animate({ borderBottomColor: '#FFFFFF'},0);
 			$('#dragAndDropText').animate({
 				'opacity' : 0
@@ -115,7 +115,7 @@
 	<body class="main">
 	<div id="left">
 	<div class ="container text-center">
-      <div id="dropContainer" style="border:2px groove darkblue; background-color: white; border-radius: 5px;height:400px; display: flex;justify-content: center;
+      <div id="dropContainer" style="border:2px groove darkblue; background-color: rgb(247,250,252); border-radius: 5px;height:400px; display: flex;justify-content: center;
 	  align-items: center;" ondragover="allowDrop(event)" ondragenter="allowDrop(event)" ondrop="dropFiles(event)">
 		<img src="/bill2.png" alt="" style="height: 30%; width: 30%; object-fit: contain" />
 		<br>

@@ -198,7 +198,7 @@
 
 <script>
 	function openNav() {
-		if (innerWidth<600){
+		if (innerWidth<650){
 			document.getElementById("myNav").style.width = "100%";
 		} else{
 			document.getElementById("myNav").style.width = "250px";

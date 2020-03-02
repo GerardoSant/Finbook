@@ -22,7 +22,6 @@ public class BillsController {
         HashMap<String, Object> model = new HashMap<>();
         model.put("math", new MathTool());
         model.put("bills", new BillsDao(request.session().attribute("currentUser")).getAllBills());
-        //model.put("bills", new BillsDao("45").getAllBills());
         return ViewUtil.render(request,model, Path.Template.BILLS);
     };
     public static Route fetchOneBill= (Request request, Response response) -> {
