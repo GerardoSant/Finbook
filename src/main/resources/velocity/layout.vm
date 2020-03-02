@@ -31,10 +31,11 @@
 	}
 
 	nav {
-		background-color:darkgrey;
+		background-color:rgb(234,241,247);
 		border-bottom: 1px solid grey;
 		margin-bottom: 50px;
-		box-shadow: 0 1px 0 0 rgba(0,0,0,.6);
+		/*box-shadow: 0 1px 0 0 rgba(0,0,0,.6);*/
+		color:black;
 	}
 
 	body {
@@ -54,7 +55,7 @@
 		line-height: 40px;
 		width: 100%;
 		text-align: center;
-		background: #fff;
+		background: rgb(247,250,252);
 		border-top: 1px solid black;
 		font-size: 14px;
 
@@ -153,7 +154,7 @@
 			</a>
 		#end
 
-		<span style="color:white">FinBook</span>
+		<span>FinBook</span>
 
 		<!-- Links -->
 		<ul class="navbar-nav ml-auto">
