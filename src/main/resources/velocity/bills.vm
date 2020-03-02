@@ -77,7 +77,7 @@
 <body class="main">
 
     <div class ="container content leftbox">
-        <div style="border-bottom: double">
+        <div class = "contentTitle">
             <h2>Filters</h2>
         </div>
         <br>
@@ -116,7 +116,7 @@
 
 
     <div class="container content rightbox">
-        <div style="border-bottom: double">
+        <div class="contentTitle">
             <h2>My Bills</h2>
         </div>
 

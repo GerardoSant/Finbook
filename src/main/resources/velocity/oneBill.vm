@@ -15,7 +15,7 @@
 	#end
 
 	<div class="content container" style="margin-bottom:50px">
-		<div style="border-bottom: double">
+		<div class="contentTitle">
 			<h2>Bill $bill.getUUID()</h2>
 		</div>
 		<br>
@@ -85,7 +85,7 @@
 
 		<br>
 
-		<div style="border-top: double">
+		<div style="border-top: double lightgray">
 			<br>
 				<a href="$bill.getUUID()/bill.xml" download="$bill.getUUID()">
 					<button class="btn btn-primary btn-lg">Download XML</button>

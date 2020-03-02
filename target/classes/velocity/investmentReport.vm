@@ -27,10 +27,6 @@
             display:none;
         }
 
-        .containerTitle{
-            border-bottom: double;
-        }
-
         .bill {
             font-style: italic;
             background-color: #ebfcfc;
@@ -94,7 +90,7 @@
     <body class="main">
         <div class="rightbox">
             <div class = "container content">
-                <div class="containerTitle">
+                <div class="contentTitle">
                     <h2>Investment report</h2>
                 </div>
 
@@ -201,7 +197,7 @@
         <div class="leftbox">
             <div class="container content" style="margin-bottom:5%">
                 <div>
-                    <h4 class="containerTitle">Investment period</h4>
+                    <h4 class="contentTitle">Investment period</h4>
                     <br>
                     <div>
                         <form>
@@ -233,7 +229,7 @@
             </div>
             <div class="container content" style="height:60%; margin-bottom:5%">
                 <div>
-                    <h4 class="containerTitle">Investment Chart</h4>
+                    <h4 class="contentTitle">Investment Chart</h4>
                 </div>
                 <div id="piechart" style="height:90%"></div>
             </div>
