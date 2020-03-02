@@ -1,6 +1,41 @@
 #parse("/velocity/layout.vm")
 #mainLayout()
 <html>
+
+	<style>
+		.leftbox{
+			float : left;
+			width:100%;
+			margin-left:5%
+		}
+
+		.half{
+			width:50%;
+		}
+		.rightbox{
+			float:right ;
+			width:40%;
+			padding-right:5%;
+		}
+
+		#left{
+			transition: width 1s;
+		}
+
+		@media screen and (max-width: 992px) {
+			.rightbox{
+				width:90%;
+				float:none;
+			}
+			.leftbox{
+				float:none;
+				margin-left:2%
+			}
+			.half{
+				width:95%
+			}
+		}
+	</style>
     <script>
 
       function allowDrop(ev){
@@ -69,14 +104,9 @@
 		$("#dropContainer").on("dragover",function(){
 			console.log("overing");
 			$(this).css('background-color', '#a9a9a9');
-			//$(this).animate({ backgroundColor:  '#a9a9a9'},0);
 	  	});
 
 		$("#fileInput").on("change",function(){
-			console.log("file");
-			//$(this).css('background-color', '#a9a9a9');
-			//$(this).animate({ backgroundColor:  '#a9a9a9'},0);
-			//$(this).animate({ backgroundColor: '#90ee90'},1000);
 			$('#uploadForm').animate({ borderBottomColor: '#90ee90'},1000);
 			$('#dropContainer').animate({ backgroundColor: '#add8e6'},1000);
 			$('#dragAndDropText').animate({
@@ -90,7 +120,6 @@
 			$(this).animate({ backgroundColor: '#FFFFFF'},0);
 		});
 		$("#modalClose").on("click",function(){
-			console.log("modalclosed");
 			$('#dropContainer').animate({ backgroundColor: 'rgb(247,250,252)'},0);
 			$('#uploadForm').animate({ borderBottomColor: '#FFFFFF'},0);
 			$('#dragAndDropText').animate({
@@ -135,7 +164,7 @@
 		<br>
 		<br>
 		
-		<div class="progress" id="progressdiv">
+		<div class="progress" id="progressdiv" style="visibility:hidden">
 			<div id="progressbar" class="progress-bar progress-bar-striped progress-bar-animated" style="width:0% height:20px">0%</div>
 		</div>
 
@@ -166,7 +195,7 @@
 		</div>
 	</div>
 
-	<div class="container" id="right" style="float:right ; width:40% ; ">
+	<div class="container rightbox" id="right">
 		<h2>File uploads <span class="badge badge-success">
 		<a id="fileUploadsNum" href="#" title=" New files uploaded" data-toggle="popover" data-trigger="hover" data-content="Hover over filename to check upload info" style="color:white"></a></span></h2>
 		<table class="table" id ="fileTable" style = "overflow-y:scroll;height:70%;display:block">
@@ -183,33 +212,27 @@
 
     <script>
 
-    //float:left ; width:50% ; padding-top:50px
-	
-	  
-	
+
 	  function initInterface(){
-	    document.getElementById("progressdiv").style.visibility = "hidden";
 		document.getElementById("right").style.visibility = "hidden";
 	    $(document).ready(function(){
-		  $("#right").hide(1000);
+		  $("#right").hide(0);
 	    });
 	  }
-	  
+
 	  initInterface();
 	  
 	  function doFirstUploadInterfaceTransition(){
-		document.getElementById("left").style.float = "left";
-		document.getElementById("left").style.width = "100%";
-		document.getElementById("left").style.paddingTop = "50px";
-		document.getElementById("left").style.paddingLeft = "50px";
-		document.getElementById("right").style.paddingRight = "50px";
+		document.getElementById("left").classList.add("leftbox")
 	  	document.getElementById("right").style.visibility = "visible";
 		$(document).ready(function(){
 			$("#right").show(1000);
 		});
-
 		$(document).ready(function(){
-			$("#left").animate({width: "50%"},1000)
+			//$("#left").animate({width: "50%"},1000);
+			document.getElementById("left").classList.add("half");
+			//document.getElementById("left").style.width="50%";
+
 		});
 	  }
 	  

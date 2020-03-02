@@ -12,7 +12,7 @@
     select {
         margin-top: 10px;
     }
-
+    
     .filter {
         width:100%;
         border-radius:3px;
@@ -415,10 +415,14 @@
         }
     }
 
-    jQuery(document).ready(function($) {
+    $(document).ready(function($) {
         $('*[data-href]').on('click', function() {
             window.location = /bills/ + $(this).data("href");
         });
     });
+
+
+
+
 
 </script>
