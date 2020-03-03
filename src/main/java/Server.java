@@ -49,6 +49,7 @@ public class Server {
         post(Path.Web.LOGIN, LoginController.handleLoginPost);
         post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
 
+
         get("*", ViewUtil.notFound);
 
 

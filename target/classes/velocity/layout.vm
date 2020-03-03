@@ -62,7 +62,7 @@
 	}
 
 	.content {
-		background: #fff;
+		background: rgb(247,250,252);
 		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
 		padding: 15px 15px 30px;
 		opacity:0.95;

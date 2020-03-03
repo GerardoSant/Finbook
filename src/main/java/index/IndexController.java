@@ -13,6 +13,8 @@ import static util.RequestUtil.getQueryLocale;
 import static util.RequestUtil.getSessionLocale;
 
 public class IndexController{
+    
+
     public static Route serveIndexPage = (Request request, Response response) ->{
         Map<String, Object> model = new HashMap<>();
         System.out.println((String) request.session().attribute("currentUser"));

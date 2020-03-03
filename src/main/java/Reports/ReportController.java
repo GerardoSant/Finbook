@@ -33,6 +33,9 @@ public class ReportController {
         return ViewUtil.render(request, model, Path.Template.PROFITANDLOSSES_REPORT);
     };
 
+    public static Route profitAndLossesReportCompare = (Request request, Response response) -> {
+        return null;
+    };
 
     private static ProfitAndLossesReport generateWinAndLossesReport(Request request) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
