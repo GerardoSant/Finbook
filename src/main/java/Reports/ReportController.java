@@ -3,6 +3,7 @@ package Reports;
 import Bills.Bill;
 import Bills.BillsDao;
 import login.LoginController;
+import org.apache.velocity.tools.generic.MathTool;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -30,12 +31,34 @@ public class ReportController {
         HashMap<String, Object> model = new HashMap<>();
         ProfitAndLossesReport report = generateWinAndLossesReport(request);
         model.put("report", report);
+        model.put("math", new MathTool());
         return ViewUtil.render(request, model, Path.Template.PROFITANDLOSSES_REPORT);
     };
 
-    public static Route profitAndLossesReportCompare = (Request request, Response response) -> {
-        return null;
+    public static Route compareProfitAndLossesReport= (Request request, Response response) -> {
+        LoginController.ensureUserIsLoggedIn(request, response);
+        HashMap<String, Object> model = new HashMap<>();
+        ProfitAndLossesReport report1 = generateWinAndLossesReport(request,"");
+        model.put("report1", report1);
+        ProfitAndLossesReport report2 = generateWinAndLossesReport(request,"1");
+        model.put("report2", report2);
+        model.put("math", new MathTool());
+        return ViewUtil.render(request, model, Path.Template.COMPARE_PROFITANDLOSSES_REPORT);
     };
+
+    private static ProfitAndLossesReport generateWinAndLossesReport(Request request, String report) throws ParseException {
+        List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
+        return request.queryParams("periodStart")== null ?
+                new ProfitAndLossesReport(billList,request.session().attribute("currentUser"),
+                        new PeriodFinder(billList).findPeriodStart(), new PeriodFinder(billList).findPeriodEnd()) :
+                new ProfitAndLossesReport(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart"+report)),
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"+report))
+                );
+    }
+
+
+
 
     private static ProfitAndLossesReport generateWinAndLossesReport(Request request) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
@@ -60,5 +83,7 @@ public class ReportController {
 
     }
 
-    ;
+
+
+
 }

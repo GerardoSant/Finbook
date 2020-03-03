@@ -40,6 +40,7 @@ public class Server {
         get(Path.Web.BILLS_TIMELINE, BillsController.billsTimeline);
         get(Path.Web.REPORT_INVESTMENTS, ReportController.investmentReport);
         get(Path.Web.REPORT_PROFITANDLOSSES, ReportController.profitAndLossesReport);
+        get(Path.Web.REPORT_COMPARE_PROFITANDLOSSES, ReportController.compareProfitAndLossesReport);
         get(Path.Web.SHINY_EXAMPLE, ShinyController.shinyExample);
         get(Path.Web.MAIN_INDEX, IndexController.serveMainIndexPage);
         get(Path.Web.BILLS_INDEX, IndexController.serveBillsIndexPage);

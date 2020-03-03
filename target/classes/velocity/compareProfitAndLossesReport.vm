@@ -1,0 +1,284 @@
+#parse("/velocity/layout.vm")
+#mainLayout()
+<html>
+    <script src="https://unpkg.com/jspdf@1.5.3/dist/jspdf.min.js"></script>
+    <script src="https://unpkg.com/jspdf-autotable@3.2.13/dist/jspdf.plugin.autotable.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+    <style>
+        [data-href] {
+            cursor: pointer;
+        }
+        thead {
+            background-color: rgb(0,51,102);
+            color:white;
+            font-size:117%
+        }
+
+        .mainResult{
+            border-top:ridge;
+            border-bottom:ridge;
+            background-color: #f7f7f7;
+            font-size:115%;
+            font-weight: bold;
+        }
+
+        .comboResult{
+            font-style: italic;
+            text-decoration: underline;
+        }
+
+        .field {
+            font-size:115%
+        }
+
+        .rightbox{
+            float:right;
+            width:55%;
+            margin-right:5%;
+            margin-bottom:5%
+
+        }
+
+        .leftbox{
+            position:fixed;
+            float:left;
+            width: 30%;
+            margin-right:5%;
+            margin-left: 5%;
+            height:75%;
+            margin-bottom:5%
+        }
+
+
+
+        @media screen and (max-width: 992px) {
+            .rightbox{
+                float:none;
+                width:90%;
+                margin-right:0%;
+                margin-left: 5%;
+
+            }
+            .leftbox{
+                position:static;
+                float:none;
+                width:90%;
+
+            }
+        }
+
+        .static {
+            position: static;
+        }
+        .fixed{
+            width: inherit;
+            position: fixed;
+        }
+
+
+        .box {
+            width:90%;
+            margin:5%;
+            float:none;
+        }
+        @media screen and (max-height: 650px) {
+
+            .leftbox{
+                position:static;
+
+            }
+        }
+
+    </style>
+
+    <body class="main">
+        <div class="box">
+            <div class = "container content" style="margin-bottom:50px">
+                <div class="contentTitle">
+                    <div class =row>
+                        <div class="col-9"><h2>Profit and Losses comparison</h2></div>
+                        <div class="col-3"><button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare</button></div>
+                    </div>
+                </div>
+
+                <br>
+
+                <table class="table table-hover fixed_header" id="myTable">
+                    <thead>
+                    <tr>
+                        <th>Accounting name</th>
+                        <th>Base period 1</th>
+                        <th>Base period 2</th>
+                        <th>Change</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="mainResult">
+                            <td>Sales and incomes</td>
+                            <td>$math.roundTo(2,$report1.getSalesAndIncomesBase())</td>
+                            <td>$math.roundTo(2,$report2.getSalesAndIncomesBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr style="font-size:115%">
+                            <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales" data-content="Base= Gross sales base - Sales returns base">Net sales</a></td>
+                            <td>$math.roundTo(2,$report1.getNetSalesBase())</td>
+                            <td>$math.roundTo(2,$report2.getNetSalesBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr id="grossSales" class="field">
+                            <td>Gross sales</td>
+                            <td>$math.roundTo(2,$report1.getGrossSalesBase())</td>
+                            <td>$math.roundTo(2,$report2.getGrossSalesBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr id="salesReturns" class="field">
+                            <td>Sales returns</td>
+                            <td>$math.roundTo(2,$report1.getSalesReturnsBase())</td>
+                            <td>$math.roundTo(2,$report2.getSalesReturnsBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr class = "mainResult">
+                            <td>Purchases and expenses</td>
+                            <td>$math.roundTo(2,$report1.getPurchasesAndExpensesBase())</td>
+                            <td>$math.roundTo(2,$report2.getPurchasesAndExpensesBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr style="font-size: 115%">
+                            <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net purchases" data-content="Base= Gross purchases base - Purchases returns base">Net purchases</a></td>
+                            <td>$math.roundTo(2,$report1.getNetPurchasesBase())</td>
+                            <td>$math.roundTo(2,$report2.getNetPurchasesBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr id="grossPurchases" class="field">
+                            <td>Gross purchases</td>
+                            <td>$math.roundTo(2,$report1.getGrossPurchasesBase())</td>
+                            <td>$math.roundTo(2,$report2.getGrossPurchasesBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr id="purchasesReturns" class="field">
+                            <td>Purchases returns</td>
+                            <td>$math.roundTo(2,$report1.getPurchasesReturnsBase())</td>
+                            <td>$math.roundTo(2,$report2.getPurchasesReturnsBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr id="externalServices" class="field">
+                            <td>External services</td>
+                            <td>$math.roundTo(2,$report1.getExternalServicesBase())</td>
+                            <td>$math.roundTo(2,$report2.getExternalServicesBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr id="salariesAndWages" class="field">
+                            <td>Salaries and Wages</td>
+                            <td>$math.roundTo(2,$report1.getSalariesAndWagesBase())</td>
+                            <td>$math.roundTo(2,$report2.getSalariesAndWagesBase())</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color: rgb(234,241,247)">
+                    <h4 class="modal-title" >Select report periods</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="compareForm" action="/reports/compare/profitandlosses">
+                        <div class="container">
+                            <h6>Report 1</h6>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Period start</p>
+                                </div>
+                                <div class="col-8">
+                                    <input class="form-control" type="date" id="pStart1" value="2011-08-19" name="periodStart">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Period end</p>
+                                </div>
+                                <div class="col-8">
+                                    <input class="form-control" type="date" id="pEnd1" value="2011-08-19" name="periodEnd">
+                                </div>
+                            </div>
+                            <h6>Report 2</h6>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Period start</p>
+                                </div>
+                                <div class="col-8">
+                                    <input class="form-control" type="date" id="pStart2" value="2011-08-19" name="periodStart1">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Period end</p>
+                                </div>
+                                <div class="col-8">
+                                    <input class="form-control" type="date" id="pEnd2" value="2011-08-19" name="periodEnd1">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer" style="background-color: rgb(234,241,247)">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="submit" form="compareForm" class="btn btn-success">Compare</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+
+    <script>
+        var table = document.getElementById("myTable");
+        for (var i = 1, row; row = table.rows[i]; i++) {
+            var base1= parseFloat(row.cells[1].innerText);
+            var base2= parseFloat(row.cells[2].innerText);
+            var percentage= ((base2-base1)/base1)*100;
+            if (percentage=="Infinity" || percentage=="-Infinity") {
+                percentage= "-" ;
+            } else{
+                percentage= percentage.toFixed(2);
+                if (percentage>=0) percentage="+" +percentage
+            }
+
+            row.cells[3].innerText = percentage + " %";
+        }
+    </script>
+
+    <script>
+        var arr = location.search.substring(0).split("&");
+        console.log(arr[0].split("=")[1]);
+        document.getElementById('pStart1').value = arr[0].split("=")[1];
+        document.getElementById('pEnd1').value = arr[1].split("=")[1];
+        document.getElementById('pStart2').value = arr[2].split("=")[1];
+        document.getElementById('pEnd2').value = arr[3].split("=")[1];
+    </script>
+
+</html>	
+	

@@ -107,7 +107,10 @@
         <div class="rightbox">
             <div class = "container content">
                 <div class="contentTitle">
-                    <h2>Profit and Losses report</h2>
+                    <div class =row>
+                        <div class="col-9"><h2>Profit and Losses report</h2></div>
+                        <div class="col-3"><button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare</button></div>
+                    </div>
                 </div>
 
                 <br>
@@ -247,6 +250,70 @@
 
 
     </body>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header" style="background-color: rgb(234,241,247)">
+                    <h4 class="modal-title" >Select report periods</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="compareForm" action="/reports/compare/profitandlosses">
+                        <div class="container">
+                            <h6>Report 1</h6>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Period start</p>
+                                </div>
+                                <div class="col-8">
+                                    <input class="form-control" type="date" id="pStart1" value="2011-08-19" name="periodStart">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Period end</p>
+                                </div>
+                                <div class="col-8">
+                                    <input class="form-control" type="date" id="pEnd1" value="2011-08-19" name="periodEnd">
+                                </div>
+                            </div>
+                            <h6>Report 2</h6>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Period start</p>
+                                </div>
+                                <div class="col-8">
+                                    <input class="form-control" type="date" id="pStart2" value="2011-08-19" name="periodStart1">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Period end</p>
+                                </div>
+                                <div class="col-8">
+                                    <input class="form-control" type="date" id="pEnd2" value="2011-08-19" name="periodEnd1">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer" style="background-color: rgb(234,241,247)">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="submit" form="compareForm" class="btn btn-success">Compare</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <script>
 
