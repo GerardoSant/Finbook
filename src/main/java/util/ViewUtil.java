@@ -35,4 +35,6 @@ public class ViewUtil {
         response.status(HttpStatus.NOT_FOUND_404);
         return render(request, new HashMap<>(), Path.Template.NOT_FOUND);
     };
+
+
 }

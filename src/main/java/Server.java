@@ -9,6 +9,7 @@ import util.Path;
 import util.ViewUtil;
 
 import static spark.Spark.*;
+import static util.ViewUtil.notFound;
 
 public class Server {
     public static void main(String[] args) {
@@ -51,7 +52,11 @@ public class Server {
         post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
 
 
-        get("*", ViewUtil.notFound);
+        get("*", notFound);
+
+
+
+
 
 
     }
