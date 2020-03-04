@@ -94,10 +94,13 @@
 
 
         @media screen and (max-height: 650px) {
-
             .leftbox{
                 position:static;
-
+            }
+        }
+        @media screen and (max-width:650px){
+            .phonescrollable{
+                overflow-x: scroll;
             }
         }
 
@@ -107,7 +110,7 @@
         <div class="rightbox">
             <div class = "container content">
                 <div class="contentTitle">
-                    <div class =row>
+                    <div class ="row phonescrollable">
                         <div class="col-9"><h2>Profit and Losses report</h2></div>
                         <div class="col-3"><button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare</button></div>
                     </div>

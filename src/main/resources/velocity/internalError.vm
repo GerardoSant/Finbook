@@ -1,0 +1,14 @@
+#parse("/velocity/layout.vm")
+#mainLayout()
+<body class="main">
+    <div class="container content" style="text-align: center">
+        <img src="/error.png" alt="logo" style="height:20%">
+        <br>
+        <br>
+        <br>
+        <h1>500</h1>
+        <h4>$msg.get("PAGE_NOT_FOUND")</h4>
+        <h6>$msg.get("ERROR_500")</h6>
+    </div>
+
+</body>

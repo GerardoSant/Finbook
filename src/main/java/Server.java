@@ -8,7 +8,10 @@ import util.Filters;
 import util.Path;
 import util.ViewUtil;
 
+import java.util.HashMap;
+
 import static spark.Spark.*;
+import static util.ViewUtil.internalError;
 import static util.ViewUtil.notFound;
 
 public class Server {
@@ -20,6 +23,7 @@ public class Server {
         staticFiles.expireTime(600L);
         port(8080);
         init();
+
 
         // Set up before-filters (called before each get/post)
 
@@ -52,9 +56,21 @@ public class Server {
         post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
 
 
-        get("*", notFound);
 
+        internalServerError("/throwexception");
+        notFound(notFound);
 
+        get("/throwexception", (request, response) -> {
+            throw new Exception();
+        });
+
+        exception(Exception.class, (e, request, response) -> {
+            e.printStackTrace();
+            response.status(404);
+            response.redirect("/error");
+        });
+
+        get("/error", notFound);
 
 
 

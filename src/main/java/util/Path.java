@@ -31,6 +31,7 @@ public class Path {
         public static final String BILLS_ONE = "velocity/oneBill.vm";
         public static final String BILLS_TIMELINE = "velocity/billsTimeline.vm";
         public static final String NOT_FOUND= "velocity/notFound.vm";
+        public static final String INTERNAL_ERROR= "velocity/internalError.vm";
         public static final String EXAMPLE_SHINY= "velocity/exampleShiny.vm";
         public static final String INVESTMENT_REPORT= "velocity/investmentReport.vm";
         public static final String PROFITANDLOSSES_REPORT = "velocity/profitAndLossesReport.vm";
