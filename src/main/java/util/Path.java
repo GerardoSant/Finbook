@@ -21,6 +21,7 @@ public class Path {
         @Getter public static final String REPORT_INVESTMENTS = "/reports/investments";
         @Getter public static final String REPORT_PROFITANDLOSSES = "/reports/profitandlosses";
         @Getter public static final String REPORT_COMPARE_PROFITANDLOSSES = "/reports/compare/profitandlosses";
+        @Getter public static final String REPORT_COMPARE_INVESTMENTS = "reports/compare/investments";
     }
 
     public static class Template {
@@ -38,5 +39,6 @@ public class Path {
         public static final String BILLSINDEX = "velocity/billsIndex.vm";
         public static final String REPORTSINDEX = "velocity/reportsIndex.vm";
         public static final String COMPARE_PROFITANDLOSSES_REPORT = "velocity/compareProfitAndLossesReport.vm";
+        public static final String COMPARE_INVESTMENTS_REPORT = "velocity/compareInvestmentsReport.vm";
     }
 }

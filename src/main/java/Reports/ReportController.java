@@ -46,6 +46,17 @@ public class ReportController {
         return ViewUtil.render(request, model, Path.Template.COMPARE_PROFITANDLOSSES_REPORT);
     };
 
+    public static Route compareInvestmentsReport = (Request request, Response response) -> {
+        LoginController.ensureUserIsLoggedIn(request, response);
+        HashMap<String, Object> model = new HashMap<>();
+        InvestmentsReport report1 = generateInvestmentsReport(request,"");
+        model.put("report1", report1);
+        InvestmentsReport report2 = generateInvestmentsReport(request,"1");
+        model.put("report2", report2);
+        model.put("math", new MathTool());
+        return ViewUtil.render(request, model, Path.Template.COMPARE_INVESTMENTS_REPORT);
+    };
+
     private static ProfitAndLossesReport generateWinAndLossesReport(Request request, String report) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
         return request.queryParams("periodStart")== null ?
@@ -80,7 +91,17 @@ public class ReportController {
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))
                         );
+    }
 
+    private static InvestmentsReport generateInvestmentsReport(Request request, String report) throws ParseException {
+        List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
+        return request.queryParams("periodStart")== null ?
+                new InvestmentsReport(billList,request.session().attribute("currentUser"),
+                        new PeriodFinder(billList).findPeriodStart(), new PeriodFinder(billList).findPeriodEnd()) :
+                new InvestmentsReport(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart"+report)),
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"+report))
+                );
     }
 
 

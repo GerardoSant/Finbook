@@ -101,7 +101,7 @@
             <div class = "container content" style="margin-bottom:50px">
                 <div class="contentTitle">
                     <div class ="row phonescrollable">
-                        <div class="col-9"><h2>Profit and Losses comparison</h2></div>
+                        <div class="col-9"><h2>Investments report comparison</h2></div>
                         <div class="col-3"><button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare</button></div>
                     </div>
                 </div>
@@ -118,64 +118,58 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <tr class="field">
+                            <td>Buildings</td>
+                            <td>$math.roundTo(2,$report1.getBuildingsBase())</td>
+                            <td>$math.roundTo(2,$report2.getBuildingsBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr class="field">
+                            <td>Office equipment</td>
+                            <td>$math.roundTo(2,$report1.getOfficeEquipmentBase())</td>
+                            <td>$math.roundTo(2,$report2.getOfficeEquipmentBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr class="field">
+                            <td>Transport equipment</td>
+                            <td>$math.roundTo(2,$report1.getTransportEquipmentBase())</td>
+                            <td>$math.roundTo(2,$report2.getTransportEquipmentBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr class="field">
+                            <td>Computational Equipment Base</td>
+                            <td>$math.roundTo(2,$report1.getComputationalEquipmentBase())</td>
+                            <td>$math.roundTo(2,$report2.getComputationalEquipmentBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr class = "field">
+                            <td>Models and Tools</td>
+                            <td>$math.roundTo(2,$report1.getModelsAndToolsBase())</td>
+                            <td>$math.roundTo(2,$report2.getModelsAndToolsBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr class="field">
+                            <td>Telephone Communications</td>
+                            <td>$math.roundTo(2,$report1.getTelephoneCommunicationsBase())</td>
+                            <td>$math.roundTo(2,$report2.getTelephoneCommunicationsBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr class="field">
+                            <td>Satellite Communications</td>
+                            <td>$math.roundTo(2,$report1.getSatelliteCommunicationsBase())</td>
+                            <td>$math.roundTo(2,$report2.getSatelliteCommunicationsBase())</td>
+                            <td></td>
+                        </tr>
+                        <tr class="field">
+                            <td>Other Machinery and Equipment</td>
+                            <td>$math.roundTo(2,$report1.getOtherMachineryAndEquipmentBase())</td>
+                            <td>$math.roundTo(2,$report2.getOtherMachineryAndEquipmentBase())</td>
+                            <td></td>
+                        </tr>
                         <tr class="mainResult">
-                            <td>Sales and incomes</td>
-                            <td>$math.roundTo(2,$report1.getSalesAndIncomesBase())</td>
-                            <td>$math.roundTo(2,$report2.getSalesAndIncomesBase())</td>
-                            <td></td>
-                        </tr>
-                        <tr style="font-size:115%">
-                            <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales" data-content="Base= Gross sales base - Sales returns base">Net sales</a></td>
-                            <td>$math.roundTo(2,$report1.getNetSalesBase())</td>
-                            <td>$math.roundTo(2,$report2.getNetSalesBase())</td>
-                            <td></td>
-                        </tr>
-                        <tr id="grossSales" class="field">
-                            <td>Gross sales</td>
-                            <td>$math.roundTo(2,$report1.getGrossSalesBase())</td>
-                            <td>$math.roundTo(2,$report2.getGrossSalesBase())</td>
-                            <td></td>
-                        </tr>
-                        <tr id="salesReturns" class="field">
-                            <td>Sales returns</td>
-                            <td>$math.roundTo(2,$report1.getSalesReturnsBase())</td>
-                            <td>$math.roundTo(2,$report2.getSalesReturnsBase())</td>
-                            <td></td>
-                        </tr>
-                        <tr class = "mainResult">
-                            <td>Purchases and expenses</td>
-                            <td>$math.roundTo(2,$report1.getPurchasesAndExpensesBase())</td>
-                            <td>$math.roundTo(2,$report2.getPurchasesAndExpensesBase())</td>
-                            <td></td>
-                        </tr>
-                        <tr style="font-size: 115%">
-                            <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net purchases" data-content="Base= Gross purchases base - Purchases returns base">Net purchases</a></td>
-                            <td>$math.roundTo(2,$report1.getNetPurchasesBase())</td>
-                            <td>$math.roundTo(2,$report2.getNetPurchasesBase())</td>
-                            <td></td>
-                        </tr>
-                        <tr id="grossPurchases" class="field">
-                            <td>Gross purchases</td>
-                            <td>$math.roundTo(2,$report1.getGrossPurchasesBase())</td>
-                            <td>$math.roundTo(2,$report2.getGrossPurchasesBase())</td>
-                            <td></td>
-                        </tr>
-                        <tr id="purchasesReturns" class="field">
-                            <td>Purchases returns</td>
-                            <td>$math.roundTo(2,$report1.getPurchasesReturnsBase())</td>
-                            <td>$math.roundTo(2,$report2.getPurchasesReturnsBase())</td>
-                            <td></td>
-                        </tr>
-                        <tr id="externalServices" class="field">
-                            <td>External services</td>
-                            <td>$math.roundTo(2,$report1.getExternalServicesBase())</td>
-                            <td>$math.roundTo(2,$report2.getExternalServicesBase())</td>
-                            <td></td>
-                        </tr>
-                        <tr id="salariesAndWages" class="field">
-                            <td>Salaries and Wages</td>
-                            <td>$math.roundTo(2,$report1.getSalariesAndWagesBase())</td>
-                            <td>$math.roundTo(2,$report2.getSalariesAndWagesBase())</td>
+                            <td>All investments</td>
+                            <td>$math.roundTo(2,$report1.getBase())</td>
+                            <td>$math.roundTo(2,$report2.getBase())</td>
                             <td></td>
                         </tr>
                         </tbody>
@@ -199,7 +193,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form id="compareForm" action="/reports/compare/profitandlosses">
+                    <form id="compareForm" action="/reports/compare/investments">
                         <div class="container">
                             <h6>Report 1</h6>
                             <br>

@@ -50,6 +50,7 @@ public class Server {
         get(Path.Web.MAIN_INDEX, IndexController.serveMainIndexPage);
         get(Path.Web.BILLS_INDEX, IndexController.serveBillsIndexPage);
         get(Path.Web.REPORTS_INDEX, IndexController.serveReportsIndexPage);
+        get(Path.Web.REPORT_COMPARE_INVESTMENTS, ReportController.compareInvestmentsReport);
 
         post(Path.Web.UPLOAD, UploadController.handleUploadPost);
         post(Path.Web.LOGIN, LoginController.handleLoginPost);

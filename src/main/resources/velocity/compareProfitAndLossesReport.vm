@@ -5,6 +5,7 @@
     <script src="https://unpkg.com/jspdf-autotable@3.2.13/dist/jspdf.plugin.autotable.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="/javascript/dateFromQuery.js"></script>
+    <script src="/javascript/reportsPercentageChange.js"></script>
 
 
 
@@ -258,24 +259,7 @@
     </script>
 
     <script>
-        var table = document.getElementById("myTable");
-        for (var i = 1, row; row = table.rows[i]; i++) {
-            var base1= parseFloat(row.cells[1].innerText);
-            var base2= parseFloat(row.cells[2].innerText);
-            var percentage= ((base2-base1)/base1)*100;
-            if (percentage=="Infinity" || percentage=="-Infinity") {
-                percentage= "-" ;
-            } else{
-                percentage= percentage.toFixed(2);
-                if (percentage>=0) percentage="+" +percentage
-            }
-
-            row.cells[3].innerText = percentage + " %";
-        }
-    </script>
-
-
-    <script>
+        addPercentageChangeToTable();
         dateFromQueryToModal();
     </script>
 
