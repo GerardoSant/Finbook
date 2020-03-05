@@ -51,7 +51,7 @@
 		height: 25px;
 		right: -12px;
 		background-color: white;
-		border: 4px solid darkred;
+		border: 4px solid rgb(234,241,247);
 		top: 15px;
 		border-radius: 50%;
 		z-index: 1;

@@ -108,10 +108,10 @@
                         <thead>
                         <tr>
                             <th>Investment</th>
-                            <th>Purchase date</th>
+                            <th>Date</th>
                             <th>Subtotal</th>
                             <th>% Amortization</th>
-                            <th>Acumulated amortization</th>
+                            <th>Amortization</th>
                             <th>Period amortization</th>
                         </tr>
                         </thead>
@@ -339,26 +339,26 @@
 
         function drawChart() {
             data = google.visualization.arrayToDataTable([
-                ['Investment', 'Base'],
-                ['Buildings',     ],
-                ['Office',      ],
-                ['Computation',  ],
-                ['Models&Tools', ],
-                ['Telephone',    ],
-                ['Satellite', ],
-                ['Machinery&Others', ]
+                ['Investment', 'amortization',  { role: 'annotation' }],
+                ['Buildings',     $math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getBuildings())), '$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getBuildings())) %'],
+                ['Office',      $math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getOfficeEquipment())), '$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getOfficeEquipment())) %'],
+                ['Computation',  $math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getComputationalEquipment())), '$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getComputationalEquipment())) %'],
+                ['Models&Tools', $math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getModelsAndTools())), '$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getModelsAndTools())) %'],
+                ['Telephone',    $math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getTelephoneCommunications())), '$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getTelephoneCommunications())) %'],
+                ['Satellite', $math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getSatelliteCommunications())), '$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getSatelliteCommunications())) %'],
+                ['Machinery&Others', $math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getOtherMachineryAndEquipment())), '$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getOtherMachineryAndEquipment())) %']
             ]);
 
             options = {
                 title: 'Investments'
             };
 
-            chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart = new google.visualization.BarChart(document.getElementById('piechart'));
 
             chart.draw(data, options);
         }
         function resize () {
-            chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart = new google.visualization.BarChart(document.getElementById('piechart'));
             chart.draw(data, options);
         }
 
