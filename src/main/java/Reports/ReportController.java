@@ -10,7 +10,6 @@ import spark.Response;
 import spark.Route;
 import util.DateParser;
 import util.Path;
-import util.PeriodFinder;
 import util.ViewUtil;
 
 import java.text.ParseException;
@@ -30,7 +29,7 @@ public class ReportController {
     public static Route profitAndLossesReport = (Request request, Response response) -> {
         LoginController.ensureUserIsLoggedIn(request, response);
         HashMap<String, Object> model = new HashMap<>();
-        ProfitAndLossesReport report = generateWinAndLossesReport(request);
+        ProfitAndLossesReport report = generateProfitAndLossesReport(request);
         model.put("report", report);
         model.put("math", new MathTool());
         return ViewUtil.render(request, model, Path.Template.PROFITANDLOSSES_REPORT);
@@ -51,9 +50,9 @@ public class ReportController {
     public static Route compareProfitAndLossesReport= (Request request, Response response) -> {
         LoginController.ensureUserIsLoggedIn(request, response);
         HashMap<String, Object> model = new HashMap<>();
-        ProfitAndLossesReport report1 = generateWinAndLossesReport(request,"");
+        ProfitAndLossesReport report1 = generateProfitAndLossesReport(request,"");
         model.put("report1", report1);
-        ProfitAndLossesReport report2 = generateWinAndLossesReport(request,"1");
+        ProfitAndLossesReport report2 = generateProfitAndLossesReport(request,"1");
         model.put("report2", report2);
         model.put("math", new MathTool());
         return ViewUtil.render(request, model, Path.Template.COMPARE_PROFITANDLOSSES_REPORT);
@@ -72,59 +71,53 @@ public class ReportController {
 
 
 
-    private static ProfitAndLossesReport generateWinAndLossesReport(Request request, String report) throws ParseException {
+    private static ProfitAndLossesReport generateProfitAndLossesReport(Request request, String report) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
         return request.queryParams("periodStart")== null ?
-                new ProfitAndLossesReport(billList,request.session().attribute("currentUser"),
-                        new PeriodFinder(billList).findPeriodStart(), new PeriodFinder(billList).findPeriodEnd()) :
-                new ProfitAndLossesReport(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
+                new ProfitAndLossesReportBuilder(billList,request.session().attribute("currentUser")).buildReport() :
+                new ProfitAndLossesReportBuilder(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart"+report)),
-                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"+report))
-                );
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"+report))).buildReport();
     }
 
 
 
 
-    private static ProfitAndLossesReport generateWinAndLossesReport(Request request) throws ParseException {
+    private static ProfitAndLossesReport generateProfitAndLossesReport(Request request) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
         return request.queryParams("periodStart")== null ?
-                new ProfitAndLossesReport(billList,request.session().attribute("currentUser"),
-                        new PeriodFinder(billList).findPeriodStart(), new PeriodFinder(billList).findPeriodEnd()) :
-                new ProfitAndLossesReport(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
+                new ProfitAndLossesReportBuilder(billList,request.session().attribute("currentUser")).buildReport() :
+                new ProfitAndLossesReportBuilder(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
-                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))
-                );
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))).buildReport();
     }
 
     private static InvestmentsReport generateInvestmentsReport(Request request) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
         return request.queryParams("periodStart")== null ?
-                new InvestmentsReport(billList,request.session().attribute("currentUser"),
-                        new PeriodFinder(billList).findPeriodStart(), new PeriodFinder(billList).findPeriodEnd()) :
-                new InvestmentsReport(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
+                new InvestmentReportBuilder(billList,request.session().attribute("currentUser")).buildReport():
+                new InvestmentReportBuilder(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))
-                        );
+                        ).buildReport();
     }
 
     private static InvestmentsReport generateInvestmentsReport(Request request, String report) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
         return request.queryParams("periodStart")== null ?
-                new InvestmentsReport(billList,request.session().attribute("currentUser"),
-                        new PeriodFinder(billList).findPeriodStart(), new PeriodFinder(billList).findPeriodEnd()) :
-                new InvestmentsReport(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
+                new InvestmentReportBuilder(billList,request.session().attribute("currentUser")).buildReport():
+                new InvestmentReportBuilder(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart"+report)),
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"+report))
-                );
+                ).buildReport();
     }
 
     private static AmortizationReport generateAmortizationReport(Request request) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
         return request.queryParams("periodStart")== null ?
-                new AmortizationReportGenerator(billList,request.session().attribute("currentUser")).generateReport() :
-                new AmortizationReportGenerator(billList, request.session().attribute("currentUser"), new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
-                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))).generateReport();
+                new AmortizationReportBuilder(billList,request.session().attribute("currentUser")).buildReport() :
+                new AmortizationReportBuilder(billList, request.session().attribute("currentUser"), new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))).buildReport();
     }
 
 

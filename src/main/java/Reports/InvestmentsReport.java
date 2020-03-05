@@ -27,36 +27,28 @@ public class InvestmentsReport extends Report {
     private double otherMachineryAndEquipmentBase;
 
 
-
-    public InvestmentsReport(List<Bill> billList, String RFC, Date periodStart, Date periodEnd) {
-        super(periodStart, periodEnd,RFC);
-        billList= billsFromPeriod(billList);
-        calculateReportFields(billList);
-    }
-
-    private void calculateReportFields(List<Bill> billList) {
-        this.buildings = filterByUseCode(billList, "I01");
-        this.buildingsBase = calculateBase(this.buildings);
-        this.officeEquipment = filterByUseCode(billList, "I02");
-        this.officeEquipmentBase = calculateBase(this.officeEquipment);
-        this.transportEquipment = filterByUseCode(billList, "I03");
-        this.transportEquipmentBase = calculateBase(this.transportEquipment);
-        this.computationalEquipment = filterByUseCode(billList, "I04");
-        this.computationalEquipmentBase = calculateBase(this.computationalEquipment);
-        this.modelsAndTools = filterByUseCode(billList, "I05");
-        this.modelsAndToolsBase = calculateBase(this.modelsAndTools);
-        this.telephoneCommunications = filterByUseCode(billList, "I06");
-        this.telephoneCommunicationsBase = calculateBase(this.telephoneCommunications);
-        this.satelliteCommunications = filterByUseCode(billList, "I07");
-        this.satelliteCommunicationsBase = calculateBase(this.satelliteCommunications);
-        this.otherMachineryAndEquipment = filterByUseCode(billList, "I08");
-        this.otherMachineryAndEquipmentBase = calculateBase(this.otherMachineryAndEquipment);
+    public InvestmentsReport(Date periodStart, Date periodEnd, String RFC, List<Bill> buildings, double buildingsBase, List<Bill> officeEquipment, double officeEquipmentBase, List<Bill> transportEquipment, double transportEquipmentBase, List<Bill> computationalEquipment, double computationalEquipmentBase, List<Bill> modelsAndTools, double modelsAndToolsBase, List<Bill> telephoneCommunications, double telephoneCommunicationsBase, List<Bill> satelliteCommunications, double satelliteCommunicationsBase, List<Bill> otherMachineryAndEquipment, double otherMachineryAndEquipmentBase) {
+        super(periodStart, periodEnd, RFC);
+        this.buildings = buildings;
+        this.buildingsBase = buildingsBase;
+        this.officeEquipment = officeEquipment;
+        this.officeEquipmentBase = officeEquipmentBase;
+        this.transportEquipment = transportEquipment;
+        this.transportEquipmentBase = transportEquipmentBase;
+        this.computationalEquipment = computationalEquipment;
+        this.computationalEquipmentBase = computationalEquipmentBase;
+        this.modelsAndTools = modelsAndTools;
+        this.modelsAndToolsBase = modelsAndToolsBase;
+        this.telephoneCommunications = telephoneCommunications;
+        this.telephoneCommunicationsBase = telephoneCommunicationsBase;
+        this.satelliteCommunications = satelliteCommunications;
+        this.satelliteCommunicationsBase = satelliteCommunicationsBase;
+        this.otherMachineryAndEquipment = otherMachineryAndEquipment;
+        this.otherMachineryAndEquipmentBase = otherMachineryAndEquipmentBase;
         this.base= buildingsBase+officeEquipmentBase+transportEquipmentBase+computationalEquipmentBase+modelsAndToolsBase+telephoneCommunicationsBase+satelliteCommunicationsBase+otherMachineryAndEquipmentBase;
+
     }
 
-    private List<Bill> filterByUseCode(List<Bill> billList, String useCode) {
-        return billList.stream().filter(bill -> bill.getUse().equals(useCode) && bill.getReceiverRFC().equals(this.RFC)).collect(Collectors.toList());
-    }
 
 
     public List<Bill> getBuildings() {

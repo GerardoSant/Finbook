@@ -10,15 +10,6 @@ import java.util.stream.Collectors;
 
 public class ProfitAndLossesReport extends Report {
 
-    public static void main(String[] args) {
-        List<Bill> billList = new BillsDao("C-6480477").getAllBills();
-        ProfitAndLossesReport report = new ProfitAndLossesReport(billList,"C-6480477", new PeriodFinder(billList).findPeriodStart(),
-                new PeriodFinder(billList).findPeriodEnd());
-        report.getExternalServices().forEach(bill-> System.out.println(bill));
-        System.out.println(report.getExternalServicesBase());
-        report.getGrossSales().forEach(bill -> System.out.println(bill));
-    }
-
     private double salesAndIncomesBase;
     private double netSalesBase;
     private List<Bill> grossSales;
@@ -37,29 +28,27 @@ public class ProfitAndLossesReport extends Report {
     private double salariesAndWagesBase;
     private double personnelExpenses;
 
-
-    public ProfitAndLossesReport(List<Bill> billList, String RFC, Date periodStart, Date periodEnd) {
+    public ProfitAndLossesReport(Date periodStart, Date periodEnd, String RFC, List<Bill> grossSales, double grossSalesBase, List<Bill> salesReturns, double salesReturnsBase, List<Bill> grossPurchases, double grossPurchasesBase, List<Bill> purchasesReturns, double purchasesReturnsBase, List<Bill> externalServices, double externalServicesBase, List<Bill> salariesAndWages, double salariesAndWagesBase) {
         super(periodStart, periodEnd, RFC);
-        billList= billsFromPeriod(billList);
-        this.grossSales = filterBySales(billList);
-        this.grossSalesBase=calculateBase(grossSales);
-        this.salesReturns = filterByReturns(billList);
-        this.salesReturnsBase= calculateBase(salesReturns);
-        this.netSalesBase= grossSalesBase-salesReturnsBase;
-        this.salesAndIncomesBase= this.netSalesBase;
-        this.grossPurchases = filterByUseCode(billList,"G01");
-        this.grossPurchasesBase= calculateBase(grossPurchases);
-        this.purchasesReturns = filterByUseCode(billList, "G02");
-        this.purchasesReturnsBase = calculateBase(purchasesReturns);
-        this.externalServices = filterByUseCode(billList,"G03");
-        this.externalServicesBase = calculateBase(externalServices);
-        this.salariesAndWages = filterBySalaries(billList);
-        this.salariesAndWagesBase = calculateBase(salariesAndWages);
+        this.grossSales = grossSales;
+        this.grossSalesBase = grossSalesBase;
+        this.salesReturns = salesReturns;
+        this.salesReturnsBase = salesReturnsBase;
+        this.grossPurchases = grossPurchases;
+        this.grossPurchasesBase = grossPurchasesBase;
+        this.purchasesReturns = purchasesReturns;
+        this.purchasesReturnsBase = purchasesReturnsBase;
+        this.externalServices = externalServices;
+        this.externalServicesBase = externalServicesBase;
+        this.salariesAndWages = salariesAndWages;
+        this.salariesAndWagesBase = salariesAndWagesBase;
+        this.netSalesBase=grossSalesBase-salesReturnsBase;
         this.personnelExpenses= salariesAndWagesBase;
-        this.netPurchasesBase = grossPurchasesBase-purchasesReturnsBase;
-        this.purchasesAndExpensesBase = netPurchasesBase + externalServicesBase + personnelExpenses;
-
+        this.netPurchasesBase= grossPurchasesBase-purchasesReturnsBase;
+        this.purchasesAndExpensesBase= netPurchasesBase + externalServicesBase + personnelExpenses;
+        this.salesAndIncomesBase= this.netSalesBase;
     }
+
 
     private List<Bill> filterBySales(List<Bill> billList){
         return billList.stream().filter(bill-> bill.getIssuerRFC().equals(this.RFC) && !bill.getType().equals("nomina")).collect(Collectors.toList());
