@@ -21,7 +21,8 @@ public class Path {
         @Getter public static final String REPORT_INVESTMENTS = "/reports/investments";
         @Getter public static final String REPORT_PROFITANDLOSSES = "/reports/profitandlosses";
         @Getter public static final String REPORT_COMPARE_PROFITANDLOSSES = "/reports/compare/profitandlosses";
-        @Getter public static final String REPORT_COMPARE_INVESTMENTS = "reports/compare/investments";
+        @Getter public static final String REPORT_COMPARE_INVESTMENTS = "/reports/compare/investments";
+        @Getter public static final String REPORT_AMORTIZATION = "/reports/amortization";
     }
 
     public static class Template {
@@ -36,9 +37,11 @@ public class Path {
         public static final String EXAMPLE_SHINY= "velocity/exampleShiny.vm";
         public static final String INVESTMENT_REPORT= "velocity/investmentReport.vm";
         public static final String PROFITANDLOSSES_REPORT = "velocity/profitAndLossesReport.vm";
+        public static final String AMORTIZATION_REPORT = "velocity/amortizationReport.vm";
         public static final String BILLSINDEX = "velocity/billsIndex.vm";
         public static final String REPORTSINDEX = "velocity/reportsIndex.vm";
         public static final String COMPARE_PROFITANDLOSSES_REPORT = "velocity/compareProfitAndLossesReport.vm";
         public static final String COMPARE_INVESTMENTS_REPORT = "velocity/compareInvestmentsReport.vm";
+
     }
 }

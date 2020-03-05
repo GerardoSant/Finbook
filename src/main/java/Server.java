@@ -44,13 +44,15 @@ public class Server {
         get(Path.Web.ONE_BILL_EMAIL, BillsController.oneBillSendEmail);
         get(Path.Web.BILLS_TIMELINE, BillsController.billsTimeline);
         get(Path.Web.REPORT_INVESTMENTS, ReportController.investmentReport);
+        get(Path.Web.REPORT_COMPARE_INVESTMENTS, ReportController.compareInvestmentsReport);
         get(Path.Web.REPORT_PROFITANDLOSSES, ReportController.profitAndLossesReport);
         get(Path.Web.REPORT_COMPARE_PROFITANDLOSSES, ReportController.compareProfitAndLossesReport);
+        get(Path.Web.REPORT_AMORTIZATION, ReportController.amortizationReport);
         get(Path.Web.SHINY_EXAMPLE, ShinyController.shinyExample);
         get(Path.Web.MAIN_INDEX, IndexController.serveMainIndexPage);
         get(Path.Web.BILLS_INDEX, IndexController.serveBillsIndexPage);
         get(Path.Web.REPORTS_INDEX, IndexController.serveReportsIndexPage);
-        get(Path.Web.REPORT_COMPARE_INVESTMENTS, ReportController.compareInvestmentsReport);
+
 
         post(Path.Web.UPLOAD, UploadController.handleUploadPost);
         post(Path.Web.LOGIN, LoginController.handleLoginPost);

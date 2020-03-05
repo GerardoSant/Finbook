@@ -3,6 +3,7 @@ package Reports;
 import Bills.Bill;
 import Bills.BillsDao;
 import login.LoginController;
+import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import spark.Request;
 import spark.Response;
@@ -35,6 +36,18 @@ public class ReportController {
         return ViewUtil.render(request, model, Path.Template.PROFITANDLOSSES_REPORT);
     };
 
+    public static Route amortizationReport = (Request request, Response response) ->{
+        LoginController.ensureUserIsLoggedIn(request,response);
+        HashMap<String, Object> model = new HashMap<>();
+        AmortizationReport report = generateAmortizationReport(request);
+        model.put("date", new DateTool());
+        model.put("math", new MathTool());
+        model.put("report",report);
+        return ViewUtil.render(request,model,Path.Template.AMORTIZATION_REPORT);
+    };
+
+
+
     public static Route compareProfitAndLossesReport= (Request request, Response response) -> {
         LoginController.ensureUserIsLoggedIn(request, response);
         HashMap<String, Object> model = new HashMap<>();
@@ -56,6 +69,8 @@ public class ReportController {
         model.put("math", new MathTool());
         return ViewUtil.render(request, model, Path.Template.COMPARE_INVESTMENTS_REPORT);
     };
+
+
 
     private static ProfitAndLossesReport generateWinAndLossesReport(Request request, String report) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
@@ -102,6 +117,14 @@ public class ReportController {
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart"+report)),
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"+report))
                 );
+    }
+
+    private static AmortizationReport generateAmortizationReport(Request request) throws ParseException {
+        List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
+        return request.queryParams("periodStart")== null ?
+                new AmortizationReportGenerator(billList,request.session().attribute("currentUser")).generateReport() :
+                new AmortizationReportGenerator(billList, request.session().attribute("currentUser"), new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))).generateReport();
     }
 
 

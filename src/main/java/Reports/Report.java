@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 
 public abstract class Report {
 
-    private Date periodStart;
-    private Date periodEnd;
+    protected Date periodStart;
+    protected Date periodEnd;
     protected String RFC;
 
     public Report(Date periodStart, Date periodEnd, String RFC) {
@@ -31,7 +31,7 @@ public abstract class Report {
         return periodEnd;
     }
 
-    protected double calculateBase(List<Bill> billList){
+    public double calculateBase(List<Bill> billList){
         return billList.stream().map(bill -> bill.getSubtotal()).reduce(0.0, (subtotal, bill) -> subtotal + bill);
     };
 
