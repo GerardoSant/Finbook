@@ -178,6 +178,13 @@
 
             </div>
         </div>
+
+        <div class="container content" style="height:60%; margin-bottom:5%">
+            <div>
+                <h4 class="contentTitle">Investments Comparison Chart</h4>
+            </div>
+            <div id="comparisonChart" style="height:90%"></div>
+        </div>
     </body>
 
     <!-- The Modal -->
@@ -255,6 +262,44 @@
     <script>
         addPercentageChangeToTable();
         dateFromQueryToModal();
+    </script>
+
+    <script>
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        var data;
+        var options;
+        var chart;
+
+        function drawChart() {
+            data = google.visualization.arrayToDataTable([
+                ['Investment', 'Base period 1', 'Base period 2'],
+                #foreach($key in $barChart1)
+                    ['$key',$barChart1.getCount($key), $barChart2.getCount($key)],
+                #end
+            ]);
+
+            options = {
+                title: 'Investments'
+            };
+
+            chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));
+
+            chart.draw(data, options);
+        }
+        function resize () {
+            chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));
+            chart.draw(data, options);
+        }
+
+        window.onload = resize;
+        window.onresize = resize;
+
+        document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function(event){
+            if(event.propertyName !== 'width') return;
+            resize();
+        });
     </script>
 
 </html>	

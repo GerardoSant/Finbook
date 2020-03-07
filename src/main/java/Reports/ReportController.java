@@ -57,9 +57,13 @@ public class ReportController {
         LoginController.ensureUserIsLoggedIn(request, response);
         HashMap<String, Object> model = new HashMap<>();
         ProfitAndLossesReport report1 = generateProfitAndLossesReport(request,"");
+        BarChart barChart = new ProfitAndLossesBarChartBuilder().build(report1);
         model.put("report1", report1);
+        model.put("barChart1", barChart);
         ProfitAndLossesReport report2 = generateProfitAndLossesReport(request,"1");
+        BarChart barChart2 = new ProfitAndLossesBarChartBuilder().build(report2);
         model.put("report2", report2);
+        model.put("barChart2", barChart2);
         model.put("math", new MathTool());
         return ViewUtil.render(request, model, Path.Template.COMPARE_PROFITANDLOSSES_REPORT);
     };
@@ -68,9 +72,13 @@ public class ReportController {
         LoginController.ensureUserIsLoggedIn(request, response);
         HashMap<String, Object> model = new HashMap<>();
         InvestmentsReport report1 = generateInvestmentsReport(request,"");
+        BarChart barChart = new InvestmentsBarChartBuilder().build(report1);
         model.put("report1", report1);
+        model.put("barChart1", barChart);
         InvestmentsReport report2 = generateInvestmentsReport(request,"1");
+        BarChart barChart2 = new InvestmentsBarChartBuilder().build(report2);
         model.put("report2", report2);
+        model.put("barChart2", barChart2);
         model.put("math", new MathTool());
         return ViewUtil.render(request, model, Path.Template.COMPARE_INVESTMENTS_REPORT);
     };
