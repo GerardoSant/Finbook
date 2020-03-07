@@ -342,13 +342,9 @@
         function drawChart() {
             data = google.visualization.arrayToDataTable([
                 ['Investment', 'Base'],
-                ['Buildings',     $report.getBuildingsBase()],
-                ['Office',      $report.getOfficeEquipmentBase()],
-                ['Computation',  $report.getTransportEquipmentBase()],
-                ['Models&Tools', $report.getModelsAndToolsBase()],
-                ['Telephone',    $report.getTelephoneCommunicationsBase()],
-                ['Satellite', $report.getSatelliteCommunicationsBase()],
-                ['Machinery&Others', $report.getOtherMachineryAndEquipmentBase()]
+                #foreach($key in $barChart)
+                    ['$key',$barChart.getCount($key)],
+                #end
             ]);
 
             options = {

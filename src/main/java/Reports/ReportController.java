@@ -23,7 +23,9 @@ public class ReportController {
         LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
         InvestmentsReport report = generateInvestmentsReport(request);
+        BarChart barChart = new InvestmentsBarChartBuilder().build(report);
         model.put("report",report);
+        model.put("barChart", barChart);
         return ViewUtil.render(request,model, Path.Template.INVESTMENT_REPORT);
     };
     public static Route profitAndLossesReport = (Request request, Response response) -> {
@@ -40,9 +42,6 @@ public class ReportController {
         HashMap<String, Object> model = new HashMap<>();
         AmortizationReport report = generateAmortizationReport(request);
         BarChart barChart = new AmortizationBarChartBuilder().build(report);
-        for (Object key : barChart){
-            System.out.println(key + " : " + barChart.getCount(key));
-        }
         model.put("date", new DateTool());
         model.put("math", new MathTool());
         model.put("report",report);
