@@ -347,8 +347,9 @@
         function drawChart() {
             data = google.visualization.arrayToDataTable([
                 ['Money', 'Base'],
-                ['Sales and incomes', $report.getSalesAndIncomesBase()],
-                ['Purchases and expenses',    $report.getPurchasesAndExpensesBase()]
+                #foreach($key in $barChart)
+                    ['$key',$barChart.getCount($key)],
+                #end
             ]);
 
             options = {

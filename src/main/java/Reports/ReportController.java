@@ -32,7 +32,9 @@ public class ReportController {
         LoginController.ensureUserIsLoggedIn(request, response);
         HashMap<String, Object> model = new HashMap<>();
         ProfitAndLossesReport report = generateProfitAndLossesReport(request);
+        BarChart barChart = new ProfitAndLossesBarChartBuilder().build(report);
         model.put("report", report);
+        model.put("barChart", barChart);
         model.put("math", new MathTool());
         return ViewUtil.render(request, model, Path.Template.PROFITANDLOSSES_REPORT);
     };
