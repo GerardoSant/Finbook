@@ -39,9 +39,14 @@ public class ReportController {
         LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
         AmortizationReport report = generateAmortizationReport(request);
+        BarChart barChart = new AmortizationBarChartBuilder().build(report);
+        for (Object key : barChart){
+            System.out.println(key + " : " + barChart.getCount(key));
+        }
         model.put("date", new DateTool());
         model.put("math", new MathTool());
         model.put("report",report);
+        model.put("barChart",barChart);
         return ViewUtil.render(request,model,Path.Template.AMORTIZATION_REPORT);
     };
 
