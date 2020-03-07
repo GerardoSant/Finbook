@@ -144,9 +144,9 @@
 	<body class="main">
 	<div id="left">
 	<div class ="container text-center">
-      <div id="dropContainer" style="border:2px groove darkblue; background-color: rgb(247,250,252); border-radius: 5px;height:400px; display: flex;justify-content: center;
-	  align-items: center;" ondragover="allowDrop(event)" ondragenter="allowDrop(event)" ondrop="dropFiles(event)">
-		<img src="/bill2.png" alt="" style="height: 30%; width: 30%; object-fit: contain" />
+      <div id="dropContainer" style="border:2px groove darkgrey; background-color: rgb(247,250,252); border-radius: 5px;height:400px; display: flex;justify-content: center;
+	  align-items: center; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);" ondragover="allowDrop(event)" ondragenter="allowDrop(event)" ondrop="dropFiles(event)">
+		<img src="/uploadBills2.png" alt="" style="height: 30%; width: 30%; object-fit: contain" />
 		<br>
 		<h3 id="dragAndDropText">$msg.get("UPLOAD_DAD")</h3>
       </div>

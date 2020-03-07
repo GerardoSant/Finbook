@@ -141,7 +141,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>FinBook</title>
-	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+	<link rel="shortcut icon" href="/favicon28.png" type="image/x-icon">
 </head>
 
 <header id="main" class="xd">
@@ -152,11 +152,11 @@
 		<!-- Brand/logo -->
 		#if($currentUser)
 			<a class="navbar-brand" href="/main">
-				<img src="/favicon2.png" alt="logo" style="height:30px ">
+				<img src="/favicon28.png" alt="logo" style="height:30px ">
 			</a>
 		#else
 			<a class="navbar-brand" href="/index/">
-				<img src="/favicon2.png" alt="logo" style="height:30px ">
+				<img src="/favicon28.png" alt="logo" style="height:30px ">
 			</a>
 		#end
 
