@@ -8,12 +8,16 @@ import org.apache.velocity.tools.generic.MathTool;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import util.DateParser;
 import util.Path;
+import util.RequestUtil;
 import util.ViewUtil;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
+import static java.lang.Double.parseDouble;
 import static util.RequestUtil.*;
 
 public class BillsController {
@@ -60,17 +64,45 @@ public class BillsController {
         response.redirect("/bills/" + getParamUUID(request));
         return null;
     };
+
     public static Route billsTimeline = (Request request, Response response) -> {
         //LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
         //List<Bill> billList = new BillsDao(getSessionCurrentUser(request)).getAllBills();
         List<Bill> billList = new BillsDao("E-5756930").getAllBills();
-        model.put("bills", billList);
-        model.put("even", true);
+        //BillTimeline timeline = new BillTimeline(billList, true);
+        BillTimeline timeline = generateBillTimeline(request);
+        model.put("timeline", timeline);
         model.put("math", new MathTool());
         model.put("date", new DateTool());
         //model.put("RFC", getSessionCurrentUser(request));
         model.put("RFC", "E-5756930");
         return ViewUtil.render(request, model, Path.Template.BILLS_TIMELINE);
     };
+
+    private static BillTimeline generateBillTimeline(Request request) throws ParseException {
+        List<Bill> billList = new BillsDao("E-5756930").getAllBills();
+        if(request.queryParams("min")==null && request.queryParams("periodStart")==null){
+            return new BillTimelineBuilder().build("E-5756930",billList, false, true,true,true,true);
+        }
+        if(request.queryParams("min")!=null && !request.queryParams("min").isEmpty()){
+            if (!request.queryParams("periodStart").isEmpty()){
+                System.out.println("puta");
+                return new BillTimelineBuilder().build("E-5756930",billList, new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd")),true, parseDouble(request.queryParams("min")), parseDouble(request.queryParams("max")), queryParamIsTrue(request,"incomes"),queryParamIsTrue(request,"expenses") , queryParamIsTrue(request,"investments"), queryParamIsTrue(request,"salaries"));
+            } else{
+                System.out.println("puta1");
+                return new BillTimelineBuilder().build("E-5756930",billList, false, parseDouble(request.queryParams("min")), parseDouble(request.queryParams("max")),queryParamIsTrue(request,"incomes"),queryParamIsTrue(request,"expenses") , queryParamIsTrue(request,"investments"), queryParamIsTrue(request,"salaries"));
+            }
+        } else{
+            if (request.queryParams("periodStart")!=null && !request.queryParams("periodStart").isEmpty()){
+                System.out.println("puta2");
+                return new BillTimelineBuilder().build("E-5756930",billList, new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd")),false, queryParamIsTrue(request,"incomes"),queryParamIsTrue(request,"expenses") , queryParamIsTrue(request,"investments"), queryParamIsTrue(request,"salaries"));
+            } else{
+                System.out.println("puta3");
+                return new BillTimelineBuilder().build("E-5756930",billList, false, queryParamIsTrue(request,"incomes"),queryParamIsTrue(request,"expenses") , queryParamIsTrue(request,"investments"), queryParamIsTrue(request,"salaries"));
+            }
+        }
+    }
+
+
 }

@@ -46,5 +46,9 @@ public class RequestUtil {
         return emailSent!=null;
     }
 
+    public static boolean queryParamIsTrue(Request request, String queryParam){
+        if(request.queryParams(queryParam)!=null) return request.queryParams(queryParam).equals("true");
+        return false;
+    }
 
 }

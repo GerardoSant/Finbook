@@ -1,9 +1,23 @@
 #parse("/velocity/layout.vm")
 #mainLayout()
 <html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 	* {
 		box-sizing: border-box;
+	}
+	.butn {
+		background-color: lightgrey;
+		border: none;
+		border-radius:50%;
+		color: black;
+		padding: 12px 16px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+
+	.butn:hover {
+		background-color: RoyalBlue;
 	}
 
 	html {
@@ -15,7 +29,9 @@
 	}
 
 
-
+	.title{
+		text-align: center;
+	}
 	/* The actual timeline (the vertical ruler) */
 	.timeline {
 		position: relative;
@@ -198,36 +214,132 @@
 </head>
 <body class="main">
 
-<div class="timeline">
-	#foreach($bill in $bills)
-		#if($even)
-			<div class="billContainer left">
-			#set($even=false)
-		#else
-			<div class="billContainer right">
-			#set($even=true)
-		#end
-				#if($bill.getType()!="nomina" && $bill.getIssuerRFC()==$RFC)
-					<div class="box green" data-href="$bill.getUUID()">
-				#elseif ($bill.getType()=="nomina" && $bill.getIssuerRFC()==$RFC)
-					<div class="box orange" data-href="$bill.getUUID()">
-				#elseif($bill.getUse()=="G01" || $bill.getUse()=="G02" || $bill.getUse()=="G03")
-					<div class="box red" data-href="$bill.getUUID()">
-				#else
-					<div class="box blue" data-href="$bill.getUUID()">
-				#end
+	<div class="title">
+		<p style="font-size:150%; color=lightgray;display:inline">Bills Timeline</p>
+		<button class="butn" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog" aria-hidden="true"></i></button>
+		<button class="butn" style="widht:40px"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
 
-					<div>
-						<h2>$date.format("MMM dd, yyyy H:MM:SS a",$bill.getDate())</h2>
-					</div>
-					<div style="background-color: white; opacity:0.9 ">
-						<h4>$bill.getConcept()</h4>
-						<div style="border-top:solid 0.5px rgba(0,0,0,0.5);padding-left:60%; width:100%; box-sizing:border-box"><h4>$math.roundTo(2, $bill.getTotal()) $bill.getCurrency()</h4></div>
+	</div>
+	<br>
+	<div class="timeline">
+		#set($even=true)
+		#foreach($bill in $timeline.getBillList())
+			#if($even)
+				<div class="billContainer left">
+				#set($even=false)
+			#else
+				<div class="billContainer right">
+				#set($even=true)
+			#end
+					#if($bill.getType()!="nomina" && $bill.getIssuerRFC()==$RFC)
+						<div class="box green" data-href="$bill.getUUID()">
+					#elseif ($bill.getType()=="nomina" && $bill.getIssuerRFC()==$RFC)
+						<div class="box orange" data-href="$bill.getUUID()">
+					#elseif($bill.getUse()=="G01" || $bill.getUse()=="G02" || $bill.getUse()=="G03")
+						<div class="box red" data-href="$bill.getUUID()">
+					#else
+						<div class="box blue" data-href="$bill.getUUID()">
+					#end
+
+						<div>
+							<h2>$date.format("MMM dd, yyyy H:MM:SS a",$bill.getDate())</h2>
+						</div>
+						<div style="background-color: white; opacity:0.9 ">
+							<h4>$bill.getConcept()</h4>
+							<div style="border-top:solid 0.5px rgba(0,0,0,0.5);padding-left:60%; width:100%; box-sizing:border-box"><h4>$math.roundTo(2, $bill.getTotal()) $bill.getCurrency()</h4></div>
+						</div>
 					</div>
 				</div>
+		#end
+	</div>
+
+	<!-- The Modal -->
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header" style="background-color: rgb(234,241,247)">
+					<h4 class="modal-title" >Configure timeline</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form id="compareForm" action="/timeline">
+						<div class="container">
+							<h6>Period</h6>
+							<br>
+							<div class="row">
+								<div class="col">
+									<p>Period start</p>
+								</div>
+								<div class="col-8">
+									<input class="form-control" type="date" id="pStart1" value="2011-08-19" name="periodStart">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<p>Period end</p>
+								</div>
+								<div class="col-8">
+									<input class="form-control" type="date" id="pEnd1" value="2011-08-19" name="periodEnd">
+								</div>
+							</div>
+							<br>
+							<h6>Price range</h6>
+							<br>
+							<div class="row">
+								<div class="col">
+									<p>Minimum</p>
+								</div>
+								<div class="col-8">
+									<input class="form-control" type="number" id="pMin" name="min">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<p>Maximum</p>
+								</div>
+								<div class="col-8">
+									<input class="form-control" type="number" id="pMax" name="max">
+								</div>
+							</div>
+							<br>
+							<h6>Bill type</h6>
+							<div class="form-check-inline">
+								<label class="form-check-label" for="check1">
+									<input type="checkbox" class="form-check-input" name="incomes" id="bIncomes" value="true">Incomes
+								</label>
+							</div>
+							<div class="form-check-inline">
+								<label class="form-check-label" for="check2">
+									<input type="checkbox" class="form-check-input" name="expenses" id="bExpenses" value="true">Expenses
+								</label>
+							</div>
+							<div class="form-check-inline">
+								<label class="form-check-label" for="check2">
+									<input type="checkbox" class="form-check-input" name="investments" id="bInvestments" value="true">Investments
+								</label>
+							</div>
+							<div class="form-check-inline">
+								<label class="form-check-label" for="check2">
+									<input type="checkbox" class="form-check-input" name="salaries" id="bSalaries" value="true">Salaries
+								</label>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer" style="background-color: rgb(234,241,247)">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+					<button type="submit" form="compareForm" class="btn btn-success">Compare</button>
+				</div>
+
 			</div>
-	#end
-</div>
+		</div>
+	</div>
 
 </body>
 
@@ -237,6 +349,28 @@
 			console.log("hey");
 			window.location = /bills/ + $(this).data("href");
 		})});
+</script>
+
+<script>
+	const urlParams = new URLSearchParams(window.location.search);
+	function dateFromQuery(){
+		if(urlParams.get('periodStart')) document.getElementById('pStart1').value = urlParams.get('periodStart');
+		if(urlParams.get('periodEnd')) document.getElementById('pEnd1').value = urlParams.get('periodEnd');
+	}
+	function minMaxFromQuery(){
+		document.getElementById('pMin').value = urlParams.get('min');
+		document.getElementById('pMax').value = urlParams.get('max');
+	}
+	function billTypeFromQuery(){
+		if (urlParams.get('incomes')=="true") document.getElementById("bIncomes").checked = true;
+		if (urlParams.get('expenses')=="true") document.getElementById("bExpenses").checked = true;
+		if (urlParams.get('investments')=="true") document.getElementById("bInvestments").checked = true;
+		if (urlParams.get('salaries')=="true") document.getElementById("bSalaries").checked = true;
+
+	}
+	dateFromQuery();
+	minMaxFromQuery();
+	billTypeFromQuery();
 </script>
 
 </html>	
