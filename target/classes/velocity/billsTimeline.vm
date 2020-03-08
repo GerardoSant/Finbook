@@ -217,7 +217,7 @@
 	<div class="title">
 		<p style="font-size:150%; color=lightgray;display:inline">Bills Timeline</p>
 		<button class="butn" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog" aria-hidden="true"></i></button>
-		<button class="butn" style="widht:40px"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+		<button class="butn" data-toggle="modal" data-target="#legendModal" style="widht:40px"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
 
 	</div>
 	<br>
@@ -353,6 +353,47 @@
 			</div>
 		</div>
 	</div>
+
+		<div class="modal fade" id="legendModal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header" style="background-color: rgb(234,241,247)">
+						<h4 class="modal-title" >Timeline Legend</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<div style="margin-left:38%">
+							<img src="/legendgreen.png" style="height:30px">
+							<p style="display:inline">&nbsp&nbsp&nbspIncomes</p>
+						</div>
+						<br>
+						<div style="margin-left:38%">
+							<img src="/legendred.png" style="height:30px">
+							<p style="display:inline">&nbsp&nbsp&nbspExpenses</p>
+						</div>
+						<br>
+						<div style="margin-left:38%">
+							<img src="/legendblue.png" style="height:30px">
+							<p style="display:inline">&nbsp&nbsp&nbspInvestments</p>
+						</div>
+						<br>
+						<div style="margin-left:38%">
+							<img src="/legendyellow.png" style="height:30px">
+							<p style="display:inline">&nbsp&nbsp&nbspSalaries</p>
+						</div>
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer" style="background-color: rgb(234,241,247)">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 </body>
 
