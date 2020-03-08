@@ -327,6 +327,19 @@
 									<input type="checkbox" class="form-check-input" name="salaries" id="bSalaries" value="true">Salaries
 								</label>
 							</div>
+							<br>
+							<br>
+							<h6>Bill type</h6>
+							<div class="form-check-inline">
+								<label class="form-check-label">
+									<input type="radio" class="form-check-input" name="ascendent" id="ascendent" value="true">Ascendent
+								</label>
+							</div>
+							<div class="form-check-inline">
+								<label class="form-check-label">
+									<input type="radio" class="form-check-input" name="ascendent" id="descendent" value="false">Descendent
+								</label>
+							</div>
 						</div>
 					</form>
 				</div>
@@ -368,9 +381,18 @@
 		if (urlParams.get('salaries')=="true") document.getElementById("bSalaries").checked = true;
 
 	}
+
+	function orderFromQuery(){
+		if (urlParams.get('ascendent')==true){
+			document.getElementById("ascendent").checked = true;
+		}  else{
+			document.getElementById("descendent").checked = true;
+		}
+	}
 	dateFromQuery();
 	minMaxFromQuery();
 	billTypeFromQuery();
+	orderFromQuery();
 </script>
 
 </html>	
