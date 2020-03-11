@@ -1,17 +1,16 @@
+import AS.FrontServlet;
 import Bills.BillsController;
 import Reports.ReportController;
 import Shiny.ShinyController;
+import WebSocket.EchoWebSocket;
+import WebSocket.WebSocketController;
 import index.IndexController;
 import upload.UploadController;
 import login.LoginController;
 import util.Filters;
 import util.Path;
-import util.ViewUtil;
-
-import java.util.HashMap;
-
 import static spark.Spark.*;
-import static util.ViewUtil.internalError;
+
 import static util.ViewUtil.notFound;
 
 public class Server {
@@ -22,7 +21,8 @@ public class Server {
         staticFiles.location("/public");
         staticFiles.expireTime(600L);
         port(8080);
-        init();
+        //webSocket("/echo", EchoWebSocket.class);
+        //init();
 
 
         // Set up before-filters (called before each get/post)
@@ -31,6 +31,8 @@ public class Server {
 
 
         // Set up routes
+
+
 
         get("/", (request, response) -> {
             response.redirect("/index/");
@@ -76,6 +78,9 @@ public class Server {
         get("/error", notFound);
 
 
+        get("/mainPage", FrontServlet.doGet);
+
+        get("/wsTest", WebSocketController.socketTest);
 
 
     }

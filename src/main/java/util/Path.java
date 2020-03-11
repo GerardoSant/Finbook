@@ -42,6 +42,7 @@ public class Path {
         public static final String REPORTSINDEX = "velocity/reportsIndex.vm";
         public static final String COMPARE_PROFITANDLOSSES_REPORT = "velocity/compareProfitAndLossesReport.vm";
         public static final String COMPARE_INVESTMENTS_REPORT = "velocity/compareInvestmentsReport.vm";
+        public static final String WEBSOCKET_TEST= "velocity/webSocketTest.vm";
 
     }
 }
