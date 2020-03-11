@@ -3,6 +3,9 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
 
 <!-- jQuery library -->
@@ -130,9 +133,6 @@
 			right: 35px;
 
 		}
-		.overlay-content{
-
-		}
 	}
 
 	.menuOpener{
@@ -140,6 +140,52 @@
 	}
 	.menuOpener:hover{
 		transform : scale(1.10)
+	}
+
+	.popover-wrapper{
+		position:relative;
+	}
+
+	.popover-content{
+		padding:15px;
+		z-index:2;
+		position:absolute;
+		left:-200px;
+		width:200px;
+		text-align: center;
+		background-color: rgb(247,250,252);
+		border: 2px groove darkgrey;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+		border-radius:5px;
+
+	}
+
+	.popover-wrapper:hover .user-popover{
+		visibility:visible;
+	}
+	
+	.user-popover{
+		visibility:hidden;
+	}
+
+	.lan-popover{
+		visibility:hidden;
+	}
+
+
+
+	.butn {
+		background-color: lightgrey;
+		border: 0.5px solid black;
+		border-radius:3px;
+		color: black;
+		padding: 12px 16px;
+		font-size: 16px;
+		cursor: pointer;
+	}
+
+	.butn:hover {
+		background-color: RoyalBlue;
 	}
 
 </style>
@@ -167,11 +213,48 @@
 		#end
 
 		<span>FinBook</span>
+		<ul class="navbar-nav ml-auto">
+			<div class="popover-wrapper">
+				<div class="popover-title">
+					<li class="nav-item">
+						<a><i class="fa fa-user-circle fa-2x" aria-hidden="true" ></i></a>
+					</li>
+				</div>
+				<div class="popover-content user-popover">
+					<div style="border-bottom: 1px solid darkgrey">
+						<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+						<p class="popover-message">Antendu Networks</p>
+					</div>
+					<div style="margin-top:10%">
+						<div class="lan-popover-title">
+							<button class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspLanguage</button>
+						</div>
+						<br>
+						<button class="butn" style="width:121px"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbspLog out</button>
+					</div>
+				</div>
+				<div class="popover-content lan-popover">
+					<div style="border-bottom: 1px solid darkgrey">
+						<i class="fa fa-language fa-2x" aria-hidden="true"></i>
+						<p class="popover-message">Select language</p>
+					</div>
+					<div style="margin-top:10%">
+						<button class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspEnglish</button>
+						<br>
+						<br>
+						<button class="butn" style="width:121px"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbspSpanish</button>
+					</div>
+				</div>
+
+
+			</div>
+		</ul>
+
 
 		<!-- Links -->
-		<ul class="navbar-nav ml-auto">
 
-			<!-- Dropdown -->
+		<!--<ul class="navbar-nav ml-auto">
+			Dropdown
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 					#if($lan== "en")
@@ -180,7 +263,7 @@
 						<img src="/spaLan.png" alt="logo" style="height:30px ">
 					#end
 				</a>
-				<div class="dropdown-menu">
+				<div class="dropdown-menu" style="overflow-x:hidden">
 					<form>
 						#if($lan== "en")
 							<button class="dropdown-item" name="locale" value="es"><img src="/spaLan.png" alt="logo" style="height:20px "></button>
@@ -191,6 +274,8 @@
 				</div>
 			</li>
 		</ul>
+		-->
+
 	</nav>
 	<div id="myNav" class="overlay">
 		<a href="javascript:void(0)" id="closeMenuBtn" class="closebtn" onclick="closeNav()">&times;</a>
