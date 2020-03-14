@@ -84,9 +84,10 @@
 	}
 
 
+
 	.overlay {
 		height: 100%;
-		width: 0;
+		width: 0px;
 		position: fixed;
 		z-index: 2;
 		top: 0;
@@ -96,22 +97,54 @@
 		overflow-x: hidden;
 		transition: 0.5s;
 	}
+	.overlay-title{
+		height:57px;
+		border-bottom: 0.5px solid darkgrey;
+		font-size:36px;
+		color: #818181;
+		text-align: center
+	}
 
 	.overlay-content {
 		position: relative;
-		top: 25%;
+		top: 0%;
 		width: 100%;
-		text-align: center;
-		margin-top: 30px;
+		margin-top: 15px;
 	}
 
-	.overlay a {
-		padding: 8px;
+	.overlay-content-row{
+		padding: 8px 15px;
+	}
+
+	.overlay-content-row img{
+		height:30px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.overlay-content-row a{
+		font-size:26px;
+		color:#818181;
 		text-decoration: none;
-		font-size: 36px;
-		color: #818181;
-		display: block;
-		transition: 0.3s;
+		padding-left:15px;
+		padding-bottom: 5px;
+		transition:0.3s;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.overlay-content-row i{
+		padding-top:5px;
+		color:#818181;
+		font-size:26px;
+		display: inline-block;
+		vertical-align: middle;
+		float:right;
+	}
+
+	.overlay-subrow i{
+		padding-top:12px; padding-left: 15px;
+		font-size:15px;
+		float:left;
 	}
 
 	.overlay a:hover, .overlay a:focus {
@@ -135,10 +168,10 @@
 		}
 	}
 
-	.menuOpener{
+	.menuBtn{
 		cursor:pointer
 	}
-	.menuOpener:hover{
+	.menuBtn:hover{
 		transform : scale(1.10)
 	}
 
@@ -197,7 +230,7 @@
 
 		<!-- Button for open side Menu -->
 
-		<a class="nav-link menuOpener" ><img src="/menu.png" alt="logo" style="height:20px" id="openMenuBtn" onclick="openNav()"></a>
+		<a class="nav-link menuBtn" ><img src="/openMenu.png" alt="logo" style="height:20px" id="menuBtn" onclick="navHandler()"></a>
 
 		<!-- Brand/logo -->
 		#if($currentUser)
@@ -268,17 +301,57 @@
 	</nav>
 
 	<div id="myNav" class="overlay">
-		<a href="javascript:void(0)" id="closeMenuBtn" class="closebtn" onclick="closeNav()">&times;</a>
+		<div class="overlay-title">
+			Menu
+		</div>
 		<div class="overlay-content">
-			#if($currentUser)
-				<form action="/logout" method="post" id="xd">
-					<a href= "#" onclick=submitLogOutForm()>Log out</a>
-				</form>
-			#else
-				<a href="/login">Login</a>
-			#end
-			<a href="#">About</a>
-			<a href="#">Contact</a>
+			<div class="overlay-content-row">
+				<img src="/statistics.png">
+				<a href="#">Dashboard</a>
+			</div>
+			<div class="overlay-content-row">
+				<img src="/statistics.png">
+				<a href="#">Bills</a>
+				<i class="fa fa-angle-left" aria-hidden="true"></i>
+			</div>
+			<div class="overlay-content-subrow-container">
+				<div class="overlay-content-row overlay-subrow">
+					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+					<a href="#">My Bills</a>
+				</div>
+				<div class="overlay-content-row overlay-subrow">
+					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+					<a href="#">Timeline</a>
+				</div>
+			</div>
+			<div class="overlay-content-row">
+				<img src="/statistics.png">
+				<a href="#">Reports</a>
+				<i class="fa fa-angle-left" aria-hidden="true"></i>
+			</div>
+			<div class="overlay-content-subrow-container">
+				<div class="overlay-content-row overlay-subrow">
+					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+					<a href="#">Investments</a>
+				</div>
+				<div class="overlay-content-row overlay-subrow">
+					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+					<a href="#">Profit&Loss</a>
+				</div>
+				<div class="overlay-content-row overlay-subrow">
+					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+					<a href="#">Amortization</a>
+				</div>
+			</div>
+			<div class="overlay-content-row">
+				<img src="/statistics.png">
+				<a href="#">Upload bills</a>
+			</div>
+			<div class="overlay-content-row">
+				<img src="/statistics.png">
+				<a href="#">Statistics</a>
+				<i class="fa fa-angle-left" aria-hidden="true"></i>
+			</div>
 		</div>
 	</div>
 
@@ -289,11 +362,28 @@
 
 
 <script>
+
+	var sideMenu=document.getElementById("myNav");
+	var sideMenuOpened=false;
+	var menuButton = document.getElementById("menuBtn");
+
+	function navHandler(){
+		if (!sideMenuOpened) {
+			sideMenuOpened=true;
+			menuButton.src= "/closeMenu.png"
+			openNav();
+		} else {
+			sideMenuOpened=false;
+			menuButton.src= "/openMenu.png"
+			closeNav()
+		}
+	}
+
 	function openNav() {
 		if (innerWidth<650){
-			document.getElementById("myNav").style.width = "100%";
+			sideMenu.style.width = "100%";
 		} else{
-			document.getElementById("myNav").style.width = "250px";
+			sideMenu.style.width = "250px";
 			document.getElementsByClassName("main")[0].style.marginLeft = "250px";
 			document.getElementsByClassName("main")[1].style.marginLeft = "250px";
 		}
@@ -301,7 +391,7 @@
 	}
 
 	function closeNav() {
-		document.getElementById("myNav").style.width = "0";
+		sideMenu.style.width = "0";
 		document.getElementsByClassName("main")[0].style.marginLeft = 0;
 		document.getElementsByClassName("main")[1].style.marginLeft = 0;
 	}

@@ -400,7 +400,7 @@
     <script>
         // Cuando se abre el menu lateral, se cambia a static la position del leftbox
         $(document).ready(function(){
-            $('#openMenuBtn').on('click',function() {
+            $('#menuBtn').on('click',function() {
                 document.getElementsByClassName("leftbox")[0].classList.add("static");
             });
         });
