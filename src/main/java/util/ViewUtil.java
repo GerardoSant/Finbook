@@ -1,5 +1,6 @@
 package util;
 
+import User.UserDao;
 import org.apache.velocity.app.VelocityEngine;
 import org.eclipse.jetty.http.HttpStatus;
 import spark.ModelAndView;
@@ -20,6 +21,7 @@ public class ViewUtil {
         model.put("lan", getSessionLocale(request));
         model.put("msg", new MessageBundle(getSessionLocale(request)));
         model.put("currentUser", getSessionCurrentUser(request));
+        if(getSessionCurrentUser(request)!=null) model.put("businessName", new UserDao().getUserName(getSessionCurrentUser(request)));
         return strictVelocityEngine().render(new ModelAndView(model, templatePath));
     }
 
