@@ -144,6 +144,7 @@
 
 	.popover-wrapper{
 		position:relative;
+		cursor:pointer;
 	}
 
 	.popover-content{
@@ -164,6 +165,7 @@
 		visibility:visible;
 	}
 	
+
 	.user-popover{
 		visibility:hidden;
 	}
@@ -226,7 +228,7 @@
 						<p class="popover-message">Antendu Networks</p>
 					</div>
 					<div style="margin-top:10%">
-						<div class="lan-popover-title">
+						<div id="lanOpener">
 							<button class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspLanguage</button>
 						</div>
 						<br>
@@ -242,7 +244,7 @@
 						<button class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspEnglish</button>
 						<br>
 						<br>
-						<button class="butn" style="width:121px"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbspSpanish</button>
+						<button class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspSpanish</button>
 					</div>
 				</div>
 
