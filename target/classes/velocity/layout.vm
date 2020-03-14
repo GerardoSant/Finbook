@@ -147,6 +147,10 @@
 		cursor:pointer;
 	}
 
+	#userIcon:hover{
+		transform: scale(1.10);
+	}
+
 	.popover-content{
 		padding:15px;
 		z-index:2;
@@ -158,22 +162,12 @@
 		border: 2px groove darkgrey;
 		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
 		border-radius:5px;
+		visibility:hidden;
 
 	}
 
-	.popover-wrapper:hover .user-popover{
-		visibility:visible;
-	}
+
 	
-
-	.user-popover{
-		visibility:hidden;
-	}
-
-	.lan-popover{
-		visibility:hidden;
-	}
-
 
 
 	.butn {
@@ -198,7 +192,7 @@
 	<link rel="shortcut icon" href="/favicon28.png" type="image/x-icon">
 </head>
 
-<header id="main" class="xd">
+<header id="main">
 	<nav class="navbar navbar-expand-sm">
 
 		<a class="nav-link menuOpener" ><img src="/menu.png" alt="logo" style="height:20px" id="openMenuBtn" onclick="openNav()"></a>
@@ -215,75 +209,54 @@
 		#end
 
 		<span>FinBook</span>
+		#if($currentUser)
+		#end
 		<ul class="navbar-nav ml-auto">
 			<div class="popover-wrapper">
-				<div class="popover-title">
+				<div class="popover-title" id="userIcon">
 					<li class="nav-item">
 						<a><i class="fa fa-user-circle fa-2x" aria-hidden="true" ></i></a>
 					</li>
 				</div>
-				<div class="popover-content user-popover">
+				<div class="popover-content" id="userPanel">
 					<div style="border-bottom: 1px solid darkgrey">
 						<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
 						<p class="popover-message">Antendu Networks</p>
 					</div>
 					<div style="margin-top:10%">
-						<div id="lanOpener">
-							<button class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspLanguage</button>
+						<div>
+							<button id="languageIcon" class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspLanguage</button>
 						</div>
 						<br>
-						<button class="butn" style="width:121px"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbspLog out</button>
+						<form id="logOutForm" action="/logout" method="post" style="display:none"></form>
+						<button onclick="submitLogOutForm()" class="butn" style="width:121px"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbspLog out</button>
 					</div>
 				</div>
-				<div class="popover-content lan-popover">
+				<div class="popover-content" id="languagePanel">
 					<div style="border-bottom: 1px solid darkgrey">
 						<i class="fa fa-language fa-2x" aria-hidden="true"></i>
 						<p class="popover-message">Select language</p>
 					</div>
 					<div style="margin-top:10%">
-						<button class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspEnglish</button>
-						<br>
-						<br>
-						<button class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspSpanish</button>
+						<form id="esLanguageForm" style="display:none"><input name="locale" value="es"></form>
+						<form id="enLanguageForm" style="display:none"><input name="locale" value="en"></form>
+							<button name="locale" value="es" onclick="submitLanguageForm('en')" class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspEnglish</button>
+							<br>
+							<br>
+							<button name="locale" value="es" onclick="submitLanguageForm('es')" class="butn" style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspSpanish</button>
 					</div>
 				</div>
 
 
 			</div>
 		</ul>
-
-
-		<!-- Links -->
-
-		<!--<ul class="navbar-nav ml-auto">
-			Dropdown
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-					#if($lan== "en")
-						<img src="/engLan.png" alt="logo" style="height:30px ">
-					#else
-						<img src="/spaLan.png" alt="logo" style="height:30px ">
-					#end
-				</a>
-				<div class="dropdown-menu" style="overflow-x:hidden">
-					<form>
-						#if($lan== "en")
-							<button class="dropdown-item" name="locale" value="es"><img src="/spaLan.png" alt="logo" style="height:20px "></button>
-						#else
-							<button class="dropdown-item" name="locale" value="en"><img src="/engLan.png" alt="logo" style="height:20px "></button>
-						#end
-					</form>
-				</div>
-			</li>
-		</ul>
-		-->
-
 	</nav>
+
 	<div id="myNav" class="overlay">
 		<a href="javascript:void(0)" id="closeMenuBtn" class="closebtn" onclick="closeNav()">&times;</a>
 		<div class="overlay-content">
 			#if($currentUser)
-				<form action="/logout" method="post" id="logOutForm">
+				<form action="/logout" method="post" id="xd">
 					<a href= "#" onclick=submitLogOutForm()>Log out</a>
 				</form>
 			#else
@@ -293,7 +266,12 @@
 			<a href="#">Contact</a>
 		</div>
 	</div>
+
+
+
 </header>
+
+
 
 <script>
 	function openNav() {
@@ -305,21 +283,60 @@
 			document.getElementsByClassName("main")[1].style.marginLeft = "250px";
 		}
 
-		//document.getElementById("myNav").style.width = "100%";
 	}
 
 	function closeNav() {
 		document.getElementById("myNav").style.width = "0";
 		document.getElementsByClassName("main")[0].style.marginLeft = 0;
 		document.getElementsByClassName("main")[1].style.marginLeft = 0;
-		//document.getElementById("myNav").style.width = "0%";
 	}
+
+
+
+
+</script>
+
+<script>
+
+	var userPanel =$("#userPanel");
+	var userIcon= $("#userIcon");
+	var languageIcon= $("#languageIcon");
+	var languagePanel=$("#languagePanel");
+	var panel = $(".popover-content");
+
+	userIcon.click(function() {
+		userPanel.css("visibility", "visible");
+		return false;
+	});
+
+	languageIcon.click(function() {
+		userPanel.css("visibility", "hidden");
+		languagePanel.css("visibility", "visible");
+		return false;
+	});
+
+
+	// When any place of the document is clicked, both panels are hidden.
+	$(document).click(function() {
+		userPanel.css("visibility","hidden");
+		languagePanel.css("visibility","hidden");
+	});
+
+	// When clicking inside any of the panels, panels won't hide
+
+	panel.click(function(){
+		return false;
+	})
 
 	function submitLogOutForm(){
 		document.getElementById("logOutForm").submit();
+
 	}
 
-
+	function submitLanguageForm(language){
+		if (language=='es') document.getElementById("esLanguageForm").submit();
+		if (language=='en') document.getElementById("enLanguageForm").submit();
+	}
 </script>
 
 
