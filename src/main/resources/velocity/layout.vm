@@ -205,7 +205,7 @@
 				<img src="/favicon28.png" alt="logo" style="height:30px ">
 			</a>
 		#else
-			<a class="navbar-brand" href="/index/">
+			<a class="navbar-brand" href="/login">
 				<img src="/favicon28.png" alt="logo" style="height:30px ">
 			</a>
 		#end
