@@ -3,6 +3,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -90,10 +91,10 @@
 		width: 0px;
 		position: fixed;
 		z-index: 2;
+		color: white;
 		top: 0;
 		left: 0;
-		background-color: rgb(0,0,0);
-		background-color: rgba(0,0,0, 0.9);
+		background-color: rgb(19,30,41);
 		overflow-x: hidden;
 		transition: 0.5s;
 	}
@@ -101,7 +102,6 @@
 		height:57px;
 		border-bottom: 0.5px solid darkgrey;
 		font-size:36px;
-		color: #818181;
 		text-align: center
 	}
 
@@ -114,6 +114,15 @@
 
 	.overlay-content-row{
 		padding: 8px 15px;
+		color:rgb(88,96,103);
+		margin-left:2.5px;
+		margin-right:2.5px;
+		transition:0.3s;
+	}
+
+	.overlay-content-row-selected{
+		background-color: rgb(47,56,66);
+		color:rgb(238,239,240);
 	}
 
 	.overlay-content-row img{
@@ -124,20 +133,25 @@
 
 	.overlay-content-row a{
 		font-size:26px;
-		color:#818181;
 		text-decoration: none;
 		padding-left:15px;
-		padding-bottom: 5px;
-		transition:0.3s;
+		color:inherit;
 		display: inline-block;
 		vertical-align: middle;
 	}
 	.overlay-content-row i{
-		padding-top:5px;
-		color:#818181;
 		font-size:26px;
+		padding-top:5px;
 		display: inline-block;
 		vertical-align: middle;
+	}
+
+	.lefticon{
+		display:inline-block;
+		width:25px;
+	}
+
+	.righticon{
 		float:right;
 	}
 
@@ -145,14 +159,19 @@
 		display:none;
 	}
 
+
+
 	.overlay-subrow i{
 		padding-top:12px; padding-left: 15px;
 		font-size:15px;
 		float:left;
-		;
 	}
 
-	.overlay a:hover, .overlay a:focus {
+	.overlay-subrow-selected{
+		color:rgb(238,239,240);
+	}
+
+	.overlay-content-row:hover{
 		color: #f1f1f1;
 	}
 
@@ -310,52 +329,53 @@
 			Menu
 		</div>
 		<div class="overlay-content">
-			<div class="overlay-content-row">
-				<img src="/statistics.png">
-				<a href="#">Dashboard</a>
+			<div class="overlay-content-row" id="dashboardNavRow">
+				<i class="fa fa-th lefticon" aria-hidden="true"></i>
+				<a href="/dashboard">Dashboard</a>
+
 			</div>
-			<div class="overlay-content-row subrow-opener" id="bills">
-				<img src="/statistics.png">
+			<div class="overlay-content-row subrow-opener" id="billsNavRow">
+				<i class="fa fa-file-alt lefticon"></i>
 				<a href="#">Bills</a>
-				<i class="fa fa-angle-left" aria-hidden="true"></i>
+				<i class="fa fa-angle-left righticon" aria-hidden="true"></i>
 			</div>
-			<div class="overlay-content-subrow-container hidden bills">
-				<div class="overlay-content-row overlay-subrow">
-					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-					<a href="#">My Bills</a>
-				</div>
-				<div class="overlay-content-row overlay-subrow">
-					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-					<a href="#">Timeline</a>
-				</div>
-			</div>
-			<div class="overlay-content-row subrow-opener" id="reports">
-				<img src="/statistics.png">
+					<div class="overlay-content-subrow-container hidden billsNavRow">
+						<div class="overlay-content-row overlay-subrow" id="myBillsSubRow">
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							<a href="/bills">My Bills</a>
+						</div>
+						<div class="overlay-content-row overlay-subrow" id="timelineSubRow">
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							<a href="/timeline">Timeline</a>
+						</div>
+					</div>
+			<div class="overlay-content-row subrow-opener" id="reportsNavRow">
+				<i class="fas fa-file-contract lefticon" aria-hidden="true"></i>
 				<a href="#">Reports</a>
-				<i class="fa fa-angle-left" aria-hidden="true"></i>
+				<i class="fa fa-angle-left righticon" aria-hidden="true"></i>
 			</div>
-			<div class="overlay-content-subrow-container hidden reports">
-				<div class="overlay-content-row overlay-subrow">
-					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-					<a href="#">Investments</a>
-				</div>
-				<div class="overlay-content-row overlay-subrow">
-					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-					<a href="#">Profit&Loss</a>
-				</div>
-				<div class="overlay-content-row overlay-subrow">
-					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-					<a href="#">Amortization</a>
-				</div>
+					<div class="overlay-content-subrow-container hidden reportsNavRow">
+						<div class="overlay-content-row overlay-subrow" id="investmentsSubRow">
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							<a href="/reports/investments">Investments</a>
+						</div>
+						<div class="overlay-content-row overlay-subrow" id="profitSubRow">
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							<a href="/reports/profitandlosses">Profit&Loss</a>
+						</div>
+						<div class="overlay-content-row overlay-subrow" id="amortizationSubRow">
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+							<a href="/reports/amortization">Amortization</a>
+						</div>
+					</div>
+			<div class="overlay-content-row" id="uploadNavRow">
+				<i class="fa fa-upload lefticon" aria-hidden="true"></i>
+				<a href="/index/">Upload bills</a>
 			</div>
-			<div class="overlay-content-row">
-				<img src="/statistics.png">
-				<a href="#">Upload bills</a>
-			</div>
-			<div class="overlay-content-row subrow-opener" id="statistics">
-				<img src="/statistics.png">
+			<div class="overlay-content-row subrow-opener" id="statisticsNavRow" >
+				<i class="fa fa-chart-line lefticon" aria-hidden="true"></i>
 				<a href="#">Statistics</a>
-				<i class="fa fa-angle-left" aria-hidden="true"></i>
+				<i class="fa fa-angle-left righticon" aria-hidden="true"></i>
 			</div>
 			<div class="overlay-content-subrow-container hidden reports">
 			</div>
@@ -367,13 +387,54 @@
 </header>
 
 
+
 <script>
-	//Script for opening subrows in side menu
+	//Script to know display where you are on side menu
+	$(document).ready(function($){
+		console.log(window.location.pathname);
+		if(window.location.pathname=="/dashboard") $('#dashboardNavRow').toggleClass('overlay-content-row-selected');
+		if(window.location.pathname=="/bills"){
+			$('#billsNavRow').toggleClass('overlay-content-row-selected');
+			$('#billsNavRow').find('.righticon').toggleClass('fa-angle-left');
+			$('#billsNavRow').find('.righticon').toggleClass('fa-angle-down');
+			var itemsToToggleClass = "." + $('#billsNavRow').attr("id");
+			$(itemsToToggleClass).toggleClass("hidden");
+			$('#myBillsSubRow').toggleClass('overlay-subrow-selected');
+		}
+		if(window.location.pathname=="/timeline"){
+			$('#billsNavRow').toggleClass('overlay-content-row-selected');
+			$('#billsNavRow').find('.righticon').toggleClass('fa-angle-left');
+			$('#billsNavRow').find('.righticon').toggleClass('fa-angle-down');
+			var itemsToToggleClass = "." + $('#billsNavRow').attr("id");
+			$(itemsToToggleClass).toggleClass("hidden");
+			$('#timelineSubRow').toggleClass('overlay-subrow-selected');
+		}
+		if(window.location.pathname.indexOf("/reports")!=-1) {
+			$('#reportsNavRow').toggleClass('overlay-content-row-selected');
+			$('#reportsNavRow').find('.righticon').toggleClass('fa-angle-left');
+			$('#reportsNavRow').find('.righticon').toggleClass('fa-angle-down');
+			var itemsToToggleClass = "." + $('#reportsNavRow').attr("id");
+			$(itemsToToggleClass).toggleClass("hidden");
+			if(window.location.pathname.indexOf("investments")!=-1) $('#investmentsSubRow').toggleClass('overlay-subrow-selected');
+			if(window.location.pathname.indexOf("profitandlosses")!=-1) $('#profitSubRow').toggleClass('overlay-subrow-selected');
+			if(window.location.pathname.indexOf("amortization")!=-1) $('#amortizationSubRow').toggleClass('overlay-subrow-selected');
+		}
+		if(window.location.pathname=="/index/") $('#uploadNavRow').toggleClass('overlay-content-row-selected');
+		if(window.location.pathname=="/exampleshiny") $('#statisticsNavRow').toggleClass('overlay-content-row-selected');
+
+	})
+
+
+</script>
+
+<script>
+	//Script for opening/closing subrows in side menu
 
 	$(document).ready(function($) {
 		$('.subrow-opener').on('click', function() {
 			var itemsToToggleClass = "." + $(this).attr("id");
-			$(this).find('i').toggleClass('fa-angle-down');
+			$(this).find('.righticon').toggleClass('fa-angle-left');
+			$(this).find('.righticon').toggleClass('fa-angle-down');
 			$(itemsToToggleClass).toggleClass("hidden");
 		});
 	});
