@@ -141,10 +141,15 @@
 		float:right;
 	}
 
+	.hidden {
+		display:none;
+	}
+
 	.overlay-subrow i{
 		padding-top:12px; padding-left: 15px;
 		font-size:15px;
 		float:left;
+		;
 	}
 
 	.overlay a:hover, .overlay a:focus {
@@ -309,12 +314,12 @@
 				<img src="/statistics.png">
 				<a href="#">Dashboard</a>
 			</div>
-			<div class="overlay-content-row">
+			<div class="overlay-content-row subrow-opener" id="bills">
 				<img src="/statistics.png">
 				<a href="#">Bills</a>
 				<i class="fa fa-angle-left" aria-hidden="true"></i>
 			</div>
-			<div class="overlay-content-subrow-container">
+			<div class="overlay-content-subrow-container hidden bills">
 				<div class="overlay-content-row overlay-subrow">
 					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 					<a href="#">My Bills</a>
@@ -324,12 +329,12 @@
 					<a href="#">Timeline</a>
 				</div>
 			</div>
-			<div class="overlay-content-row">
+			<div class="overlay-content-row subrow-opener" id="reports">
 				<img src="/statistics.png">
 				<a href="#">Reports</a>
 				<i class="fa fa-angle-left" aria-hidden="true"></i>
 			</div>
-			<div class="overlay-content-subrow-container">
+			<div class="overlay-content-subrow-container hidden reports">
 				<div class="overlay-content-row overlay-subrow">
 					<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 					<a href="#">Investments</a>
@@ -347,10 +352,12 @@
 				<img src="/statistics.png">
 				<a href="#">Upload bills</a>
 			</div>
-			<div class="overlay-content-row">
+			<div class="overlay-content-row subrow-opener" id="statistics">
 				<img src="/statistics.png">
 				<a href="#">Statistics</a>
 				<i class="fa fa-angle-left" aria-hidden="true"></i>
+			</div>
+			<div class="overlay-content-subrow-container hidden reports">
 			</div>
 		</div>
 	</div>
@@ -360,8 +367,22 @@
 </header>
 
 
+<script>
+	//Script for opening subrows in side menu
+
+	$(document).ready(function($) {
+		$('.subrow-opener').on('click', function() {
+			var itemsToToggleClass = "." + $(this).attr("id");
+			$(this).find('i').toggleClass('fa-angle-down');
+			$(itemsToToggleClass).toggleClass("hidden");
+		});
+	});
+
+
+</script>
 
 <script>
+	//Script for opening and closing side menu
 
 	var sideMenu=document.getElementById("myNav");
 	var sideMenuOpened=false;
