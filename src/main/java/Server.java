@@ -2,7 +2,6 @@ import AS.FrontServlet;
 import Bills.BillsController;
 import Reports.ReportController;
 import Shiny.ShinyController;
-import WebSocket.EchoWebSocket;
 import WebSocket.WebSocketController;
 import index.IndexController;
 import upload.UploadController;
@@ -54,6 +53,7 @@ public class Server {
         get(Path.Web.MAIN_INDEX, IndexController.serveMainIndexPage);
         get(Path.Web.BILLS_INDEX, IndexController.serveBillsIndexPage);
         get(Path.Web.REPORTS_INDEX, IndexController.serveReportsIndexPage);
+        get(Path.Web.DASHBOARD, DashboardController.serveDashboard);
 
 
         post(Path.Web.UPLOAD, UploadController.handleUploadPost);

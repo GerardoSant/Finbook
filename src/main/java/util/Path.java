@@ -23,6 +23,7 @@ public class Path {
         @Getter public static final String REPORT_COMPARE_PROFITANDLOSSES = "/reports/compare/profitandlosses";
         @Getter public static final String REPORT_COMPARE_INVESTMENTS = "/reports/compare/investments";
         @Getter public static final String REPORT_AMORTIZATION = "/reports/amortization";
+        public static final String DASHBOARD = "/dashboard";
     }
 
     public static class Template {
@@ -43,6 +44,6 @@ public class Path {
         public static final String COMPARE_PROFITANDLOSSES_REPORT = "velocity/compareProfitAndLossesReport.vm";
         public static final String COMPARE_INVESTMENTS_REPORT = "velocity/compareInvestmentsReport.vm";
         public static final String WEBSOCKET_TEST= "velocity/webSocketTest.vm";
-
+        public static final String DASHBOARD = "velocity/dashboard.vm";
     }
 }
