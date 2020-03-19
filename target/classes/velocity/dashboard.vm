@@ -2,6 +2,11 @@
 #mainLayout()
 
 <style>
+
+    footer{
+        display:none
+    }
+
     .box{
         margin-bottom: 2%;
         margin-right:1%;
@@ -43,7 +48,7 @@
         font-size:85%;
     }
 
-    .minibox-container{
+    .boxrows-container{
         margin-left:1%;
         margin-right:1%;
     }
@@ -73,9 +78,17 @@
     }
 
     @media screen and (max-width: 1400px){
+        .boxrows-container .histogrambox{
+            width:98%;
+        }
+        .boxrows-container .top5-box{
+            width:98%;
+        }
+
         .minibox{
             width:48%;
         }
+
     }
 
     @media screen and (max-width: 800px){
@@ -92,12 +105,35 @@
         padding: 15px 15px 30px;
     }
 
+    .top5-box{
+        width:36%;
+        height:500px;
+        background: rgb(247,250,252);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+        padding: 15px 15px 30px;
+    }
+
+
+    #top5barchart{
+        height:40%;
+        border-bottom: 1px solid lightgrey;
+    }
+
+    #top5table{
+        height:60%;
+    }
+
+    #billTypeChart{
+        width:95%;
+        height:95%
+    }
+
 
 </style>
 
 <html>
 	<body class="main">
-        <div class="minibox-container">
+        <div class="boxrows-container">
             <div class="minibox box greenbox">
                 <i class="fa fa-chart-line"></i>
                 <div class="minibox-text">
@@ -127,44 +163,213 @@
                 </div>
             </div>
         </div>
-        <div class="minibox-container">
+        <div class="boxrows-container">
             <div class="histogrambox box">
                 <div class="contentTitle">
                     <h6>Invoice Distribution</h6>
                 </div>
-                <div style="height:90%; width:90%; background-color: grey" id="barchart_material"></div>
+                <div id="billTypeChart"></div>
+            </div>
+            <div class="top5-box box">
+                <div class="contentTitle">
+                    <h6>Top 5 Sales</h6>
+                </div>
+                <div id="top5barchart"></div>
+                <div id="top5table">
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <td>Mesas</td>
+                            <td>12 May 2019</td>
+                            <td>$485</td>
+                        </tr>
+                        <tr>
+                            <td>Armario IK</td>
+                            <td>13 May 2019</td>
+                            <td>$465</td>
+                        </tr>
+                        <tr>
+                            <td>Lavadora CA</td>
+                            <td>11 May 2019</td>
+                            <td>$382</td>
+                        </tr>
+                        <tr>
+                            <td>Lavadora CF</td>
+                            <td>14 May 2019</td>
+                            <td>$375</td>
+                        </tr>
+                        <tr>
+                            <td>Nevera XL</td>
+                            <td>11 May 2019</td>
+                            <td>$312</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
+
+
+
    </body>
 </html>
 
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+
+
     google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawChart);
 
+    var data;
+    var options;
+    var chart;
+
     function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Type', 'Amount'],
-            ['Incomes', 29765],
-            ['Expenses', 18921],
-            ['Investments', 8765],
-            ['Salaries', 19765]
+        data = google.visualization.arrayToDataTable([
+            ['Bill type', 'Sales', 'Purchases', 'Investments', 'Salaries'],
+            ['Bill type', 29765, 18921,8765,19765]
         ]);
 
-        var options = {
+        options = {
             chart: {
-                title: 'Company Performance',
-                subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                title: 'Company Invoice distribution',
+                subtitle: 'Incomes, Expenses, Investments and Salaries: 2014-2017',
             },
             bars: 'horizontal', // Required for Material Bar Charts.
-            backgroundColor: 'rgb(247,250,252)'
+            backgroundColor: 'rgb(247,250,252)',
+            colors: ['rgb(23,164,111)','rgb(235,107,107)', 'rgb(121,202,207)', 'rgb(222,160,52)'],
+            axes: {
+                y: {
+                    0: {label: ''} // Top x-axis.
+                },
+                x: {
+                    0: {label: 'Amount ($)'}
+                }
+            }
         };
 
-        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+        chart = new google.charts.Bar(document.getElementById('billTypeChart'));
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
     }
+
+
+
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    var data1;
+    var options1;
+    var chart1;
+
+    function drawChart() {
+        data1 = google.visualization.arrayToDataTable([
+            ['Concept', 'Price'],
+            ['Mesas', 485],
+            ['Armario IK', 465],
+            ['Lavadora CA', 382],
+            ['Lavadora CF', 375],
+            ['Nevera XL', 312]
+        ]);
+
+        options1 = {
+            bars: 'vertical', // Required for Material Bar Charts.
+            backgroundColor: 'rgb(247,250,252)',
+            colors: ['rgb(23,164,111)','rgb(235,107,107)', 'rgb(121,202,207)', 'rgb(222,160,52)'],
+            axes: {
+                y: {
+                    0: {label: ''} // Top x-axis.
+                },
+                x: {
+                    0: {label: 'Amount ($)'}
+                }
+            }
+        };
+
+        chart1 = new google.charts.Bar(document.getElementById('top5barchart'));
+
+        chart1.draw(data1, google.charts.Bar.convertOptions(options1));
+    }
+
+
+
+</script>
+
+<script>
+    //Resizign de charts
+
+    window.onload = resize;
+    window.onresize = resize;
+
+    document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function(event){
+        if(event.propertyName !== 'width') return;
+        resize();
+    });
+
+
+    function resize () {
+        chart =new google.charts.Bar(document.getElementById('billTypeChart'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+        chart1 =new google.charts.Bar(document.getElementById('top5barchart'));
+        chart1.draw(data1, google.charts.Bar.convertOptions(options1));
+    }
+
+
+</script>
+
+
+
+<script>
+    /*
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    var data;
+    var options;
+    var chart;
+
+    function drawChart() {
+        data = google.visualization.arrayToDataTable([
+            ['Type', 'Amount', { role: 'style' }],
+            ['Incomes', 29765, 'rgb(23,164,111)'],
+            ['Expenses', 18921, 'rgb(235,107,107)'],
+            ['Investments', 8765, 'rgb(121,202,207)'],
+            ['Salaries', 19765, 'rgb(222,160,52)']
+        ]);
+
+        options = {
+            title: 'Company Invoice distribution',
+            bars: 'horizontal', // Required for Material Bar Charts.
+            backgroundColor: 'rgb(247,250,252)',
+            legend: { position: "none" }
+        };
+
+        chart = new google.visualization.BarChart(document.getElementById('billTypeChart'));
+
+        chart.draw(data, options);
+    }
+    function resize () {
+        chart = new google.visualization.BarChart(document.getElementById('billTypeChart'));
+        chart.draw(data, options);
+    }
+
+    window.onload = resize;
+    window.onresize = resize;
+
+    document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function(event){
+        if(event.propertyName !== 'width') return;
+        resize();
+    });
+
+    */
 </script>
 	
