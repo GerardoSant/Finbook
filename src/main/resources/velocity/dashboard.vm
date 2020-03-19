@@ -51,6 +51,8 @@
     .boxrows-container{
         margin-left:1%;
         margin-right:1%;
+
+
     }
 
     .greenbox{
@@ -58,9 +60,19 @@
         background: linear-gradient(90deg, rgba(20,107,26,1) 3%, rgba(37,153,10,1) 62%, rgba(23,164,111,1) 100%);
     }
 
+    .lightgreenbox{
+        background: rgb(23,164,111);
+        background: linear-gradient(90deg, rgba(23,164,111,1) 25%, rgba(42,191,135,1) 54%, rgba(32,210,143,1) 85%);
+    }
+
     .redbox{
         background: rgb(221,6,6);
         background: linear-gradient(90deg, rgba(221,6,6,1) 43%, rgba(250,0,0,1) 92%, rgba(235,107,107,1) 100%);
+    }
+
+    .lightredbox{
+        background: rgb(240,77,77);
+        background: linear-gradient(90deg, rgba(240,77,77,1) 54%, rgba(237,92,92,1) 107%, rgba(235,109,109,1) 235%);
     }
 
     .bluebox{
@@ -78,10 +90,10 @@
     }
 
     @media screen and (max-width: 1400px){
-        .boxrows-container .histogrambox{
+        .boxrows-container .bigbox{
             width:98%;
         }
-        .boxrows-container .top5-box{
+        .boxrows-container .mediumbox{
             width:98%;
         }
 
@@ -97,7 +109,13 @@
         }
     }
 
-    .histogrambox{
+    .chart{
+        width:95%;
+        height:95%;
+        padding:15px;
+    }
+
+    .bigbox{
         width:60%;
         height:500px;
         background: rgb(247,250,252);
@@ -105,7 +123,7 @@
         padding: 15px 15px 30px;
     }
 
-    .top5-box{
+    .mediumbox{
         width:36%;
         height:500px;
         background: rgb(247,250,252);
@@ -123,54 +141,53 @@
         height:60%;
     }
 
-    #billTypeChart{
-        width:95%;
-        height:95%
-    }
+
 
 
 </style>
 
 <html>
 	<body class="main">
+
         <div class="boxrows-container">
-            <div class="minibox box greenbox">
+            <div class="minibox box greenbox" style="width:31.33%">
                 <i class="fa fa-chart-line"></i>
                 <div class="minibox-text">
-                    <h3>$29,765</h3>
-                    <p>Total incomes</p>
+                    <h3>$9,765</h3>
+                    <p>Total profit</p>
                 </div>
             </div>
-            <div class="minibox box redbox">
+            <div class="minibox box lightgreenbox" style="width:31.33%">
                 <i class="fa fa-chart-bar"></i>
                 <div class="minibox-text">
                     <h3>$18,921</h3>
-                    <p>Total expenses</p>
+                    <p>Total incomes</p>
                 </div>
             </div>
-            <div class="minibox box bluebox">
+            <div class="minibox box lightredbox" style="width:31.33%">
                 <i class="fa fa-building"></i>
                 <div class="minibox-text">
                     <h3>$8,765</h3>
-                    <p>Total investments</p>
-                </div>
-            </div>
-            <div class="minibox box orangebox">
-                <i class="fa fa-users"></i>
-                <div class="minibox-text">
-                    <h3>$19,765</h3>
-                    <p>Total salaries</p>
+                    <p>Total expenses</p>
                 </div>
             </div>
         </div>
+
         <div class="boxrows-container">
-            <div class="histogrambox box">
+            <div class="bigbox box">
                 <div class="contentTitle">
-                    <h6>Invoice Distribution</h6>
+                    <h6>Profit and Loss</h6>
                 </div>
-                <div id="billTypeChart"></div>
+                <div class="chart">
+                    <div style="float:left; width:50%; height:100%; border-right: 1px solid lightgray; ">
+                        <div class="chart" id="profitandlosschart"></div>
+                    </div>
+                    <div  style="float:left; width:50%; height:100%;">
+                        <div style="margin-left:18%" class="chart" id="profitandlosspiechart"></div>
+                    </div>
+                </div>
             </div>
-            <div class="top5-box box">
+            <div class="mediumbox box">
                 <div class="contentTitle">
                     <h6>Top 5 Sales</h6>
                 </div>
@@ -210,9 +227,61 @@
         </div>
 
 
+        <div class="boxrows-container">
+            <div class="minibox box lightgreenbox">
+                <i class="fa fa-chart-line"></i>
+                <div class="minibox-text">
+                    <h3>$29,765</h3>
+                    <p>Total sales</p>
+                </div>
+            </div>
+            <div class="minibox box lightredbox">
+                <i class="fa fa-chart-bar"></i>
+                <div class="minibox-text">
+                    <h3>$18,921</h3>
+                    <p>Total purchases & external services</p>
+                </div>
+            </div>
+            <div class="minibox box bluebox">
+                <i class="fa fa-building"></i>
+                <div class="minibox-text">
+                    <h3>$8,765</h3>
+                    <p>Total investments</p>
+                </div>
+            </div>
+            <div class="minibox box orangebox">
+                <i class="fa fa-users"></i>
+                <div class="minibox-text">
+                    <h3>$19,765</h3>
+                    <p>Total salaries</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="boxrows-container">
+            <div class="bigbox box">
+                <div class="contentTitle">
+                    <h6>Invoice Distribution</h6>
+                </div>
+                <div id="billTypeChart" class="chart"></div>
+            </div>
+            <div class="mediumbox box">
+                <div class="contentTitle">
+                    <h6>Amortization</h6>
+                </div>
+                <div id="amortizationBarChart" class="chart"></div>
+            </div>
+        </div>
 
 
-   </body>
+
+
+
+
+
+
+
+    </body>
 </html>
 
 
@@ -223,17 +292,17 @@
     google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawChart);
 
-    var data;
-    var options;
-    var chart;
+    var invoiceDistributionBarChartData;
+    var invoiceDistributionBarChartOptions;
+    var invoiceDistributionBarChart;
 
     function drawChart() {
-        data = google.visualization.arrayToDataTable([
+        invoiceDistributionBarChartData = google.visualization.arrayToDataTable([
             ['Bill type', 'Sales', 'Purchases', 'Investments', 'Salaries'],
             ['Bill type', 29765, 18921,8765,19765]
         ]);
 
-        options = {
+        invoiceDistributionBarChartOptions = {
             chart: {
                 title: 'Company Invoice distribution',
                 subtitle: 'Incomes, Expenses, Investments and Salaries: 2014-2017',
@@ -251,9 +320,9 @@
             }
         };
 
-        chart = new google.charts.Bar(document.getElementById('billTypeChart'));
+        invoiceDistributionBarChart = new google.charts.Bar(document.getElementById('billTypeChart'));
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        invoiceDistributionBarChart.draw(invoiceDistributionBarChartData, google.charts.Bar.convertOptions(invoiceDistributionBarChartOptions));
     }
 
 
@@ -267,12 +336,12 @@
     google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawChart);
 
-    var data1;
-    var options1;
-    var chart1;
+    var top5SalesBarChartData;
+    var top5SalesBarChartOptions;
+    var top5SalesBarChart;
 
     function drawChart() {
-        data1 = google.visualization.arrayToDataTable([
+        top5SalesBarChartData = google.visualization.arrayToDataTable([
             ['Concept', 'Price'],
             ['Mesas', 485],
             ['Armario IK', 465],
@@ -281,7 +350,7 @@
             ['Nevera XL', 312]
         ]);
 
-        options1 = {
+        top5SalesBarChartOptions = {
             bars: 'vertical', // Required for Material Bar Charts.
             backgroundColor: 'rgb(247,250,252)',
             colors: ['rgb(23,164,111)','rgb(235,107,107)', 'rgb(121,202,207)', 'rgb(222,160,52)'],
@@ -295,9 +364,9 @@
             }
         };
 
-        chart1 = new google.charts.Bar(document.getElementById('top5barchart'));
+        top5SalesBarChart = new google.charts.Bar(document.getElementById('top5barchart'));
 
-        chart1.draw(data1, google.charts.Bar.convertOptions(options1));
+        top5SalesBarChart.draw(top5SalesBarChartData, google.charts.Bar.convertOptions(top5SalesBarChartOptions));
     }
 
 
@@ -317,10 +386,12 @@
 
 
     function resize () {
-        chart =new google.charts.Bar(document.getElementById('billTypeChart'));
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-        chart1 =new google.charts.Bar(document.getElementById('top5barchart'));
-        chart1.draw(data1, google.charts.Bar.convertOptions(options1));
+
+        invoiceDistributionBarChart.draw(invoiceDistributionBarChartData, google.charts.Bar.convertOptions(invoiceDistributionBarChartOptions));
+        top5SalesBarChart.draw(top5SalesBarChartData, google.charts.Bar.convertOptions(top5SalesBarChartOptions));
+        profitAndLossBarChart.draw(profitAndLossBarChartData, google.charts.Bar.convertOptions(profitAndLossBarChartOptions));
+        profitAndLossPieChart.draw(profitAndLossPieChartData,profitAndLossPieChartOptions);
+        amortizationBarChart.draw(amortizationBarChartData, google.charts.Bar.convertOptions(amortizationBarChartOptions));
     }
 
 
@@ -329,47 +400,128 @@
 
 
 <script>
-    /*
-    google.charts.load('current', {'packages':['corechart']});
+
+
+    google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawChart);
 
-    var data;
-    var options;
-    var chart;
+    var profitAndLossBarChartData;
+    var profitAndLossBarChartOptions;
+    var profitAndLossBarChart;
 
     function drawChart() {
-        data = google.visualization.arrayToDataTable([
-            ['Type', 'Amount', { role: 'style' }],
-            ['Incomes', 29765, 'rgb(23,164,111)'],
-            ['Expenses', 18921, 'rgb(235,107,107)'],
-            ['Investments', 8765, 'rgb(121,202,207)'],
-            ['Salaries', 19765, 'rgb(222,160,52)']
+        profitAndLossBarChartData = google.visualization.arrayToDataTable([
+            ['Type', 'Incomes', 'Expenses'],
+            ['Type', 189765, 122212]
         ]);
 
-        options = {
-            title: 'Company Invoice distribution',
-            bars: 'horizontal', // Required for Material Bar Charts.
+        profitAndLossBarChartOptions = {
+            chart: {
+                title: 'Company Profit and Loss: 2014-2017',
+            },
+            bars: 'vertical', // Required for Material Bar Charts.
             backgroundColor: 'rgb(247,250,252)',
-            legend: { position: "none" }
+            colors: ['rgb(23,164,111)','rgb(235,107,107)'],
+            axes: {
+                y: {
+                    0: {label: ''} // Top x-axis.
+                },
+                x: {
+                    0: {label: 'Amount ($)'}
+                }
+            }
         };
 
-        chart = new google.visualization.BarChart(document.getElementById('billTypeChart'));
+        profitAndLossBarChart = new google.charts.Bar(document.getElementById('profitandlosschart'));
 
-        chart.draw(data, options);
-    }
-    function resize () {
-        chart = new google.visualization.BarChart(document.getElementById('billTypeChart'));
-        chart.draw(data, options);
+        profitAndLossBarChart.draw(profitAndLossBarChartData, google.charts.Bar.convertOptions(profitAndLossBarChartOptions));
     }
 
-    window.onload = resize;
-    window.onresize = resize;
-
-    document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function(event){
-        if(event.propertyName !== 'width') return;
-        resize();
-    });
-
-    */
 </script>
+
+
+
+
+<script type="text/javascript">
+
+    var profitAndLossPieChartData;
+    var profitAndLossPieChartOptions;
+    var profitAndLossPieChart;
+
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        profitAndLossPieChartData = google.visualization.arrayToDataTable([
+            ['Money', 'Amount',],
+            ['Incomes',     189765],
+            ['Expenses',   122212]
+        ]);
+
+
+
+        profitAndLossPieChartOptions = {
+            is3D: true,
+            backgroundColor:'rgb(247,250,252)',
+            slices: {
+                0: { color: 'rgb(23,164,111)' },
+                1: { color: 'rgb(235,107,108)' }
+            }
+        };
+
+
+
+        profitAndLossPieChart = new google.visualization.PieChart(document.getElementById('profitandlosspiechart'));
+        profitAndLossPieChart.draw(profitAndLossPieChartData,profitAndLossPieChartOptions);
+    }
+</script>
+
+
+<script type="text/javascript">
+
+
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    var amortizationBarChartData;
+    var amortizationBarChartOptions;
+    var amortizationBarChart;
+
+    function drawChart() {
+        amortizationBarChartData = google.visualization.arrayToDataTable([
+            ['Concept', 'Amortization'],
+            ['Office', 21.1],
+            ['Models&Tools', 12.2],
+            ['Telephone', 65.72],
+            ['Buildings', 98.12],
+            ['Satellite', 23.23],
+            ['Transport', 44.51],
+            ['Computtional', 12.43],
+            ['Machinery&Others', 43.2],
+
+        ]);
+
+        amortizationBarChartOptions = {
+            bars: 'horizontal', // Required for Material Bar Charts.
+            backgroundColor: 'rgb(247,250,252)',
+            colors: ['rgb(121,202,207)'],
+            axes: {
+                y: {
+                    0: {label: ''} // Top x-axis.
+                },
+                x: {
+                    0: {label: 'Percentage (%)'}
+                }
+            },
+            legend: { position: "none" },
+        };
+
+        amortizationBarChart = new google.charts.Bar(document.getElementById('amortizationBarChart'));
+
+        amortizationBarChart.draw(amortizationBarChartData, google.charts.Bar.convertOptions(amortizationBarChartOptions));
+    }
+
+
+
+</script>
+
 	
