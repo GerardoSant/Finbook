@@ -132,6 +132,10 @@
         .right-chart-container{
             display:none
         }
+
+        #top5table{
+            overflow-y:scroll;
+        }
     }
 
     .chart{
@@ -252,7 +256,7 @@
 
         <div class="boxrows-container">
             <div class="minibox minibox-sm box lightgreenbox">
-                <i class="fa fa-chart-line"></i>
+                <i class="fas fa-hand-holding-usd"></i>
                 <div class="minibox-text">
                     <h3>$number.format("currency",$billsDistribution.getSalesAmount())</h3>
                     <p>Total sales</p>

@@ -8,13 +8,6 @@ import java.util.List;
 
 public class Top5Sales {
 
-    public static void main(String[] args) {
-        List<Bill> billList = new BillsDao("E-5756930").getAllBills();
-        Top5Sales top5Sales = new Top5Sales(billList, "E-5756930");
-        for (Bill bill : top5Sales.getTop5()) {
-            System.out.println(bill.getTotal());
-        }
-    }
 
     private Bill[] top5;
 

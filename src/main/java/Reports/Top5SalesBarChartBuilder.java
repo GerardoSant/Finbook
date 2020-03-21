@@ -14,7 +14,6 @@ public class Top5SalesBarChartBuilder implements BarChartBuilder{
     private void addValues(BarChart barChart, Top5Sales sales) {
         for (Bill bill : sales.getTop5()) {
             barChart.addBar(bill.getConcept(), bill.getTotal());
-            System.out.println(bill);
         }
     }
 }
