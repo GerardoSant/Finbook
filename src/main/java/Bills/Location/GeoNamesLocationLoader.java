@@ -13,7 +13,11 @@ public class GeoNamesLocationLoader implements LocationLoader {
     @Override
     public Location load(int postalCode, String countryCode) {
         String xml =getWebDocument(searchLink(postalCode,countryCode)).html();
-        return getLocationFromXML(xml);
+        try {
+            return getLocationFromXML(xml);
+        } catch(Exception e){
+            return null;
+        }
     }
 
     private Location getLocationFromXML(String xml) {

@@ -115,87 +115,87 @@
                     <tbody>
                     <tr id="buildings" class="opener">
                         <td>Buildings</td>
-                        <td>$report.getBuildingsBase()</td>
+                        <td>$number.format("currency",$report.getBuildingsBase())</td>
                     </tr>
                         #foreach($bill in $report.getBuildings())
                         <tr data-href="$bill.getUUID()" class="hidden buildings bill">
                             <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            <td>$number.format("currency",$bill.getSubtotal())</td>
                         </tr>
                         #end
                     <tr id="furniture" class="opener">
                         <td>Furniture and office equipment</td>
-                        <td>$report.getOfficeEquipmentBase()</td>
+                        <td>$number.format("currency",$report.getOfficeEquipmentBase())</td>
                     </tr>
                         #foreach($bill in $report.getOfficeEquipment())
                         <tr data-href="$bill.getUUID()" class="hidden furniture bill">
                             <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            <td>$number.format("currency",$bill.getSubtotal())</td>
                         </tr>
                         #end
                     <tr id="transport" class="opener">
                         <td>Transport equipment</td>
-                        <td>$report.getTransportEquipmentBase()</td>
+                        <td>$number.format("currency",$report.getTransportEquipmentBase())</td>
                     </tr>
                         #foreach($bill in $report.getTransportEquipment())
                         <tr data-href="$bill.getUUID()" class="hidden transport bill">
                             <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            <td>$number.format("currency",$bill.getSubtotal())</td>
                         </tr>
                         #end
                     <tr id="computational" class="opener">
                         <td>Computational equipment and accesories</td>
-                        <td>$report.getComputationalEquipmentBase()</td>
+                        <td>$number.format("currency",$report.getComputationalEquipmentBase())</td>
                     </tr>
                         #foreach($bill in $report.getComputationalEquipment())
                         <tr data-href="$bill.getUUID()" class="hidden computational bill">
                             <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            <td>$number.format("currency",$bill.getSubtotal())</td>
                         </tr>
                         #end
                     <tr id="models" class="opener">
                         <td>Models and Tools</td>
-                        <td>$report.getModelsAndToolsBase()</td>
+                        <td>$number.format("currency",$report.getModelsAndToolsBase())</td>
                     </tr>
                         #foreach($bill in $report.getModelsAndTools())
                         <tr data-href="$bill.getUUID()" class="hidden models bill">
                             <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            <td>$number.format("currency",$bill.getSubtotal())</td>
                         </tr>
                         #end
                     <tr id="telephone" class="opener">
                         <td>Telephone communications</td>
-                        <td>$report.getTelephoneCommunicationsBase()</td>
+                        <td>$number.format("currency",$report.getTelephoneCommunicationsBase())</td>
                     </tr>
                         #foreach($bill in $report.getTelephoneCommunications())
                         <tr data-href="$bill.getUUID()" class="hidden telephone bill">
                             <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            <td>$number.format("currency",$bill.getSubtotal())</td>
                         </tr>
                         #end
                     <tr id="satellite" class="opener">
                         <td>Satellite communications</td>
-                        <td>$report.getSatelliteCommunicationsBase()</td>
+                        <td>$number.format("currency",$report.getSatelliteCommunicationsBase())</td>
                     </tr>
                         #foreach($bill in $report.getSatelliteCommunications())
                         <tr data-href="$bill.getUUID()" class="hidden satellite bill">
                             <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            <td>$number.format("currency",$bill.getSubtotal())</td>
                         </tr>
                         #end
                     <tr id="other" class="opener">
                         <td>Other machinery and equipment</td>
-                        <td>$report.getOtherMachineryAndEquipmentBase()</td>
+                        <td>$number.format("currency",$report.getOtherMachineryAndEquipmentBase())</td>
                     </tr>
                         #foreach($bill in $report.getOtherMachineryAndEquipment())
                         <tr data-href="$bill.getUUID()" class="hidden other bill">
                             <td><li>$bill.getConcept()</li></td>
-                            <td>$bill.getSubtotal()</td>
+                            <td>$number.format("currency",$bill.getSubtotal())</td>
                         </tr>
                         #end
                     <tr style="border-top:ridge;border-bottom:ridge;background-color: #f7f7f7; font-size:115%">
                         <td><b>All investments</b></td>
-                        <td style="">$report.getBase()</td>
+                        <td style="">$number.format("currency",$report.getBase())</td>
                     </tr>
                     </tbody>
                 </table>

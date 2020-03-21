@@ -119,145 +119,145 @@
                         <tr id="buildings" class="opener">
                             <td>Buildings</td>
                             <td></td>
-                            <td>$report.calculateBase($report.getBuildings())</td>
+                            <td>$number.format("currency",$report.calculateBase($report.getBuildings()))</td>
                             <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getBuildings())) %</td>
-                            <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($report.getBuildings()))</td>
-                            <td>$math.roundTo(2,$report.calculatePeriodAmortization($report.getBuildings()))</td>
+                            <td>$number.format("currency",$report.calculateAccumulatedAmortization($report.getBuildings()))</td>
+                            <td>$number.format("currency",$report.calculatePeriodAmortization($report.getBuildings()))</td>
                         </tr>
                             #foreach($bill in $report.getBuildings())
                             <tr data-href="$bill.getUUID()" class="hidden buildings bill">
                                 <td><li>$bill.getConcept()</li></td>
                                 <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                                 <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($bill)) %</td>
-                                <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($bill))</td>
-                                <td>$math.roundTo(2,$report.calculatePeriodAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculateAccumulatedAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculatePeriodAmortization($bill))</td>
                             </tr>
                             #end
                         <tr id="furniture" class="opener">
                             <td>Furniture and office equipment</td>
                             <td></td>
-                            <td>$report.calculateBase($report.getOfficeEquipment())</td>
+                            <td>$number.format("currency",$report.calculateBase($report.getOfficeEquipment()))</td>
                             <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getOfficeEquipment())) %</td>
-                            <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($report.getOfficeEquipment()))</td>
-                            <td>$math.roundTo(2,$report.calculatePeriodAmortization($report.getOfficeEquipment()))</td>
+                            <td>$number.format("currency",$report.calculateAccumulatedAmortization($report.getOfficeEquipment()))</td>
+                            <td>$number.format("currency",$report.calculatePeriodAmortization($report.getOfficeEquipment()))</td>
                         </tr>
                             #foreach($bill in $report.getOfficeEquipment())
                             <tr data-href="$bill.getUUID()" class="hidden furniture bill">
                                 <td><li>$bill.getConcept()</li></td>
                                 <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                                 <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($bill)) %</td>
-                                <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($bill))</td>
-                                <td>$math.roundTo(2,$report.calculatePeriodAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculateAccumulatedAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculatePeriodAmortization($bill))</td>
                             </tr>
                             #end
                         <tr id="transport" class="opener">
                             <td>Transport equipment</td>
                             <td></td>
-                            <td>$report.calculateBase($report.getTransportEquipment())</td>
+                            <td>$number.format("currency",$report.calculateBase($report.getTransportEquipment()))</td>
                             <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getTransportEquipment())) %</td>
-                            <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($report.getTransportEquipment()))</td>
-                            <td>$math.roundTo(2,$report.calculatePeriodAmortization($report.getTransportEquipment()))</td>
+                            <td>$number.format("currency",$report.calculateAccumulatedAmortization($report.getTransportEquipment()))</td>
+                            <td>$number.format("currency",$report.calculatePeriodAmortization($report.getTransportEquipment()))</td>
                         </tr>
                             #foreach($bill in $report.getTransportEquipment())
                             <tr data-href="$bill.getUUID()" class="hidden transport bill">
                                 <td><li>$bill.getConcept()</li></td>
                                 <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                                 <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($bill)) %</td>
-                                <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($bill))</td>
-                                <td>$math.roundTo(2,$report.calculatePeriodAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculateAccumulatedAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculatePeriodAmortization($bill))</td>
                             </tr>
                             #end
                         <tr id="computational" class="opener">
                             <td>Computational equipment and accesories</td>
                             <td></td>
-                            <td>$report.calculateBase($report.getComputationalEquipment())</td>
+                            <td>$number.format("currency",$report.calculateBase($report.getComputationalEquipment()))</td>
                             <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getComputationalEquipment())) %</td>
-                            <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($report.getComputationalEquipment()))</td>
-                            <td>$math.roundTo(2,$report.calculatePeriodAmortization($report.getComputationalEquipment()))</td>
+                            <td>$number.format("currency",$report.calculateAccumulatedAmortization($report.getComputationalEquipment()))</td>
+                            <td>$number.format("currency",$report.calculatePeriodAmortization($report.getComputationalEquipment()))</td>
                         </tr>
                             #foreach($bill in $report.getComputationalEquipment())
                             <tr data-href="$bill.getUUID()" class="hidden computational bill">
                                 <td><li>$bill.getConcept()</li></td>
                                 <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                                 <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($bill)) %</td>
-                                <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($bill))</td>
-                                <td>$math.roundTo(2,$report.calculatePeriodAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculateAccumulatedAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculatePeriodAmortization($bill))</td>
                             </tr>
                             #end
                         <tr id="models" class="opener">
                             <td>Models and Tools</td>
                             <td></td>
-                            <td>$report.calculateBase($report.getModelsAndTools())</td>
+                            <td>$number.format("currency",$report.calculateBase($report.getModelsAndTools()))</td>
                             <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getModelsAndTools())) %</td>
-                            <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($report.getModelsAndTools()))</td>
-                            <td>$math.roundTo(2,$report.calculatePeriodAmortization($report.getModelsAndTools()))</td>
+                            <td>$number.format("currency",$report.calculateAccumulatedAmortization($report.getModelsAndTools()))</td>
+                            <td>$number.format("currency",$report.calculatePeriodAmortization($report.getModelsAndTools()))</td>
                         </tr>
                             #foreach($bill in $report.getModelsAndTools())
                             <tr data-href="$bill.getUUID()" class="hidden models bill">
                                 <td><li>$bill.getConcept()</li></td>
                                 <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                                 <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($bill)) %</td>
-                                <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($bill))</td>
-                                <td>$math.roundTo(2,$report.calculatePeriodAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculateAccumulatedAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculatePeriodAmortization($bill))</td>
                             </tr>
                             #end
                         <tr id="telephone" class="opener">
                             <td>Telephone communications</td>
                             <td></td>
-                            <td>$report.calculateBase($report.getTelephoneCommunications())</td>
+                            <td>$number.format("currency",$report.calculateBase($report.getTelephoneCommunications()))</td>
                             <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getTelephoneCommunications())) %</td>
-                            <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($report.getTelephoneCommunications()))</td>
-                            <td>$math.roundTo(2,$report.calculatePeriodAmortization($report.getTelephoneCommunications()))</td>
+                            <td>$number.format("currency",$report.calculateAccumulatedAmortization($report.getTelephoneCommunications()))</td>
+                            <td>$number.format("currency",$report.calculatePeriodAmortization($report.getTelephoneCommunications()))</td>
                         </tr>
                             #foreach($bill in $report.getTelephoneCommunications())
                             <tr data-href="$bill.getUUID()" class="hidden telephone bill">
                                 <td><li>$bill.getConcept()</li></td>
                                 <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                                 <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($bill)) %</td>
-                                <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($bill))</td>
-                                <td>$math.roundTo(2,$report.calculatePeriodAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculateAccumulatedAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculatePeriodAmortization($bill))</td>
                             </tr>
                             #end
                         <tr id="satellite" class="opener">
                             <td>Satellite communications</td>
                             <td></td>
-                            <td>$report.calculateBase($report.getSatelliteCommunications())</td>
+                            <td>$number.format("currency",$report.calculateBase($report.getSatelliteCommunications()))</td>
                             <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getSatelliteCommunications())) %</td>
-                            <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($report.getSatelliteCommunications()))</td>
-                            <td>$math.roundTo(2,$report.calculatePeriodAmortization($report.getSatelliteCommunications()))</td>
+                            <td>$number.format("currency",$report.calculateAccumulatedAmortization($report.getSatelliteCommunications()))</td>
+                            <td>$number.format("currency",$report.calculatePeriodAmortization($report.getSatelliteCommunications()))</td>
                         </tr>
                             #foreach($bill in $report.getSatelliteCommunications())
                             <tr data-href="$bill.getUUID()" class="hidden satellite bill">
                                 <td><li>$bill.getConcept()</li></td>
                                 <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                                 <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($bill)) %</td>
-                                <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($bill))</td>
-                                <td>$math.roundTo(2,$report.calculatePeriodAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculateAccumulatedAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculatePeriodAmortization($bill))</td>
                             </tr>
                             #end
                         <tr id="other" class="opener">
                             <td>Other machinery and equipment</td>
                             <td></td>
-                            <td>$report.calculateBase($report.getOtherMachineryAndEquipment())</td>
+                            <td>$number.format("currency",$report.calculateBase($report.getOtherMachineryAndEquipment()))</td>
                             <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getOtherMachineryAndEquipment())) %</td>
-                            <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($report.getOtherMachineryAndEquipment()))</td>
-                            <td>$math.roundTo(2,$report.calculatePeriodAmortization($report.getOtherMachineryAndEquipment()))</td>
+                            <td>$number.format("currency",$report.calculateAccumulatedAmortization($report.getOtherMachineryAndEquipment()))</td>
+                            <td>$number.format("currency",$report.calculatePeriodAmortization($report.getOtherMachineryAndEquipment()))</td>
                         </tr>
                             #foreach($bill in $report.getOtherMachineryAndEquipment())
                             <tr data-href="$bill.getUUID()" class="hidden other bill">
                                 <td><li>$bill.getConcept()</li></td>
                                 <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                                 <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($bill)) %</td>
-                                <td>$math.roundTo(2,$report.calculateAccumulatedAmortization($bill))</td>
-                                <td>$math.roundTo(2,$report.calculatePeriodAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculateAccumulatedAmortization($bill))</td>
+                                <td>$number.format("currency",$report.calculatePeriodAmortization($bill))</td>
                             </tr>
                             #end
                         </tbody>
@@ -346,7 +346,8 @@
             ]);
 
             options = {
-                title: 'Investments'
+                title: 'Investments',
+                backgroundColor:'rgb(247,250,252)'
             };
 
             chart = new google.visualization.BarChart(document.getElementById('piechart'));

@@ -120,62 +120,62 @@
                         <tbody>
                         <tr class="mainResult">
                             <td>Sales and incomes</td>
-                            <td>$math.roundTo(2,$report1.getSalesAndIncomesBase())</td>
-                            <td>$math.roundTo(2,$report2.getSalesAndIncomesBase())</td>
+                            <td>$number.format("currency",$report1.getSalesAndIncomesBase())</td>
+                            <td>$number.format("currency",$report2.getSalesAndIncomesBase())</td>
                             <td></td>
                         </tr>
                         <tr style="font-size:115%">
                             <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales" data-content="Base= Gross sales base - Sales returns base">Net sales</a></td>
-                            <td>$math.roundTo(2,$report1.getNetSalesBase())</td>
-                            <td>$math.roundTo(2,$report2.getNetSalesBase())</td>
+                            <td>$number.format("currency",$report1.getNetSalesBase())</td>
+                            <td>$number.format("currency",$report2.getNetSalesBase())</td>
                             <td></td>
                         </tr>
                         <tr id="grossSales" class="field">
                             <td>Gross sales</td>
-                            <td>$math.roundTo(2,$report1.getGrossSalesBase())</td>
-                            <td>$math.roundTo(2,$report2.getGrossSalesBase())</td>
+                            <td>$number.format("currency",$report1.getGrossSalesBase())</td>
+                            <td>$number.format("currency",$report2.getGrossSalesBase())</td>
                             <td></td>
                         </tr>
                         <tr id="salesReturns" class="field">
                             <td>Sales returns</td>
-                            <td>$math.roundTo(2,$report1.getSalesReturnsBase())</td>
-                            <td>$math.roundTo(2,$report2.getSalesReturnsBase())</td>
+                            <td>$number.format("currency",$report1.getSalesReturnsBase())</td>
+                            <td>$number.format("currency",$report2.getSalesReturnsBase())</td>
                             <td></td>
                         </tr>
                         <tr class = "mainResult">
                             <td>Purchases and expenses</td>
-                            <td>$math.roundTo(2,$report1.getPurchasesAndExpensesBase())</td>
-                            <td>$math.roundTo(2,$report2.getPurchasesAndExpensesBase())</td>
+                            <td>$number.format("currency",$report1.getPurchasesAndExpensesBase())</td>
+                            <td>$number.format("currency",$report2.getPurchasesAndExpensesBase())</td>
                             <td></td>
                         </tr>
                         <tr style="font-size: 115%">
                             <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net purchases" data-content="Base= Gross purchases base - Purchases returns base">Net purchases</a></td>
-                            <td>$math.roundTo(2,$report1.getNetPurchasesBase())</td>
-                            <td>$math.roundTo(2,$report2.getNetPurchasesBase())</td>
+                            <td>$number.format("currency",$report1.getNetPurchasesBase())</td>
+                            <td>$number.format("currency",$report2.getNetPurchasesBase())</td>
                             <td></td>
                         </tr>
                         <tr id="grossPurchases" class="field">
                             <td>Gross purchases</td>
-                            <td>$math.roundTo(2,$report1.getGrossPurchasesBase())</td>
-                            <td>$math.roundTo(2,$report2.getGrossPurchasesBase())</td>
+                            <td>$number.format("currency",$report1.getGrossPurchasesBase())</td>
+                            <td>$number.format("currency",$report2.getGrossPurchasesBase())</td>
                             <td></td>
                         </tr>
                         <tr id="purchasesReturns" class="field">
                             <td>Purchases returns</td>
-                            <td>$math.roundTo(2,$report1.getPurchasesReturnsBase())</td>
-                            <td>$math.roundTo(2,$report2.getPurchasesReturnsBase())</td>
+                            <td>$number.format("currency",$report1.getPurchasesReturnsBase())</td>
+                            <td>$number.format("currency",$report2.getPurchasesReturnsBase())</td>
                             <td></td>
                         </tr>
                         <tr id="externalServices" class="field">
                             <td>External services</td>
-                            <td>$math.roundTo(2,$report1.getExternalServicesBase())</td>
-                            <td>$math.roundTo(2,$report2.getExternalServicesBase())</td>
+                            <td>$number.format("currency",$report1.getExternalServicesBase())</td>
+                            <td>$number.format("currency",$report2.getExternalServicesBase())</td>
                             <td></td>
                         </tr>
                         <tr id="salariesAndWages" class="field">
                             <td>Salaries and Wages</td>
-                            <td>$math.roundTo(2,$report1.getSalariesAndWagesBase())</td>
-                            <td>$math.roundTo(2,$report2.getSalariesAndWagesBase())</td>
+                            <td>$number.format("currency",$report1.getSalariesAndWagesBase())</td>
+                            <td>$number.format("currency",$report2.getSalariesAndWagesBase())</td>
                             <td></td>
                         </tr>
                         </tbody>
@@ -288,7 +288,8 @@
             ]);
 
             options = {
-                title: 'Investments'
+                title: 'Profit and Losses',
+                backgroundColor:'rgb(247,250,252)'
             };
 
             chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));

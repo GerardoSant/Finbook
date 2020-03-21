@@ -120,56 +120,56 @@
                         <tbody>
                         <tr class="field">
                             <td>Buildings</td>
-                            <td>$math.roundTo(2,$report1.getBuildingsBase())</td>
-                            <td>$math.roundTo(2,$report2.getBuildingsBase())</td>
+                            <td>$number.format("currency",$report1.getBuildingsBase())</td>
+                            <td>$number.format("currency",$report2.getBuildingsBase())</td>
                             <td></td>
                         </tr>
                         <tr class="field">
                             <td>Office equipment</td>
-                            <td>$math.roundTo(2,$report1.getOfficeEquipmentBase())</td>
-                            <td>$math.roundTo(2,$report2.getOfficeEquipmentBase())</td>
+                            <td>$number.format("currency",$report1.getOfficeEquipmentBase())</td>
+                            <td>$number.format("currency",$report2.getOfficeEquipmentBase())</td>
                             <td></td>
                         </tr>
                         <tr class="field">
                             <td>Transport equipment</td>
-                            <td>$math.roundTo(2,$report1.getTransportEquipmentBase())</td>
-                            <td>$math.roundTo(2,$report2.getTransportEquipmentBase())</td>
+                            <td>$number.format("currency",$report1.getTransportEquipmentBase())</td>
+                            <td>$number.format("currency",$report2.getTransportEquipmentBase())</td>
                             <td></td>
                         </tr>
                         <tr class="field">
                             <td>Computational Equipment Base</td>
-                            <td>$math.roundTo(2,$report1.getComputationalEquipmentBase())</td>
-                            <td>$math.roundTo(2,$report2.getComputationalEquipmentBase())</td>
+                            <td>$number.format("currency",$report1.getComputationalEquipmentBase())</td>
+                            <td>$number.format("currency",$report2.getComputationalEquipmentBase())</td>
                             <td></td>
                         </tr>
                         <tr class = "field">
                             <td>Models and Tools</td>
-                            <td>$math.roundTo(2,$report1.getModelsAndToolsBase())</td>
-                            <td>$math.roundTo(2,$report2.getModelsAndToolsBase())</td>
+                            <td>$number.format("currency",$report1.getModelsAndToolsBase())</td>
+                            <td>$number.format("currency",$report2.getModelsAndToolsBase())</td>
                             <td></td>
                         </tr>
                         <tr class="field">
                             <td>Telephone Communications</td>
-                            <td>$math.roundTo(2,$report1.getTelephoneCommunicationsBase())</td>
-                            <td>$math.roundTo(2,$report2.getTelephoneCommunicationsBase())</td>
+                            <td>$number.format("currency",$report1.getTelephoneCommunicationsBase())</td>
+                            <td>$number.format("currency",$report2.getTelephoneCommunicationsBase())</td>
                             <td></td>
                         </tr>
                         <tr class="field">
                             <td>Satellite Communications</td>
-                            <td>$math.roundTo(2,$report1.getSatelliteCommunicationsBase())</td>
-                            <td>$math.roundTo(2,$report2.getSatelliteCommunicationsBase())</td>
+                            <td>$number.format("currency",$report1.getSatelliteCommunicationsBase())</td>
+                            <td>$number.format("currency",$report2.getSatelliteCommunicationsBase())</td>
                             <td></td>
                         </tr>
                         <tr class="field">
                             <td>Other Machinery and Equipment</td>
-                            <td>$math.roundTo(2,$report1.getOtherMachineryAndEquipmentBase())</td>
-                            <td>$math.roundTo(2,$report2.getOtherMachineryAndEquipmentBase())</td>
+                            <td>$number.format("currency",$report1.getOtherMachineryAndEquipmentBase())</td>
+                            <td>$number.format("currency",$report2.getOtherMachineryAndEquipmentBase())</td>
                             <td></td>
                         </tr>
                         <tr class="mainResult">
                             <td>All investments</td>
-                            <td>$math.roundTo(2,$report1.getBase())</td>
-                            <td>$math.roundTo(2,$report2.getBase())</td>
+                            <td>$number.format("currency",$report1.getBase())</td>
+                            <td>$number.format("currency",$report2.getBase())</td>
                             <td></td>
                         </tr>
                         </tbody>
@@ -281,7 +281,8 @@
             ]);
 
             options = {
-                title: 'Investments'
+                title: 'Investments',
+                backgroundColor:'rgb(247,250,252)'
             };
 
             chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));

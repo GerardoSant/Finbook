@@ -353,7 +353,8 @@
             ]);
 
             options = {
-                title: 'Sales vs Expenses'
+                title: 'Sales vs Expenses',
+                backgroundColor:'rgb(247,250,252)'
             };
 
             chart = new google.visualization.PieChart(document.getElementById('piechart'));
