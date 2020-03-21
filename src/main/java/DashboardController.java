@@ -2,6 +2,7 @@ import Bills.Bill;
 import Bills.BillsDao;
 import Reports.*;
 import login.LoginController;
+import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.NumberTool;
 import spark.Request;
 import spark.Route;
@@ -31,6 +32,11 @@ public class DashboardController {
         model.put("billsDistribution",billsDistribution);
         BarChart billsDistributionBarChart = new BillsDistributionBarChartBuilder().build(billsDistribution);
         model.put("billsDistributionBarChart",billsDistributionBarChart);
+        Top5Sales top5sales = new Top5Sales(new BillsDao(request.session().attribute("currentUser")).getAllBills(), request.session().attribute("currentUser"));
+        model.put("top5sales",top5sales);
+        model.put("date", new DateTool());
+        BarChart top5SalesBarChart = new Top5SalesBarChartBuilder().build(top5sales);
+        model.put("top5salesBarChart", top5SalesBarChart);
         return ViewUtil.render(request, model, Path.Template.DASHBOARD);
     };
 

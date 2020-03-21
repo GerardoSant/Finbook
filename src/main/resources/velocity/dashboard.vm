@@ -228,31 +228,13 @@
                 <div id="top5table">
                     <table class="table table-hover">
                         <tbody>
+                        #foreach($bill in $top5sales.getTop5())
                         <tr>
-                            <td>Mesas</td>
-                            <td>12 May 2019</td>
-                            <td>$485</td>
+                            <td>$bill.getConcept()</td>
+                            <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
+                            <td>$number.format("currency",$bill.getTotal())</td>
                         </tr>
-                        <tr>
-                            <td>Armario IK</td>
-                            <td>13 May 2019</td>
-                            <td>$465</td>
-                        </tr>
-                        <tr>
-                            <td>Lavadora CA</td>
-                            <td>11 May 2019</td>
-                            <td>$382</td>
-                        </tr>
-                        <tr>
-                            <td>Lavadora CF</td>
-                            <td>14 May 2019</td>
-                            <td>$375</td>
-                        </tr>
-                        <tr>
-                            <td>Nevera XL</td>
-                            <td>11 May 2019</td>
-                            <td>$312</td>
-                        </tr>
+                        #end
                         </tbody>
                     </table>
                 </div>
@@ -377,11 +359,11 @@
     function drawChart() {
         top5SalesBarChartData = google.visualization.arrayToDataTable([
             ['Concept', 'Price'],
-            ['Mesas', 485],
-            ['Armario IK', 465],
-            ['Lavadora CA', 382],
-            ['Lavadora CF', 375],
-            ['Nevera XL', 312]
+            ['$top5sales.getTop5()[0].getConcept()',$top5sales.getTop5()[0].getTotal()],
+            ['$top5sales.getTop5()[1].getConcept()',$top5sales.getTop5()[1].getTotal()],
+            ['$top5sales.getTop5()[2].getConcept()',$top5sales.getTop5()[2].getTotal()],
+            ['$top5sales.getTop5()[3].getConcept()',$top5sales.getTop5()[3].getTotal()],
+            ['$top5sales.getTop5()[4].getConcept()',$top5sales.getTop5()[4].getTotal()]
         ]);
 
         top5SalesBarChartOptions = {

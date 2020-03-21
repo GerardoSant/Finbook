@@ -20,8 +20,12 @@ public class BillFilter {
         return billList.stream().filter(bill -> bill.getDate().compareTo(periodStart)>=0 && bill.getDate().compareTo(periodEnd)<=0).collect(Collectors.toList());
     }
 
-    public static List<Bill> filterBySales(List<Bill> billList, String RFC){
+    public static List<Bill> filterByGrossSales(List<Bill> billList, String RFC){
         return billList.stream().filter(bill-> bill.getIssuerRFC().equals(RFC) && !bill.getType().equals("nomina")).collect(Collectors.toList());
+    }
+
+    public static List<Bill> filterBySales(List<Bill> billList, String RFC){
+        return billList.stream().filter(bill-> bill.getIssuerRFC().equals(RFC) && !bill.getType().equals("nomina") && !bill.getType().equals("egreso")).collect(Collectors.toList());
     }
 
     public static List<Bill> filterByReturns(List<Bill> billList, String RFC){

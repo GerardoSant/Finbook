@@ -1,0 +1,50 @@
+package Reports;
+
+import Bills.Bill;
+import Bills.BillsDao;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
+public class Top5Sales {
+
+    public static void main(String[] args) {
+        List<Bill> billList = new BillsDao("E-5756930").getAllBills();
+        Top5Sales top5Sales = new Top5Sales(billList, "E-5756930");
+        for (Bill bill : top5Sales.getTop5()) {
+            System.out.println(bill.getTotal());
+        }
+    }
+
+    private Bill[] top5;
+
+    public Top5Sales(List<Bill> billList, String RFC) {
+        this.top5 = generateTop5(billList, RFC);
+    }
+
+    public Bill[] getTop5() {
+        return top5;
+    }
+
+    private Bill[] generateTop5(List<Bill> billList, String RFC) {
+        return calculateTop5(BillFilter.filterBySales(billList, RFC), initialTop5Array(billList));
+    }
+
+    private Bill[] initialTop5Array(List<Bill> billList) {
+        Bill[] initialArray = new Bill[5];
+        for (int listPosition=0; listPosition<5; listPosition++) initialArray[listPosition]=billList.get(listPosition);
+        return initialArray;
+    }
+
+    private Bill[] calculateTop5(List<Bill> billList, Bill[] top5sales) {
+        for (Bill bill : billList) {
+            if (top5sales[4].getTotal()<bill.getTotal()){
+                top5sales[4]=bill;
+                top5sales= Arrays.stream(top5sales).sorted(Comparator.comparing(Bill::getTotal).reversed()).toArray(Bill[]::new);
+            }
+        }
+        return top5sales;
+    }
+
+
+}

@@ -42,6 +42,6 @@ public class ProfitAndLossesReportBuilder extends ReportBuilder {
     }
 
     private List<Bill> generateGrossSales(){
-        return BillFilter.filterBySales(billList, RFC);
+        return BillFilter.filterByGrossSales(billList, RFC);
     }
 }
