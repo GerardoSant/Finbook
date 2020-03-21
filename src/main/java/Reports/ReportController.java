@@ -5,6 +5,7 @@ import Bills.BillsDao;
 import login.LoginController;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
+import org.apache.velocity.tools.generic.NumberTool;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -36,6 +37,7 @@ public class ReportController {
         model.put("report", report);
         model.put("barChart", barChart);
         model.put("math", new MathTool());
+        model.put("number", new NumberTool());
         return ViewUtil.render(request, model, Path.Template.PROFITANDLOSSES_REPORT);
     };
 
@@ -65,6 +67,7 @@ public class ReportController {
         model.put("report2", report2);
         model.put("barChart2", barChart2);
         model.put("math", new MathTool());
+        model.put("number", new NumberTool());
         return ViewUtil.render(request, model, Path.Template.COMPARE_PROFITANDLOSSES_REPORT);
     };
 

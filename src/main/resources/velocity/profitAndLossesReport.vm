@@ -128,78 +128,78 @@
                     <tbody>
                         <tr class="mainResult">
                             <td>Sales and incomes</td>
-                            <td>$report.getSalesAndIncomesBase()</td>
+                            <td>$number.format("currency",$report.getSalesAndIncomesBase())</td>
                         </tr>
                         <tr style="font-size:115%">
                             <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales" data-content="Base= Gross sales base - Sales returns base">Net sales</a></td>
-                            <td>$report.getNetSalesBase()</td>
+                            <td>$number.format("currency",$report.getNetSalesBase())</td>
                         </tr>
                         <tr id="grossSales" class="opener">
                             <td>Gross sales</td>
-                            <td>$report.getGrossSalesBase()</td>
+                            <td>$number.format("currency",$report.getGrossSalesBase())</td>
                         </tr>
                             #foreach($bill in $report.getGrossSales())
                             <tr data-href="$bill.getUUID()" class="hidden grossSales bill">
                                 <td><li>$bill.getConcept()</li></td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                             </tr>
                             #end
                         <tr id="salesReturns" class="opener">
                             <td>Sales returns</td>
-                            <td>$report.getSalesReturnsBase()</td>
+                            <td>$number.format("currency",$report.getSalesReturnsBase())</td>
                         </tr>
                             #foreach($bill in $report.getSalesReturns())
                             <tr data-href="$bill.getUUID()" class="hidden salesReturns bill">
                                 <td><li>$bill.getConcept()</li></td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                             </tr>
                             #end
                         <tr class = "mainResult">
                             <td>Purchases and expenses</td>
-                            <td>$report.getPurchasesAndExpensesBase()</td>
+                            <td>$number.format("currency",$report.getPurchasesAndExpensesBase())</td>
                         </tr>
                         <tr style="font-size: 115%">
                             <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net purchases" data-content="Base= Gross purchases base - Purchases returns base">Net purchases</a></td>
-                            <td>$report.getNetPurchasesBase()</td>
+                            <td>$number.format("currency",$report.getNetPurchasesBase())</td>
                         </tr>
                         <tr id="grossPurchases" class="opener">
                             <td>Gross purchases</td>
-                            <td>$report.getGrossPurchasesBase()</td>
+                            <td>$number.format("currency",$report.getGrossPurchasesBase())</td>
                         </tr>
                             #foreach($bill in $report.getGrossPurchases())
                             <tr data-href="$bill.getUUID()" class="hidden grossPurchases bill">
                                 <td><li>$bill.getConcept()</li></td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                             </tr>
                             #end
                         <tr id="purchasesReturns" class="opener">
                             <td>Purchases returns</td>
-                            <td>$report.getPurchasesReturnsBase()</td>
+                            <td>$number.format("currency",$report.getPurchasesReturnsBase())</td>
                         </tr>
                             #foreach($bill in $report.getPurchasesReturns())
                             <tr data-href="$bill.getUUID()" class="hidden purchasesReturns bill">
                                 <td><li>$bill.getConcept()</li></td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                             </tr>
                             #end
                         <tr id="externalServices" class="opener">
                             <td>External services</td>
-                            <td>$report.getExternalServicesBase()</td>
+                            <td>$number.format("currency",$report.getExternalServicesBase())</td>
                         </tr>
                             #foreach($bill in $report.getExternalServices())
                             <tr data-href="$bill.getUUID()" class="hidden externalServices bill">
                                 <td><li>$bill.getConcept()</li></td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                             </tr>
                             #end
                         <tr id="salariesAndWages" class="opener">
                             <td>Salaries and Wages</td>
-                            <td>$report.getSalariesAndWagesBase()</td>
+                            <td>$number.format("currency",$report.getSalariesAndWagesBase())</td>
                         </tr>
                             #foreach($bill in $report.getSalariesAndWages())
                             <tr data-href="$bill.getUUID()" class="hidden salariesAndWages bill">
                                 <td><li>$bill.getConcept()</li></td>
-                                <td>$bill.getSubtotal()</td>
+                                <td>$number.format("currency",$bill.getSubtotal())</td>
                             </tr>
                             #end
                     </tbody>
