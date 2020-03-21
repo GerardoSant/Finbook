@@ -3,6 +3,10 @@
 
 <style>
 
+    [data-href] {
+        cursor: pointer;
+    }
+
     footer{
         display:none
     }
@@ -229,7 +233,7 @@
                     <table class="table table-hover">
                         <tbody>
                         #foreach($bill in $top5sales.getTop5())
-                        <tr>
+                        <tr data-href="$bill.getUUID()">
                             <td>$bill.getConcept()</td>
                             <td>$date.format("MMM dd, yyyy",$bill.getDate())</td>
                             <td>$number.format("currency",$bill.getTotal())</td>
@@ -533,5 +537,16 @@
 
 
 
+</script>
+
+
+<script>
+    //Script para que se abra la factura de vent acuando clickas
+
+    $(document).ready(function($) {
+        $('*[data-href]').on('click', function() {
+            window.location = /bills/ + $(this).data("href");
+        });
+    });
 </script>
 
