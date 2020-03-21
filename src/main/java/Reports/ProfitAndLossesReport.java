@@ -27,6 +27,8 @@ public class ProfitAndLossesReport extends Report {
     private List<Bill> salariesAndWages;
     private double salariesAndWagesBase;
     private double personnelExpenses;
+    private double profit;
+
 
     public ProfitAndLossesReport(Date periodStart, Date periodEnd, String RFC, List<Bill> grossSales, double grossSalesBase, List<Bill> salesReturns, double salesReturnsBase, List<Bill> grossPurchases, double grossPurchasesBase, List<Bill> purchasesReturns, double purchasesReturnsBase, List<Bill> externalServices, double externalServicesBase, List<Bill> salariesAndWages, double salariesAndWagesBase) {
         super(periodStart, periodEnd, RFC);
@@ -47,6 +49,7 @@ public class ProfitAndLossesReport extends Report {
         this.netPurchasesBase= grossPurchasesBase-purchasesReturnsBase;
         this.purchasesAndExpensesBase= netPurchasesBase + externalServicesBase + personnelExpenses;
         this.salesAndIncomesBase= this.netSalesBase;
+        this.profit=salesAndIncomesBase-purchasesAndExpensesBase;
     }
 
 
@@ -133,5 +136,9 @@ public class ProfitAndLossesReport extends Report {
 
     public double getPersonnelExpenses() {
         return personnelExpenses;
+    }
+
+    public double getProfit() {
+        return profit;
     }
 }

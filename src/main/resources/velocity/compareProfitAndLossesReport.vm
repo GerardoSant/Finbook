@@ -178,6 +178,12 @@
                             <td>$number.format("currency",$report2.getSalariesAndWagesBase())</td>
                             <td></td>
                         </tr>
+                        <tr id="totalProfit" class="mainResult">
+                            <td>Total profit</td>
+                            <td>$number.format("currency",$report1.getProfit())</td>
+                            <td>$number.format("currency",$report2.getProfit())</td>
+                            <td></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -285,6 +291,7 @@
                 #foreach($key in $barChart1)
                     ['$key',$barChart1.getCount($key), $barChart2.getCount($key)],
                 #end
+                    ['Profit', $report1.getProfit(), $report2.getProfit()]
             ]);
 
             options = {

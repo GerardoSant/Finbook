@@ -187,10 +187,14 @@
 	<body class="main">
 
         <div class="boxrows-container">
+            #if($profitreport.getProfit()>0)
             <div class="minibox minibox-medium box greenbox">
+            #else
+            <div class="minibox minibox-medium box redbox">
+            #end
                 <i class="fa fa-chart-line"></i>
                 <div class="minibox-text">
-                    <h3>$number.format("currency",9265)</h3>
+                    <h3>$number.format("currency",$profitreport.getProfit())</h3>
                     <p>Total profit</p>
                 </div>
             </div>
@@ -202,7 +206,7 @@
                 </div>
             </div>
             <div class="minibox minibox-medium box lightredbox">
-                <i class="fa fa-building"></i>
+                <i class="fa fa-chart-bar"></i>
                 <div class="minibox-text">
                     <h3>$number.format("currency",$profitreport.getPurchasesAndExpensesBase())</h3>
                     <p>Total expenses</p>

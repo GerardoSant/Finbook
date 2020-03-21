@@ -202,6 +202,10 @@
                                 <td>$number.format("currency",$bill.getSubtotal())</td>
                             </tr>
                             #end
+                        <tr class ="mainResult">
+                            <td>Total profit</td>
+                            <td>$number.format("currency",$report.getProfit())</td>
+                        </tr>
                     </tbody>
                 </table>
 
