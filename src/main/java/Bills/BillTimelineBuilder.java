@@ -38,7 +38,7 @@ public class BillTimelineBuilder {
     private List<Bill> filterByBillType(String RFC, List<Bill> billList, boolean incomes, boolean expenses, boolean investments, boolean salaries) {
         List<Bill> typesBillList = new ArrayList<>();
         if (incomes) typesBillList.addAll(BillFilter.filterBySales(billList, RFC));
-        if (expenses) typesBillList.addAll(BillFilter.filterByExpenses(billList, RFC));
+        if (expenses) typesBillList.addAll(BillFilter.filterByPurchasesAndExternalServices(billList, RFC));
         if (investments) typesBillList.addAll(BillFilter.filterByInvestments(billList,RFC));
         if (salaries) typesBillList.addAll(BillFilter.filterBySalaries(billList, RFC));
         return typesBillList;

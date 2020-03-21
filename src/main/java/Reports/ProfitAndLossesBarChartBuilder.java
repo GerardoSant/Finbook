@@ -10,7 +10,7 @@ public class ProfitAndLossesBarChartBuilder implements ReportBarChartBuilder{
     }
 
     private void addValues(BarChart barChart, ProfitAndLossesReport profitAndLossesReport) {
-        barChart.addBar("Sales and Incomes", profitAndLossesReport.getSalesAndIncomesBase());
-        barChart.addBar("Purchases and Expenses", profitAndLossesReport.getPurchasesAndExpensesBase());
+        barChart.addBar("Incomes", profitAndLossesReport.getSalesAndIncomesBase());
+        barChart.addBar("Expenses", profitAndLossesReport.getPurchasesAndExpensesBase());
     }
 }

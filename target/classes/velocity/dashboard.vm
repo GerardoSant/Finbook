@@ -16,10 +16,16 @@
     }
 
     .minibox{
-        width:23%;
         height:100px;
         background-color: darkblue;
         color:white;
+    }
+    .minibox-sm{
+        width:23%;
+    }
+
+    .minibox-medium{
+        width:31.33%;
     }
 
     .minibox i{
@@ -89,7 +95,7 @@
         transform:scale(1.05);
     }
 
-    @media screen and (max-width: 1400px){
+    @media screen and (max-width: 1410px){
         .boxrows-container .bigbox{
             width:98%;
         }
@@ -97,15 +103,30 @@
             width:98%;
         }
 
-        .minibox{
+        .minibox-sm{
             width:48%;
         }
 
     }
+    @media screen and (max-width: 1050px){
+        .minibox-medium{
+            width:98%;
+        }
+    }
 
     @media screen and (max-width: 800px){
-        .minibox{
+        .minibox-sm{
             width:98%
+        }
+    }
+
+    @media screen and (max-width:500px){
+        .boxrows-container .left-chart-container{
+            width:120%;
+            border-right:none;
+        }
+        .right-chart-container{
+            display:none
         }
     }
 
@@ -141,6 +162,18 @@
         height:60%;
     }
 
+    #profitandlosspiechart{
+        margin-left:18%
+    }
+
+    .left-chart-container{
+        float:left; width:50%; height:100%; border-right: 1px solid lightgray;
+    }
+
+    .right-chart-container{
+        float:left; width:50%; height:100%;
+    }
+
 
 
 
@@ -150,24 +183,24 @@
 	<body class="main">
 
         <div class="boxrows-container">
-            <div class="minibox box greenbox" style="width:31.33%">
+            <div class="minibox minibox-medium box greenbox">
                 <i class="fa fa-chart-line"></i>
                 <div class="minibox-text">
-                    <h3>$9,765</h3>
+                    <h3>$number.format("currency",9265)</h3>
                     <p>Total profit</p>
                 </div>
             </div>
-            <div class="minibox box lightgreenbox" style="width:31.33%">
+            <div class="minibox minibox-medium box lightgreenbox">
                 <i class="fa fa-chart-bar"></i>
                 <div class="minibox-text">
-                    <h3>$18,921</h3>
+                    <h3>$number.format("currency",$profitreport.getSalesAndIncomesBase())</h3>
                     <p>Total incomes</p>
                 </div>
             </div>
-            <div class="minibox box lightredbox" style="width:31.33%">
+            <div class="minibox minibox-medium box lightredbox">
                 <i class="fa fa-building"></i>
                 <div class="minibox-text">
-                    <h3>$8,765</h3>
+                    <h3>$number.format("currency",$profitreport.getPurchasesAndExpensesBase())</h3>
                     <p>Total expenses</p>
                 </div>
             </div>
@@ -179,11 +212,11 @@
                     <h6>Profit and Loss</h6>
                 </div>
                 <div class="chart">
-                    <div style="float:left; width:50%; height:100%; border-right: 1px solid lightgray; ">
+                    <div class="left-chart-container">
                         <div class="chart" id="profitandlosschart"></div>
                     </div>
-                    <div  style="float:left; width:50%; height:100%;">
-                        <div style="margin-left:18%" class="chart" id="profitandlosspiechart"></div>
+                    <div class="right-chart-container">
+                        <div class="chart" id="profitandlosspiechart"></div>
                     </div>
                 </div>
             </div>
@@ -228,31 +261,31 @@
 
 
         <div class="boxrows-container">
-            <div class="minibox box lightgreenbox">
+            <div class="minibox minibox-sm box lightgreenbox">
                 <i class="fa fa-chart-line"></i>
                 <div class="minibox-text">
-                    <h3>$29,765</h3>
+                    <h3>$number.format("currency",$billsDistribution.getSalesAmount())</h3>
                     <p>Total sales</p>
                 </div>
             </div>
-            <div class="minibox box lightredbox">
+            <div class="minibox minibox-sm box lightredbox">
                 <i class="fa fa-chart-bar"></i>
                 <div class="minibox-text">
-                    <h3>$18,921</h3>
+                    <h3>$number.format("currency",$billsDistribution.getPurchasesAndServicesAmount())</h3>
                     <p>Total purchases & external services</p>
                 </div>
             </div>
-            <div class="minibox box bluebox">
+            <div class="minibox minibox-sm box bluebox">
                 <i class="fa fa-building"></i>
                 <div class="minibox-text">
-                    <h3>$8,765</h3>
+                    <h3>$number.format("currency",$billsDistribution.getInvestmentsAmount())</h3>
                     <p>Total investments</p>
                 </div>
             </div>
-            <div class="minibox box orangebox">
+            <div class="minibox minibox-sm box orangebox">
                 <i class="fa fa-users"></i>
                 <div class="minibox-text">
-                    <h3>$19,765</h3>
+                    <h3>$number.format("currency",$billsDistribution.getSalariesAmount())</h3>
                     <p>Total salaries</p>
                 </div>
             </div>
@@ -299,7 +332,8 @@
     function drawChart() {
         invoiceDistributionBarChartData = google.visualization.arrayToDataTable([
             ['Bill type', 'Sales', 'Purchases', 'Investments', 'Salaries'],
-            ['Bill type', 29765, 18921,8765,19765]
+            ['Bill type', $billsDistributionBarChart.getCount('Sales'), $billsDistributionBarChart.getCount('Purchases'),
+                $billsDistributionBarChart.getCount('Investments'),$billsDistributionBarChart.getCount('Salaries')]
         ]);
 
         invoiceDistributionBarChartOptions = {
@@ -315,7 +349,7 @@
                     0: {label: ''} // Top x-axis.
                 },
                 x: {
-                    0: {label: 'Amount ($)'}
+                    0: {label: 'Amount (€)'}
                 }
             }
         };
@@ -359,7 +393,7 @@
                     0: {label: ''} // Top x-axis.
                 },
                 x: {
-                    0: {label: 'Amount ($)'}
+                    0: {label: 'Amount (€)'}
                 }
             }
         };
@@ -412,7 +446,7 @@
     function drawChart() {
         profitAndLossBarChartData = google.visualization.arrayToDataTable([
             ['Type', 'Incomes', 'Expenses'],
-            ['Type', 189765, 122212]
+            ['Type', $profitReportBarChart.getCount('Incomes'), $profitReportBarChart.getCount('Expenses')]
         ]);
 
         profitAndLossBarChartOptions = {
@@ -427,7 +461,7 @@
                     0: {label: ''} // Top x-axis.
                 },
                 x: {
-                    0: {label: 'Amount ($)'}
+                    0: {label: 'Amount (€)'}
                 }
             }
         };
@@ -453,8 +487,8 @@
     function drawChart() {
         profitAndLossPieChartData = google.visualization.arrayToDataTable([
             ['Money', 'Amount',],
-            ['Incomes',     189765],
-            ['Expenses',   122212]
+            ['Incomes',$profitReportBarChart.getCount('Incomes')],
+            ['Expenses', $profitReportBarChart.getCount('Expenses')]
         ]);
 
 
@@ -488,15 +522,10 @@
 
     function drawChart() {
         amortizationBarChartData = google.visualization.arrayToDataTable([
-            ['Concept', 'Amortization'],
-            ['Office', 21.1],
-            ['Models&Tools', 12.2],
-            ['Telephone', 65.72],
-            ['Buildings', 98.12],
-            ['Satellite', 23.23],
-            ['Transport', 44.51],
-            ['Computtional', 12.43],
-            ['Machinery&Others', 43.2],
+            ['Investment', 'Amortization'],
+            #foreach($key in $amortizationReportBarChart)
+                ['$key',$amortizationReportBarChart.getCount($key)],
+            #end
 
         ]);
 
@@ -524,4 +553,3 @@
 
 </script>
 
-	

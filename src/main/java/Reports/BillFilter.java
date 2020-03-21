@@ -32,8 +32,8 @@ public class BillFilter {
         return billList.stream().filter(bill -> bill.getUse().equals(purchaseUseCode) && bill.getReceiverRFC().equals(RFC)).collect(Collectors.toList());
     }
 
-    public static List<Bill> filterByExpenses(List<Bill> billList,String RFC) {
-        return billList.stream().filter(bill -> (bill.getUse().equals("G01")|| bill.getUse().equals("G02") || bill.getUse().equals("G03"))  && bill.getReceiverRFC().equals(RFC)).collect(Collectors.toList());
+    public static List<Bill> filterByPurchasesAndExternalServices(List<Bill> billList, String RFC) {
+        return billList.stream().filter(bill -> (bill.getUse().equals("G01") || bill.getUse().equals("G03"))  && bill.getReceiverRFC().equals(RFC)).collect(Collectors.toList());
     }
 
     public static List<Bill> filterBySalaries(List<Bill> billList, String RFC){

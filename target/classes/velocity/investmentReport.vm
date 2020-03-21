@@ -348,7 +348,8 @@
             ]);
 
             options = {
-                title: 'Investments'
+                title: 'Investments',
+                backgroundColor:'rgb(247,250,252)'
             };
 
             chart = new google.visualization.PieChart(document.getElementById('piechart'));
