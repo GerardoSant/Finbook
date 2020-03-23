@@ -5,6 +5,7 @@ import Bills.MailSender.SMTPMailSender;
 import login.LoginController;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
+import org.apache.velocity.tools.generic.NumberTool;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -78,6 +79,7 @@ public class BillsController {
         model.put("date", new DateTool());
         //model.put("RFC", getSessionCurrentUser(request));
         model.put("RFC", "E-5756930");
+        model.put("number", new NumberTool());
         return ViewUtil.render(request, model, Path.Template.BILLS_TIMELINE);
     };
 

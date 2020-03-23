@@ -11,8 +11,8 @@
 		border: none;
 		border-radius:50%;
 		color: black;
-		padding: 12px 16px;
-		font-size: 16px;
+		padding: 5px 7px;
+		font-size: 22px;
 		cursor: pointer;
 	}
 
@@ -20,8 +20,28 @@
 		background-color: RoyalBlue;
 	}
 
-	html {
+	.rightbox{
+		float:right;
+		width:70%;
+		height:85%;
+		margin-right:2%;
+	}
 
+	.leftbox{
+		float:left;
+		width:25%;
+		margin-left:2%;
+		margin-right:1%;
+
+	}
+
+	.billContainerAmount{
+		border-top:solid 0.5px rgba(0,0,0,0.5);padding-left:70%; width:100%; box-sizing:border-box
+	}
+
+	.timelineContainer{
+		height:100%;
+		overflow-y: scroll;
 	}
 
 	footer {
@@ -178,8 +198,25 @@
 		z-index: 1;
 	}
 
+	@media screen and (max-width:1400px){
+		.rightbox{
+			float:none;
+			width:95%;
+			margin-left:2%;
+			margin-right:1%;
+			margin-bottom:1%;
+		}
+		.leftbox{
+			float:none;
+			width:95%;
+			margin-left:2%;
+			margin-right:1%;
+			margin-bottom:2%;
+		}
+	}
+
 	/* Media queries - Responsive timeline on screens less than 600px wide */
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 930px) {
 		/* Place the timelime to the left */
 		.timeline::after {
 			left: 31px;
@@ -190,6 +227,10 @@
 			width: 100%;
 			padding-left: 70px;
 			padding-right: 25px;
+		}
+
+		.billContainerAmount{
+			padding-left:65%;
 		}
 
 		/* Make sure that all arrows are pointing leftwards */
@@ -210,149 +251,161 @@
 			left: 0%;
 		}
 	}
+
+	@media screen and (max-width:400px){
+		.rightbox{
+			margin:2%;
+			width:96%;
+			height:95%
+		}
+
+		.timelineContainer{
+			margin:0;
+			padding:0
+		}
+
+		.billContainerAmount{
+			padding-left:40%;
+		}
+	}
+
 </style>
 </head>
 <body class="main">
-
+	<!---
 	<div class="title">
 		<p style="font-size:150%; color=lightgray;display:inline">Bills Timeline</p>
 		<button class="butn" data-toggle="modal" data-target="#myModal"><i class="fa fa-cog" aria-hidden="true"></i></button>
-		<button class="butn" data-toggle="modal" data-target="#legendModal" style="widht:40px"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
 
 	</div>
-	<br>
-	<div class="timeline">
-		#set($even=true)
-		#foreach($bill in $timeline.getBillList())
-			#if($even)
-				<div class="billContainer left">
-				#set($even=false)
-			#else
-				<div class="billContainer right">
-				#set($even=true)
-			#end
-					#if($bill.getType()!="nomina" && $bill.getIssuerRFC()==$RFC)
-						<div class="box green" data-href="$bill.getUUID()">
-					#elseif ($bill.getType()=="nomina" && $bill.getIssuerRFC()==$RFC)
-						<div class="box orange" data-href="$bill.getUUID()">
-					#elseif($bill.getUse()=="G01" || $bill.getUse()=="G02" || $bill.getUse()=="G03")
-						<div class="box red" data-href="$bill.getUUID()">
-					#else
-						<div class="box blue" data-href="$bill.getUUID()">
-					#end
-
-						<div>
-							<h2>$date.format("MMM dd, yyyy H:MM:SS a",$bill.getDate())</h2>
-						</div>
-						<div style="background-color: white; opacity:0.9 ">
-							<h4>$bill.getConcept()</h4>
-							<div style="border-top:solid 0.5px rgba(0,0,0,0.5);padding-left:60%; width:100%; box-sizing:border-box"><h4>$math.roundTo(2, $bill.getTotal()) $bill.getCurrency()</h4></div>
-						</div>
+	<br>-->
+	<div class="content leftbox">
+		<div class = "contentTitle">
+			<h3>Filters</h3>
+		</div>
+		<br>
+		<form id="compareForm" action="/timeline">
+			<div class="container">
+				<h6><strong>Period</strong></h6>
+				<br>
+				<div class="row">
+					<div class="col">
+						<p>Period start</p>
+					</div>
+					<div class="col-8">
+						<input class="form-control" type="date" id="pStart1" value="2015-08-19" name="periodStart">
 					</div>
 				</div>
-		#end
+				<div class="row">
+					<div class="col">
+						<p>Period end</p>
+					</div>
+					<div class="col-8">
+						<input class="form-control" type="date" id="pEnd1" value="2020-08-19" name="periodEnd">
+					</div>
+				</div>
+				<br>
+				<h6><strong>Price range</strong></h6>
+				<br>
+				<div class="row">
+					<div class="col">
+						<p>Minimum</p>
+					</div>
+					<div class="col-8">
+						<input class="form-control" type="number" id="pMin" name="min">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<p>Maximum</p>
+					</div>
+					<div class="col-8">
+						<input class="form-control" type="number" id="pMax" name="max">
+					</div>
+				</div>
+				<br>
+				<h6><strong>Bill type</strong></h6>
+				<div class="form-check-inline">
+					<label class="form-check-label" for="check1">
+						<input type="checkbox" class="form-check-input" name="incomes" id="bIncomes" value="true">Incomes
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label" for="check2">
+						<input type="checkbox" class="form-check-input" name="expenses" id="bExpenses" value="true">Expenses
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label" for="check2">
+						<input type="checkbox" class="form-check-input" name="investments" id="bInvestments" value="true">Investments
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label" for="check2">
+						<input type="checkbox" class="form-check-input" name="salaries" id="bSalaries" value="true">Salaries
+					</label>
+				</div>
+				<br>
+				<br>
+				<h6><strong>Bill order</strong></h6>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" name="ascendent" id="ascendent" value="true">Ascendent
+					</label>
+				</div>
+				<div class="form-check-inline">
+					<label class="form-check-label">
+						<input type="radio" class="form-check-input" name="ascendent" id="descendent" value="false">Descendent
+					</label>
+				</div>
+				<input type="submit" class="btn btn-primary" value="Submit" style="float:right">
+			</div>
+		</form>
 	</div>
-
-	<!-- The Modal -->
-	<div class="modal fade" id="myModal">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header" style="background-color: rgb(234,241,247)">
-					<h4 class="modal-title" >Configure timeline</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-					<form id="compareForm" action="/timeline">
-						<div class="container">
-							<h6>Period</h6>
-							<br>
-							<div class="row">
-								<div class="col">
-									<p>Period start</p>
-								</div>
-								<div class="col-8">
-									<input class="form-control" type="date" id="pStart1" value="2011-08-19" name="periodStart">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col">
-									<p>Period end</p>
-								</div>
-								<div class="col-8">
-									<input class="form-control" type="date" id="pEnd1" value="2011-08-19" name="periodEnd">
-								</div>
-							</div>
-							<br>
-							<h6>Price range</h6>
-							<br>
-							<div class="row">
-								<div class="col">
-									<p>Minimum</p>
-								</div>
-								<div class="col-8">
-									<input class="form-control" type="number" id="pMin" name="min">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col">
-									<p>Maximum</p>
-								</div>
-								<div class="col-8">
-									<input class="form-control" type="number" id="pMax" name="max">
-								</div>
-							</div>
-							<br>
-							<h6>Bill type</h6>
-							<div class="form-check-inline">
-								<label class="form-check-label" for="check1">
-									<input type="checkbox" class="form-check-input" name="incomes" id="bIncomes" value="true">Incomes
-								</label>
-							</div>
-							<div class="form-check-inline">
-								<label class="form-check-label" for="check2">
-									<input type="checkbox" class="form-check-input" name="expenses" id="bExpenses" value="true">Expenses
-								</label>
-							</div>
-							<div class="form-check-inline">
-								<label class="form-check-label" for="check2">
-									<input type="checkbox" class="form-check-input" name="investments" id="bInvestments" value="true">Investments
-								</label>
-							</div>
-							<div class="form-check-inline">
-								<label class="form-check-label" for="check2">
-									<input type="checkbox" class="form-check-input" name="salaries" id="bSalaries" value="true">Salaries
-								</label>
-							</div>
-							<br>
-							<br>
-							<h6>Bill type</h6>
-							<div class="form-check-inline">
-								<label class="form-check-label">
-									<input type="radio" class="form-check-input" name="ascendent" id="ascendent" value="true">Ascendent
-								</label>
-							</div>
-							<div class="form-check-inline">
-								<label class="form-check-label">
-									<input type="radio" class="form-check-input" name="ascendent" id="descendent" value="false">Descendent
-								</label>
-							</div>
-						</div>
-					</form>
-				</div>
-
-				<!-- Modal footer -->
-				<div class="modal-footer" style="background-color: rgb(234,241,247)">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-					<button type="submit" form="compareForm" class="btn btn-success">Compare</button>
+	<div class="content rightbox">
+		<div class="timelineContainer">
+			<div class="contentTitle" style="margin-bottom:1%; height:44px">
+				<h3 style="float:left">Bills Timeline</h3>
+				<div style="float:right; margin-right:1%">
+					<button class="butn" data-toggle="modal" data-target="#legendModal" style="widht:40px;"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
 				</div>
 
 			</div>
+			<div class="timeline">
+				#set($even=true)
+				#foreach($bill in $timeline.getBillList())
+					#if($even)
+					<div class="billContainer left">
+						#set($even=false)
+					#else
+					<div class="billContainer right">
+						#set($even=true)
+					#end
+					#if($bill.getType()!="nomina" && $bill.getIssuerRFC()==$RFC)
+					<div class="box green" data-href="$bill.getUUID()">
+					#elseif ($bill.getType()=="nomina" && $bill.getIssuerRFC()==$RFC)
+					<div class="box orange" data-href="$bill.getUUID()">
+					#elseif($bill.getUse()=="G01" || $bill.getUse()=="G02" || $bill.getUse()=="G03")
+					<div class="box red" data-href="$bill.getUUID()">
+					#else
+					<div class="box blue" data-href="$bill.getUUID()">
+					#end
+
+					<div>
+						<h2>$date.format("MMM dd, yyyy H:MM:SS a",$bill.getDate())</h2>
+					</div>
+					<div style="background-color: white; opacity:0.9 ">
+						<h4>$bill.getConcept()</h4>
+						<div class="billContainerAmount"><h4>$number.format("currency",$bill.getTotal())</h4></div>
+					</div>
+				</div>
+				</div>
+				#end
+			</div>
 		</div>
 	</div>
+
+
 
 		<div class="modal fade" id="legendModal">
 			<div class="modal-dialog modal-dialog-centered">
@@ -436,5 +489,4 @@
 	orderFromQuery();
 </script>
 
-</html>	
-	
+</html>
