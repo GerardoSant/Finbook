@@ -2,6 +2,7 @@ import AS.FrontServlet;
 import Bills.BillsController;
 import Reports.ReportController;
 import Shiny.ShinyController;
+import WebSocket.EchoWebSocket;
 import WebSocket.WebSocketController;
 import index.IndexController;
 import upload.UploadController;

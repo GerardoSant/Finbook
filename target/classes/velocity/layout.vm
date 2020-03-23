@@ -296,7 +296,7 @@
 				<div class="popover-content" id="userPanel">
 					<div style="border-bottom: 1px solid darkgrey">
 						<i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
-						<p class="popover-message">$businessName</p>
+						<p class="popover-message">$!businessName</p>
 					</div>
 					<div style="margin-top:10%">
 						<div>

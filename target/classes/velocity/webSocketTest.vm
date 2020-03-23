@@ -2,12 +2,33 @@
 #mainLayout()
 
 <script>
+
+    var textToSign= "test";
+
     let socket = new WebSocket("ws://localhost:8080/echo");
+
     socket.onopen = function(e) {
         alert("[open] Connection established");
+        /*
         alert("Sending to server");
         socket.send("My name is John");
+        */
+
     };
+
+    socket.onmessage = function(e){
+        alert(e.data);
+        console.log(e.data);
+        if(e.data=="test"){
+            console.log("hey");
+            location.replace("http://www.localhost:8080/login")
+        }
+    }
+    socket.onclose = function(e){
+        alert("session closed")
+    }
+
+
 
 </script>
 <body class="main">
