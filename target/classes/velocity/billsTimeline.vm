@@ -36,7 +36,7 @@
 	}
 
 	.billContainerAmount{
-		border-top:solid 0.5px rgba(0,0,0,0.5);padding-left:70%; width:100%; box-sizing:border-box
+		border-top:solid 0.5px rgba(0,0,0,0.5);padding-left:65%; width:100%; box-sizing:border-box
 	}
 
 	.timelineContainer{

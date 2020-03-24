@@ -112,7 +112,7 @@
         }
 
     }
-    @media screen and (max-width: 1050px){
+    @media screen and (max-width: 1145px){
         .minibox-medium{
             width:98%;
         }

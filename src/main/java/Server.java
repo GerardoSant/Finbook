@@ -1,17 +1,18 @@
 import AS.FrontServlet;
-import Bills.BillsController;
-import Reports.ReportController;
-import Shiny.ShinyController;
-import WebSocket.EchoWebSocket;
+import Controller.Web.Shiny.ShinyController;
+import Controller.Web.upload.UploadController;
+import Controller.Web.login.LoginController;
+import Controller.Web.index.IndexController;
+import Controller.Web.bills.BillsController;
+import Controller.Web.Dashboard.DashboardController;
+import Controller.Web.reports.ReportController;
+
 import WebSocket.WebSocketController;
-import index.IndexController;
-import upload.UploadController;
-import login.LoginController;
-import util.Filters;
-import util.Path;
+import Controller.util.Filters;
+import Controller.util.Path;
 import static spark.Spark.*;
 
-import static util.ViewUtil.notFound;
+import static Controller.util.ViewUtil.notFound;
 
 public class Server {
     public static void main(String[] args) {

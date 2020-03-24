@@ -1,19 +1,18 @@
 package AS;
 
-import Bills.Bill;
-import Bills.BillsDao;
-import Reports.BarChart;
-import Reports.InvestmentReportBuilder;
-import Reports.InvestmentsBarChartBuilder;
-import Reports.InvestmentsReport;
-import login.LoginController;
+import Model.Bills.Bill;
+import View.daos.BillsDao;
+import Model.Charts.BarChart;
+import Controller.builders.reports.InvestmentReportBuilder;
+import Controller.builders.charts.InvestmentsBarChartBuilder;
+import Model.Reports.InvestmentsReport;
+import Controller.Web.login.LoginController;
 import org.apache.velocity.tools.generic.MathTool;
 import spark.Request;
-import util.DateParser;
-import util.Path;
-import util.ViewUtil;
+import Controller.util.DateParser;
+import Controller.util.Path;
+import Controller.util.ViewUtil;
 
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 

@@ -1,14 +1,14 @@
 package AS;
 
-import Bills.Bill;
-import Bills.BillsDao;
-import Bills.Location.GeoNamesLocationLoader;
-import util.Path;
-import util.ViewUtil;
+import Model.Bills.Bill;
+import View.daos.BillsDao;
+import Implementations.GeoNamesLocationLoader;
+import Controller.util.Path;
+import Controller.util.ViewUtil;
 
 import java.util.HashMap;
 
-import static util.RequestUtil.*;
+import static Controller.util.RequestUtil.*;
 
 public class ShowBillCommand extends FrontCommand {
     @Override

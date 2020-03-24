@@ -1,10 +1,10 @@
 package AS;
 
-import Bills.BillsDao;
-import login.LoginController;
+import View.daos.BillsDao;
+import Controller.Web.login.LoginController;
 import org.apache.velocity.tools.generic.MathTool;
-import util.Path;
-import util.ViewUtil;
+import Controller.util.Path;
+import Controller.util.ViewUtil;
 
 import java.util.HashMap;
 

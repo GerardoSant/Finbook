@@ -1,22 +1,22 @@
 package AS;
 
-import Bills.Bill;
-import Bills.BillTimeline;
-import Bills.BillTimelineBuilder;
-import Bills.BillsDao;
-import login.LoginController;
+import Model.Bills.Bill;
+import Model.Bills.BillTimeline;
+import Controller.builders.other.BillTimelineBuilder;
+import View.daos.BillsDao;
+import Controller.Web.login.LoginController;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import spark.Request;
-import util.DateParser;
-import util.Path;
-import util.ViewUtil;
+import Controller.util.DateParser;
+import Controller.util.Path;
+import Controller.util.ViewUtil;
 import java.util.HashMap;
 import java.util.List;
 
 import static java.lang.Double.parseDouble;
-import static util.RequestUtil.getSessionCurrentUser;
-import static util.RequestUtil.queryParamIsTrue;
+import static Controller.util.RequestUtil.getSessionCurrentUser;
+import static Controller.util.RequestUtil.queryParamIsTrue;
 
 public class ShowBillsTimelineCommand extends FrontCommand {
     @Override

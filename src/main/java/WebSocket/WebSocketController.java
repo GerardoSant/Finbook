@@ -1,8 +1,8 @@
 package WebSocket;
 
 import spark.Route;
-import util.Path;
-import util.ViewUtil;
+import Controller.util.Path;
+import Controller.util.ViewUtil;
 
 import java.util.HashMap;
 

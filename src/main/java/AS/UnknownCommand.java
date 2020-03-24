@@ -1,13 +1,11 @@
 package AS;
 
-import Log.ErrorLogWriter;
-import Log.FileErrorLogWriter;
+import View.writers.ErrorLogWriter;
+import Implementations.FileErrorLogWriter;
 import org.eclipse.jetty.http.HttpStatus;
-import util.Path;
-import util.ViewUtil;
+import Controller.util.Path;
+import Controller.util.ViewUtil;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.util.HashMap;
 
 public class UnknownCommand extends FrontCommand {
