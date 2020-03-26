@@ -1,5 +1,9 @@
 package Controller.Web.login;
 
+import WebSocket.EchoWebSocket;
+import io.finbook.TextGenerator;
+import io.finbook.Verifier;
+import org.w3c.dom.Text;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -13,7 +17,6 @@ import static Controller.util.RequestUtil.*;
 
 public class LoginController {
     public static Route serveLoginPage = (request, response ) -> {
-        System.out.println((String) request.session().attribute("currentUser"));
         Map<String, Object> model = new HashMap<>();
         model.put("loggedOut", removeSessionAttrLoggedOut(request));
         model.put("redirected", removeSessionAttrLoginRedirect(request));
@@ -21,9 +24,22 @@ public class LoginController {
     };
 
     public static Route handleLoginPost = (request, response) -> {
-        Map<String, Object> model = new HashMap<>();
-        request.session().attribute("currentUser", getQueryUsername(request));
-        response.redirect(Path.Web.DASHBOARD);
+        if (request.queryParams("id")!=null) {
+            byte[] sign = EchoWebSocket.messages.get(request.queryParams("id"));
+            for (byte b : sign) {
+                System.out.print(b+",");
+            }
+            EchoWebSocket.messages.remove(request.queryParams("id"));
+            if (new Verifier(sign).validateSign()) {
+                request.session().attribute("currentUser", "E-5756930");
+                response.redirect(Path.Web.DASHBOARD);
+            } else{
+                response.redirect(Path.Web.LOGIN);
+            }
+        } else{
+            request.session().attribute("currentUser", getQueryUsername(request));
+            response.redirect(Path.Web.DASHBOARD);
+        }
         return null;
     };
 
@@ -33,6 +49,11 @@ public class LoginController {
         request.session().attribute("loggedOut", true);
         response.redirect(Path.Web.LOGIN);
         return null;
+    };
+    public static Route serveSignAwait = (request, response ) -> {
+        Map<String, Object> model = new HashMap<>();
+        model.put("textToSign", TextGenerator.generateRandomText());
+        return ViewUtil.render(request,model,Path.Template.SIGNAWAIT);
     };
 
 

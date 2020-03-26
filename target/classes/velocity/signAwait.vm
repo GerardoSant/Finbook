@@ -1,0 +1,38 @@
+#parse("/velocity/layout.vm")
+#mainLayout()
+
+<script>
+
+    var textToSign=  "$textToSign";
+
+
+    let socket = new WebSocket("ws://localhost:8080/echo");
+
+    socket.onopen = function(e) {
+        alert("[open] Connection established");
+    };
+
+    socket.onmessage = function(e){
+        if(JSON.parse(e.data).id==textToSign){
+            submitLogInForm();
+        }
+    }
+    socket.onclose = function(e){
+        alert("session closed")
+    }
+
+
+
+</script>
+
+<script>
+    function submitLogInForm(){
+        document.getElementById("logInForm").submit();
+    }
+</script>
+
+<body class="main">
+    <form id="logInForm" action="/login" method="post">
+        <input class="form-control" id="id" name="id" value="$textToSign">
+    </form>
+</body>

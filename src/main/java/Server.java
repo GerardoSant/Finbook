@@ -7,7 +7,7 @@ import Controller.Web.bills.BillsController;
 import Controller.Web.Dashboard.DashboardController;
 import Controller.Web.reports.ReportController;
 
-import WebSocket.WebSocketController;
+import WebSocket.EchoWebSocket;
 import Controller.util.Filters;
 import Controller.util.Path;
 import static spark.Spark.*;
@@ -22,7 +22,7 @@ public class Server {
         staticFiles.location("/public");
         staticFiles.expireTime(600L);
         port(8080);
-        //webSocket("/echo", EchoWebSocket.class);
+        webSocket("/echo", EchoWebSocket.class);
         //init();
 
 
@@ -56,6 +56,7 @@ public class Server {
         get(Path.Web.BILLS_INDEX, IndexController.serveBillsIndexPage);
         get(Path.Web.REPORTS_INDEX, IndexController.serveReportsIndexPage);
         get(Path.Web.DASHBOARD, DashboardController.serveDashboard);
+        get(Path.Web.SIGN_AWAIT, LoginController.serveSignAwait);
 
 
         post(Path.Web.UPLOAD, UploadController.handleUploadPost);
@@ -82,7 +83,6 @@ public class Server {
 
         get("/mainPage", FrontServlet.doGet);
 
-        get("/wsTest", WebSocketController.socketTest);
 
 
     }
