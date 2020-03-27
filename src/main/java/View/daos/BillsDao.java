@@ -13,7 +13,7 @@ public class BillsDao {
 
     public BillsDao(String userRFC) {
         this.userRFC= userRFC;
-        bills= new SQLiteBillsLoader().loadBills(userRFC);
+        this.bills= new SQLiteBillsLoader().loadBills(userRFC);
     }
 
 
