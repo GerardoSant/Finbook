@@ -1,436 +1,460 @@
 #parse("/velocity/layout.vm")
 #mainLayout()
 <html>
-    <script src="https://unpkg.com/jspdf@1.5.3/dist/jspdf.min.js"></script>
-    <script src="https://unpkg.com/jspdf-autotable@3.2.13/dist/jspdf.plugin.autotable.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://unpkg.com/jspdf@1.5.3/dist/jspdf.min.js"></script>
+<script src="https://unpkg.com/jspdf-autotable@3.2.13/dist/jspdf.plugin.autotable.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
+<style>
+    [data-href] {
+        cursor: pointer;
+    }
 
-    <style>
-        [data-href] {
-            cursor: pointer;
-        }
-        thead {
-            background-color: rgb(0,51,102);
-            color:white;
-            font-size:117%
-        }
+    thead {
+        background-color: rgb(0, 51, 102);
+        color: white;
+        font-size: 117%
+    }
 
-        .opener {
-            cursor: pointer;
-            font-size:115%;
+    .opener {
+        cursor: pointer;
+        font-size: 115%;
 
-        }
+    }
 
-        .hidden {
-            display:none;
-        }
+    .hidden {
+        display: none;
+    }
 
-        .bill {
-            font-style: italic;
-            background-color: #ebfcfc;
-        }
+    .bill {
+        font-style: italic;
+        background-color: #ebfcfc;
+    }
 
-        .rightbox{
-            float:right;
-            width:55%;
-            margin-right:5%;
-            margin-bottom:5%
+    .rightbox {
+        float: right;
+        width: 55%;
+        margin-right: 5%;
+        margin-bottom: 5%
 
-        }
+    }
 
-        .leftbox{
-            position:fixed;
-            float:left;
-            width: 30%;
-            margin-right:5%;
+    .leftbox {
+        position: fixed;
+        float: left;
+        width: 30%;
+        margin-right: 5%;
+        margin-left: 5%;
+        height: 75%;
+        margin-bottom: 5%
+    }
+
+    .static {
+        position: static;
+    }
+
+    .fixed {
+        width: inherit;
+        position: fixed;
+    }
+
+    footer {
+        display: none;
+    }
+
+    @media screen and (max-width: 992px) {
+        .rightbox {
+            float: none;
+            width: 90%;
+            margin-right: 0%;
             margin-left: 5%;
-            height:75%;
-            margin-bottom:5%
+
         }
 
-        .static {
+        .leftbox {
             position: static;
+            float: none;
+            width: 90%;
         }
-        .fixed{
-            width: inherit;
-            position: fixed;
+    }
+
+    @media screen and (max-height: 650px) {
+
+        .leftbox {
+            position: static;
+
         }
+    }
 
-        footer {
-            display: none;
+    @media screen and (max-width: 650px) {
+        .phonescrollable {
+            overflow-x: scroll;
         }
+    }
 
-        @media screen and (max-width: 992px) {
-            .rightbox{
-                float:none;
-                width:90%;
-                margin-right:0%;
-                margin-left: 5%;
+</style>
 
-            }
-            .leftbox{
-                position:static;
-                float:none;
-                width:90%;
-            }
-        }
-
-        @media screen and (max-height: 650px) {
-
-            .leftbox{
-                position:static;
-
-            }
-        }
-
-        @media screen and (max-width:650px){
-            .phonescrollable{
-                overflow-x: scroll;
-            }
-        }
-
-    </style>
-
-    <body class="main">
-        <div class="rightbox">
-            <div class = "container content">
-                <div class="contentTitle">
-                    <div class ="row phonescrollable">
-                        <div class="col-9"><h2>Investments report</h2></div>
-                        <div class="col-3"><button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare</button></div>
-                    </div>
-                </div>
-
-                <br>
-
-                <table class="table table-hover fixed_header" id="myTable">
-                    <thead>
-                    <tr>
-                        <th>Investments</th>
-                        <th>Base</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr id="buildings" class="opener">
-                        <td>Buildings</td>
-                        <td>$number.format("currency",$report.getBuildingsBase())</td>
-                    </tr>
-                        #foreach($bill in $report.getBuildings())
-                        <tr data-href="$bill.getUUID()" class="hidden buildings bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$number.format("currency",$bill.getSubtotal())</td>
-                        </tr>
-                        #end
-                    <tr id="furniture" class="opener">
-                        <td>Furniture and office equipment</td>
-                        <td>$number.format("currency",$report.getOfficeEquipmentBase())</td>
-                    </tr>
-                        #foreach($bill in $report.getOfficeEquipment())
-                        <tr data-href="$bill.getUUID()" class="hidden furniture bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$number.format("currency",$bill.getSubtotal())</td>
-                        </tr>
-                        #end
-                    <tr id="transport" class="opener">
-                        <td>Transport equipment</td>
-                        <td>$number.format("currency",$report.getTransportEquipmentBase())</td>
-                    </tr>
-                        #foreach($bill in $report.getTransportEquipment())
-                        <tr data-href="$bill.getUUID()" class="hidden transport bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$number.format("currency",$bill.getSubtotal())</td>
-                        </tr>
-                        #end
-                    <tr id="computational" class="opener">
-                        <td>Computational equipment and accesories</td>
-                        <td>$number.format("currency",$report.getComputationalEquipmentBase())</td>
-                    </tr>
-                        #foreach($bill in $report.getComputationalEquipment())
-                        <tr data-href="$bill.getUUID()" class="hidden computational bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$number.format("currency",$bill.getSubtotal())</td>
-                        </tr>
-                        #end
-                    <tr id="models" class="opener">
-                        <td>Models and Tools</td>
-                        <td>$number.format("currency",$report.getModelsAndToolsBase())</td>
-                    </tr>
-                        #foreach($bill in $report.getModelsAndTools())
-                        <tr data-href="$bill.getUUID()" class="hidden models bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$number.format("currency",$bill.getSubtotal())</td>
-                        </tr>
-                        #end
-                    <tr id="telephone" class="opener">
-                        <td>Telephone communications</td>
-                        <td>$number.format("currency",$report.getTelephoneCommunicationsBase())</td>
-                    </tr>
-                        #foreach($bill in $report.getTelephoneCommunications())
-                        <tr data-href="$bill.getUUID()" class="hidden telephone bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$number.format("currency",$bill.getSubtotal())</td>
-                        </tr>
-                        #end
-                    <tr id="satellite" class="opener">
-                        <td>Satellite communications</td>
-                        <td>$number.format("currency",$report.getSatelliteCommunicationsBase())</td>
-                    </tr>
-                        #foreach($bill in $report.getSatelliteCommunications())
-                        <tr data-href="$bill.getUUID()" class="hidden satellite bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$number.format("currency",$bill.getSubtotal())</td>
-                        </tr>
-                        #end
-                    <tr id="other" class="opener">
-                        <td>Other machinery and equipment</td>
-                        <td>$number.format("currency",$report.getOtherMachineryAndEquipmentBase())</td>
-                    </tr>
-                        #foreach($bill in $report.getOtherMachineryAndEquipment())
-                        <tr data-href="$bill.getUUID()" class="hidden other bill">
-                            <td><li>$bill.getConcept()</li></td>
-                            <td>$number.format("currency",$bill.getSubtotal())</td>
-                        </tr>
-                        #end
-                    <tr style="border-top:ridge;border-bottom:ridge;background-color: #f7f7f7; font-size:115%">
-                        <td><b>All investments</b></td>
-                        <td style="">$number.format("currency",$report.getBase())</td>
-                    </tr>
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
-
-        <div class="leftbox">
-            <div class="container content" style="margin-bottom:5%">
-                <div>
-                    <h4 class="contentTitle">Investment period</h4>
-                    <br>
-                    <div>
-                        <form>
-                            <div class="row">
-                                <div class="col">
-                                    <p>Period start</p>
-                                </div>
-                                <div class="col-8">
-                                    <input class="form-control" type="date" value="2011-08-19" id="pStart" name="periodStart">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <p>Period end</p>
-                                </div>
-                                <div class="col-8">
-                                    <input class="form-control" type="date" value="2011-08-19" id="pEnd" name="periodEnd">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button type="submit" value="Submit" class="btn btn-secondary" style="float:right">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-            <div class="container content" style="height:60%; margin-bottom:5%">
-                <div>
-                    <h4 class="contentTitle">Investment Chart</h4>
-                </div>
-                <div id="piechart" style="height:90%"></div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="myModal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header" style="background-color: rgb(234,241,247)">
-                        <h4 class="modal-title" >Select report periods</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <form id="compareForm" action="/reports/compare/investments">
-                            <div class="container">
-                                <h6>Report 1</h6>
-                                <br>
-                                <div class="row">
-                                    <div class="col">
-                                        <p>Period start</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <input class="form-control" type="date" id="pStart1" value="2011-08-19" name="periodStart">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <p>Period end</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <input class="form-control" type="date" id="pEnd1" value="2011-08-19" name="periodEnd">
-                                    </div>
-                                </div>
-                                <h6>Report 2</h6>
-                                <br>
-                                <div class="row">
-                                    <div class="col">
-                                        <p>Period start</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <input class="form-control" type="date" id="pStart2" value="2011-08-19" name="periodStart1">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <p>Period end</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <input class="form-control" type="date" id="pEnd2" value="2011-08-19" name="periodEnd1">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer" style="background-color: rgb(234,241,247)">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        <button type="submit" form="compareForm" class="btn btn-success">Compare</button>
-                    </div>
-
+<body class="main">
+<div class="rightbox">
+    <div class="content">
+        <div class="contentTitle">
+            <div class="row phonescrollable">
+                <div class="col-9"><h2>Investments report</h2></div>
+                <div class="col-3">
+                    <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare
+                    </button>
                 </div>
             </div>
         </div>
 
+        <br>
 
-
-
-    </body>
-
-    <script>
-
-        jQuery(document).ready(function($) {
-            $('*[data-href]').on('click', function() {
-                window.location = /bills/ + $(this).data("href");
-            });
-            $('.opener').on('click', function() {
-                var itemsToToggleClass = "." + jQuery(this).attr("id");
-                jQuery(this).toggleClass("opened");
-                $(itemsToToggleClass).toggleClass("hidden");
-                //$(itemsToToggleClass).last().css( "border-bottom", "groove" );
-            });
-
-
-        });
-    </script>
-
-
-    <script>
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        var data;
-        var options;
-        var chart;
-
-        function drawChart() {
-            data = google.visualization.arrayToDataTable([
-                ['Investment', 'Base'],
-                #foreach($key in $barChart)
-                    ['$key',$barChart.getCount($key)],
+        <table class="table table-hover fixed_header" id="myTable">
+            <thead>
+            <tr>
+                <th>Investments</th>
+                <th>Base</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="buildings" class="opener">
+                <td>Buildings</td>
+                <td>$number.format("currency",$report.getBuildingsBase())</td>
+            </tr>
+                #foreach($bill in $report.getBuildings())
+                <tr data-href="$bill.getUUID()" class="hidden buildings bill">
+                    <td>
+                        <li>$bill.getConcept()</li>
+                    </td>
+                    <td>$number.format("currency",$bill.getSubtotal())</td>
+                </tr>
                 #end
-            ]);
+            <tr id="furniture" class="opener">
+                <td>Furniture and office equipment</td>
+                <td>$number.format("currency",$report.getOfficeEquipmentBase())</td>
+            </tr>
+                #foreach($bill in $report.getOfficeEquipment())
+                <tr data-href="$bill.getUUID()" class="hidden furniture bill">
+                    <td>
+                        <li>$bill.getConcept()</li>
+                    </td>
+                    <td>$number.format("currency",$bill.getSubtotal())</td>
+                </tr>
+                #end
+            <tr id="transport" class="opener">
+                <td>Transport equipment</td>
+                <td>$number.format("currency",$report.getTransportEquipmentBase())</td>
+            </tr>
+                #foreach($bill in $report.getTransportEquipment())
+                <tr data-href="$bill.getUUID()" class="hidden transport bill">
+                    <td>
+                        <li>$bill.getConcept()</li>
+                    </td>
+                    <td>$number.format("currency",$bill.getSubtotal())</td>
+                </tr>
+                #end
+            <tr id="computational" class="opener">
+                <td>Computational equipment and accesories</td>
+                <td>$number.format("currency",$report.getComputationalEquipmentBase())</td>
+            </tr>
+                #foreach($bill in $report.getComputationalEquipment())
+                <tr data-href="$bill.getUUID()" class="hidden computational bill">
+                    <td>
+                        <li>$bill.getConcept()</li>
+                    </td>
+                    <td>$number.format("currency",$bill.getSubtotal())</td>
+                </tr>
+                #end
+            <tr id="models" class="opener">
+                <td>Models and Tools</td>
+                <td>$number.format("currency",$report.getModelsAndToolsBase())</td>
+            </tr>
+                #foreach($bill in $report.getModelsAndTools())
+                <tr data-href="$bill.getUUID()" class="hidden models bill">
+                    <td>
+                        <li>$bill.getConcept()</li>
+                    </td>
+                    <td>$number.format("currency",$bill.getSubtotal())</td>
+                </tr>
+                #end
+            <tr id="telephone" class="opener">
+                <td>Telephone communications</td>
+                <td>$number.format("currency",$report.getTelephoneCommunicationsBase())</td>
+            </tr>
+                #foreach($bill in $report.getTelephoneCommunications())
+                <tr data-href="$bill.getUUID()" class="hidden telephone bill">
+                    <td>
+                        <li>$bill.getConcept()</li>
+                    </td>
+                    <td>$number.format("currency",$bill.getSubtotal())</td>
+                </tr>
+                #end
+            <tr id="satellite" class="opener">
+                <td>Satellite communications</td>
+                <td>$number.format("currency",$report.getSatelliteCommunicationsBase())</td>
+            </tr>
+                #foreach($bill in $report.getSatelliteCommunications())
+                <tr data-href="$bill.getUUID()" class="hidden satellite bill">
+                    <td>
+                        <li>$bill.getConcept()</li>
+                    </td>
+                    <td>$number.format("currency",$bill.getSubtotal())</td>
+                </tr>
+                #end
+            <tr id="other" class="opener">
+                <td>Other machinery and equipment</td>
+                <td>$number.format("currency",$report.getOtherMachineryAndEquipmentBase())</td>
+            </tr>
+                #foreach($bill in $report.getOtherMachineryAndEquipment())
+                <tr data-href="$bill.getUUID()" class="hidden other bill">
+                    <td>
+                        <li>$bill.getConcept()</li>
+                    </td>
+                    <td>$number.format("currency",$bill.getSubtotal())</td>
+                </tr>
+                #end
+            <tr style="border-top:ridge;border-bottom:ridge;background-color: #f7f7f7; font-size:115%">
+                <td><b>All investments</b></td>
+                <td style="">$number.format("currency",$report.getBase())</td>
+            </tr>
+            </tbody>
+        </table>
 
-            options = {
-                title: 'Investments',
-                backgroundColor:'rgb(247,250,252)'
-            };
+    </div>
+</div>
 
-            chart = new google.visualization.PieChart(document.getElementById('piechart'));
+<div class="leftbox">
+    <div class="content" style="margin-bottom:5%">
+        <div>
+            <h4 class="contentTitle">Investment period</h4>
+            <br>
+            <div>
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <p>Period start</p>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="date" value="2011-08-19" id="pStart" name="periodStart">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Period end</p>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="date" value="2011-08-19" id="pEnd" name="periodEnd">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" value="Submit" class="btn btn-secondary" style="float:right">Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-            chart.draw(data, options);
-        }
-        function resize () {
-            chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            chart.draw(data, options);
-        }
+        </div>
+    </div>
+    <div class="content" style="height:60%; margin-bottom:5%">
+        <div>
+            <h4 class="contentTitle">Investment Chart</h4>
+        </div>
+        <div id="piechart" style="height:90%"></div>
+    </div>
+</div>
 
-        window.onload = resize;
-        window.onresize = resize;
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-        document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function(event){
-            if(event.propertyName !== 'width') return;
-            resize();
+            <!-- Modal Header -->
+            <div class="modal-header" style="background-color: rgb(234,241,247)">
+                <h4 class="modal-title">Select report periods</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="compareForm" action="/reports/compare/investments">
+                    <div class="container">
+                        <h6>Report 1</h6>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period start</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" id="pStart1" value="2011-08-19"
+                                       name="periodStart">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period end</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" id="pEnd1" value="2011-08-19" name="periodEnd">
+                            </div>
+                        </div>
+                        <h6>Report 2</h6>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period start</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" id="pStart2" value="2011-08-19"
+                                       name="periodStart1">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period end</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" id="pEnd2" value="2011-08-19" name="periodEnd1">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer" style="background-color: rgb(234,241,247)">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="submit" form="compareForm" class="btn btn-success">Compare</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+<script>
+
+    jQuery(document).ready(function ($) {
+        $('*[data-href]').on('click', function () {
+            window.location = /bills/ + $(this).data("href");
         });
-    </script>
+        $('.opener').on('click', function () {
+            var itemsToToggleClass = "." + jQuery(this).attr("id");
+            jQuery(this).toggleClass("opened");
+            $(itemsToToggleClass).toggleClass("hidden");
+            //$(itemsToToggleClass).last().css( "border-bottom", "groove" );
+        });
 
-    <script>
-        function getPeriodStartParsedDate() {
-            var year = $report.getPeriodStart().getYear() +1900;
-            console.log(year);
-            var month = $report.getPeriodStart().getMonth() +1;
-            console.log(month);
-            if (month < 10) month = "0" + month;
-            var day = $report.getPeriodStart().getDate()+0;
-            if (day < 10) day = "0" + day;
-            return year + "-" + month + "-" + day;
+
+    });
+</script>
+
+
+<script>
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    var data;
+    var options;
+    var chart;
+
+    function drawChart() {
+        data = google.visualization.arrayToDataTable([
+            ['Investment', 'Base'],
+            #foreach($key in $barChart)
+                ['$key',$barChart.getCount($key)],
+            #end
+        ]);
+
+        options = {
+            title: 'Investments',
+            backgroundColor: 'rgb(247,250,252)'
+        };
+
+        chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+
+    function resize() {
+        chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+
+    window.onload = resize;
+    window.onresize = resize;
+
+    document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function (event) {
+        if (event.propertyName !== 'width') return;
+        resize();
+    });
+</script>
+
+<script>
+    function getPeriodStartParsedDate() {
+        var year = $report.getPeriodStart().getYear() +1900;
+        console.log(year);
+        var month = $report.getPeriodStart().getMonth() +1;
+        console.log(month);
+        if (month < 10) month = "0" + month;
+        var day = $report.getPeriodStart().getDate()+0;
+        if (day < 10) day = "0" + day;
+        return year + "-" + month + "-" + day;
+    }
+
+    function getPeriodEndParsedDate() {
+        var year = $report.getPeriodEnd().getYear() +1900;
+        console.log(year);
+        var month = $report.getPeriodEnd().getMonth() +1;
+        console.log(month);
+        if (month < 10) month = "0" + month;
+        var day = $report.getPeriodEnd().getDate()+0;
+        if (day < 10) day = "0" + day;
+        return year + "-" + month + "-" + day;
+    }
+
+    document.getElementById('pStart').value = getPeriodStartParsedDate();
+    document.getElementById('pEnd').value = getPeriodEndParsedDate();
+</script>
+
+
+<script>
+    // Cuando se abre el menu lateral, se cambia a static la position del leftbox
+    $(document).ready(function () {
+        $('#menuBtn').on('click', function () {
+            document.getElementsByClassName("leftbox")[0].classList.add("static");
+        });
+    });
+
+    document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function (event) {
+        if (event.propertyName !== 'width') return;
+        //Apertura del panel
+        if (innerWidth - 250 > 992 && innerHeight > 650 && document.getElementById("myNav").style.width == "250px") {
+            document.getElementsByClassName("leftbox")[0].classList.add("fixed");
+            document.getElementsByClassName("leftbox")[0].classList.remove("static");
         }
-
-        function getPeriodEndParsedDate() {
-            var year = $report.getPeriodEnd().getYear() +1900;
-            console.log(year);
-            var month = $report.getPeriodEnd().getMonth() +1;
-            console.log(month);
-            if (month < 10) month = "0" + month;
-            var day = $report.getPeriodEnd().getDate()+0;
-            if (day < 10) day = "0" + day;
-            return year + "-" + month + "-" + day;
+        //Cierre del panel
+        if (document.getElementById("myNav").style.width == "0px") {
+            document.getElementsByClassName("leftbox")[0].classList.remove("fixed");
+            document.getElementsByClassName("leftbox")[0].classList.remove("static");
         }
+    });
 
-        document.getElementById('pStart').value = getPeriodStartParsedDate();
-        document.getElementById('pEnd').value = getPeriodEndParsedDate();
-    </script>
+    window.addEventListener("resize", fixBoxes);
 
-
-    <script>
-        // Cuando se abre el menu lateral, se cambia a static la position del leftbox
-        $(document).ready(function(){
-            $('#menuBtn').on('click',function() {
+    //Cuando se hace resize de la ventana, si el panel está abierto position de "leftbox" pasa a ser static.
+    function fixBoxes() {
+        if (document.getElementById("myNav").style.width == "250px") {
+            if (innerWidth - 250 < 1250) {
                 document.getElementsByClassName("leftbox")[0].classList.add("static");
-            });
-        });
-
-        document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function(event){
-            if(event.propertyName !== 'width') return;
-            //Apertura del panel
-            if (innerWidth-250>992 && innerHeight>650 && document.getElementById("myNav").style.width=="250px"){
-                document.getElementsByClassName("leftbox")[0].classList.add("fixed");
-                document.getElementsByClassName("leftbox")[0].classList.remove("static");
-            }
-            //Cierre del panel
-            if (document.getElementById("myNav").style.width=="0px"){
                 document.getElementsByClassName("leftbox")[0].classList.remove("fixed");
-                document.getElementsByClassName("leftbox")[0].classList.remove("static");
-            }
-        });
-
-        window.addEventListener("resize", fixBoxes);
-        //Cuando se hace resize de la ventana, si el panel está abierto position de "leftbox" pasa a ser static.
-        function fixBoxes(){
-            if (document.getElementById("myNav").style.width=="250px"){
-                if (innerWidth-250<1250){
-                    document.getElementsByClassName("leftbox")[0].classList.add("static");
-                    document.getElementsByClassName("leftbox")[0].classList.remove("fixed");
-                }
             }
         }
-    </script>
+    }
+</script>
 
 
 </html>	
