@@ -5,6 +5,7 @@
 	<style>
 		.leftbox{
 			float : left;
+			margin-top:2.6%;
 			width:100%;
 			margin-left:5%
 		}
@@ -73,14 +74,16 @@
 	  function appendOnTable(filename, content, status, valid, already){
 		 $(document).ready(function(){
 			 if (valid){
-				var popover = '<a href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="'+ content + '">'+filename+'</a>'
-				var append = '<tr class="table-success"><td>'+ popover+ '</td><td>'+status+'</td></tr>';
+				var popover = '<a style="color:darkgreen" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="'+ content + '">'+filename+'</a>'
+				var append = '<tr class="table-success"><td>'+ popover+ '</td><td>'+ '<div class="text-center"><i style="color:darkgreen" class="fas fa-check"></i></div>' + '</td></tr>';
 			 } else {
-				var popover = '<a href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="'+ content + '">'+filename+'</a>'
+
 				if (already){
-					var append = '<tr class="table-warning"><td>'+ popover+ '</td><td>'+status+'</td></tr>';
+					var popover = '<a style="color:rgb(156,101,36);" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="'+ content + '">'+filename+'</a>'
+					var append = '<tr class="table-warning"><td>'+ popover+ '</td><td>' + '<div class="text-center"><i style="color:rgb(166,101,36)" class="fas fa-exclamation-circle"></i></div>' + '</td></tr>';
 				} else{
-					var append = '<tr class="table-danger"><td>'+ popover+ '</td><td>'+status+'</td></tr>';
+					var popover = '<a style="color:darkred" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="'+ content + '">'+filename+'</a>'
+					var append = '<tr class="table-danger"><td>'+ popover+ '</td><td>'+ '<div class="text-center"><i style="color:darkred" class="fas fa-times"></i></div>' + '</td></tr>';
 				}
 
 			 }
