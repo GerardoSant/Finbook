@@ -24,6 +24,7 @@
         height:100px;
         background-color: darkblue;
         color:white;
+        cursor:pointer;
     }
     .minibox-sm{
         width:23%;
@@ -62,8 +63,6 @@
     .boxrows-container{
         margin-left:1%;
         margin-right:1%;
-
-
     }
 
     .greenbox{
@@ -183,6 +182,13 @@
         float:left; width:50%; height:100%;
     }
 
+    .clickable{
+        cursor:pointer;
+    }
+    .clickable:hover{
+        text-decoration: underline;
+    }
+
 
 
 
@@ -193,7 +199,7 @@
 
         <div class="boxrows-container">
             #if($profitreport.getProfit()>0)
-            <div class="minibox minibox-medium box greenbox">
+            <div class="minibox minibox-medium box greenbox" onclick="redirectWithPeriod('reports/profitandlosses')">
             #else
             <div class="minibox minibox-medium box redbox">
             #end
@@ -203,14 +209,14 @@
                     <p>Total profit</p>
                 </div>
             </div>
-            <div class="minibox minibox-medium box lightgreenbox">
+            <div class="minibox minibox-medium box lightgreenbox" onclick="redirectWithPeriod('reports/profitandlosses')">
                 <i class="fa fa-chart-bar"></i>
                 <div class="minibox-text">
                     <h3>$number.format("currency",$profitreport.getSalesAndIncomesBase())</h3>
                     <p>Total incomes</p>
                 </div>
             </div>
-            <div class="minibox minibox-medium box lightredbox">
+            <div class="minibox minibox-medium box lightredbox" onclick="redirectWithPeriod('reports/profitandlosses')">
                 <i class="fa fa-chart-bar"></i>
                 <div class="minibox-text">
                     <h3>$number.format("currency",$profitreport.getPurchasesAndExpensesBase())</h3>
@@ -222,7 +228,7 @@
         <div class="boxrows-container">
             <div class="bigbox box">
                 <div class="contentTitle">
-                    <h6>Profit and Loss</h6>
+                    <h6 onclick="redirectWithPeriod('/reports/profitandlosses')" class="clickable">Profit and Loss</h6>
                 </div>
                 <div class="chart">
                     <div class="left-chart-container">
@@ -256,21 +262,21 @@
 
 
         <div class="boxrows-container">
-            <div class="minibox minibox-sm box lightgreenbox">
+            <div class="minibox minibox-sm box lightgreenbox" onclick="redirectWithPeriod('reports/profitandlosses')">
                 <i class="fas fa-hand-holding-usd"></i>
                 <div class="minibox-text">
                     <h3>$number.format("currency",$billsDistribution.getSalesAmount())</h3>
                     <p>Total sales</p>
                 </div>
             </div>
-            <div class="minibox minibox-sm box lightredbox">
+            <div class="minibox minibox-sm box lightredbox" onclick="redirectWithPeriod('reports/profitandlosses')">
                 <i class="fa fa-chart-bar"></i>
                 <div class="minibox-text">
                     <h3>$number.format("currency",$billsDistribution.getPurchasesAndServicesAmount())</h3>
                     <p>Total purchases & external services</p>
                 </div>
             </div>
-            <div class="minibox minibox-sm box bluebox">
+            <div class="minibox minibox-sm box bluebox" onclick="redirectWithPeriod('reports/investments')">
                 <i class="fa fa-building"></i>
                 <div class="minibox-text">
                     <h3>$number.format("currency",$billsDistribution.getInvestmentsAmount())</h3>
@@ -295,20 +301,12 @@
             </div>
             <div class="mediumbox box">
                 <div class="contentTitle">
-                    <h6>Amortization</h6>
+                    <h6 onclick="redirectWithPeriod('/reports/amortization')" class="clickable">Amortization</h6>
                 </div>
                 <div id="amortizationBarChart" class="chart"></div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
+        </div>
     </body>
 </html>
 
@@ -557,5 +555,12 @@
             window.location = /bills/ + $(this).data("href");
         });
     });
+
+
+    function redirectWithPeriod(route){
+        const urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.get('periodStart')==null) window.location = route;
+        else window.location= route + "?periodStart=" + urlParams.get('periodStart') + "&" + "periodEnd=" + urlParams.get('periodEnd');
+    }
 </script>
 
