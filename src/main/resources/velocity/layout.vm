@@ -38,9 +38,9 @@
 
 	nav {
 		background-color:rgb(234,241,247);
-		border-bottom: 1px solid grey;
 		margin-bottom: 50px;
 		/*box-shadow: 0 1px 0 0 rgba(0,0,0,.6);*/
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
 		color:black;
 	}
 
@@ -63,7 +63,7 @@
 		width: 100%;
 		text-align: center;
 		background: rgb(247,250,252);
-		border-top: 1px solid black;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
 		font-size: 14px;
 
 	}
@@ -276,7 +276,7 @@
 
 		<!-- Brand WebPage name -->
 
-		<span>FinBook</span>
+		<span style="font-size:18px; color: rgb(176,35,25); font-family: Arial; border-bottom: 1px solid lightgray;">Fin</span><span style="font-size:18px; color: rgb(7,33,92); font-family: Arial; border-bottom: 1px solid lightgray;">book</span>
 
 
 		<!-- User Icon  -->

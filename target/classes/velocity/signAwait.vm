@@ -4,12 +4,12 @@
 <script>
 
     var textToSign=  "$textToSign";
+    console.log(textToSign);
 
 
     let socket = new WebSocket("ws://localhost:8080/echo");
 
     socket.onopen = function(e) {
-        alert("[open] Connection established");
     };
 
     socket.onmessage = function(e){
@@ -31,8 +31,28 @@
     }
 </script>
 
+<style>
+    #logInForm{
+        display:none;
+    }
+
+</style>
+
 <body class="main">
     <form id="logInForm" action="/login" method="post">
         <input class="form-control" id="id" name="id" value="$textToSign">
     </form>
+    <div style="  position: absolute; left: 50%; top: 45%;   transform: translate(-50%, -50%);">
+        <div class="text-center">
+            <h2>Waiting for sign</h2>
+            <br>
+            <br>
+            <div class="spinner-border" style="width: 6rem; height: 6rem; color:dodgerblue" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+
+
 </body>

@@ -14,7 +14,7 @@
 			#end
 		<div class="container content">
 		  <h2>Login</h2>
-		  <form action="/login" method="post">
+		  <form action="/login" method="post" id="logInForm">
 			<div class="form-group" style="float:none">
 			  <label for="Username">Username:</label>
 			  <input class="form-control" id="username" placeholder="Enter username" name="username">
@@ -28,9 +28,16 @@
 				<input class="form-check-input" type="checkbox" name="remember"> Remember me
 			  </label>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
 		  </form>
+			<button type="submit" form="logInForm" class="btn btn-primary">Submit</button>
+			<button class="btn btn-primary" onclick="locationToSignAwait()">Log in by sign</button>
 		</div>
    </body>
-</html>	
+</html>
+
+<script>
+	function locationToSignAwait(){
+		location.replace(location.pathname + "/signawait");
+	}
+</script>
 	
