@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 public abstract class SQLiteLoader {
 
-
     protected Connection connect() {
         String url = "jdbc:sqlite:C:\\Users\\pezpo\\Desktop\\SQLite\\facturasSQLite.db";
         Connection conn = null;

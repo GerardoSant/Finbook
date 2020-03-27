@@ -19,17 +19,17 @@ public class SQLiteBillsLoader extends SQLiteLoader implements BillsLoader {
     public List<Bill> selectAll(String RFC){
         RFC="\"" + RFC + "\"";
         String sql = "SELECT * FROM facturas where issuerRFC=" + RFC + " OR " + "receiverRFC=" + RFC;
-        try (Connection conn = this.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)){
-             return dbBillList(rs);
+        try (Connection conn = this.connect(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)){
+            List<Bill> billList = getBillListFromResultSet(rs);
+            conn.close();
+            return billList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
         }
     }
 
-    private List<Bill> dbBillList(ResultSet resultSet) throws SQLException, ParseException {
+    private List<Bill> getBillListFromResultSet(ResultSet resultSet) throws SQLException, ParseException {
         List<Bill> billsList = new ArrayList<>();
         while(resultSet.next()){
             billsList.add(new Bill(resultSet.getString("UUID"),new DateParser("yyyy-MM-dd HH:mm:ss").parseDate(resultSet.getString("Date")),
