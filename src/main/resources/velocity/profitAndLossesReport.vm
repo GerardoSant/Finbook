@@ -305,7 +305,7 @@
                                 <p>Period start</p>
                             </div>
                             <div class="col-8">
-                                <input class="form-control" type="date" id="pStart1" value="2011-08-19"
+                                <input class="form-control" type="date" id="pStart1" value="2016-08-19"
                                        name="periodStart">
                             </div>
                         </div>
@@ -314,7 +314,7 @@
                                 <p>Period end</p>
                             </div>
                             <div class="col-8">
-                                <input class="form-control" type="date" id="pEnd1" value="2011-08-19" name="periodEnd">
+                                <input class="form-control" type="date" id="pEnd1" value="2017-08-19" name="periodEnd">
                             </div>
                         </div>
                         <h6>Report 2</h6>
@@ -324,7 +324,7 @@
                                 <p>Period start</p>
                             </div>
                             <div class="col-8">
-                                <input class="form-control" type="date" id="pStart2" value="2011-08-19"
+                                <input class="form-control" type="date" id="pStart2" value="2017-08-19"
                                        name="periodStart1">
                             </div>
                         </div>
@@ -333,7 +333,7 @@
                                 <p>Period end</p>
                             </div>
                             <div class="col-8">
-                                <input class="form-control" type="date" id="pEnd2" value="2011-08-19" name="periodEnd1">
+                                <input class="form-control" type="date" id="pEnd2" value="2018-08-19" name="periodEnd1">
                             </div>
                         </div>
                     </div>
