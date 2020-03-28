@@ -94,6 +94,11 @@
         position: fixed;
     }
 
+    .tc-amount{
+        text-align: right;
+        margin-right:20%;
+    }
+
 
     @media screen and (max-height: 650px) {
         .leftbox {
@@ -134,16 +139,16 @@
             <tbody>
             <tr class="mainResult">
                 <td>Sales and incomes</td>
-                <td>$number.format("currency",$report.getSalesAndIncomesBase())</td>
+                <td class="tc-amount">$number.format("currency",$report.getSalesAndIncomesBase())</td>
             </tr>
             <tr style="font-size:115%">
                 <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales"
                                            data-content="Base= Gross sales base - Sales returns base">Net sales</a></td>
-                <td>$number.format("currency",$report.getNetSalesBase())</td>
+                <td class="tc-amount">$number.format("currency",$report.getNetSalesBase())</td>
             </tr>
             <tr id="grossSales" class="opener">
                 <td>Gross sales</td>
-                <td>$number.format("currency",$report.getGrossSalesBase())</td>
+                <td class="tc-amount">$number.format("currency",$report.getGrossSalesBase())</td>
             </tr>
                 #foreach($bill in $report.getGrossSales())
                 <tr data-href="$bill.getUUID()" class="hidden grossSales bill">
@@ -155,7 +160,7 @@
                 #end
             <tr id="salesReturns" class="opener">
                 <td>Sales returns</td>
-                <td>$number.format("currency",$report.getSalesReturnsBase())</td>
+                <td class="tc-amount">$number.format("currency",$report.getSalesReturnsBase())</td>
             </tr>
                 #foreach($bill in $report.getSalesReturns())
                 <tr data-href="$bill.getUUID()" class="hidden salesReturns bill">
@@ -481,5 +486,4 @@
 </script>
 
 
-</html>	
-	
+</html>
