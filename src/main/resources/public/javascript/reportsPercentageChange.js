@@ -11,7 +11,7 @@ function addPercentageChangeToTable(){
             if (percentage>=0) percentage="+" +percentage
         }
         if (percentage=="NaN") percentage= 0;
-        row.cells[3].innerText = percentage + " %";
+        row.cells[3].childNodes[0].innerText = percentage + " %";
     }
 }
 
