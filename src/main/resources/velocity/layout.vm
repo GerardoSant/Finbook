@@ -269,7 +269,7 @@
 
 		<!-- Brand/logo -->
 		#if($currentUser)
-			<a class="navbar-brand" href="/main">
+			<a class="navbar-brand" href="/dashboard">
 				<img src="/favicon28.png" alt="logo" style="height:30px ">
 			</a>
 		#else
