@@ -286,8 +286,9 @@
         var chart;
 
         function drawChart() {
+
             data = google.visualization.arrayToDataTable([
-                ['Investment', 'Total period 1', 'Total period 2'],
+                ['Investment',getFirstPeriodString(),getSecondPeriodString()],
                 #foreach($key in $barChart1)
                     ['$key',$barChart1.getCount($key), $barChart2.getCount($key)],
                 #end
@@ -315,6 +316,37 @@
             if(event.propertyName !== 'width') return;
             resize();
         });
+    </script>
+
+    <script>
+
+        function getFirstPeriodString(){
+            return getFirstPeriodStart() + " - \n" + getFirstPeriodEnd();
+        }
+
+        function getSecondPeriodString(){
+            return getSecondPeriodStart() +  " - \n" + getSecondPeriodEnd();
+        }
+
+        function getFirstPeriodStart(){
+            return getQueryParam("periodStart");
+        }
+
+        function getFirstPeriodEnd(){
+            return getQueryParam("periodEnd");
+        }
+
+        function getSecondPeriodStart(){
+            return getQueryParam("periodStart1");
+        }
+        function getSecondPeriodEnd(){
+            return getQueryParam("periodEnd1");
+        }
+
+        function getQueryParam(param){
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
     </script>
 
 </html>	
