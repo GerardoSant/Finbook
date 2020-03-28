@@ -72,7 +72,7 @@
         }
     }
 
-    @media screen and (max-width:650px){
+    @media screen and (max-width:950px){
         .phonescrollable{
             overflow-x: scroll;
         }
@@ -91,6 +91,12 @@
         width:90%;
         margin:5%;
         float:none;
+    }
+
+    .numSpan{
+        text-align: right;
+        width:135px;
+        display: inline-block;
     }
 
 
@@ -112,65 +118,65 @@
                 <thead>
                 <tr>
                     <th>Accounting name</th>
-                    <th>Base period 1</th>
-                    <th>Base period 2</th>
-                    <th>Change</th>
+                    <th><span class="numSpan" style="text-align: right">Base period 1</span></th>
+                    <th><span class="numSpan" style="text-align: right">Base period 2</span></th>
+                    <th><span class="numSpan" style="text-align: right">Difference</span></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="field">
                     <td>Buildings</td>
-                    <td>$number.format("currency",$report1.getBuildingsBase())</td>
-                    <td>$number.format("currency",$report2.getBuildingsBase())</td>
-                    <td></td>
+                    <td><span class="numSpan">$number.format("currency",$report1.getBuildingsBase())</span></td>
+                    <td><span class="numSpan">$number.format("currency",$report2.getBuildingsBase())</span></td>
+                    <td><span class="numSpan"></span></td>
                 </tr>
                 <tr class="field">
                     <td>Office equipment</td>
-                    <td>$number.format("currency",$report1.getOfficeEquipmentBase())</td>
-                    <td>$number.format("currency",$report2.getOfficeEquipmentBase())</td>
-                    <td></td>
+                    <td><span class="numSpan">$number.format("currency",$report1.getOfficeEquipmentBase())</span></td>
+                    <td><span class="numSpan">$number.format("currency",$report2.getOfficeEquipmentBase())</span></td>
+                    <td><span class="numSpan"></span></td>
                 </tr>
                 <tr class="field">
                     <td>Transport equipment</td>
-                    <td>$number.format("currency",$report1.getTransportEquipmentBase())</td>
-                    <td>$number.format("currency",$report2.getTransportEquipmentBase())</td>
-                    <td></td>
+                    <td><span class="numSpan">$number.format("currency",$report1.getTransportEquipmentBase())</span></td>
+                    <td><span class="numSpan">$number.format("currency",$report2.getTransportEquipmentBase())</span></td>
+                    <td><span class="numSpan"></span></td>
                 </tr>
                 <tr class="field">
                     <td>Computational Equipment Base</td>
-                    <td>$number.format("currency",$report1.getComputationalEquipmentBase())</td>
-                    <td>$number.format("currency",$report2.getComputationalEquipmentBase())</td>
-                    <td></td>
+                    <td><span class="numSpan">$number.format("currency",$report1.getComputationalEquipmentBase())</span></td>
+                    <td><span class="numSpan">$number.format("currency",$report2.getComputationalEquipmentBase())</span></td>
+                    <td><span class="numSpan"></span></td>
                 </tr>
                 <tr class = "field">
                     <td>Models and Tools</td>
-                    <td>$number.format("currency",$report1.getModelsAndToolsBase())</td>
-                    <td>$number.format("currency",$report2.getModelsAndToolsBase())</td>
-                    <td></td>
+                    <td><span class="numSpan">$number.format("currency",$report1.getModelsAndToolsBase())</span></td>
+                    <td><span class="numSpan">$number.format("currency",$report2.getModelsAndToolsBase())</span></td>
+                    <td><span class="numSpan"></span></td>
                 </tr>
                 <tr class="field">
                     <td>Telephone Communications</td>
-                    <td>$number.format("currency",$report1.getTelephoneCommunicationsBase())</td>
-                    <td>$number.format("currency",$report2.getTelephoneCommunicationsBase())</td>
-                    <td></td>
+                    <td><span class="numSpan">$number.format("currency",$report1.getTelephoneCommunicationsBase())</span></td>
+                    <td><span class="numSpan">$number.format("currency",$report2.getTelephoneCommunicationsBase())</span></td>
+                    <td><span class="numSpan"></span></td>
                 </tr>
                 <tr class="field">
                     <td>Satellite Communications</td>
-                    <td>$number.format("currency",$report1.getSatelliteCommunicationsBase())</td>
-                    <td>$number.format("currency",$report2.getSatelliteCommunicationsBase())</td>
-                    <td></td>
+                    <td><span class="numSpan">$number.format("currency",$report1.getSatelliteCommunicationsBase())</span></td>
+                    <td><span class="numSpan">$number.format("currency",$report2.getSatelliteCommunicationsBase())</span></td>
+                    <td><span class="numSpan"></span></td>
                 </tr>
                 <tr class="field">
                     <td>Other Machinery and Equipment</td>
-                    <td>$number.format("currency",$report1.getOtherMachineryAndEquipmentBase())</td>
-                    <td>$number.format("currency",$report2.getOtherMachineryAndEquipmentBase())</td>
-                    <td></td>
+                    <td><span class="numSpan">$number.format("currency",$report1.getOtherMachineryAndEquipmentBase())</span></td>
+                    <td><span class="numSpan">$number.format("currency",$report2.getOtherMachineryAndEquipmentBase())</span></td>
+                    <td><span class="numSpan"></span></td>
                 </tr>
                 <tr class="mainResult">
                     <td>All investments</td>
-                    <td>$number.format("currency",$report1.getBase())</td>
-                    <td>$number.format("currency",$report2.getBase())</td>
-                    <td></td>
+                    <td><span class="numSpan">$number.format("currency",$report1.getBase())</span></td>
+                    <td><span class="numSpan">$number.format("currency",$report2.getBase())</span></td>
+                    <td><span class="numSpan"></span></td>
                 </tr>
                 </tbody>
             </table>

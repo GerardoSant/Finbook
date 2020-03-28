@@ -128,67 +128,67 @@
                             <td>Sales and incomes</td>
                             <td><span class="numSpan">$number.format("currency",$report1.getSalesAndIncomesBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getSalesAndIncomesBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr style="font-size:115%">
                             <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales" data-content="Base= Gross sales base - Sales returns base">Net sales</a></td>
                             <td><span class="numSpan">$number.format("currency",$report1.getNetSalesBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getNetSalesBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr id="grossSales" class="field">
                             <td>Gross sales</td>
                             <td><span class="numSpan">$number.format("currency",$report1.getGrossSalesBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getGrossSalesBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr id="salesReturns" class="field">
                             <td>Sales returns</td>
                             <td><span class="numSpan">$number.format("currency",$report1.getSalesReturnsBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getSalesReturnsBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr class = "mainResult">
                             <td>Purchases and expenses</td>
                             <td><span class="numSpan">$number.format("currency",$report1.getPurchasesAndExpensesBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getPurchasesAndExpensesBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr style="font-size: 115%">
                             <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net purchases" data-content="Base= Gross purchases base - Purchases returns base">Net purchases</a></td>
                             <td><span class="numSpan">$number.format("currency",$report1.getNetPurchasesBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getNetPurchasesBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr id="grossPurchases" class="field">
                             <td>Gross purchases</td>
                             <td><span class="numSpan">$number.format("currency",$report1.getGrossPurchasesBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getGrossPurchasesBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr id="purchasesReturns" class="field">
                             <td>Purchases returns</td>
                             <td><span class="numSpan">$number.format("currency",$report1.getPurchasesReturnsBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getPurchasesReturnsBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr id="externalServices" class="field">
                             <td>External services</td>
                             <td><span class="numSpan">$number.format("currency",$report1.getExternalServicesBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getExternalServicesBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr id="salariesAndWages" class="field">
                             <td>Salaries and Wages</td>
                             <td><span class="numSpan">$number.format("currency",$report1.getSalariesAndWagesBase())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getSalariesAndWagesBase())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         <tr id="totalProfit" class="mainResult">
                             <td>Total profit</td>
                             <td><span class="numSpan">$number.format("currency",$report1.getProfit())</span></td>
                             <td><span class="numSpan">$number.format("currency",$report2.getProfit())</span></td>
-                            <td><span class="numSpan" style="text-align: right"></span></td>
+                            <td><span class="numSpan"></span></td>
                         </tr>
                         </tbody>
                     </table>
