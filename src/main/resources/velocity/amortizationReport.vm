@@ -386,15 +386,16 @@
 
     function drawChart() {
         data = google.visualization.arrayToDataTable([
-            ['Investment', 'amortization', {role: 'annotation'}],
+            ['Investment', 'amortization', {role: 'annotation'}, { role: 'style' }],
             #foreach($key in $barChart)
-                ['$key',$math.roundTo(2,$barChart.getCount($key)), '$math.roundTo(2,$barChart.getCount($key)) %'],
+                ['$key',$math.roundTo(2,$barChart.getCount($key)), '$math.roundTo(2,$barChart.getCount($key)) %', 'rgb(121,202,207)'],
             #end
         ]);
 
         options = {
             title: 'Investments',
-            backgroundColor: 'rgb(247,250,252)'
+            backgroundColor: 'rgb(247,250,252)',
+            legend: {position:'none'}
         };
 
         chart = new google.visualization.BarChart(document.getElementById('piechart'));
