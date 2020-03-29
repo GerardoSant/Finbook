@@ -7,6 +7,7 @@ import Controller.builders.reports.InvestmentReportBuilder;
 import Controller.builders.charts.InvestmentsBarChartBuilder;
 import Model.Reports.InvestmentsReport;
 import Controller.Web.login.LoginController;
+import org.apache.velocity.tools.generic.NumberTool;
 import spark.Request;
 import Controller.util.DateParser;
 import Controller.util.Path;
@@ -24,6 +25,7 @@ public class ShowInvestmentsReportCommand extends FrontCommand {
         BarChart barChart = new InvestmentsBarChartBuilder().build(report);
         model.put("report",report);
         model.put("barChart", barChart);
+        model.put("number", new NumberTool());
         return ViewUtil.render(request,model, Path.Template.INVESTMENT_REPORT);
     }
 

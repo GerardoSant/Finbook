@@ -7,6 +7,7 @@ import View.daos.BillsDao;
 import Controller.Web.login.LoginController;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
+import org.apache.velocity.tools.generic.NumberTool;
 import spark.Request;
 import Controller.util.DateParser;
 import Controller.util.Path;
@@ -29,6 +30,7 @@ public class ShowBillsTimelineCommand extends FrontCommand {
         model.put("math", new MathTool());
         model.put("date", new DateTool());
         model.put("RFC", getSessionCurrentUser(request));
+        model.put("number", new NumberTool());
         return ViewUtil.render(request, model, Path.Template.BILLS_TIMELINE);
     }
 

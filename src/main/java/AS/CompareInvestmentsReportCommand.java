@@ -8,6 +8,7 @@ import Controller.builders.charts.InvestmentsBarChartBuilder;
 import Model.Reports.InvestmentsReport;
 import Controller.Web.login.LoginController;
 import org.apache.velocity.tools.generic.MathTool;
+import org.apache.velocity.tools.generic.NumberTool;
 import spark.Request;
 import Controller.util.DateParser;
 import Controller.util.Path;
@@ -31,6 +32,7 @@ public class CompareInvestmentsReportCommand extends FrontCommand {
         model.put("report2", report2);
         model.put("barChart2", barChart2);
         model.put("math", new MathTool());
+        model.put("number", new NumberTool());
         return ViewUtil.render(request, model, Path.Template.COMPARE_INVESTMENTS_REPORT);
     }
 
