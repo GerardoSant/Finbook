@@ -1,4 +1,4 @@
-package AS;
+package Controller.exceptions;
 
 public class CommandNotFoundException extends Exception {
 

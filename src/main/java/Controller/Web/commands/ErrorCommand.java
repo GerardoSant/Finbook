@@ -1,30 +1,28 @@
-package AS;
+package Controller.Web.commands;
 
-import View.writers.ErrorLogWriter;
-import Implementations.FileErrorLogWriter;
-import org.eclipse.jetty.http.HttpStatus;
+import Controller.Web.FrontCommand;
 import Controller.util.Path;
 import Controller.util.ViewUtil;
+import Implementations.FileErrorLogWriter;
+import View.writers.ErrorLogWriter;
+import org.eclipse.jetty.http.HttpStatus;
 
 import java.util.HashMap;
 
-public class UnknownCommand extends FrontCommand {
+public class ErrorCommand extends FrontCommand {
 
     private Exception exception;
 
-    public UnknownCommand() {
-        this.exception = new CommandNotFoundException();
-    }
-
-    public UnknownCommand(Exception exception) {
+    public ErrorCommand(Exception exception) {
         this.exception = exception;
     }
+
 
     @Override
     public String process() {
         response.status(HttpStatus.NOT_FOUND_404);
         writeErrorOnLog();
-        return ViewUtil.render(request, new HashMap<>(), Path.Template.NOT_FOUND);
+        return ViewUtil.render(request, new HashMap<>(), Path.Template.INTERNAL_ERROR);
     }
 
     private void writeErrorOnLog() {

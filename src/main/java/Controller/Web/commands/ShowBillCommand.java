@@ -1,5 +1,7 @@
-package AS;
+package Controller.Web.commands;
 
+import Controller.Web.FrontCommand;
+import Controller.Web.login.LoginController;
 import Model.Bills.Bill;
 import View.daos.BillsDao;
 import Implementations.GeoNamesLocationLoader;
@@ -13,8 +15,10 @@ import static Controller.util.RequestUtil.*;
 public class ShowBillCommand extends FrontCommand {
     @Override
     public String process() {
+        LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
-        Bill bill = new BillsDao(request.session().attribute("currentUser")).getBillByUUID(request.queryParams("billID"));
+        Bill bill = new BillsDao(request.session().attribute("currentUser")).getBillByUUID(getParamUUID(request));
+        System.out.println(bill);
         model.put("bill", bill);
         model.put("redirected", removeSessionAttrLoginRedirect(request));
         model.put("emailSent", removeSessionAttrEmailSent(request));

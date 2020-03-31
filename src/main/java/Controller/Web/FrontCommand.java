@@ -1,7 +1,9 @@
-package AS;
+package Controller.Web;
 
 import spark.Request;
 import spark.Response;
+
+import java.text.ParseException;
 
 public abstract class FrontCommand {
     protected Request request;
@@ -12,5 +14,5 @@ public abstract class FrontCommand {
         this.response=response;
     }
 
-    abstract public String process();
+    abstract public String process() throws ParseException;
 }

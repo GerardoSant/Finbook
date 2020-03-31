@@ -201,7 +201,7 @@
             #if($profitreport.getProfit()>0)
             <div class="minibox minibox-medium box greenbox" onclick="redirectWithPeriod('reports/profitandlosses')">
             #else
-            <div class="minibox minibox-medium box redbox">
+            <div class="minibox minibox-medium box redbox" onclick="redirectWithPeriod('reports/profitandlosses')">
             #end
                 <i class="fa fa-chart-line"></i>
                 <div class="minibox-text">

@@ -212,7 +212,7 @@
     </div>
 </div>
 
-<div class="rightbox" id="right">
+<div class="container rightbox" id="right">
     <h2>File uploads <span class="badge badge-success">
 		<a id="fileUploadsNum" href="#" title=" New files uploaded" data-toggle="popover" data-trigger="hover"
            data-content="Hover over filename to check upload info" style="color:white"></a></span></h2>

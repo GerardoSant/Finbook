@@ -1,4 +1,4 @@
-import AS.FrontServlet;
+import Controller.Web.FrontServlet;
 import Controller.Web.Shiny.ShinyController;
 import Controller.Web.upload.UploadController;
 import Controller.Web.login.LoginController;

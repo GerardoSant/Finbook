@@ -1,5 +1,6 @@
-package AS;
+package Controller.Web.commands;
 
+import Controller.Web.FrontCommand;
 import Model.Bills.Bill;
 import Model.Bills.BillTimeline;
 import Controller.builders.other.BillTimelineBuilder;

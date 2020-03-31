@@ -20,8 +20,8 @@ public class Top5Sales {
     }
 
     private Bill[] generateTop5(List<Bill> billList, String RFC) {
-        return calculateTop5(BillFilter.filterBySales(billList, RFC), initialTop5Array(billList));
-    }
+        return calculateTop5(BillFilter.filterBySales(billList, RFC), initialTop5Array(BillFilter.filterBySales(billList, RFC)));
+}
 
     private Bill[] initialTop5Array(List<Bill> billList) {
         Bill[] initialArray = new Bill[5];
