@@ -41,6 +41,15 @@ public class BillFilter {
         return billList.stream().filter(bill -> (bill.getUse().equals("G01") || bill.getUse().equals("G03"))  && bill.getReceiverRFC().equals(RFC)).collect(Collectors.toList());
     }
 
+    public static List<Bill> filterByPurchases(List<Bill> billList, String RFC) {
+        return billList.stream().filter(bill -> (bill.getUse().equals("G01"))  && bill.getReceiverRFC().equals(RFC)).collect(Collectors.toList());
+    }
+
+    public static List<Bill> filterByExternalServices(List<Bill> billList, String RFC) {
+        return billList.stream().filter(bill -> (bill.getUse().equals("G03"))  && bill.getReceiverRFC().equals(RFC)).collect(Collectors.toList());
+    }
+
+
     public static List<Bill> filterBySalaries(List<Bill> billList, String RFC){
         return billList.stream().filter(bill-> bill.getIssuerRFC().equals(RFC) && bill.getType().equals("nomina")).collect(Collectors.toList());
     }
@@ -76,6 +85,10 @@ public class BillFilter {
         return billList.stream().filter(bill-> bill.getReceiverName().contains(receiverName)).collect(Collectors.toList());
     }
 
+    public static List<Bill> filterByIssuer(List<Bill> billList, String issuerName) {
+        return billList.stream().filter(bill-> bill.getIssuerName().contains(issuerName)).collect(Collectors.toList());
+    }
+
     public static List<Bill> filterByPC(List<Bill> billList, String PC) {
         return billList.stream().filter(bill -> string(bill.getPC()).contains(PC)).collect(Collectors.toList());
     }
@@ -83,6 +96,7 @@ public class BillFilter {
     private static String string(int integer) {
         return String.valueOf(integer);
     }
+
 
 
 }

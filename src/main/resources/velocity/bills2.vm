@@ -202,6 +202,9 @@
 </script>
 
 <script>
+    var orderRule;
+
+
     var timeout;
     function filter(){
         clearTimeout(timeout);
@@ -216,8 +219,14 @@
                 processJsonResponse(this.responseText);
             }
         };
-        var ajaxRequest="/filterbills?receiver="+document.getElementById("receiverInput").value+"&minTotal="+ document.getElementById("minTotalInput").value + "&maxTotal=" + document.getElementById("maxTotalInput").value
-        +"&PC="+document.getElementById("pcInput").value + "&billType="+document.getElementById("billTypeInput").value + "&periodStart="+document.getElementById("pStart").value + "&periodEnd="+document.getElementById("pEnd").value ;
+        var ajaxRequest;
+        if(document.getElementById("receiverInput")==null) {
+            ajaxRequest="/filterbills?issuer="+document.getElementById("issuerInput").value+"&minTotal="+ document.getElementById("minTotalInput").value + "&maxTotal=" + document.getElementById("maxTotalInput").value
+                    +"&PC="+document.getElementById("pcInput").value + "&billType="+document.getElementById("billTypeInput").value + "&periodStart="+document.getElementById("pStart").value + "&periodEnd="+document.getElementById("pEnd").value ;
+        }else{
+            ajaxRequest="/filterbills?receiver="+document.getElementById("receiverInput").value+"&minTotal="+ document.getElementById("minTotalInput").value + "&maxTotal=" + document.getElementById("maxTotalInput").value
+                    +"&PC="+document.getElementById("pcInput").value + "&billType="+document.getElementById("billTypeInput").value + "&periodStart="+document.getElementById("pStart").value + "&periodEnd="+document.getElementById("pEnd").value ;
+        }
         xhttp.open("POST", ajaxRequest, true);
         xhttp.send();
     }

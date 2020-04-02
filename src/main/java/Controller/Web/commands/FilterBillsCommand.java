@@ -23,12 +23,21 @@ public class FilterBillsCommand extends FrontCommand {
     }
 
     private List<Bill> applyFilters(List<Bill> billList) {
-        billList=filterByReceiverName(billList);
+        if(getParam("receiver")!=null){
+            billList=filterByReceiverName(billList);
+        } else{
+            billList=filterByIssuerName(billList);
+        }
+
         billList=filterByTotal(billList);
         billList= filterByDate(billList);
         billList= filterByPC(billList);
         billList= filterByBillType(billList);
         return billList;
+    }
+
+    private List<Bill> filterByIssuerName(List<Bill> billList) {
+        return !paramIsEmpty("issuer") ? BillFilter.filterByIssuer(billList, getParam("issuer")) : billList;
     }
 
 
@@ -60,12 +69,15 @@ public class FilterBillsCommand extends FrontCommand {
         if (getParam("billType").equals("income")) return BillFilter.filterBySales(billList,"E-5756930");
         if (getParam("billType").equals("egress")) return BillFilter.filterByReturns(billList,"E-5756930");
         if (getParam("billType").equals("payroll")) return BillFilter.filterBySalaries(billList,"E-5756930");
+        if (getParam("billType").equals("purchases")) return BillFilter.filterByPurchases(billList,"E-5756930");
+        if (getParam("billType").equals("investments")) return BillFilter.filterByInvestments(billList,"E-5756930");
+        if (getParam("billType").equals("services")) return BillFilter.filterByExternalServices(billList,"E-5756930");
         return billList;
     }
 
 
-    private String getParam(String receiver) {
-        return RequestUtil.getParam(request,receiver);
+    private String getParam(String param) {
+        return RequestUtil.getParam(request,param);
     }
 
     private boolean paramIsEmpty(String param) {
