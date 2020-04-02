@@ -1,0 +1,286 @@
+#parse("/velocity/layout.vm")
+#mainLayout()
+
+<style>
+    [data-href] {
+        cursor: pointer;
+    }
+
+    span {
+        border-bottom: 1px solid lightgray;
+    }
+    select {
+        margin-top: 10px;
+    }
+
+    .filter {
+        width:100%;
+        border-radius:3px;
+        border: 1px solid lightgray;
+        padding: 4px;
+        margin-top:2px
+    }
+
+    .leftbox{
+        float:left;
+        max-width: 17%;
+        margin-left:3%;
+        margin-bottom:2%;
+    }
+
+    .rightbox{
+        float:right;
+        max-width: 75%;
+        margin-right:3%;
+        margin-bottom:2%;
+    }
+
+    @media screen and (max-width:1100px){
+        .leftbox {
+            vertical-align: bottom;
+            float:none;
+            max-width:90%;
+            margin-left:5%;
+            margin-right:0%
+        }
+        .rightbox {
+            vertical-align: top;
+            float:none;
+            max-width:90%;
+            margin-left:5%;
+            margin-right:0%
+        }
+
+        .filters{
+            column-count:4;
+        }
+
+        footer{
+            visibility: hidden;
+        }
+    }
+
+    @media screen and (max-width:400px){
+        .filters{
+            column-count:1
+        }
+    }
+
+
+
+
+
+
+
+</style>
+
+<body class="main">
+
+    <div class ="container content leftbox">
+        <div class = "contentTitle">
+            <h2>Filters</h2>
+        </div>
+        <br>
+        <div class="filters">
+            <span>Type : </span>
+            <br>
+            <select id="classSelect" onchange="updateFilters()">
+            #if($received)
+                <option value="issued">Issued</option>
+                <option value="received" selected>Received</option>
+            #else
+                <option value="issued" selected>Issued</option>
+                <option value="received">Received</option>
+            #end
+
+            </select>
+            <br>
+            #if($received)
+                <span>Issuer</span>
+                <br>
+                <input class="filter" style="padding-bottom: 0px; margin-bottom: 0px" type="text" id="issuerInput" onkeyup="filter()" placeholder="Search for issuer name">
+            #else
+                <span>Receiver</span>
+                <br>
+                <input class="filter" style="padding-bottom: 0px; margin-bottom: 0px" type="text" id="receiverInput" onkeyup="filter()" placeholder="Search for receiver name">
+            #end
+
+            <br>
+            <div>
+                <span>Total: </span>
+                <br>
+                <input class="filter" type="number" id="minTotalInput" onkeyup="filter()" placeholder="Minimum total"><br>
+                <input class="filter" type="number" id="maxTotalInput" onkeyup="filter()" placeholder="Maximum total">
+            </div>
+            <div>
+                <span>Date: </span>
+                <br>
+                <input class="filter" type="number" id="minTotalInput" onkeyup="filter()" placeholder="Minimum total"><br>
+                <input class="filter" type="number" id="maxTotalInput" onkeyup="filter()" placeholder="Maximum total">
+            </div>
+            <span>PC: </span>
+            <br>
+            <input class="filter" type="text" id="pcInput" onkeyup="filter()" placeholder="Search for Postal Code">
+            <br>
+            <span>Bill type : </span>
+            <br>
+            <select id="billTypeInput">
+                <option value="all">All</option>
+                #if($received)
+                    <option value="purchases">Purchases</option>
+                    <option value="services">Services</option>
+                    <option value="investments">Investments</option>
+                #else
+                    <option value="income">Ingreso</option>
+                    <option value="egress">Egreso</option>
+                    <option value="payroll">Nomina</option>
+                #end
+
+
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="container content rightbox">
+        <div class="contentTitle">
+            <h2>My Bills</h2> <button onclick="loadNewBillPage()">+</button>
+        </div>
+
+        <br>
+        <div style="overflow-y: scroll; height:60%">
+            <table class="table table-hover fixed_header" id="myTable" style="">
+                #if($bills)
+                    <thead class ="thead-dark">
+                    <tr>
+                        <th>Fecha</th>
+                        <th onclick="sortTable(1)">Lugar</th>
+                        <th onclick="sortTable(2)">Tipo</th>
+                        #if($received)
+                            <th onclick="sortTable(3)">Emisor</th>
+                        #else
+                            <th onclick="sortTable(3)">Receptor</th>
+                        #end
+                        <th onclick="sortTableByNumbers(5)">Total</th>
+                        <th onclick="sortTable(6)">Moneda</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        #foreach($bill in $bills)
+                        <tr data-href="$bill.getUUID()">
+                            <td>$bill.getDate()</td>
+                            <td>$bill.getPC()</td>
+                            <td>$bill.getType()</td>
+                            #if($received)
+                                <td>$bill.getIssuerName()</td>
+                            #else
+                                <td>$bill.getReceiverName()</td>
+                            #end
+                            <td>$math.roundTo(2, $bill.getTotal())</td>
+                            <td>$bill.getCurrency()</td>
+                        </tr>
+                        #end
+                    </tbody>
+                #else
+                    <h2>There aren't bills uploaded to the database with your current RFC</h2>
+                #end
+
+            </table>
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+
+
+    $('#myTable').on('click','*[data-href]', function() {
+        window.location = /bills/ + $(this).data("href");
+    })
+</script>
+
+<script>
+    var timeout;
+    function filter(){
+        clearTimeout(timeout);
+        timeout=setTimeout(function() { loadNewBills()},1000);
+    }
+
+    function loadNewBills(){
+        requestNumber=1;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                processFilterJson(this.responseText);
+            }
+        };
+        xhttp.open("POST", "/filterbills?receiver="+document.getElementById("receiverInput").value, true);
+        xhttp.send();
+    }
+
+    function processFilterJson(jsonResponse){
+        $("#myTable tbody tr").remove();
+        console.log(jsonResponse);
+        var billsArray = JSON.parse(jsonResponse);
+        billsArray.forEach(appendToTable)
+    }
+</script>
+
+<script>
+    //AJAX
+    var requestNumber=1;
+
+    function loadNewBillPage() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                processJson(this.responseText);
+            }
+        };
+        xhttp.open("POST", "/loadbills?page="+requestNumber, true);
+        xhttp.send();
+        requestNumber++;
+    }
+
+
+    function processJson(jsonBillList) {
+        if (jsonBillList=='"End"'){
+            console.log(jsonBillList)
+        } else{
+            var billsArray = JSON.parse(jsonBillList);
+            billsArray.forEach(appendToTable)
+        }
+    }
+
+    var billsTable = document.getElementById('myTable').getElementsByTagName('tbody')[0];;
+
+    function appendToTable(bill){
+        console.log(bill.UUID);
+        var newRow = billsTable.insertRow();
+        newRow.setAttribute("data-href", bill.UUID);
+        var newCell1 = newRow.insertCell(0);
+        newCell1.innerHTML= bill.date;
+        var newCell2 = newRow.insertCell(1);
+        newCell2.innerHTML= bill.PC;
+        var newCell3 = newRow.insertCell(2);
+        newCell3.innerHTML= bill.type;
+        var newCell4 = newRow.insertCell(3);
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("class")=="received") {newCell4.innerHTML= bill.issuerName;}
+        else {newCell4.innerHTML= bill.receiverName; }
+        var newCell5 = newRow.insertCell(4);
+        newCell5.innerHTML= bill.total;
+        var newCell6 = newRow.insertCell(5);
+        newCell6.innerHTML= bill.currency;
+
+    }
+</script>
+
+
+<script>
+    function updateFilters(){
+        window.location= "/bills2?class=" + document.getElementById("classSelect").value;
+    }
+</script>

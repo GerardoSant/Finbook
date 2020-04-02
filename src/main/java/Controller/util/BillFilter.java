@@ -47,4 +47,16 @@ public class BillFilter {
     public static List<Bill> filterByTotalRange(List<Bill> billList, double minTotal, double maxTotal){
         return billList.stream().filter(bill-> bill.getTotal()>=minTotal && bill.getTotal()<=maxTotal).collect(Collectors.toList());
     }
+
+    public static List<Bill> filterByIssued(List<Bill> billList, String RFC){
+        return billList.stream().filter(bill-> bill.getIssuerRFC().equals(RFC)).collect(Collectors.toList());
+    }
+
+    public static List<Bill> filterByReceived(List<Bill> billList, String RFC){
+        return billList.stream().filter(bill-> bill.getReceiverRFC().equals(RFC)).collect(Collectors.toList());
+    }
+
+    public static List<Bill> filterByReceiver(List<Bill> billList, String receiverName) {
+        return billList.stream().filter(bill-> bill.getReceiverName().contains(receiverName)).collect(Collectors.toList());
+    }
 }

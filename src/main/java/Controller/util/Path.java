@@ -32,6 +32,7 @@ public class Path {
         public static final String MAININDEX= "velocity/mainIndex.vm";
         public static final String LOGIN = "velocity/login.vm";
         public static final String BILLS = "velocity/bills.vm";
+        public static final String BILLS2 = "velocity/bills2.vm";
         public static final String BILLS_ONE = "velocity/oneBill.vm";
         public static final String BILLS_TIMELINE = "velocity/billsTimeline.vm";
         public static final String NOT_FOUND= "velocity/notFound.vm";

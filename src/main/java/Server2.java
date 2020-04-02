@@ -46,8 +46,13 @@ public class Server2 {
         get(Path.Web.REPORT_COMPARE_PROFITANDLOSSES, FrontServlet.runCommand("CompareProfitAndLosses"));
         get(Path.Web.REPORT_AMORTIZATION, FrontServlet.runCommand("ShowAmortizationReport"));
         get(Path.Web.DASHBOARD, FrontServlet.runCommand("ShowDashboard"));
+        get("/bills2",FrontServlet.runCommand("ShowBills2"));
+
         get(Path.Web.SIGN_AWAIT, LoginController.serveSignAwait);
 
+        //AJAX
+        post("/filterbills", FrontServlet.runCommand("FilterBills"));
+        post("/loadbills", FrontServlet.runCommand("LoadBills"));
 
         post(Path.Web.UPLOAD, UploadController.handleUploadPost);
         post(Path.Web.LOGIN, LoginController.handleLoginPost);
