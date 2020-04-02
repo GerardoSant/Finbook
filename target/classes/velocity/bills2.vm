@@ -84,7 +84,7 @@
         <div class="filters">
             <span>Type : </span>
             <br>
-            <select id="classSelect" onchange="updateFilters()">
+            <select class="filter" id="classSelect" onchange="updateFilters()">
             #if($received)
                 <option value="issued">Issued</option>
                 <option value="received" selected>Received</option>
@@ -115,8 +115,8 @@
             <div>
                 <span>Date: </span>
                 <br>
-                <input class="filter" type="number" id="minTotalInput" onkeyup="filter()" placeholder="Minimum total"><br>
-                <input class="filter" type="number" id="maxTotalInput" onkeyup="filter()" placeholder="Maximum total">
+                <input class="filter" type="date" id="pStart" name="periodStart" onkeyup="filter()"><br>
+                <input class="filter" type="date" id="pEnd" name="periodStart" onkeyup="filter()">
             </div>
             <span>PC: </span>
             <br>
@@ -124,7 +124,7 @@
             <br>
             <span>Bill type : </span>
             <br>
-            <select id="billTypeInput">
+            <select class="filter" id="billTypeInput" onchange="filter()">
                 <option value="all">All</option>
                 #if($received)
                     <option value="purchases">Purchases</option>
@@ -205,26 +205,30 @@
     var timeout;
     function filter(){
         clearTimeout(timeout);
-        timeout=setTimeout(function() { loadNewBills()},1000);
+        timeout=setTimeout(function() { applyFilters()},1000);
     }
 
-    function loadNewBills(){
+    function applyFilters(){
         requestNumber=1;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                processFilterJson(this.responseText);
+                processJsonResponse(this.responseText);
             }
         };
-        xhttp.open("POST", "/filterbills?receiver="+document.getElementById("receiverInput").value, true);
+        var ajaxRequest="/filterbills?receiver="+document.getElementById("receiverInput").value+"&minTotal="+ document.getElementById("minTotalInput").value + "&maxTotal=" + document.getElementById("maxTotalInput").value
+        +"&PC="+document.getElementById("pcInput").value + "&billType="+document.getElementById("billTypeInput").value + "&periodStart="+document.getElementById("pStart").value + "&periodEnd="+document.getElementById("pEnd").value ;
+        xhttp.open("POST", ajaxRequest, true);
         xhttp.send();
     }
 
-    function processFilterJson(jsonResponse){
-        $("#myTable tbody tr").remove();
-        console.log(jsonResponse);
+    function processJsonResponse(jsonResponse){
+        removeRowsFromTable();
         var billsArray = JSON.parse(jsonResponse);
         billsArray.forEach(appendToTable)
+    }
+    function removeRowsFromTable(){
+        $("#myTable tbody tr").remove();
     }
 </script>
 

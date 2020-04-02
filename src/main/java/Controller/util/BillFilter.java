@@ -2,6 +2,7 @@ package Controller.util;
 
 import Model.Bills.Bill;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,6 +48,13 @@ public class BillFilter {
     public static List<Bill> filterByTotalRange(List<Bill> billList, double minTotal, double maxTotal){
         return billList.stream().filter(bill-> bill.getTotal()>=minTotal && bill.getTotal()<=maxTotal).collect(Collectors.toList());
     }
+    public static List<Bill> filterByMinTotal(List<Bill> billList, double minTotal){
+        return billList.stream().filter(bill-> bill.getTotal()>=minTotal).collect(Collectors.toList());
+    }
+
+    public static List<Bill> filterByMaxTotal(List<Bill> billList, double maxTotal){
+        return billList.stream().filter(bill-> bill.getTotal()<=maxTotal).collect(Collectors.toList());
+    }
 
     public static List<Bill> filterByIssued(List<Bill> billList, String RFC){
         return billList.stream().filter(bill-> bill.getIssuerRFC().equals(RFC)).collect(Collectors.toList());
@@ -56,7 +64,25 @@ public class BillFilter {
         return billList.stream().filter(bill-> bill.getReceiverRFC().equals(RFC)).collect(Collectors.toList());
     }
 
+    public static List<Bill> filterByPeriodStart(List<Bill> billList, Date periodStart) {
+        return billList.stream().filter(bill-> bill.getDate().compareTo(periodStart)>=0).collect(Collectors.toList());
+    }
+
+    public static List<Bill> filterByPeriodEnd(List<Bill> billList, Date periodEnd) {
+        return billList.stream().filter(bill-> bill.getDate().compareTo(periodEnd)<=0).collect(Collectors.toList());
+    }
+
     public static List<Bill> filterByReceiver(List<Bill> billList, String receiverName) {
         return billList.stream().filter(bill-> bill.getReceiverName().contains(receiverName)).collect(Collectors.toList());
     }
+
+    public static List<Bill> filterByPC(List<Bill> billList, String PC) {
+        return billList.stream().filter(bill -> string(bill.getPC()).contains(PC)).collect(Collectors.toList());
+    }
+
+    private static String string(int integer) {
+        return String.valueOf(integer);
+    }
+
+
 }

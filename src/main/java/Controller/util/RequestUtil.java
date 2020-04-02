@@ -51,4 +51,12 @@ public class RequestUtil {
         return false;
     }
 
+    public static boolean paramIsEmpty(Request request, String queryParam){
+        return request.queryParams(queryParam).isEmpty();
+    }
+
+    public static String getParam(Request request, String queryParam){
+        return request.queryParams(queryParam);
+    }
+
 }
