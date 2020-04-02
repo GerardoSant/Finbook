@@ -8,27 +8,46 @@ import Controller.util.Filters;
 import Controller.util.Path;
 import static spark.Spark.*;
 
-import static Controller.util.ViewUtil.notFound;
-
 public class Server2 {
     public static void main(String[] args) {
-
-
         //Configure Spark
-        staticFiles.location("/public");
-        staticFiles.expireTime(600L);
-        port(8080);
-        webSocket("/echo", EchoWebSocket.class);
-        //init();
-
+        configureSpark();
+        configureWebSocket();
 
         // Set up before-filters (called before each get/post)
 
-        before("*", Filters.handleLocaleChange);
-
+        configureBeforeFilters();
 
         // Set up routes
 
+        configureRoutes();
+
+        //AS
+        
+        get("/mainPage",  FrontServlet.doGet);
+
+        //get("*",notFound);
+
+    }
+
+    private static void configureRoutes() {
+        configureGetRoutes();
+        configurePostRoutes();
+        configureAjaxPostRoutes();
+    }
+
+    private static void configurePostRoutes() {
+        post(Path.Web.UPLOAD, UploadController.handleUploadPost);
+        post(Path.Web.LOGIN, LoginController.handleLoginPost);
+        post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
+    }
+
+    private static void configureAjaxPostRoutes() {
+        post("/filterbills", FrontServlet.runCommand("FilterBills"));
+        post("/loadbills", FrontServlet.runCommand("LoadBills"));
+    }
+
+    private static void configureGetRoutes() {
         get("/", (request, response) -> {
             response.redirect("/index/");
             return null;
@@ -49,22 +68,19 @@ public class Server2 {
         get("/bills2",FrontServlet.runCommand("ShowBills2"));
 
         get(Path.Web.SIGN_AWAIT, LoginController.serveSignAwait);
+    }
 
-        //AJAX
-        post("/filterbills", FrontServlet.runCommand("FilterBills"));
-        post("/loadbills", FrontServlet.runCommand("LoadBills"));
+    private static void configureBeforeFilters() {
+        before("*", Filters.handleLocaleChange);
+    }
 
-        post(Path.Web.UPLOAD, UploadController.handleUploadPost);
-        post(Path.Web.LOGIN, LoginController.handleLoginPost);
-        post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
+    private static void configureWebSocket() {
+        webSocket("/echo", EchoWebSocket.class);
+    }
 
-        get("/mainPage",  FrontServlet.doGet);
-
-        //get("*",notFound);
-
-
-
-
-
+    private static void configureSpark() {
+        staticFiles.location("/public");
+        staticFiles.expireTime(600L);
+        port(8080);
     }
 }
