@@ -173,11 +173,10 @@
 <div class="container content rightbox">
     <div class="contentTitle">
         <h2>My Bills</h2>
-        <button onclick="loadNewBillPage()">+</button>
     </div>
 
     <br>
-    <div style="overflow-y: scroll; height:60vh">
+    <div id="#scrollablePanel" style="overflow-y: scroll; height:65vh" onscroll="handleScroll(this)">
         <table class="table table-hover fixed_header" id="myTable" style="">
             #if($bills)
                 <thead class="thead-dark">
@@ -220,7 +219,12 @@
 </div>
 
 
-
+<script>
+   function handleScroll(elem){
+       var elemScrollPosition = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+       if(elemScrollPosition==0 && !endResponse) loadNewBillPage();
+   }
+</script>
 <script>
     var orderBy="";
     var descending=true;
@@ -284,6 +288,7 @@
     }
 
     function applyFilters() {
+        endResponse=false;
         requestNumber = 1;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
@@ -319,11 +324,13 @@
 <script>
     //AJAX
     var requestNumber = 1;
+    var endResponse=false;
 
     function loadNewBillPage() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+                lastJsonResponse=this.responseText;
                 processJson(this.responseText);
             }
         };
@@ -336,6 +343,7 @@
     function processJson(jsonBillList) {
         if (jsonBillList == '"End"') {
             console.log(jsonBillList)
+            endResponse=true;
         } else {
             var billsArray = JSON.parse(jsonBillList);
             billsArray.forEach(appendToTable)
