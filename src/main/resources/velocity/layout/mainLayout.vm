@@ -1,0 +1,29 @@
+#macro(mainLayout)
+<!DOCTYPE html>
+<html>
+<head>
+    #parse("/velocity/layout/head.vm")
+</head>
+
+<body class="main">
+
+<header>
+    #parse("/velocity/layout/nav.vm")
+
+    #parse("/velocity/layout/overlay.vm")
+</header>
+
+<div style="height:80%">
+    $bodyContent
+</div>
+
+<footer>
+    #parse("/velocity/layout/footer.vm")
+</footer>
+
+    #parse("/velocity/layout/footerScripts.vm")
+
+</body>
+
+</html>
+#end

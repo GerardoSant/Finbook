@@ -1,107 +1,8 @@
-#parse("/velocity/layout.vm")
-#mainLayout()
-<html>
-<script src="https://unpkg.com/jspdf@1.5.3/dist/jspdf.min.js"></script>
-<script src="https://unpkg.com/jspdf-autotable@3.2.13/dist/jspdf.plugin.autotable.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+#parse("/velocity/layout/mainLayout.vm")
+#@mainLayout()
 
+<link rel="stylesheet" href="/css/reports.css">
 
-<style>
-    [data-href] {
-        cursor: pointer;
-    }
-
-    thead {
-        background-color: rgb(0, 51, 102);
-        color: white;
-        font-size: 117%
-    }
-
-    .opener {
-        cursor: pointer;
-        font-size: 115%;
-
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    .bill {
-        font-style: italic;
-        background-color: #ebfcfc;
-    }
-
-    .rightbox {
-        float: right;
-        width: 55%;
-        margin-right: 5%;
-        margin-bottom: 5%
-
-    }
-
-    .leftbox {
-        position: fixed;
-        float: left;
-        width: 30%;
-        margin-right: 5%;
-        margin-left: 5%;
-        height: 75%;
-        margin-bottom: 5%
-    }
-
-    .static {
-        position: static;
-    }
-
-    .fixed {
-        width: inherit;
-        position: fixed;
-    }
-
-    footer {
-        display: none;
-    }
-
-    @media screen and (max-width: 992px) {
-        .rightbox {
-            float: none;
-            width: 90%;
-            margin-right: 0%;
-            margin-left: 5%;
-
-        }
-
-        .leftbox {
-            position: static;
-            float: none;
-            width: 90%;
-        }
-    }
-
-    @media screen and (max-height: 650px) {
-
-        .leftbox {
-            position: static;
-
-        }
-    }
-
-    @media screen and (max-width: 650px) {
-        .phonescrollable {
-            overflow-x: scroll;
-        }
-    }
-
-    .numSpan{
-        text-align: right;
-        width:135px;
-        display: inline-block;
-    }
-
-</style>
-
-<body class="main">
 <div class="rightbox">
     <div class="content">
         <div class="contentTitle">
@@ -340,24 +241,7 @@
 </div>
 
 
-</body>
-
-<script>
-
-    jQuery(document).ready(function ($) {
-        $('*[data-href]').on('click', function () {
-            window.location = /bills/ + $(this).data("href");
-        });
-        $('.opener').on('click', function () {
-            var itemsToToggleClass = "." + jQuery(this).attr("id");
-            jQuery(this).toggleClass("opened");
-            $(itemsToToggleClass).toggleClass("hidden");
-            //$(itemsToToggleClass).last().css( "border-bottom", "groove" );
-        });
-
-
-    });
-</script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 <script>
@@ -397,72 +281,16 @@
     document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function (event) {
         if (event.propertyName !== 'width') return;
         resize();
+        setTimeout(function(){ resize()},10);
     });
 </script>
+
+<script src="/javascript/reportsControl.js"></script>
 
 <script>
-    function getPeriodStartParsedDate() {
-        var year = $report.getPeriodStart().getYear() +1900;
-        console.log(year);
-        var month = $report.getPeriodStart().getMonth() +1;
-        console.log(month);
-        if (month < 10) month = "0" + month;
-        var day = $report.getPeriodStart().getDate()+0;
-        if (day < 10) day = "0" + day;
-        return year + "-" + month + "-" + day;
-    }
-
-    function getPeriodEndParsedDate() {
-        var year = $report.getPeriodEnd().getYear() +1900;
-        console.log(year);
-        var month = $report.getPeriodEnd().getMonth() +1;
-        console.log(month);
-        if (month < 10) month = "0" + month;
-        var day = $report.getPeriodEnd().getDate()+0;
-        if (day < 10) day = "0" + day;
-        return year + "-" + month + "-" + day;
-    }
-
-    document.getElementById('pStart').value = getPeriodStartParsedDate();
-    document.getElementById('pEnd').value = getPeriodEndParsedDate();
+    setPeriodStartDate($report.getPeriodStart().getYear(),$report.getPeriodStart().getMonth(),$report.getPeriodStart().getDate())
+    setPeriodEndDate($report.getPeriodEnd().getYear(),$report.getPeriodEnd().getMonth(),$report.getPeriodEnd().getDate())
 </script>
 
-
-<script>
-    // Cuando se abre el menu lateral, se cambia a static la position del leftbox
-    $(document).ready(function () {
-        $('#menuBtn').on('click', function () {
-            document.getElementsByClassName("leftbox")[0].classList.add("static");
-        });
-    });
-
-    document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function (event) {
-        if (event.propertyName !== 'width') return;
-        //Apertura del panel
-        if (innerWidth - 250 > 992 && innerHeight > 650 && document.getElementById("myNav").style.width == "250px") {
-            document.getElementsByClassName("leftbox")[0].classList.add("fixed");
-            document.getElementsByClassName("leftbox")[0].classList.remove("static");
-        }
-        //Cierre del panel
-        if (document.getElementById("myNav").style.width == "0px") {
-            document.getElementsByClassName("leftbox")[0].classList.remove("fixed");
-            document.getElementsByClassName("leftbox")[0].classList.remove("static");
-        }
-    });
-
-    window.addEventListener("resize", fixBoxes);
-
-    //Cuando se hace resize de la ventana, si el panel está abierto position de "leftbox" pasa a ser static.
-    function fixBoxes() {
-        if (document.getElementById("myNav").style.width == "250px") {
-            if (innerWidth - 250 < 1250) {
-                document.getElementsByClassName("leftbox")[0].classList.add("static");
-                document.getElementsByClassName("leftbox")[0].classList.remove("fixed");
-            }
-        }
-    }
-</script>
-
-
-</html>	
+#end
 	

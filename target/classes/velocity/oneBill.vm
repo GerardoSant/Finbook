@@ -1,137 +1,152 @@
-#parse("/velocity/layout.vm")
-#mainLayout()
-<html>
-<body class="main">
-	#if($redirected)
-		#if($emailSent)
-			<div class ="container content" style="background-color:lightblue">
-				<h6>You have succesfully sent the e-mail</h6>
-			</div>
-		#else
-			<div class ="container content" style="background-color:lightcoral">
-				<h6>There was an error while sending the e-mail</h6>
-			</div>
-		#end
-	#end
+#parse("/velocity/layout/mainLayout.vm")
+#@mainLayout()
 
-	<div class="content container" style="margin-bottom:50px">
-		<div class="contentTitle">
-			<h2>Bill $bill.getUUID()</h2>
-		</div>
-		<br>
+<link rel="stylesheet" href="/css/oneBill.css">
 
-		<br>
-		<div class="row">
-			<div class="col">
-				<h5>Date</h5> <p>$bill.getDate()</p>
-			</div>
-			<div class="col">
-				<h5>Type</h5> <p>$bill.getType()</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<h5>Use</h5> <p>$bill.getUse()</p>
-			</div>
-			<div class="col">
-				<h5>Concept</h5> <p>$bill.getConcept()</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<h5>Postal Code</h5> <p>$bill.getPC()</p>
-			</div>
-			<div class="col">
-				<h5>Location</h5>
-				#if($location)
-					<p>$location.getName() , $location.getState() , $location.getAdminState()</p>
-				#else
-					<p>$bill.getPC()</p>
-				#end
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<h5>Issuer Name</h5> <p>$bill.getIssuerName()</p>
-			</div>
-			<div class="col">
-				<h5>Issuer RFC</h5> <p>$bill.getIssuerRFC()</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<h5>Receiver Name</h5> <p>$bill.getReceiverName()</p>
-			</div>
-			<div class="col">
-				<h5>Receiver RFC</h5> <p>$bill.getReceiverRFC()</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<h5>Subtotal</h5> <p>$bill.getSubtotal()</p>
-			</div>
-			<div class="col">
-				<h5>Total</h5> <p>$bill.getTotal()</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<h5>Tax rate</h5> <p>$bill.getTaxRate()</p>
-			</div>
-			<div class="col">
-				<h5>Currency</h5> <p>$bill.getCurrency()</p>
-			</div>
-		</div>
+    #if($redirected)
+        #if($emailSent)
+        <div class="container content" style="background-color:lightblue">
+            <h6>You have succesfully sent the e-mail</h6>
+        </div>
+        #else
+        <div class="container content" style="background-color:lightcoral">
+            <h6>There was an error while sending the e-mail</h6>
+        </div>
+        #end
+    #end
 
-		<br>
+<div class="content container" style="margin-bottom:50px">
+    <div class="contentTitle">
+        <h2>Bill $bill.getUUID()</h2>
+    </div>
+    <br>
 
-		<div style="border-top: double lightgray">
-			<br>
-				<a href="$bill.getUUID()/bill.xml" download="$bill.getUUID()">
-					<button class="btn btn-primary btn-lg">Download XML</button>
-				</a>
+    <br>
+    <div class="row">
+        <div class="col">
+            <h5>Date</h5>
+            <p>$bill.getDate()</p>
+        </div>
+        <div class="col">
+            <h5>Type</h5>
+            <p>$bill.getType()</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Use</h5>
+            <p>$bill.getUse()</p>
+        </div>
+        <div class="col">
+            <h5>Concept</h5>
+            <p>$bill.getConcept()</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Postal Code</h5>
+            <p>$bill.getPC()</p>
+        </div>
+        <div class="col">
+            <h5>Location</h5>
+            #if($location)
+                <p>$location.getName() , $location.getState() , $location.getAdminState()</p>
+            #else
+                <p>$bill.getPC()</p>
+            #end
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Issuer Name</h5>
+            <p>$bill.getIssuerName()</p>
+        </div>
+        <div class="col">
+            <h5>Issuer RFC</h5>
+            <p>$bill.getIssuerRFC()</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Receiver Name</h5>
+            <p>$bill.getReceiverName()</p>
+        </div>
+        <div class="col">
+            <h5>Receiver RFC</h5>
+            <p>$bill.getReceiverRFC()</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Subtotal</h5>
+            <p>$bill.getSubtotal()</p>
+        </div>
+        <div class="col">
+            <h5>Total</h5>
+            <p>$bill.getTotal()</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h5>Tax rate</h5>
+            <p>$bill.getTaxRate()</p>
+        </div>
+        <div class="col">
+            <h5>Currency</h5>
+            <p>$bill.getCurrency()</p>
+        </div>
+    </div>
 
-				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Send bill by email</button>
-		</div>
+    <br>
 
-	</div>
+    <div style="border-top: double lightgray">
+        <br>
+        <a href="$bill.getUUID()/bill.xml" download="$bill.getUUID()">
+            <button class="btn btn-primary btn-lg">Download XML</button>
+        </a>
 
-	<div class="modal fade" id="myModal">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Send bill by email</button>
+    </div>
 
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">Send bill by e-mail</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
+</div>
 
-				<!-- Modal body -->
-				<div class="modal-body">
-					<label for="email">Email:</label>
-					<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-				</div>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-					<button type="button" id="send" class="btn btn-success">Send</button>
-				</div>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Send bill by e-mail</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
-			</div>
-		</div>
-	</div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            </div>
 
-	<script>
-		jQuery(document).ready(function($) {
-			$("#send").on('click', function() {
-				console.log("hejka");
-				var str= "$bill.getUUID()";
-				window.location = /bills/ + str + "/" + document.getElementById("email").value + "/";
-			});
-		});
-	</script>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" id="send" class="btn btn-success">Send</button>
+            </div>
 
-</body>
-</html>	
-	
+        </div>
+    </div>
+</div>
+
+<script>
+    jQuery(document).ready(function ($) {
+        $("#send").on('click', function () {
+            console.log("hejka");
+            var str = "$bill.getUUID()";
+            window.location = /bills/ + str + "/" + document.getElementById("email").value + "/";
+        });
+    });
+
+	window.addEventListener("resize", function(){console.log(window.innerHeight)});
+
+</script>
+
+#end

@@ -1,0 +1,16 @@
+#logInForm {
+    display: none;
+}
+
+.blue-spinner{
+    width: 6rem;
+    height: 6rem;
+    color:dodgerblue
+}
+
+.centered-div{
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}

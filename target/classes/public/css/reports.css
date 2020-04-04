@@ -1,0 +1,109 @@
+[data-href] {
+    cursor: pointer;
+}
+
+table{
+    line-height:1.2;
+}
+
+thead {
+    background-color: rgb(0, 51, 102);
+    color: white;
+    font-size: 117%
+}
+
+.opener {
+    cursor: pointer;
+    font-size: 115%;
+
+}
+
+.hidden {
+    display: none;
+}
+
+.mainResult {
+    border-top: ridge;
+    border-bottom: ridge;
+    background-color: #f7f7f7;
+    font-size: 115%;
+    font-weight: bold;
+}
+
+.comboResult {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+
+.bill {
+    font-style: italic;
+    background-color: #ebfcfc;
+}
+
+.rightbox {
+    float: right;
+    width: 55%;
+    margin-right: 5%;
+    margin-bottom: 5%
+
+}
+
+.leftbox {
+    position: fixed;
+    float: left;
+    width: 30%;
+    margin-right: 5%;
+    margin-left: 5%;
+    height: 75%;
+    margin-bottom: 5%
+}
+
+footer {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .rightbox {
+        float: none;
+        width: 90%;
+        margin-right: 0%;
+        margin-left: 5%;
+
+    }
+
+    .leftbox {
+        position: static;
+        float: none;
+        width: 90%;
+
+    }
+}
+
+.static {
+    position: static;
+}
+
+.fixed {
+    width: inherit;
+    position: fixed;
+}
+
+
+@media screen and (max-height: 650px) {
+    .leftbox {
+        position: static;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .phonescrollable {
+        overflow-x: scroll;
+    }
+}
+
+.numSpan {
+    text-align: right;
+    width: 135px;
+    display: inline-block;
+}

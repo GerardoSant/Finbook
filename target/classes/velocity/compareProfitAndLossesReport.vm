@@ -1,359 +1,236 @@
-#parse("/velocity/layout.vm")
-#mainLayout()
-<html>
-    <script src="https://unpkg.com/jspdf@1.5.3/dist/jspdf.min.js"></script>
-    <script src="https://unpkg.com/jspdf-autotable@3.2.13/dist/jspdf.plugin.autotable.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="/javascript/dateFromQuery.js"></script>
-    <script src="/javascript/reportsPercentageChange.js"></script>
+#parse("/velocity/layout/mainLayout.vm")
+#@mainLayout()
 
+<link rel="stylesheet" href="/css/compareReports.css">
 
-
-    <style>
-        [data-href] {
-            cursor: pointer;
-        }
-        thead {
-            background-color: rgb(0,51,102);
-            color:white;
-            font-size:117%
-        }
-
-        .mainResult{
-            border-top:ridge;
-            border-bottom:ridge;
-            background-color: #f7f7f7;
-            font-size:115%;
-            font-weight: bold;
-        }
-
-        .comboResult{
-            font-style: italic;
-            text-decoration: underline;
-        }
-
-        .field {
-            font-size:115%
-        }
-
-        .rightbox{
-            float:right;
-            width:55%;
-            margin-right:5%;
-            margin-bottom:5%
-
-        }
-
-        .leftbox{
-            position:fixed;
-            float:left;
-            width: 30%;
-            margin-right:5%;
-            margin-left: 5%;
-            height:75%;
-            margin-bottom:5%
-        }
-
-
-
-        @media screen and (max-width: 992px) {
-            .rightbox{
-                float:none;
-                width:90%;
-                margin-right:0%;
-                margin-left: 5%;
-
-            }
-            .leftbox{
-                position:static;
-                float:none;
-                width:90%;
-
-            }
-        }
-
-        @media screen and (max-width:950px){
-            .phonescrollable{
-                overflow-x: scroll;
-            }
-        }
-
-        .static {
-            position: static;
-        }
-        .fixed{
-            width: inherit;
-            position: fixed;
-        }
-
-
-        .box {
-            width:90%;
-            margin:5%;
-            float:none;
-        }
-
-        .numSpan{
-            text-align: right;
-            width:135px;
-            display: inline-block;
-        }
-
-
-    </style>
-
-    <body class="main">
-        <div class="box">
-            <div class = "content" style="margin-bottom:50px">
-                <div class="contentTitle">
-                    <div class ="row phonescrollable">
-                        <div class="col-9"><h2>Profit and Losses comparison</h2></div>
-                        <div class="col-3"><button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare</button></div>
-                    </div>
-                </div>
-
-                <br>
-                <div class="phonescrollable">
-                    <table class="table table-hover fixed_header" id="myTable">
-                        <thead>
-                        <tr>
-                            <th>Accounting name</th>
-                            <th><span class="numSpan" style="text-align: right">Base period 1</span></th>
-                            <th><span class="numSpan" style="text-align: right">Base period 2</span></th>
-                            <th><span class="numSpan" style="text-align: right">Difference</span></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="mainResult">
-                            <td>Sales and incomes</td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getSalesAndIncomesBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getSalesAndIncomesBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr style="font-size:115%">
-                            <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales" data-content="Base= Gross sales base - Sales returns base">Net sales</a></td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getNetSalesBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getNetSalesBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr id="grossSales" class="field">
-                            <td>Gross sales</td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getGrossSalesBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getGrossSalesBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr id="salesReturns" class="field">
-                            <td>Sales returns</td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getSalesReturnsBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getSalesReturnsBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr class = "mainResult">
-                            <td>Purchases and expenses</td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getPurchasesAndExpensesBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getPurchasesAndExpensesBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr style="font-size: 115%">
-                            <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net purchases" data-content="Base= Gross purchases base - Purchases returns base">Net purchases</a></td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getNetPurchasesBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getNetPurchasesBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr id="grossPurchases" class="field">
-                            <td>Gross purchases</td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getGrossPurchasesBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getGrossPurchasesBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr id="purchasesReturns" class="field">
-                            <td>Purchases returns</td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getPurchasesReturnsBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getPurchasesReturnsBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr id="externalServices" class="field">
-                            <td>External services</td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getExternalServicesBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getExternalServicesBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr id="salariesAndWages" class="field">
-                            <td>Salaries and Wages</td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getSalariesAndWagesBase())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getSalariesAndWagesBase())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        <tr id="totalProfit" class="mainResult">
-                            <td>Total profit</td>
-                            <td><span class="numSpan">$number.format("currency",$report1.getProfit())</span></td>
-                            <td><span class="numSpan">$number.format("currency",$report2.getProfit())</span></td>
-                            <td><span class="numSpan"></span></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </div>
-        <div class="box">
-            <div class="content" style="height:60%; margin-bottom:5%">
-                <div>
-                    <h4 class="contentTitle">Profit and Loss Comparison Chart</h4>
-                </div>
-                <div id="comparisonChart" style="height:90%"></div>
-            </div>
-        </div>
-    </body>
-
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header" style="background-color: rgb(234,241,247)">
-                    <h4 class="modal-title" >Select report periods</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form id="compareForm" action="/reports/compare/profitandlosses">
-                        <div class="container">
-                            <h6>Report 1</h6>
-                            <br>
-                            <div class="row">
-                                <div class="col">
-                                    <p>Period start</p>
-                                </div>
-                                <div class="col-8">
-                                    <input class="form-control" type="date" id="pStart1" value="2011-08-19" name="periodStart">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <p>Period end</p>
-                                </div>
-                                <div class="col-8">
-                                    <input class="form-control" type="date" id="pEnd1" value="2011-08-19" name="periodEnd">
-                                </div>
-                            </div>
-                            <h6>Report 2</h6>
-                            <br>
-                            <div class="row">
-                                <div class="col">
-                                    <p>Period start</p>
-                                </div>
-                                <div class="col-8">
-                                    <input class="form-control" type="date" id="pStart2" value="2011-08-19" name="periodStart1">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <p>Period end</p>
-                                </div>
-                                <div class="col-8">
-                                    <input class="form-control" type="date" id="pEnd2" value="2011-08-19" name="periodEnd1">
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer" style="background-color: rgb(234,241,247)">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="submit" form="compareForm" class="btn btn-success">Compare</button>
-                </div>
-
+<div class="box content">
+    <div class="contentTitle">
+        <div class="row phonescrollable">
+            <div class="col-9"><h2>Profit and Losses comparison</h2></div>
+            <div class="col-3">
+                <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare
+                </button>
             </div>
         </div>
     </div>
 
+    <br>
+    <div class="phonescrollable">
+        <table class="table table-hover fixed_header" id="myTable">
+            <thead>
+            <tr>
+                <th>Accounting name</th>
+                <th><span class="numSpan" style="text-align: right">Base period 1</span></th>
+                <th><span class="numSpan" style="text-align: right">Base period 2</span></th>
+                <th><span class="numSpan" style="text-align: right">Difference</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="mainResult">
+                <td>Sales and incomes</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getSalesAndIncomesBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getSalesAndIncomesBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr style="font-size:115%">
+                <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales"
+                                           data-content="Base= Gross sales base - Sales returns base">Net sales</a>
+                </td>
+                <td><span class="numSpan">$number.format("currency",$report1.getNetSalesBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getNetSalesBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr id="grossSales" class="field">
+                <td>Gross sales</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getGrossSalesBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getGrossSalesBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr id="salesReturns" class="field">
+                <td>Sales returns</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getSalesReturnsBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getSalesReturnsBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr class="mainResult">
+                <td>Purchases and expenses</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getPurchasesAndExpensesBase())</span>
+                </td>
+                <td><span class="numSpan">$number.format("currency",$report2.getPurchasesAndExpensesBase())</span>
+                </td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr style="font-size: 115%">
+                <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net purchases"
+                                           data-content="Base= Gross purchases base - Purchases returns base">Net
+                    purchases</a></td>
+                <td><span class="numSpan">$number.format("currency",$report1.getNetPurchasesBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getNetPurchasesBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr id="grossPurchases" class="field">
+                <td>Gross purchases</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getGrossPurchasesBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getGrossPurchasesBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr id="purchasesReturns" class="field">
+                <td>Purchases returns</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getPurchasesReturnsBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getPurchasesReturnsBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr id="externalServices" class="field">
+                <td>External services</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getExternalServicesBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getExternalServicesBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr id="salariesAndWages" class="field">
+                <td>Salaries and Wages</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getSalariesAndWagesBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getSalariesAndWagesBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr id="totalProfit" class="mainResult">
+                <td>Total profit</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getProfit())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getProfit())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="popover"]').popover();
-        });
-    </script>
+</div>
+<div class="box content chartbox">
+    <div>
+        <h4 class="contentTitle">Profit and Loss Comparison Chart</h4>
+    </div>
+    <div id="comparisonChart" style="height:90%"></div>
+</div>
 
-    <script>
-        addPercentageChangeToTable();
-        dateFromQueryToModal();
-    </script>
 
-    <script>
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
 
-        var data;
-        var options;
-        var chart;
+            <!-- Modal Header -->
+            <div class="modal-header" style="background-color: rgb(234,241,247)">
+                <h4 class="modal-title">Select report periods</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
-        function drawChart() {
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="compareForm" action="/reports/compare/profitandlosses">
+                    <div class="container">
+                        <h6>Report 1</h6>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period start</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" id="pStart1" value="2011-08-19"
+                                       name="periodStart">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period end</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" id="pEnd1" value="2011-08-19" name="periodEnd">
+                            </div>
+                        </div>
+                        <h6>Report 2</h6>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period start</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" id="pStart2" value="2011-08-19"
+                                       name="periodStart1">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>Period end</p>
+                            </div>
+                            <div class="col-8">
+                                <input class="form-control" type="date" id="pEnd2" value="2011-08-19" name="periodEnd1">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-            data = google.visualization.arrayToDataTable([
-                ['Investment',getFirstPeriodString(),getSecondPeriodString()],
-                #foreach($key in $barChart1)
-                    ['$key',$barChart1.getCount($key), $barChart2.getCount($key)],
-                #end
-                    ['Profit', $report1.getProfit(), $report2.getProfit()]
-            ]);
+            <!-- Modal footer -->
+            <div class="modal-footer" style="background-color: rgb(234,241,247)">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="submit" form="compareForm" class="btn btn-success">Compare</button>
+            </div>
 
-            options = {
-                title: 'Profit and Losses',
-                backgroundColor:'rgb(247,250,252)'
-            };
+        </div>
+    </div>
+</div>
 
-            chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="/javascript/dateFromQuery.js"></script>
+<script src="/javascript/reportsPercentageChange.js"></script>
+<script src="/javascript/popover.js"></script>
+<script src="/javascript/queryHandler.js"></script>
 
-            chart.draw(data, options);
-        }
-        function resize () {
-            chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));
-            chart.draw(data, options);
-        }
+<script>
+    addPercentageChangeToTable();
+    dateFromQueryToModal();
+</script>
 
-        window.onload = resize;
-        window.onresize = resize;
+<script>
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
-        document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function(event){
-            if(event.propertyName !== 'width') return;
-            resize();
-        });
-    </script>
+    var data;
+    var options;
+    var chart;
 
-    <script>
+    function drawChart() {
 
-        function getFirstPeriodString(){
-            return getFirstPeriodStart() + " - \n" + getFirstPeriodEnd();
-        }
+        data = google.visualization.arrayToDataTable([
+            ['Investment', getFirstPeriodString(), getSecondPeriodString()],
+            #foreach($key in $barChart1)
+                ['$key',$barChart1.getCount($key), $barChart2.getCount($key)],
+            #end
+            ['Profit', $report1.getProfit(), $report2.getProfit()]
+        ]);
 
-        function getSecondPeriodString(){
-            return getSecondPeriodStart() +  " - \n" + getSecondPeriodEnd();
-        }
+        options = {
+            title: 'Profit and Losses',
+            backgroundColor: 'rgb(247,250,252)'
+        };
 
-        function getFirstPeriodStart(){
-            return getQueryParam("periodStart");
-        }
+        chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));
 
-        function getFirstPeriodEnd(){
-            return getQueryParam("periodEnd");
-        }
+        chart.draw(data, options);
+    }
 
-        function getSecondPeriodStart(){
-            return getQueryParam("periodStart1");
-        }
-        function getSecondPeriodEnd(){
-            return getQueryParam("periodEnd1");
-        }
+    function resize() {
+        chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));
+        chart.draw(data, options);
+    }
 
-        function getQueryParam(param){
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-    </script>
+    window.onload = resize;
+    window.onresize = resize;
 
-</html>	
-	
+    document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function (event) {
+        if (event.propertyName !== 'width') return;
+        resize();
+    });
+</script>
+
+
+
+#end

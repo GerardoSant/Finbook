@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-sm">
+
+    <!-- Button for open side Menu -->
+
+    <a class="nav-link menuBtn"><img src="/openMenu.png" alt="logo" style="height:20px" id="menuBtn"
+                                     onclick="navHandler()"></a>
+
+    <!-- Brand/logo -->
+    #if($currentUser)
+        <a class="navbar-brand" href="/dashboard">
+            <img src="/favicon28.png" alt="logo" style="height:30px ">
+        </a>
+    #else
+        <a class="navbar-brand" href="/login">
+            <img src="/favicon28.png" alt="logo" style="height:30px ">
+        </a>
+    #end
+
+    <!-- Brand WebPage name -->
+
+    <span class="nav-title">Fin</span><span class="nav-title" style="color: rgb(7,33,92); ">book</span>
+
+
+    <!-- User Icon  -->
+
+    #if($currentUser)
+        <ul class="navbar-nav ml-auto">
+            <div class="popover-wrapper">
+
+                <!--  User Icon in NavBar!-->
+                <div class="popover-title" id="userIcon">
+                    <li class="nav-item">
+                        <a><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a>
+                    </li>
+                </div>
+
+                <!--  User Panel when User Icon is clicked -->
+                <div class="popover-content" id="userPanel">
+                    <div style="border-bottom: 1px solid darkgrey">
+                        <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+                        <p class="popover-message">$!businessName</p>
+                    </div>
+                    <div style="margin-top:10%">
+                        <div>
+                            <button id="languageIcon" class="butn" style="width:123px"><i class="fa fa-language"
+                                                                                          aria-hidden="true"></i>&nbspLanguage
+                            </button>
+                        </div>
+                        <br>
+                        <form id="logOutForm" action="/logout" method="post" style="display:none"></form>
+                        <button onclick="submitLogOutForm()" class="butn" style="width:123px"><i class="fa fa-sign-out"
+                                                                                                 aria-hidden="true"></i>&nbspLog
+                            out
+                        </button>
+                    </div>
+                </div>
+
+                <!--  Language Panel when Language Button is clicked -->
+                <div class="popover-content" id="languagePanel">
+                    <div style="border-bottom: 1px solid darkgrey">
+                        <i class="fa fa-language fa-2x" aria-hidden="true"></i>
+                        <p class="popover-message">Select language</p>
+                    </div>
+                    <div style="margin-top:10%">
+                        <form id="esLanguageForm" style="display:none"><input name="locale" value="es"></form>
+                        <form id="enLanguageForm" style="display:none"><input name="locale" value="en"></form>
+                        <button name="locale" value="es" onclick="submitLanguageForm('en')" class="butn"
+                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspEnglish
+                        </button>
+                        <br>
+                        <br>
+                        <button name="locale" value="es" onclick="submitLanguageForm('es')" class="butn"
+                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspSpanish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ul>
+    #end
+
+
+</nav>

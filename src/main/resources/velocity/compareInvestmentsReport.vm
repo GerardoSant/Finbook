@@ -1,197 +1,107 @@
-#parse("/velocity/layout.vm")
-#mainLayout()
-<html>
-<script src="https://unpkg.com/jspdf@1.5.3/dist/jspdf.min.js"></script>
-<script src="https://unpkg.com/jspdf-autotable@3.2.13/dist/jspdf.plugin.autotable.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="/javascript/dateFromQuery.js"></script>
-<script src="/javascript/reportsPercentageChange.js"></script>
+#parse("/velocity/layout/mainLayout.vm")
+#@mainLayout()
 
+<link rel="stylesheet" href="/css/compareReports.css">
 
-
-<style>
-    [data-href] {
-        cursor: pointer;
-    }
-    thead {
-        background-color: rgb(0,51,102);
-        color:white;
-        font-size:117%
-    }
-
-    .mainResult{
-        border-top:ridge;
-        border-bottom:ridge;
-        background-color: #f7f7f7;
-        font-size:115%;
-        font-weight: bold;
-    }
-
-    .comboResult{
-        font-style: italic;
-        text-decoration: underline;
-    }
-
-    .field {
-        font-size:115%
-    }
-
-    .rightbox{
-        float:right;
-        width:55%;
-        margin-right:5%;
-        margin-bottom:5%
-
-    }
-
-    .leftbox{
-        position:fixed;
-        float:left;
-        width: 30%;
-        margin-right:5%;
-        margin-left: 5%;
-        height:75%;
-        margin-bottom:5%
-    }
-
-
-
-    @media screen and (max-width: 992px) {
-        .rightbox{
-            float:none;
-            width:90%;
-            margin-right:0%;
-            margin-left: 5%;
-
-        }
-        .leftbox{
-            position:static;
-            float:none;
-            width:90%;
-
-        }
-    }
-
-    @media screen and (max-width:950px){
-        .phonescrollable{
-            overflow-x: scroll;
-        }
-    }
-
-    .static {
-        position: static;
-    }
-    .fixed{
-        width: inherit;
-        position: fixed;
-    }
-
-
-    .box {
-        width:90%;
-        margin:5%;
-        float:none;
-    }
-
-    .numSpan{
-        text-align: right;
-        width:135px;
-        display: inline-block;
-    }
-
-
-</style>
-
-<body class="main">
-<div class="box">
-    <div class = "content" style="margin-bottom:50px">
-        <div class="contentTitle">
-            <div class ="row phonescrollable">
-                <div class="col-9"><h2>Investments report comparison</h2></div>
-                <div class="col-3"><button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare</button></div>
+<div class="box content">
+    <div class="contentTitle">
+        <div class="row phonescrollable">
+            <div class="col-9"><h2>Investments report comparison</h2></div>
+            <div class="col-3">
+                <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare
+                </button>
             </div>
         </div>
+    </div>
 
-        <br>
-        <div class="phonescrollable">
-            <table class="table table-hover fixed_header" id="myTable">
-                <thead>
-                <tr>
-                    <th>Accounting name</th>
-                    <th><span class="numSpan" style="text-align: right">Base period 1</span></th>
-                    <th><span class="numSpan" style="text-align: right">Base period 2</span></th>
-                    <th><span class="numSpan" style="text-align: right">Difference</span></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="field">
-                    <td>Buildings</td>
-                    <td><span class="numSpan">$number.format("currency",$report1.getBuildingsBase())</span></td>
-                    <td><span class="numSpan">$number.format("currency",$report2.getBuildingsBase())</span></td>
-                    <td><span class="numSpan"></span></td>
-                </tr>
-                <tr class="field">
-                    <td>Office equipment</td>
-                    <td><span class="numSpan">$number.format("currency",$report1.getOfficeEquipmentBase())</span></td>
-                    <td><span class="numSpan">$number.format("currency",$report2.getOfficeEquipmentBase())</span></td>
-                    <td><span class="numSpan"></span></td>
-                </tr>
-                <tr class="field">
-                    <td>Transport equipment</td>
-                    <td><span class="numSpan">$number.format("currency",$report1.getTransportEquipmentBase())</span></td>
-                    <td><span class="numSpan">$number.format("currency",$report2.getTransportEquipmentBase())</span></td>
-                    <td><span class="numSpan"></span></td>
-                </tr>
-                <tr class="field">
-                    <td>Computational Equipment Base</td>
-                    <td><span class="numSpan">$number.format("currency",$report1.getComputationalEquipmentBase())</span></td>
-                    <td><span class="numSpan">$number.format("currency",$report2.getComputationalEquipmentBase())</span></td>
-                    <td><span class="numSpan"></span></td>
-                </tr>
-                <tr class = "field">
-                    <td>Models and Tools</td>
-                    <td><span class="numSpan">$number.format("currency",$report1.getModelsAndToolsBase())</span></td>
-                    <td><span class="numSpan">$number.format("currency",$report2.getModelsAndToolsBase())</span></td>
-                    <td><span class="numSpan"></span></td>
-                </tr>
-                <tr class="field">
-                    <td>Telephone Communications</td>
-                    <td><span class="numSpan">$number.format("currency",$report1.getTelephoneCommunicationsBase())</span></td>
-                    <td><span class="numSpan">$number.format("currency",$report2.getTelephoneCommunicationsBase())</span></td>
-                    <td><span class="numSpan"></span></td>
-                </tr>
-                <tr class="field">
-                    <td>Satellite Communications</td>
-                    <td><span class="numSpan">$number.format("currency",$report1.getSatelliteCommunicationsBase())</span></td>
-                    <td><span class="numSpan">$number.format("currency",$report2.getSatelliteCommunicationsBase())</span></td>
-                    <td><span class="numSpan"></span></td>
-                </tr>
-                <tr class="field">
-                    <td>Other Machinery and Equipment</td>
-                    <td><span class="numSpan">$number.format("currency",$report1.getOtherMachineryAndEquipmentBase())</span></td>
-                    <td><span class="numSpan">$number.format("currency",$report2.getOtherMachineryAndEquipmentBase())</span></td>
-                    <td><span class="numSpan"></span></td>
-                </tr>
-                <tr class="mainResult">
-                    <td>All investments</td>
-                    <td><span class="numSpan">$number.format("currency",$report1.getBase())</span></td>
-                    <td><span class="numSpan">$number.format("currency",$report2.getBase())</span></td>
-                    <td><span class="numSpan"></span></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
+    <br>
+    <div class="phonescrollable">
+        <table class="table table-hover fixed_header" id="myTable">
+            <thead>
+            <tr>
+                <th>Accounting name</th>
+                <th><span class="numSpan" style="text-align: right">Base period 1</span></th>
+                <th><span class="numSpan" style="text-align: right">Base period 2</span></th>
+                <th><span class="numSpan" style="text-align: right">Difference</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="field">
+                <td>Buildings</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getBuildingsBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getBuildingsBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr class="field">
+                <td>Office equipment</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getOfficeEquipmentBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getOfficeEquipmentBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr class="field">
+                <td>Transport equipment</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getTransportEquipmentBase())</span>
+                </td>
+                <td><span class="numSpan">$number.format("currency",$report2.getTransportEquipmentBase())</span>
+                </td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr class="field">
+                <td>Computational Equipment Base</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getComputationalEquipmentBase())</span>
+                </td>
+                <td><span class="numSpan">$number.format("currency",$report2.getComputationalEquipmentBase())</span>
+                </td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr class="field">
+                <td>Models and Tools</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getModelsAndToolsBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getModelsAndToolsBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr class="field">
+                <td>Telephone Communications</td>
+                <td><span class="numSpan">$number.format(
+                    "currency",$report1.getTelephoneCommunicationsBase())</span></td>
+                <td><span class="numSpan">$number.format(
+                    "currency",$report2.getTelephoneCommunicationsBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr class="field">
+                <td>Satellite Communications</td>
+                <td><span class="numSpan">$number.format(
+                    "currency",$report1.getSatelliteCommunicationsBase())</span></td>
+                <td><span class="numSpan">$number.format(
+                    "currency",$report2.getSatelliteCommunicationsBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr class="field">
+                <td>Other Machinery and Equipment</td>
+                <td><span class="numSpan">$number.format(
+                    "currency",$report1.getOtherMachineryAndEquipmentBase())</span></td>
+                <td><span class="numSpan">$number.format(
+                    "currency",$report2.getOtherMachineryAndEquipmentBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            <tr class="mainResult">
+                <td>All investments</td>
+                <td><span class="numSpan">$number.format("currency",$report1.getBase())</span></td>
+                <td><span class="numSpan">$number.format("currency",$report2.getBase())</span></td>
+                <td><span class="numSpan"></span></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
-<div class="box content" style="height:60%; margin-bottom:5%">
+<div class="box content chartbox">
     <div>
         <h4 class="contentTitle">Investments Comparison Chart</h4>
     </div>
     <div id="comparisonChart" style="height:90%"></div>
 </div>
-</body>
+
 
 <!-- The Modal -->
 <div class="modal fade" id="myModal">
@@ -200,7 +110,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header" style="background-color: rgb(234,241,247)">
-                <h4 class="modal-title" >Select report periods</h4>
+                <h4 class="modal-title">Select report periods</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -215,7 +125,8 @@
                                 <p>Period start</p>
                             </div>
                             <div class="col-8">
-                                <input class="form-control" type="date" id="pStart1" value="2011-08-19" name="periodStart">
+                                <input class="form-control" type="date" id="pStart1" value="2011-08-19"
+                                       name="periodStart">
                             </div>
                         </div>
                         <div class="row">
@@ -233,7 +144,8 @@
                                 <p>Period start</p>
                             </div>
                             <div class="col-8">
-                                <input class="form-control" type="date" id="pStart2" value="2011-08-19" name="periodStart1">
+                                <input class="form-control" type="date" id="pStart2" value="2011-08-19"
+                                       name="periodStart1">
                             </div>
                         </div>
                         <div class="row">
@@ -259,11 +171,11 @@
 </div>
 
 
-<script>
-    $(document).ready(function(){
-        $('[data-toggle="popover"]').popover();
-    });
-</script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="/javascript/dateFromQuery.js"></script>
+<script src="/javascript/reportsPercentageChange.js"></script>
+<script src="/javascript/popover.js"></script>
+<script src="/javascript/queryHandler.js"></script>
 
 <script>
     addPercentageChangeToTable();
@@ -271,7 +183,7 @@
 </script>
 
 <script>
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages': ['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
     var data;
@@ -288,14 +200,15 @@
 
         options = {
             title: 'Investments',
-            backgroundColor:'rgb(247,250,252)'
+            backgroundColor: 'rgb(247,250,252)'
         };
 
         chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));
 
         chart.draw(data, options);
     }
-    function resize () {
+
+    function resize() {
         chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));
         chart.draw(data, options);
     }
@@ -303,41 +216,11 @@
     window.onload = resize;
     window.onresize = resize;
 
-    document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function(event){
-        if(event.propertyName !== 'width') return;
+    document.getElementsByClassName('overlay')[0].addEventListener('transitionend', function (event) {
+        if (event.propertyName !== 'width') return;
         resize();
     });
 </script>
 
-<script>
 
-    function getFirstPeriodString(){
-        return getFirstPeriodStart() + " - \n" + getFirstPeriodEnd();
-    }
-
-    function getSecondPeriodString(){
-        return getSecondPeriodStart() +  " - \n" + getSecondPeriodEnd();
-    }
-
-    function getFirstPeriodStart(){
-        return getQueryParam("periodStart");
-    }
-
-    function getFirstPeriodEnd(){
-        return getQueryParam("periodEnd");
-    }
-
-    function getSecondPeriodStart(){
-        return getQueryParam("periodStart1");
-    }
-    function getSecondPeriodEnd(){
-        return getQueryParam("periodEnd1");
-    }
-
-    function getQueryParam(param){
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-    }
-</script>
-
-</html>
+#end
