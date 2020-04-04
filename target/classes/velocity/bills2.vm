@@ -73,13 +73,24 @@
         line-height:1.17;
     }
 
+    th{
+        cursor:pointer;
+    }
+
     th i{
         float:right;
+        opacity: 0.5;
+    }
+
+    .selected-th{
+        opacity: 1;
     }
 
     td{
         min-width:110px;
     }
+
+
 
 
 
@@ -171,16 +182,16 @@
             #if($bills)
                 <thead class="thead-dark">
                 <tr>
-                    <th>Fecha <i class="fas fa-sort"></i></th>
-                    <th>Lugar <i class="fas fa-sort"></i></th>
-                    <th>Tipo <i class="fas fa-sort"></i></th>
+                    <th onclick="changeOrder(this)" id="date">Fecha <i class="fas fa-sort"></i></th>
+                    <th onclick="changeOrder(this)" id="pc">Lugar <i class="fas fa-sort"></i></th>
+                    <th onclick="changeOrder(this)" id="billType">Tipo <i class="fas fa-sort"></i></th>
                     #if($received)
-                        <th>Emisor <i class="fas fa-sort"></i></th>
+                        <th onclick="changeOrder(this)" id="issuer">Emisor <i class="fas fa-sort"></i></th>
                     #else
-                        <th>Receptor <i class="fas fa-sort"></i></th>
+                        <th onclick="changeOrder(this)" id="receiver">Receptor <i class="fas fa-sort"></i></th>
                     #end
-                    <th>Total <i class="fas fa-sort"></i></th>
-                    <th>Currency <i class="fas fa-sort"></i></th>
+                    <th onclick="changeOrder(this)" id="total">Total <i class="fas fa-sort"></i></th>
+                    <th onclick="changeOrder(this)" id="currency">Currency <i class="fas fa-sort"></i></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -209,6 +220,48 @@
 </div>
 
 
+
+<script>
+    var orderBy="";
+    var descending=true;
+
+    function swapSortDirectionIcon(e) {
+        $(e).find('.fas').toggleClass('fa-sort-down');
+        $(e).find('.fas').toggleClass('fa-sort-up');
+    }
+
+    function initDirectionIcon(e) {
+        $(e).find('.fas').toggleClass('fa-sort');
+        $(e).find('.fas').toggleClass('fa-sort-down');
+        $(e).find('.fas').toggleClass('selected-th');
+    }
+
+    function removeDirectionIconFromPrevious(elementId){
+        if (descending){
+            $(document.getElementById(elementId)).find('.fas').toggleClass('fa-sort-down');
+        }  else{
+            $(document.getElementById(elementId)).find('.fas').toggleClass('fa-sort-up');
+        }
+        $(document.getElementById(elementId)).find('.fas').toggleClass('fa-sort');
+        $(document.getElementById(elementId)).find('.fas').toggleClass('selected-th');
+    }
+
+    function changeOrder(e){
+        if (orderBy==e.id){
+            descending = !descending;
+            swapSortDirectionIcon(e);
+        } else{
+            if (orderBy!=null) removeDirectionIconFromPrevious(orderBy);
+            orderBy= e.id;
+            console.log("new");
+            initDirectionIcon(e);
+            descending=true;
+        }
+        filter();
+    }
+
+</script>
+
 <script>
 
 
@@ -218,7 +271,7 @@
 </script>
 
 <script>
-    var orderRule;
+
 
 
     var timeout;
@@ -241,10 +294,12 @@
         var ajaxRequest;
         if (document.getElementById("receiverInput") == null) {
             ajaxRequest = "/filterbills?issuer=" + document.getElementById("issuerInput").value + "&minTotal=" + document.getElementById("minTotalInput").value + "&maxTotal=" + document.getElementById("maxTotalInput").value
-                    + "&PC=" + document.getElementById("pcInput").value + "&billType=" + document.getElementById("billTypeInput").value + "&periodStart=" + document.getElementById("pStart").value + "&periodEnd=" + document.getElementById("pEnd").value;
+                    + "&PC=" + document.getElementById("pcInput").value + "&billType=" + document.getElementById("billTypeInput").value + "&periodStart=" + document.getElementById("pStart").value + "&periodEnd=" + document.getElementById("pEnd").value
+                    + "&orderBy=" + orderBy + "&orderDescending="+descending;
         } else {
             ajaxRequest = "/filterbills?receiver=" + document.getElementById("receiverInput").value + "&minTotal=" + document.getElementById("minTotalInput").value + "&maxTotal=" + document.getElementById("maxTotalInput").value
-                    + "&PC=" + document.getElementById("pcInput").value + "&billType=" + document.getElementById("billTypeInput").value + "&periodStart=" + document.getElementById("pStart").value + "&periodEnd=" + document.getElementById("pEnd").value;
+                    + "&PC=" + document.getElementById("pcInput").value + "&billType=" + document.getElementById("billTypeInput").value + "&periodStart=" + document.getElementById("pStart").value + "&periodEnd=" + document.getElementById("pEnd").value
+                    + "&orderBy=" + orderBy + "&orderDescending="+descending;
         }
         xhttp.open("POST", ajaxRequest, true);
         xhttp.send();
@@ -308,7 +363,7 @@
             newCell4.innerHTML = bill.receiverName;
         }
         var newCell5 = newRow.insertCell(4);
-        newCell5.innerHTML = bill.total;
+        newCell5.innerHTML = bill.total.toFixed(2);
         var newCell6 = newRow.insertCell(5);
         newCell6.innerHTML = bill.currency;
 

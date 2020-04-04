@@ -2,11 +2,14 @@ package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
 import Controller.util.BillFilter;
+import Controller.util.BillOrdenator;
 import Controller.util.DateParser;
 import Controller.util.RequestUtil;
 import Model.Bills.Bill;
 import com.google.gson.Gson;
 import java.util.List;
+
+import static java.lang.Boolean.parseBoolean;
 
 
 public class FilterBillsCommand extends FrontCommand {
@@ -28,13 +31,15 @@ public class FilterBillsCommand extends FrontCommand {
         } else{
             billList=filterByIssuerName(billList);
         }
-
         billList=filterByTotal(billList);
         billList= filterByDate(billList);
         billList= filterByPC(billList);
         billList= filterByBillType(billList);
+        billList = applyOrder(billList);
         return billList;
     }
+
+
 
     private List<Bill> filterByIssuerName(List<Bill> billList) {
         return !paramIsEmpty("issuer") ? BillFilter.filterByIssuer(billList, getParam("issuer")) : billList;
@@ -52,8 +57,6 @@ public class FilterBillsCommand extends FrontCommand {
     };
 
     private List<Bill> filterByDate(List<Bill> billList) {
-        System.out.println(getParam("periodStart"));
-        System.out.println(getParam("periodEnd"));
         try{
             if(!paramIsEmpty("periodStart")) billList=BillFilter.filterByPeriodStart(billList, new DateParser("yyyy-MM-dd").parseDate(getParam("periodStart")));
             if(!paramIsEmpty("periodEnd")) billList=BillFilter.filterByPeriodEnd(billList, new DateParser("yyyy-MM-dd").parseDate(getParam("periodEnd")));
@@ -72,6 +75,17 @@ public class FilterBillsCommand extends FrontCommand {
         if (getParam("billType").equals("purchases")) return BillFilter.filterByPurchases(billList,"E-5756930");
         if (getParam("billType").equals("investments")) return BillFilter.filterByInvestments(billList,"E-5756930");
         if (getParam("billType").equals("services")) return BillFilter.filterByExternalServices(billList,"E-5756930");
+        return billList;
+    }
+
+    private List<Bill> applyOrder(List<Bill> billList) {
+        if (getParam("orderBy").equals("date")) return BillOrdenator.orderByDate(billList, parseBoolean(getParam("orderDescending")));
+        if (getParam("orderBy").equals("pc")) return BillOrdenator.orderByPC(billList, parseBoolean(getParam("orderDescending")));
+        if (getParam("orderBy").equals("billType")) return BillOrdenator.orderByType(billList, parseBoolean(getParam("orderDescending")));
+        if (getParam("orderBy").equals("receiver")) return BillOrdenator.orderByReceiver(billList, parseBoolean(getParam("orderDescending")));
+        if (getParam("orderBy").equals("issuer")) return BillOrdenator.orderByIssuer(billList, parseBoolean(getParam("orderDescending")));
+        if (getParam("orderBy").equals("total")) return BillOrdenator.orderByTotal(billList, parseBoolean(getParam("orderDescending")));
+        if (getParam("orderBy").equals("currency")) return BillOrdenator.orderByCurrency(billList, parseBoolean(getParam("orderDescending")));
         return billList;
     }
 
