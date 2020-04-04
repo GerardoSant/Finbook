@@ -2,17 +2,17 @@
 
     <!-- Button for open side Menu -->
 
-    <a class="nav-link menuBtn"><img src="/openMenu.png" alt="logo" style="height:20px" id="menuBtn"
+    <a class="nav-link menuBtn"><img src="/img/openMenu.png" alt="logo" style="height:20px" id="menuBtn"
                                      onclick="navHandler()"></a>
 
     <!-- Brand/logo -->
     #if($currentUser)
         <a class="navbar-brand" href="/dashboard">
-            <img src="/favicon28.png" alt="logo" style="height:30px ">
+            <img src="/img/favicon28.png" alt="logo" style="height:30px ">
         </a>
     #else
         <a class="navbar-brand" href="/login">
-            <img src="/favicon28.png" alt="logo" style="height:30px ">
+            <img src="/img/favicon28.png" alt="logo" style="height:30px ">
         </a>
     #end
 

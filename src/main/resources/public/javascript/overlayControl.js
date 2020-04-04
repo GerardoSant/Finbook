@@ -55,11 +55,11 @@ var menuButton = document.getElementById("menuBtn");
 function navHandler() {
     if (!sideMenuOpened) {
         sideMenuOpened = true;
-        menuButton.src = "/closeMenu.png"
+        menuButton.src = "/img/closeMenu.png"
         openNav();
     } else {
         sideMenuOpened = false;
-        menuButton.src = "/openMenu.png"
+        menuButton.src = "/img/openMenu.png"
         closeNav()
     }
 }
@@ -76,7 +76,7 @@ function openNav() {
 }
 
 function closeNav() {
-    menuButton.src = "/openMenu.png"
+    menuButton.src = "/img/openMenu.png"
     sideMenu.style.width = "0";
     document.getElementsByClassName("main")[0].style.marginLeft = 0;
     document.getElementsByClassName("main")[1].style.marginLeft = 0;

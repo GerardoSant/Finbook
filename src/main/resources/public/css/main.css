@@ -38,7 +38,10 @@ footer {
     background: rgb(247, 250, 252);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
     font-size: 14px;
+}
 
+nav{
+    line-height: 1.2;
 }
 
 .content {
@@ -197,6 +200,7 @@ footer {
 }
 
 .popover-content {
+    line-height: 1.4;
     padding: 15px;
     z-index: 2;
     position: absolute;
