@@ -67,6 +67,10 @@
         .filters {
             column-count: 1
         }
+
+        #scrollablePanel{
+            height:80vh;
+        }
     }
 
     table{
@@ -88,6 +92,11 @@
 
     td{
         min-width:110px;
+    }
+
+    #scrollablePanel{
+        overflow-y: scroll;
+        height:65vh
     }
 
 
@@ -176,7 +185,7 @@
     </div>
 
     <br>
-    <div id="#scrollablePanel" style="overflow-y: scroll; height:65vh" onscroll="handleScroll(this)">
+    <div id="scrollablePanel" onscroll="handleScroll(this)">
         <table class="table table-hover fixed_header" id="myTable" style="">
             #if($bills)
                 <thead class="thead-dark">
