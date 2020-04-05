@@ -7931,3 +7931,462 @@ org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
 java.base/java.lang.Thread.run(Thread.java:834)
 
 ----------------
+Sat Apr 04 21:45:43 CEST 2020
+Error message:
+No value present
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@fc6f922
+java.base/java.util.Optional.get(Optional.java:148)
+Controller.util.PeriodFinder.findPeriodStart(PeriodFinder.java:17)
+Controller.builders.reports.ReportBuilder.<init>(ReportBuilder.java:27)
+Controller.builders.reports.ProfitAndLossesReportBuilder.<init>(ProfitAndLossesReportBuilder.java:19)
+Controller.util.RequestQueryHandler.generateProfitAndLossesReport(RequestQueryHandler.java:21)
+Controller.Web.commands.ShowDashboardCommand.process(ShowDashboardCommand.java:32)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:132)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sat Apr 04 21:51:07 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@18aadad5
+Controller.Web.commands.ShowBillCommand.process(ShowBillCommand.java:25)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126)
+org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:11:00 CEST 2020
+Error message:
+Encountered ")" at velocity/bills2.vm[line 214, column 71]
+Was expecting one of:
+    "[" ...
+    "{" ...
+    <WHITESPACE> ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
+    
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@12533bb6
+org.apache.velocity.Template.process(Template.java:151)
+org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+spark.template.velocity.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
+Controller.util.ViewUtil.render(ViewUtil.java:24)
+Controller.Web.commands.ShowBills2Command.process(ShowBills2Command.java:35)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:11:02 CEST 2020
+Error message:
+Encountered ")" at velocity/bills2.vm[line 214, column 71]
+Was expecting one of:
+    "[" ...
+    "{" ...
+    <WHITESPACE> ...
+    <STRING_LITERAL> ...
+    "true" ...
+    "false" ...
+    <INTEGER_LITERAL> ...
+    <FLOATING_POINT_LITERAL> ...
+    <IDENTIFIER> ...
+    "{" ...
+    "[" ...
+    
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@7834e5a7
+org.apache.velocity.Template.process(Template.java:151)
+org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+spark.template.velocity.VelocityTemplateEngine.render(VelocityTemplateEngine.java:80)
+Controller.util.ViewUtil.render(ViewUtil.java:24)
+Controller.Web.commands.ShowBills2Command.process(ShowBills2Command.java:35)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126)
+org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:19:52 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@2f6d4931
+Controller.Web.commands.ShowBillCommand.process(ShowBillCommand.java:25)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126)
+org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:21:50 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@3a5d9828
+Controller.Web.commands.ShowBillCommand.process(ShowBillCommand.java:25)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:23:03 CEST 2020
+Error message:
+No value present
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@30ffc01e
+java.base/java.util.Optional.get(Optional.java:148)
+Controller.util.PeriodFinder.findPeriodStart(PeriodFinder.java:17)
+Controller.builders.reports.ReportBuilder.<init>(ReportBuilder.java:27)
+Controller.builders.reports.ProfitAndLossesReportBuilder.<init>(ProfitAndLossesReportBuilder.java:19)
+Controller.util.RequestQueryHandler.generateProfitAndLossesReport(RequestQueryHandler.java:21)
+Controller.Web.commands.ShowDashboardCommand.process(ShowDashboardCommand.java:32)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:23:54 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@73ae16bf
+Controller.Web.commands.ShowBillCommand.process(ShowBillCommand.java:25)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:53:13 CEST 2020
+Error message:
+toIndex = 30
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@6d454845
+java.base/java.util.AbstractList.subListRangeCheck(AbstractList.java:507)
+java.base/java.util.ArrayList.subList(ArrayList.java:1137)
+Controller.Web.commands.ShowBillsCommand.process(ShowBillsCommand.java:24)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:53:16 CEST 2020
+Error message:
+toIndex = 30
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@7644c0a6
+java.base/java.util.AbstractList.subListRangeCheck(AbstractList.java:507)
+java.base/java.util.ArrayList.subList(ArrayList.java:1137)
+Controller.Web.commands.ShowBillsCommand.process(ShowBillsCommand.java:24)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126)
+org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:53:43 CEST 2020
+Error message:
+toIndex = 30
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@3ba933b6
+java.base/java.util.AbstractList.subListRangeCheck(AbstractList.java:507)
+java.base/java.util.ArrayList.subList(ArrayList.java:1137)
+Controller.Web.commands.ShowBillsCommand.process(ShowBillsCommand.java:24)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:54:40 CEST 2020
+Error message:
+toIndex = 30
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@62379e2d
+java.base/java.util.AbstractList.subListRangeCheck(AbstractList.java:507)
+java.base/java.util.ArrayList.subList(ArrayList.java:1137)
+Controller.Web.commands.ShowBillsCommand.process(ShowBillsCommand.java:25)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:55:15 CEST 2020
+Error message:
+toIndex = 30
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@3fce899a
+java.base/java.util.AbstractList.subListRangeCheck(AbstractList.java:507)
+java.base/java.util.ArrayList.subList(ArrayList.java:1137)
+Controller.Web.commands.ShowBillsCommand.process(ShowBillsCommand.java:25)
+Controller.Web.FrontServlet$1.handle(FrontServlet.java:64)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun Apr 05 12:58:17 CEST 2020
+Error message:
+The command that was tried to execute does not exist.
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@596772db
+Controller.Web.commands.UnknownCommand.<init>(UnknownCommand.java:18)
+java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+java.base/java.lang.Class.newInstance(Class.java:584)
+Controller.Web.FrontServlet.getCommand(FrontServlet.java:26)
+Controller.Web.FrontServlet.lambda$static$0(FrontServlet.java:14)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.runTask(EatWhatYouKill.java:333)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:310)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.tryProduce(EatWhatYouKill.java:168)
+org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:126)
+org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:366)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------

@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col">
             <h5>Date</h5>
-            <p>$bill.getDate()</p>
+            <p>$dateTool.format('long',$bill.getDate(),$locale)</p>
         </div>
         <div class="col">
             <h5>Type</h5>

@@ -9,6 +9,7 @@ import Model.Bills.Bill;
 import com.google.gson.Gson;
 import java.util.List;
 
+import static Controller.util.RequestUtil.getSessionCurrentUser;
 import static java.lang.Boolean.parseBoolean;
 
 
@@ -69,12 +70,12 @@ public class FilterBillsCommand extends FrontCommand {
     }
 
     private List<Bill> filterByBillType(List<Bill> billList) {
-        if (getParam("billType").equals("income")) return BillFilter.filterBySales(billList,"E-5756930");
-        if (getParam("billType").equals("egress")) return BillFilter.filterByReturns(billList,"E-5756930");
-        if (getParam("billType").equals("payroll")) return BillFilter.filterBySalaries(billList,"E-5756930");
-        if (getParam("billType").equals("purchases")) return BillFilter.filterByPurchases(billList,"E-5756930");
-        if (getParam("billType").equals("investments")) return BillFilter.filterByInvestments(billList,"E-5756930");
-        if (getParam("billType").equals("services")) return BillFilter.filterByExternalServices(billList,"E-5756930");
+        if (getParam("billType").equals("income")) return BillFilter.filterBySales(billList,getSessionCurrentUser(request));
+        if (getParam("billType").equals("egress")) return BillFilter.filterByReturns(billList,getSessionCurrentUser(request));
+        if (getParam("billType").equals("payroll")) return BillFilter.filterBySalaries(billList,getSessionCurrentUser(request));
+        if (getParam("billType").equals("purchases")) return BillFilter.filterByPurchases(billList,getSessionCurrentUser(request));
+        if (getParam("billType").equals("investments")) return BillFilter.filterByInvestments(billList,getSessionCurrentUser(request));
+        if (getParam("billType").equals("services")) return BillFilter.filterByExternalServices(billList,getSessionCurrentUser(request));
         return billList;
     }
 

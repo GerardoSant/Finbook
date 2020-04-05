@@ -73,6 +73,12 @@
         }
     }
 
+    @media screen and (max-height:810px){
+        footer{
+            visibility: hidden;
+        }
+    }
+
     table{
         line-height:1.17;
     }
@@ -205,7 +211,7 @@
                 <tbody>
                     #foreach($bill in $bills)
                     <tr data-href="$bill.getUUID()">
-                        <td>$bill.getDate()</td>
+                        <td>$dateTool.format('medium',$bill.getDate(),$locale)</td>
                         <td>$bill.getPC()</td>
                         <td>$bill.getType()</td>
                         #if($received)
@@ -231,7 +237,8 @@
 <script>
    function handleScroll(elem){
        var elemScrollPosition = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
-       if(elemScrollPosition==0 && !endResponse) loadNewBillPage();
+       console.log(elemScrollPosition);
+       if(elemScrollPosition<=1 && !endResponse) loadNewBillPage();
    }
 </script>
 <script>
@@ -390,7 +397,7 @@
 
 <script>
     function updateFilters() {
-        window.location = "/bills2?class=" + document.getElementById("classSelect").value;
+        window.location = "/bills?class=" + document.getElementById("classSelect").value;
     }
 </script>
 

@@ -10,6 +10,7 @@ import spark.Route;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static Controller.util.RequestUtil.getSessionCurrentUser;
@@ -17,8 +18,8 @@ import static Controller.util.RequestUtil.getSessionLocale;
 
 public class ViewUtil {
     public static String render(Request request, Map model, String templatePath){
-        model.put("lan", getSessionLocale(request));
         model.put("msg", new MessageBundle(getSessionLocale(request)));
+        model.put("locale", new Locale(getSessionLocale(request)));
         model.put("currentUser", getSessionCurrentUser(request));
         if(getSessionCurrentUser(request)!=null) model.put("businessName", new UserDao().getUserName(getSessionCurrentUser(request)));
         return strictVelocityEngine().render(new ModelAndView(model, templatePath));

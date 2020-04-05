@@ -2,7 +2,7 @@
 #@mainLayout()
 
 <div class="container content" style="text-align: center">
-    <img src="/error.png" alt="error" class="error-img">
+    <img src="/img/error.png" alt="error" class="error-img">
     <br>
     <br>
     <br>
