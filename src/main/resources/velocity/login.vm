@@ -1,34 +1,36 @@
 #parse("/velocity/layout/mainLayout.vm")
 #@mainLayout()
+<div class="singleBox">
     #if($loggedOut)
-    <div class="container content" style="background-color:lightblue">
-        <h6>$msg.get("LOG_OUT")</h6>
-    </div>
+        <div class="container content" style="background-color:lightblue">
+            <h6>$msg.get("LOG_OUT")</h6>
+        </div>
     #end
     #if($redirected)
-    <div class="container content" style="background-color:lightcoral">
-        <h6>$msg.get("LOG_REDIRECT")</h6>
-    </div>
+        <div class="container content" style="background-color:lightcoral">
+            <h6>$msg.get("LOG_REDIRECT")</h6>
+        </div>
     #end
-<div class="container content">
-    <h2>Login</h2>
-    <form action="/login" method="post" id="logInForm">
-        <div class="form-group" style="float:none">
-            <label for="Username">Username:</label>
-            <input class="form-control" id="username" placeholder="Enter username" name="username">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
-        </div>
-        <div class="form-group form-check">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="remember"> Remember me
-            </label>
-        </div>
-    </form>
-    <button type="submit" form="logInForm" class="btn btn-primary">Submit</button>
-    <button class="btn btn-primary" onclick="locationToSignAwait()">Log in by sign</button>
+    <div class="container content">
+        <h2>Login</h2>
+        <form action="/login" method="post" id="logInForm">
+            <div class="form-group" style="float:none">
+                <label for="Username">Username:</label>
+                <input class="form-control" id="username" placeholder="Enter username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                </label>
+            </div>
+        </form>
+        <button type="submit" form="logInForm" class="btn btn-primary">Submit</button>
+        <button class="btn btn-primary" onclick="locationToSignAwait()">Log in by sign</button>
+    </div>
 </div>
 <script>
     function locationToSignAwait() {

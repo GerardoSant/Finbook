@@ -102,7 +102,7 @@
                     <td>
                         <li>$bill.getConcept()</li>
                     </td>
-                    <td>$number.format("currency",$bill.getSubtotal())</td>
+                    <td><span class="numSpan">$number.format("currency",$bill.getSubtotal())</span></td>
                 </tr>
                 #end
             <tr id="salariesAndWages" class="opener">

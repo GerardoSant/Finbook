@@ -1,5 +1,18 @@
+.bill-buttons-container{
+    border-top: double lightgray
+}
+
 @media screen and (max-height: 950px) {
     footer{
         display:none
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .bill-buttons-container{
+        text-align: center;
+    }
+    .bill-buttons-container button{
+        margin-bottom: 2%;
     }
 }
