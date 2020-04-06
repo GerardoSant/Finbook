@@ -28,7 +28,7 @@ $(document).ready(function ($) {
         if (window.location.pathname.indexOf("profitandlosses") != -1) $('#profitSubRow').toggleClass('overlay-subrow-selected');
         if (window.location.pathname.indexOf("amortization") != -1) $('#amortizationSubRow').toggleClass('overlay-subrow-selected');
     }
-    if (window.location.pathname == "/index/") $('#uploadNavRow').toggleClass('overlay-content-row-selected');
+    if (window.location.pathname == "/uploadbills/") $('#uploadNavRow').toggleClass('overlay-content-row-selected');
     if (window.location.pathname == "/exampleshiny") $('#statisticsNavRow').toggleClass('overlay-content-row-selected');
 
 })

@@ -45,7 +45,7 @@
         </div>
         <div class="overlay-content-row" id="uploadNavRow">
             <i class="fa fa-upload lefticon" aria-hidden="true"></i>
-            <a href="/index/">Upload bills</a>
+            <a href="/uploadbills/">Upload bills</a>
         </div>
         <div class="overlay-content-row subrow-opener" id="statisticsNavRow">
             <i class="fa fa-chart-line lefticon" aria-hidden="true"></i>

@@ -16,9 +16,7 @@ public class IndexController{
 
     public static Route serveIndexPage = (Request request, Response response) ->{
         Map<String, Object> model = new HashMap<>();
-        System.out.println((String) request.session().attribute("currentUser"));
-        System.out.println(getSessionLocale(request));
-        return ViewUtil.render(request, model, Path.Template.INDEX);
+        return ViewUtil.render(request, model, Path.Template.UPLOAD_BILLS);
     };
     public static Route serveMainIndexPage = (Request request, Response response) ->{
         Map<String, Object> model = new HashMap<>();

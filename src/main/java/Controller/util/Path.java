@@ -1,34 +1,35 @@
 package Controller.util;
 
-import lombok.*;
 
 public class Path {
 
     public static class Web{
-        @Getter public static final String INDEX = "/index/";
-        @Getter public static final String UPLOAD = "/upload";
-        @Getter public static final String LOGIN = "/login";
-        @Getter public static final String LOGOUT = "/logout";
-        @Getter public static final String BILLS = "/bills";
-        @Getter public static final String ONE_BILL = "/bills/:uuid";
-        @Getter public static final String DOWNLOAD_ONE_BILL= "/bills/:uuid/bill.xml";
-        @Getter public static final String ONE_BILL_EMAIL= "/bills/:uuid/:email/";
-        @Getter public static final String BILLS_TIMELINE = "/timeline";
-        @Getter public static final String SHINY_EXAMPLE= "/shiny";
-        @Getter public static final String MAIN_INDEX = "/main";
-        @Getter public static final String BILLS_INDEX = "/main/bills";
-        @Getter public static final String REPORTS_INDEX = "/main/reports";
-        @Getter public static final String REPORT_INVESTMENTS = "/reports/investments";
-        @Getter public static final String REPORT_PROFITANDLOSSES = "/reports/profitandlosses";
-        @Getter public static final String REPORT_COMPARE_PROFITANDLOSSES = "/reports/compare/profitandlosses";
-        @Getter public static final String REPORT_COMPARE_INVESTMENTS = "/reports/compare/investments";
-        @Getter public static final String REPORT_AMORTIZATION = "/reports/amortization";
+        public static final String BILLS_UPLOAD = "/uploadbills/";
+        public static final String UPLOAD = "/upload";
+        public static final String LOGIN = "/login";
+        public static final String LOGOUT = "/logout";
+        public static final String BILLS = "/bills";
+        public static final String FILTER_BILLS="/filterbills";
+        public static final String LOAD_BILLS="/loadbills";
+        public static final String ONE_BILL = "/bills/:uuid";
+        public static final String DOWNLOAD_ONE_BILL= "/bills/:uuid/bill.xml";
+        public static final String ONE_BILL_EMAIL= "/bills/:uuid/:email/";
+        public static final String BILLS_TIMELINE = "/timeline";
+        public static final String SHINY_EXAMPLE= "/shiny";
+        public static final String MAIN_INDEX = "/main";
+        public static final String BILLS_INDEX = "/main/bills";
+        public static final String REPORTS_INDEX = "/main/reports";
+        public static final String REPORT_INVESTMENTS = "/reports/investments";
+        public static final String REPORT_PROFITANDLOSSES = "/reports/profitandlosses";
+        public static final String REPORT_COMPARE_PROFITANDLOSSES = "/reports/compare/profitandlosses";
+        public static final String REPORT_COMPARE_INVESTMENTS = "/reports/compare/investments";
+        public static final String REPORT_AMORTIZATION = "/reports/amortization";
         public static final String DASHBOARD = "/dashboard";
         public static final String SIGN_AWAIT = "/login/signawait";
     }
 
     public static class Template {
-        public static final String INDEX= "velocity/index.vm";
+        public static final String UPLOAD_BILLS= "velocity/uploadBills.vm";
         public static final String MAININDEX= "velocity/mainIndex.vm";
         public static final String LOGIN = "velocity/login.vm";
         public static final String BILLS = "velocity/bills.vm";

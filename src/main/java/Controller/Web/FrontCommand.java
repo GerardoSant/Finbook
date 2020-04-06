@@ -14,5 +14,5 @@ public abstract class FrontCommand {
         this.response=response;
     }
 
-    abstract public String process() throws ParseException;
+    abstract public String process() throws Exception;
 }

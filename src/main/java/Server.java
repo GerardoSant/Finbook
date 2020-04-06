@@ -36,10 +36,10 @@ public class Server {
 
 
         get("/", (request, response) -> {
-            response.redirect("/index/");
+            response.redirect("/uploadBills/");
             return null;
         });
-        get(Path.Web.INDEX, IndexController.serveIndexPage);
+        get(Path.Web.BILLS_UPLOAD, IndexController.serveIndexPage);
         get(Path.Web.LOGIN, LoginController.serveLoginPage);
         get(Path.Web.BILLS, BillsController.fetchAllBills);
         get(Path.Web.ONE_BILL, BillsController.fetchOneBill);

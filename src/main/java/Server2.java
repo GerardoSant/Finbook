@@ -1,3 +1,4 @@
+import Controller.Web.FrontCommand;
 import Controller.Web.FrontServlet;
 import Controller.Web.upload.UploadController;
 import Controller.Web.login.LoginController;
@@ -37,23 +38,24 @@ public class Server2 {
     }
 
     private static void configurePostRoutes() {
-        post(Path.Web.UPLOAD, UploadController.handleUploadPost);
         post(Path.Web.LOGIN, LoginController.handleLoginPost);
         post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
     }
 
     private static void configureAjaxPostRoutes() {
-        post("/filterbills", FrontServlet.runCommand("FilterBills"));
-        post("/loadbills", FrontServlet.runCommand("LoadBills"));
+        post(Path.Web.UPLOAD, FrontServlet.runCommand("UploadBills"));
+        post(Path.Web.FILTER_BILLS, FrontServlet.runCommand("FilterBills"));
+        post(Path.Web.LOAD_BILLS, FrontServlet.runCommand("LoadBills"));
     }
 
     private static void configureGetRoutes() {
         get("/", (request, response) -> {
-            response.redirect("/index/");
+            response.redirect("/login");
             return null;
         });
-        get(Path.Web.INDEX, IndexController.serveIndexPage);
+
         get(Path.Web.LOGIN, LoginController.serveLoginPage);
+        get(Path.Web.BILLS_UPLOAD, FrontServlet.runCommand("ShowUploadBills"));
         get(Path.Web.BILLS, FrontServlet.runCommand("ShowBills"));
         get(Path.Web.ONE_BILL, FrontServlet.runCommand("ShowBill"));
         get(Path.Web.DOWNLOAD_ONE_BILL, FrontServlet.runCommand("DownloadBill"));
