@@ -1,5 +1,7 @@
 package Controller.Web.login;
 
+import Model.User.User;
+import View.daos.UserDao;
 import WebSocket.EchoWebSocket;
 import io.finbook.TextGenerator;
 import io.finbook.Verifier;
@@ -32,12 +34,14 @@ public class LoginController {
             EchoWebSocket.messages.remove(request.queryParams("id"));
             if (new Verifier(sign).validateSign()) {
                 request.session().attribute("currentUser", "E-5756930");
+                request.session().attribute("user", new UserDao().getUser("E-5756930"));
                 response.redirect(Path.Web.DASHBOARD);
             } else{
                 response.redirect(Path.Web.LOGIN);
             }
         } else{
             request.session().attribute("currentUser", getQueryUsername(request));
+            request.session().attribute("user", new UserDao().getUser(getQueryUsername(request)));
             response.redirect(Path.Web.DASHBOARD);
         }
         return null;
@@ -46,6 +50,7 @@ public class LoginController {
     public static Route handleLogoutPost = (request, response ) -> {
         Map<String, Object> model = new HashMap<>();
         request.session().removeAttribute("currentUser");
+        request.session().removeAttribute("user");
         request.session().attribute("loggedOut", true);
         response.redirect(Path.Web.LOGIN);
         return null;
@@ -58,7 +63,7 @@ public class LoginController {
 
 
     public static void ensureUserIsLoggedIn(Request request, Response response) {
-        if (request.session().attribute("currentUser") == null){
+        if (request.session().attribute("user") == null){
             request.session().attribute("redirected", true);
             response.redirect(Path.Web.LOGIN);
         }

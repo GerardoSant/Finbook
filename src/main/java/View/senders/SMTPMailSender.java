@@ -2,6 +2,7 @@ package View.senders;
 
 
 import Model.Bills.Bill;
+import Model.User.User;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -18,20 +19,13 @@ import java.nio.file.Paths;
 
 import java.util.Properties;
 
-public class SMTPMailSender{
+public class SMTPMailSender implements MailSender{
 
-
-    public void send(Bill bill, String mailTo, String userRFC) throws MessagingException, IOException {
-
+    @Override
+    public void sendBillByMail(String mailTo, Bill bill, User from) throws MessagingException, IOException {
         final String user="keyfinderifttt@gmail.com";
         final String password="keyfinder1234";
-        String from= "";
-        if (userRFC.equals(bill.getIssuerRFC())){
-            from=bill.getIssuerName();
-        } else {
-            from=bill.getReceiverName();
-        }
-        String msg = "You have received a bill from: + " + from + "\n";
+        String msg = "You have received a bill from: + " + from.getCompanyName() + "\n";
 
 
         Properties props = new Properties();
@@ -52,7 +46,7 @@ public class SMTPMailSender{
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO,new InternetAddress(mailTo));
-            message.setSubject("FinBook Notification - You have received a bill from " + from);
+            message.setSubject("FinBook Notification - You have received a bill from " + from.getCompanyName());
             File file1 = new File(bill.getUUID() + ".xml");
             file1.createNewFile();
             Path path = Paths.get(file1.getPath());
@@ -77,8 +71,6 @@ public class SMTPMailSender{
         } catch(Exception e){
             throw e;
         }
+
     }
-
-
-
 }

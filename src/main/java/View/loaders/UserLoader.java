@@ -1,5 +1,7 @@
 package View.loaders;
 
+import Model.User.User;
+
 public interface UserLoader {
-    String loadUser(String RFC);
+    User loadUser(String RFC);
 }

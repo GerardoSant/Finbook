@@ -6,7 +6,7 @@
                                      onclick="navHandler()"></a>
 
     <!-- Brand/logo -->
-    #if($currentUser)
+    #if($user)
         <a class="navbar-brand" href="/dashboard">
             <img src="/img/favicon28.png" alt="logo" style="height:30px ">
         </a>
@@ -23,7 +23,7 @@
 
     <!-- User Icon  -->
 
-    #if($currentUser)
+    #if($user)
         <ul class="navbar-nav ml-auto">
             <div class="popover-wrapper">
 
@@ -38,7 +38,7 @@
                 <div class="popover-content" id="userPanel">
                     <div style="border-bottom: 1px solid darkgrey">
                         <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
-                        <p class="popover-message">$!businessName</p>
+                        <p class="popover-message">$user.getCompanyName()</p>
                     </div>
                     <div style="margin-top:10%">
                         <div>

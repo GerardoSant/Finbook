@@ -20,7 +20,7 @@ public class SendBillByEmailCommand extends FrontCommand {
         model.put("bill", bill);
         request.session().attribute("redirected", true);
         try {
-            new SMTPMailSender().send(bill, getParamEmail(request), getSessionCurrentUser(request));
+            new SMTPMailSender().sendBillByMail(getParamEmail(request), bill, request.session().attribute("user"));
             request.session().attribute("emailSent", true);
         } catch (Exception e) {
         }

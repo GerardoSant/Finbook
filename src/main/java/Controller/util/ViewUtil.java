@@ -21,7 +21,7 @@ public class ViewUtil {
         model.put("msg", new MessageBundle(getSessionLocale(request)));
         model.put("locale", new Locale(getSessionLocale(request)));
         model.put("currentUser", getSessionCurrentUser(request));
-        if(getSessionCurrentUser(request)!=null) model.put("businessName", new UserDao().getUserName(getSessionCurrentUser(request)));
+        if(request.session().attribute("user")!=null) model.put("user",request.session().attribute("user"));
         return strictVelocityEngine().render(new ModelAndView(model, templatePath));
     }
 
