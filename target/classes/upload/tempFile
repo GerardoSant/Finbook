@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cfdi:Comprobante
     Certificado="MIIE1jCCA76gAwIBAgIUMDAwMDEwMDAwMDAzMDcxNTk5MjAwDQYJKoZIhvcNAQEFBQAwggGKMTgwNgYDVQQDDC9BLkMuIGRlbCBTZXJ2aWNpbyBkZSBBZG1pbmlzdHJhY2nDs24gVHJpYnV0YXJpYTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMR8wHQYJKoZIhvcNAQkBFhBhY29kc0BzYXQuZ29iLm14MSYwJAYDVQQJDB1Bdi4gSGlkYWxnbyA3NywgQ29sLiBHdWVycmVybzEOMAwGA1UEEQwFMDYzMDAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBEaXN0cml0byBGZWRlcmFsMRQwEgYDVQQHDAtDdWF1aHTDqW1vYzEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTUwMwYJKoZIhvcNAQkCDCZSZXNwb25zYWJsZTogQ2xhdWRpYSBDb3ZhcnJ1YmlhcyBPY2hvYTAeFw0xNTA1MjIyMTM5NDJaFw0xOTA1MjIyMTM5NDJaMIIBITE4MDYGA1UEAxMvR0FTVFJPTk9NSUNBIENPTkNFUENJT04gQkVJU1RFR1VJIFMgQSBQIEkgREUgQ1YxODA2BgNVBCkTL0dBU1RST05PTUlDQSBDT05DRVBDSU9OIEJFSVNURUdVSSBTIEEgUCBJIERFIENWMTgwNgYDVQQKEy9HQVNUUk9OT01JQ0EgQ09OQ0VQQ0lPTiBCRUlTVEVHVUkgUyBBIFAgSSBERSBDVjElMCMGA1UELRMcR0NCMTUwMjE5UVgwIC8gRU9WUjg0MDUyNkJNNTEeMBwGA1UEBRMVIC8gRU9WUjg0MDUyNkhERlNMQjA5MSowKAYDVQQLEyFHQVNUUk9OT01JQ0EgQ09OQ0VQQ0lPTiBCRUlTVEVHVUkwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAJCA+WjfbDzHfacBHhtdrR5Sp5+mIxhj1o52KuRKXd06wUm9ljG1SsbVzNl/nMU3z2zzEDCZmgRgrLBuGtDu34rQz/eJPuWVTck2ZBb4noc/dUfxAta2WOPJNriouedC+VymY/0ImhqMxaGKdMf1e/8LbwylpDoBh9pr3YCggYKLAgMBAAGjHTAbMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBBQUAA4IBAQAm+/WDQBskHcYIBjBznHElrRaVID389t+nnYED9MuiMAxVRYNgWb5U2Gb42IexEozvPO7ayGScAdmmiGErn2Y/ZVEUFBg7L5o6UM+NgNtR22mTEhRx5uVthW4eHQ1TDSVlZPWXae4q5EGU5D8ABAgErIDGzkO/xytbZoaAzaE7y3DGYMDD8j2xt8BX06qwVbhJhRWpJOY0C68a7gvpvdBR0qAEx1fIqph7uyActOgBHfxkZd0yadROme9Dvnm68G2ZaX24O3nJxD3x5o0BsUXzjRDT0xb4ujK5tn7TbkMAQFIWtBAipN5o6Q3gnLK3qNjUAPFbRUQqfyQ0xvmTonHg"
-    Fecha="2019-03-15T19:13:19" Folio="1315" FormaPago="01"
+    Fecha="2019-02-22T17:53:47" Folio="1264" FormaPago="01"
     LugarExpedicion="03100" MetodoPago="PUE" Moneda="MXN"
     NoCertificado="00001000000307159920"
-    Sello="dKjUkc99uDrkDz/cLdWz1jqbR3n586PbHaK/fn+IkCCTRg3nZw+9+VpBQl2xO4I0xk7X6XuUkM77RyiUCyjuXpAqC4tSdwB8ocKPJJvmg+VZG7JiF1xpoC48d+XUtCv8o4wvivArSf+Cr7BJZsUYhfUOWwTbQhjzU3RdrJ5wJE0="
-    Serie="BB" SubTotal="237.06" TipoDeComprobante="I" Total="274.99"
+    Sello="EUtBN3LZpKvdafDY3q+FT62JvXzVPINp9B2MoWOFpCrxD9nVYCEQLsdQxd1prqt0MnlR09g3cjoqY21pz+q5nxiEHIBvCy2P3ZK0Fh7A44Rxsiv8Wzmx1EiMr/sf8soAK+kqO7GwEnv5ou5d6+5/FiLxZsETyh/jzAvBLD7b27A="
+    Serie="BB" SubTotal="354.31" TipoDeComprobante="I" Total="411.00"
     Version="3.3" xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd">
     <cfdi:Emisor Nombre="GASTRONOMICA CONCEPCION BEISTEGUI SAPI DE CV"
@@ -14,28 +14,28 @@
     <cfdi:Conceptos>
         <cfdi:Concepto Cantidad="1.000000" ClaveProdServ="90101501"
             ClaveUnidad="PTN" Descripcion="CONSUMO DE ALIMENTOS"
-            Importe="237.06" Unidad="1" ValorUnitario="237.06">
+            Importe="354.31" Unidad="1" ValorUnitario="354.31">
             <cfdi:Impuestos>
                 <cfdi:Traslados>
-                    <cfdi:Traslado Base="237.060000" Importe="37.93"
+                    <cfdi:Traslado Base="354.310000" Importe="56.69"
                         Impuesto="002" TasaOCuota="0.160000" TipoFactor="Tasa"/>
                 </cfdi:Traslados>
             </cfdi:Impuestos>
         </cfdi:Concepto>
     </cfdi:Conceptos>
-    <cfdi:Impuestos TotalImpuestosTrasladados="37.93">
+    <cfdi:Impuestos TotalImpuestosTrasladados="56.69">
         <cfdi:Traslados>
-            <cfdi:Traslado Importe="37.93" Impuesto="002"
+            <cfdi:Traslado Importe="56.69" Impuesto="002"
                 TasaOCuota="0.160000" TipoFactor="Tasa"/>
         </cfdi:Traslados>
     </cfdi:Impuestos>
     <cfdi:Complemento>
-        <tfd:TimbreFiscalDigital FechaTimbrado="2019-03-15T19:14:20"
+        <tfd:TimbreFiscalDigital FechaTimbrado="2019-02-22T17:53:51"
             NoCertificadoSAT="00001000000405555426"
             RfcProvCertif="CCC1007293K0"
-            SelloCFD="dKjUkc99uDrkDz/cLdWz1jqbR3n586PbHaK/fn+IkCCTRg3nZw+9+VpBQl2xO4I0xk7X6XuUkM77RyiUCyjuXpAqC4tSdwB8ocKPJJvmg+VZG7JiF1xpoC48d+XUtCv8o4wvivArSf+Cr7BJZsUYhfUOWwTbQhjzU3RdrJ5wJE0="
-            SelloSAT="pMIAr6/x8t7EzhdtJ8qIWiiPWEwQiROAv2mp51o3fEV0u15kT+0frybO64qqy5/40R2Y0s2yL7VOywoptt4BAcp5e0DvUu466zDuVjBxAQbDzC3qtOEd9ZojnF4R3NANYU0fC08FwG8wAKhGRH8Xge+pgkXQkSraPOyIpUbJDHaS6zLO8dra3aD5vLfaqbGRhFSEpTfAdM9FfV+TO4FLxDoAKbQNFCLvz0Isbk6Mzmddd65Rol+Zg4HZZ4SR8g6CnZFcuiaQQWQtO5GSjl27QD8tTEO0P6xnz752xiXwzZqVvIK7Bfj/BH8oMpg0N/fQn4ub4SlepOl1Fq0b6md2Qg=="
-            UUID="8c5a0e0c-f576-49ef-9a84-4f3fed50d3f1" Version="1.1"
+            SelloCFD="EUtBN3LZpKvdafDY3q+FT62JvXzVPINp9B2MoWOFpCrxD9nVYCEQLsdQxd1prqt0MnlR09g3cjoqY21pz+q5nxiEHIBvCy2P3ZK0Fh7A44Rxsiv8Wzmx1EiMr/sf8soAK+kqO7GwEnv5ou5d6+5/FiLxZsETyh/jzAvBLD7b27A="
+            SelloSAT="uSneTCzPmoxMUZGoPBEgESAXHklP+osLpQmFMDJvnH37/vEVjR4aXh5qnO/nvH3iXUeyolM22uJT2kdnFjP7d5sfhgSiP/kL6LmwRqryaxjwpC2um7VYPs+gLlMMgbskZTb6FY+OPCbi9JueYrJ4paY/se4NmhmOGXwMQyeLJTSGCy2qI7W5Tgaf1tRfZPNNyKvRwhUH1OHWp5o9AWx0CzZ0KYZKrw/PjVnqpxzTTE0X0i8vf46g73re+s1ismMg4u4MPBa1qDgPKArTJ3c8SplOoEe0pmkJXdHnXmyHTDAkpOBlX0Mmj7MSss2tsgTzvgv377svXDrr1qm+4waSkw=="
+            UUID="408d5d8f-9c23-488e-9467-2544d56fdf26" Version="1.1"
             xmlns:fn="http://www.w3.org/2005/xpath-functions"
             xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
             xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/timbrefiscaldigital/TimbreFiscalDigitalv11.xsd"/>

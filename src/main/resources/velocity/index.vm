@@ -1,6 +1,6 @@
-#parse("/velocity/layout.vm")
-#mainLayout()
-<html>
+#parse("/velocity/layout/mainLayout.vm")
+#@mainLayout()
+
 
 <style>
     .leftbox {
@@ -37,6 +37,9 @@
 
         .half {
             width: 95%
+        }
+        footer{
+            display:none;
         }
     }
 </style>
@@ -152,13 +155,13 @@
 
 </script>
 
-<body class="main">
+
 <div id="left">
     <div class="container text-center">
         <div id="dropContainer" style="border:2px groove darkgrey; background-color: rgb(247,250,252); border-radius: 5px;height:400px; display: flex;justify-content: center;
 	  align-items: center; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);" ondragover="allowDrop(event)"
              ondragenter="allowDrop(event)" ondrop="dropFiles(event)">
-            <img src="/uploadBills2.png" alt="" style="height: 30%; width: 30%; object-fit: contain"/>
+            <img src="/img/uploadBills2.png" alt="" style="height: 30%; width: 30%; object-fit: contain"/>
             <br>
             <h3 id="dragAndDropText">$msg.get("UPLOAD_DAD")</h3>
         </div>
@@ -174,14 +177,14 @@
         </div>
 
 
-        <button id="button" class="btn btn-outline-primary btn-lg">Start uploading</button>
+        <button id="button" class="btn btn-outline-primary btn-lg" style="margin-top:3%">Start uploading</button>
 
         <br>
         <br>
 
         <div class="progress" id="progressdiv" style="visibility:hidden">
             <div id="progressbar" class="progress-bar progress-bar-striped progress-bar-animated"
-                 style="width:0% height:20px">0%
+                 style="width:0%; height:20px">0%
             </div>
         </div>
 
@@ -216,7 +219,7 @@
     <h2>File uploads <span class="badge badge-success">
 		<a id="fileUploadsNum" href="#" title=" New files uploaded" data-toggle="popover" data-trigger="hover"
            data-content="Hover over filename to check upload info" style="color:white"></a></span></h2>
-    <table class="table" id="fileTable" style="overflow-y:scroll;height:70%;display:block">
+    <table class="table" id="fileTable" style="overflow-y:scroll;height:70vh;display:block">
         <thead class="thead-dark">
         <tr>
             <th>Bill name</th>
@@ -363,6 +366,6 @@
 </script>
 
 </div>
-</body>
 
-</html>
+
+#end
