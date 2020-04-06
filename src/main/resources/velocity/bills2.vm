@@ -237,7 +237,6 @@
 <script>
    function handleScroll(elem){
        var elemScrollPosition = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
-       console.log(elemScrollPosition);
        if(elemScrollPosition<=1 && !endResponse) loadNewBillPage();
    }
 </script>

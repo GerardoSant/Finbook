@@ -45,5 +45,7 @@ public class BillTimeline {
         return billList;
     }
 
-
+    public void setBillList(List<Bill> billList) {
+        this.billList = billList;
+    }
 }

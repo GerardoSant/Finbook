@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.butn {
+#infoButton {
     background-color: lightgrey;
     border: none;
     border-radius: 50%;
@@ -10,9 +10,10 @@
     padding: 3px 7px;
     font-size: 22px;
     cursor: pointer;
+    width:40px;
 }
 
-.butn:hover {
+#infoButton:hover {
     background-color: RoyalBlue;
 }
 

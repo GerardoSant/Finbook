@@ -88,15 +88,15 @@
     </form>
 </div>
 <div class="content rightbox">
-<div class="timelineContainer">
+<div class="timelineContainer" onscroll="handleScroll(this)">
     <div class="contentTitle" style="margin-bottom:1%; height:44px">
         <h3 style="float:left">Bills Timeline</h3>
         <div style="float:right; margin-right:1%">
-            <button class="butn" data-toggle="modal" data-target="#legendModal" style="widht:40px;"><i
+            <button id="infoButton" data-toggle="modal" data-target="#legendModal"><i
                     class="fa fa-info-circle" aria-hidden="true"></i></button>
         </div>
     </div>
-<div class="timeline">
+<div class="timeline" id="timeline">
     #set($even=true)
     #foreach($bill in $timeline.getBillList())
         #if($even)
@@ -117,9 +117,9 @@
         #end
 
         <div>
-            <h2>$date.format("MMM dd, yyyy H:MM:SS a",$bill.getDate())</h2>
+            <h2>$dateTool.format("medium",$bill.getDate(),$locale)</h2>
         </div>
-        <div style="background-color: white; opacity:0.9 ">
+        <div style="background-color: white; opacity:0.9">
             <h4>$bill.getConcept()</h4>
             <div class="billContainerAmount"><h4>$number.format("currency",$bill.getTotal())</h4></div>
         </div>
@@ -129,8 +129,6 @@
 </div>
 </div>
 </div>
-
-
 
     <div class="modal fade" id="legendModal">
         <div class="modal-dialog modal-dialog-centered">
@@ -145,22 +143,22 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div style="margin-left:38%">
-                        <img src="/legendgreen.png" style="height:30px">
+                        <img src="/img/legendgreen.png" style="height:30px">
                         <p style="display:inline">&nbsp&nbsp&nbspIncomes</p>
                     </div>
                     <br>
                     <div style="margin-left:38%">
-                        <img src="/legendred.png" style="height:30px">
+                        <img src="/img/legendred.png" style="height:30px">
                         <p style="display:inline">&nbsp&nbsp&nbspExpenses</p>
                     </div>
                     <br>
                     <div style="margin-left:38%">
-                        <img src="/legendblue.png" style="height:30px">
+                        <img src="/img/legendblue.png" style="height:30px">
                         <p style="display:inline">&nbsp&nbsp&nbspInvestments</p>
                     </div>
                     <br>
                     <div style="margin-left:38%">
-                        <img src="/legendyellow.png" style="height:30px">
+                        <img src="/img/legendyellow.png" style="height:30px">
                         <p style="display:inline">&nbsp&nbsp&nbspSalaries</p>
                     </div>
                 </div>
@@ -173,14 +171,13 @@
         </div>
     </div>
 
-	<script src="/javascript/timelineControl.js"></script>
-
+    <script src="/javascript/timelineControl.js"></script>
+    <script src="/javascript/ajaxUtils.js"></script>
     <script>
         dateFromQuery();
         minMaxFromQuery();
         billTypeFromQuery();
         orderFromQuery();
+        initRFC("$RFC");
     </script>
-
-
 #end

@@ -14,7 +14,6 @@ public class LoadBillsCommand extends FrontCommand {
     public String process() throws ParseException {
         List<Bill> billList= request.session().attribute("currentBillList");
         int pageNumber = Integer.parseInt(request.queryParams("page"));
-        System.out.println(pageNumber);
         if (pageNumber*PAGE_SIZE<billList.size()){
             return new Gson().toJson(getPageBillList(billList, pageNumber));
         } else{

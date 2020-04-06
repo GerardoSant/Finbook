@@ -1,11 +1,8 @@
 //Redirect when click on bill
 
-jQuery(document).ready(function ($) {
-    $('*[data-href]').on('click', function () {
-        console.log("hey");
-        window.location = /bills/ + $(this).data("href");
-    })
-});
+$('#timeline').on('click', '*[data-href]', function () {
+    window.location = /bills/ + $(this).data("href");
+})
 
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -29,9 +26,82 @@ function billTypeFromQuery() {
 }
 
 function orderFromQuery() {
-    if (urlParams.get('ascendent') == true) {
+    if (urlParams.get('ascendent') == "true") {
         document.getElementById("ascendent").checked = true;
     } else {
         document.getElementById("descendent").checked = true;
     }
+}
+
+
+// AJAX
+
+var position="right";
+var userRFC= "";
+var requestNumber = 1;
+var endResponse=false;
+
+function initRFC(RFC){
+    userRFC=RFC;
+}
+
+function handleScroll(elem){
+    var elemScrollPosition = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+    if(elemScrollPosition<=1 && !endResponse) loadNewBillPage();
+}
+function loadNewBillPage(){
+    ajaxRequest("/loadbills?page="+requestNumber)
+        .then(function(result) {
+            requestNumber++;
+            processResponse(result);
+        })
+        .catch(function(){
+            //Error with AJAX request.
+        })
+}
+
+
+function processResponse(jsonResponse){
+    if (jsonResponse == '"End"') {
+        endResponse=true;
+    } else {
+        var billsArray = JSON.parse(jsonResponse);
+        billsArray.forEach(appendToTimeline)
+    }
+}
+
+function appendToTimeline(bill){
+    position= newPosition();
+    var billContainer= createBillContainer(bill,getContainerColor(bill));
+    $('#timeline').append(billContainer)
+}
+
+
+function createBillContainer(bill,color){
+    return "<div class='billContainer "+ position + "'><div class='box " +  color + "' data-href='" + bill.UUID + "'>" +
+        "<div><h2>"+bill.date+"</h2></div><div style='background-color: white; opacity:0.9'>" +
+        "<h4>"+bill.concept+"</h4><div class='billContainerAmount'><h4>"+formatToCurrency(bill.total)+"</h4></div></div></div></div>";
+}
+
+function getContainerColor(bill){
+    if (bill.type!="nomina" && bill.issuerRFC==userRFC) return "green";
+    if (bill.type=="nomina" && bill.issuerRFC==userRFC) return "orange";
+    if (bill.use=="G01" || bill.use=="G02" || bill.use=="G03") return "red";
+    return "blue";
+}
+
+function newPosition(){
+    if (position=="right"){
+        return "left"
+    } else{
+        return "right";
+    }
+}
+
+function formatToCurrency(amount){
+    var formatter = new Intl.NumberFormat('de-DE', {
+        style: 'currency',
+        currency: 'EUR',
+    });
+    return formatter.format(amount);
 }

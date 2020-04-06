@@ -25,14 +25,23 @@ public class ShowBillsTimelineCommand extends FrontCommand {
     public String process() {
         LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
-        List<Bill> billList = new BillsDao(getSessionCurrentUser(request)).getAllBills();
         BillTimeline timeline = generateBillTimeline(request);
+        request.session().attribute("currentBillList",timeline.getBillList());
+        reduceTimelineList(timeline);
         model.put("timeline", timeline);
         model.put("math", new MathTool());
-        model.put("date", new DateTool());
+        model.put("dateTool", new DateTool());
         model.put("RFC", getSessionCurrentUser(request));
         model.put("number", new NumberTool());
         return ViewUtil.render(request, model, Path.Template.BILLS_TIMELINE);
+    }
+
+    private void reduceTimelineList(BillTimeline timeline) {
+        try{
+            timeline.setBillList(timeline.getBillList().subList(0,30));
+        } catch(Exception e){
+            timeline.setBillList(timeline.getBillList().subList(0,timeline.getBillList().size()));
+        }
     }
 
     private static BillTimeline generateBillTimeline(Request request) {
