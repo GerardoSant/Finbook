@@ -1,190 +1,34 @@
 #parse("/velocity/layout/mainLayout.vm")
 #@mainLayout()
 
-
-<style>
-    .leftbox {
-        float: left;
-        margin-top: 2.6%;
-        width: 100%;
-        margin-left: 5%
-    }
-
-    .half {
-        width: 50%;
-    }
-
-    .rightbox {
-        float: right;
-        width: 40%;
-        padding-right: 5%;
-    }
-
-    #left {
-        transition: width 1s;
-    }
-
-    @media screen and (max-width: 992px) {
-        .rightbox {
-            width: 90%;
-            float: none;
-        }
-
-        .leftbox {
-            float: none;
-            margin-left: 2%
-        }
-
-        .half {
-            width: 95%
-        }
-        footer{
-            display:none;
-        }
-    }
-</style>
-<script>
-
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
-
-    function dropFiles(ev) {
-        var allXML = true;
-        for (var i = 0; i < ev.dataTransfer.files.length; i += 1) {
-            if (ev.dataTransfer.files[i].type != "text/xml") {
-                console.log("not XML");
-                allXML = false;
-                break;
-            }
-        }
-        if (allXML) {
-            fileInput.files = ev.dataTransfer.files;
-            animateOnDrop();
-        } else {
-            openModalError();
-        }
-        ev.preventDefault();
-    }
-
-    function openModalError() {
-        document.getElementById("modalTitle").innerText = "Error";
-        document.getElementById("modalContent").innerText = "Couldn't attach file because is not an XML file. Only XML files can be attached";
-        $(document).ready(function () {
-            $("#myModal").modal()
-        });
-        console.log("no todos son XML");
-    }
-
-    // ANIMATIONS---------------------------------
-
-    function appendOnTable(filename, content, status, valid, already) {
-        $(document).ready(function () {
-            if (valid) {
-                var popover = '<a style="color:darkgreen" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="' + content + '">' + filename + '</a>'
-                var append = '<tr class="table-success"><td>' + popover + '</td><td>' + '<div class="text-center"><i style="color:darkgreen" class="fas fa-check"></i></div>' + '</td></tr>';
-            } else {
-
-                if (already) {
-                    var popover = '<a style="color:rgb(156,101,36);" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="' + content + '">' + filename + '</a>'
-                    var append = '<tr class="table-warning"><td>' + popover + '</td><td>' + '<div class="text-center"><i style="color:rgb(166,101,36)" class="fas fa-exclamation-circle"></i></div>' + '</td></tr>';
-                } else {
-                    var popover = '<a style="color:darkred" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="' + content + '">' + filename + '</a>'
-                    var append = '<tr class="table-danger"><td>' + popover + '</td><td>' + '<div class="text-center"><i style="color:darkred" class="fas fa-times"></i></div>' + '</td></tr>';
-                }
-
-            }
-            $('#fileTable').find('tbody:last').append(append);
-            $('[data-toggle="popover"]').popover();
-        });
-    }
-
-    function animateOnDrop() {
-        $(document).ready(function () {
-            $('#dropContainer').animate({backgroundColor: '#add8e6'}, 1000);
-            $('#uploadForm').animate({borderBottomColor: '#90ee90'}, 1000);
-            $('#dragAndDropText').animate({
-                'opacity': 0
-            }, 400, function () {
-                $(this).html('Files attached.<br> Press "Start Uploading" to start upload').animate({'opacity': 1}, 400);
-            });
-        });
-    }
-
-    $(document).ready(function () {
-        $("#dropContainer").on("dragover", function () {
-            console.log("overing");
-            $(this).css('background-color', '#a9a9a9');
-        });
-
-        $("#fileInput").on("change", function () {
-            $('#uploadForm').animate({borderBottomColor: '#90ee90'}, 1000);
-            $('#dropContainer').animate({backgroundColor: '#add8e6'}, 1000);
-            $('#dragAndDropText').animate({
-                'opacity': 0
-            }, 400, function () {
-                $(this).html('Files attached.<br> Press "Start Uploading" to start upload').animate({'opacity': 1}, 400);
-            });
-        });
-
-        $("#dropContainer").on("dragleave", function () {
-            console.log("leaving");
-            $(this).animate({backgroundColor: '#FFFFFF'}, 0);
-        });
-        $("#modalClose").on("click", function () {
-            $('#dropContainer').animate({backgroundColor: 'rgb(247,250,252)'}, 0);
-            $('#uploadForm').animate({borderBottomColor: '#FFFFFF'}, 0);
-            $('#dragAndDropText').animate({
-                'opacity': 0
-            }, 400, function () {
-                $(this).html("$msg.get("UPLOAD_DAD")").animate({'opacity': 1}, 400);
-            });
-            document.getElementById("progressdiv").style.visibility = "hidden";
-            document.getElementById("fileInput").value = "";
-        });
-
-        $("#button").on("click", function () {
-            $('#dropContainer').animate({backgroundColor: '#add8e6'}, 0);
-            $('#dragAndDropText').animate({
-                'opacity': 0
-            }, 400, function () {
-                $(this).html("Uploading files, please wait...").animate({'opacity': 1}, 400);
-            });
-        });
-    });
-
-</script>
-
+<link rel="stylesheet" href="/css/uploadBills.css">
 
 <div id="left">
     <div class="container text-center">
-        <div id="dropContainer" style="border:2px groove darkgrey; background-color: rgb(247,250,252); border-radius: 5px;height:400px; display: flex;justify-content: center;
-	  align-items: center; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);" ondragover="allowDrop(event)"
+        <div id="dropContainer" ondragover="allowDrop(event)"
              ondragenter="allowDrop(event)" ondrop="dropFiles(event)">
-            <img src="/img/uploadBills2.png" alt="" style="height: 30%; width: 30%; object-fit: contain"/>
+            <img src="/img/uploadBills2.png" alt=""/>
             <br>
             <h3 id="dragAndDropText">$msg.get("UPLOAD_DAD")</h3>
         </div>
         <br>
-        <form style="border-bottom:2px groove white; border-radius: 5px" ref='uploadForm' id='uploadForm'
+        <form ref='uploadForm' id='uploadForm'
               action='upload' method='post' encType="multipart/form-data">
             <input type="file" class="form-control-file border" name="sampleFile" id="fileInput" accept="text/xml"
                    multiple/>
-            <!--<input type='submit' value="Upload"/>-->
         </form>
         <div style="text-align: left;">
             <div id="progress"></div>
         </div>
 
-
-        <button id="button" class="btn btn-outline-primary btn-lg" style="margin-top:3%">Start uploading</button>
+        <button id="startUploadButton" class="btn btn-outline-primary btn-lg">Start uploading</button>
 
         <br>
         <br>
 
         <div class="progress" id="progressdiv" style="visibility:hidden">
             <div id="progressbar" class="progress-bar progress-bar-striped progress-bar-animated"
-                 style="width:0%; height:20px">0%
+                 >0%
             </div>
         </div>
 
@@ -219,7 +63,7 @@
     <h2>File uploads <span class="badge badge-success">
 		<a id="fileUploadsNum" href="#" title=" New files uploaded" data-toggle="popover" data-trigger="hover"
            data-content="Hover over filename to check upload info" style="color:white"></a></span></h2>
-    <table class="table" id="fileTable" style="overflow-y:scroll;height:70vh;display:block">
+    <table class="table" id="fileTable">
         <thead class="thead-dark">
         <tr>
             <th>Bill name</th>
@@ -231,138 +75,12 @@
     </table>
 </div>
 
+<script src="/javascript/uploadBillsControl.js"></script>
+
 <script>
-
-
-    function initInterface() {
-        document.getElementById("right").style.visibility = "hidden";
-        $(document).ready(function () {
-            $("#right").hide(0);
-        });
-    }
-
-    initInterface();
-
-    function doFirstUploadInterfaceTransition() {
-        document.getElementById("left").classList.add("leftbox")
-        document.getElementById("right").style.visibility = "visible";
-        $(document).ready(function () {
-            $("#right").show(1000);
-        });
-        $(document).ready(function () {
-            //$("#left").animate({width: "50%"},1000);
-            document.getElementById("left").classList.add("half");
-            //document.getElementById("left").style.width="50%";
-
-        });
-    }
-
-
-    function splitResponseText(responseText) {
-        var res = responseText.split('||');
-        var fixedString = "";
-        for (var i = 0; i < res.length; i++) {
-            fixedString += res[i] + "\n";
-        }
-        return fixedString;
-    }
-
-
-    var loadBtn = document.getElementById("button");
-
-    var initInterface = true;
-
-    function upload(data) {
-        document.getElementById("progressdiv").style.visibility = "visible";
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/upload", true);
-        if (xhr.upload) {
-            xhr.upload.onprogress = function (e) {
-                if (e.lengthComputable) {
-
-                    document.getElementById("progressbar").style.width = ((e.loaded / e.total) * 100) + "%";
-                    document.getElementById("progressbar").innerHTML = Math.round(((e.loaded / e.total) * 100)) + "%";
-                }
-            }
-            xhr.upload.onloadstart = function (e) {
-                document.getElementById("progressbar").style.width = 0 + "%";
-                document.getElementById("progressbar").innerHTML = 0 + "%";
-            }
-            xhr.upload.onloadend = function (e) {
-                loadBtn.disabled = false;
-                loadBtn.innerHTML = 'Start uploading';
-                document.getElementById("progressbar").innerHTML = "Completed";
-            }
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4) {
-                    console.log("im here");
-                    console.log(this.responseText);
-                    $(document).ready(function () {
-                        $("#myModal").modal()
-                    });
-                    if (initInterface) {
-                        doFirstUploadInterfaceTransition();
-                        initInterface = false;
-                    }
-                    processResponseText(this.responseText);
-                    document.getElementById("modalContent").innerText = splitResponseText(this.responseText);
-                }
-            }
-        }
-
-
-        xhr.send(data);
-    }
-
-    function buildFormData() {
-        var fd = new FormData();
-
-        for (var i = 0; i < fileInput.files.length; i += 1) {
-            fd.append("sampleFile", fileInput.files[i]);
-        }
-
-        return fd;
-    }
-
-    loadBtn.addEventListener("click", function (e) {
-        this.disabled = true;
-        this.innerHTML = "Uploading...";
-        upload(buildFormData());
-    });
-
-    function processResponseText(responseText) {
-        var responses = responseText.split('|');
-        addBadgeUploadInfo(responses);
-        for (var i = 0; i < responses.length; i++) {
-            var responseSplit = responses[i].split(":");
-            console.log(responseSplit[0]);
-            console.log(responseSplit[1]);
-            if (responseSplit[1] == 'Yes') {
-                appendOnTable(responseSplit[0], "Uploaded succesfully", "Uploaded", true, true);
-            }
-            if (responseSplit[1] == 'Already') {
-                appendOnTable(responseSplit[0], "Bill already in database", "Already", false, true);
-            }
-            if (responseSplit[1] == 'Invalid') {
-                appendOnTable(responseSplit[0], "Bill hasn't got a valid signature", "Invalid", false);
-            }
-
-        }
-    }
-
-    function addBadgeUploadInfo(response) {
-        var uploads = response.length;
-        document.getElementById("fileUploadsNum").title = uploads + " files uploaded";
-        document.getElementById("fileUploadsNum").innerHTML = uploads;
-    }
-
-
-    $(document).ready(function () {
-        $('[data-toggle="popover"]').popover();
-    });
-
-
+    var messageBundleMap = new Map([["UPLOAD_MSG", "$msg.get("UPLOAD_DAD")"],
+        ["example", "example"]]);
+    initMessageBundle(messageBundleMap);
 </script>
 
 </div>
