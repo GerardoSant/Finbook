@@ -12,21 +12,21 @@
     <i class="fa fa-chart-line"></i>
     <div class="minibox-text">
         <h3>$number.format("currency",$profitreport.getProfit())</h3>
-        <p>Total profit</p>
+        <p>$msg.get("DSB_TPROFIT")</p>
     </div>
 </div>
     <div class="minibox minibox-medium box lightgreenbox" onclick="redirectWithPeriod('reports/profitandlosses')">
         <i class="fa fa-chart-bar"></i>
         <div class="minibox-text">
             <h3>$number.format("currency",$profitreport.getSalesAndIncomesBase())</h3>
-            <p>Total incomes</p>
+            <p>$msg.get("DSB_TINCOMES")</p>
         </div>
     </div>
     <div class="minibox minibox-medium box lightredbox" onclick="redirectWithPeriod('reports/profitandlosses')">
         <i class="fa fa-chart-bar"></i>
         <div class="minibox-text">
             <h3>$number.format("currency",$profitreport.getPurchasesAndExpensesBase())</h3>
-            <p>Total expenses</p>
+            <p>$msg.get("DSB_TEXPENSES")</p>
         </div>
     </div>
 </div>
@@ -34,7 +34,7 @@
     <div class="boxrows-container">
         <div class="bigbox box">
             <div class="contentTitle">
-                <h6 onclick="redirectWithPeriod('/reports/profitandlosses')" class="clickable">Profit and Loss</h6>
+                <h6 onclick="redirectWithPeriod('/reports/profitandlosses')" class="clickable">$msg.get("DSB_P&L")</h6>
             </div>
             <div class="chart">
                 <div class="left-chart-container">
@@ -47,7 +47,7 @@
         </div>
         <div class="mediumbox box">
             <div class="contentTitle">
-                <h6>Top 5 Sales</h6>
+                <h6>$msg.get("DSB_TOP5")</h6>
             </div>
             <div id="top5barchart"></div>
             <div id="top5table">
@@ -72,28 +72,28 @@
             <i class="fas fa-hand-holding-usd"></i>
             <div class="minibox-text">
                 <h3>$number.format("currency",$billsDistribution.getSalesAmount())</h3>
-                <p>Total sales</p>
+                <p>$msg.get("DSB_TSALES")</p>
             </div>
         </div>
         <div class="minibox minibox-sm box lightredbox" onclick="redirectWithPeriod('reports/profitandlosses')">
             <i class="fa fa-chart-bar"></i>
             <div class="minibox-text">
                 <h3>$number.format("currency",$billsDistribution.getPurchasesAndServicesAmount())</h3>
-                <p>Total purchases & external services</p>
+                <p>$msg.get("DSB_TPURCHASES&EXTERNALSERVICES")</p>
             </div>
         </div>
         <div class="minibox minibox-sm box bluebox" onclick="redirectWithPeriod('reports/investments')">
             <i class="fa fa-building"></i>
             <div class="minibox-text">
                 <h3>$number.format("currency",$billsDistribution.getInvestmentsAmount())</h3>
-                <p>Total investments</p>
+                <p>$msg.get("DSB_TINVESTMENTS")</p>
             </div>
         </div>
         <div class="minibox minibox-sm box orangebox">
             <i class="fa fa-users"></i>
             <div class="minibox-text">
                 <h3>$number.format("currency",$billsDistribution.getSalariesAmount())</h3>
-                <p>Total salaries</p>
+                <p>$msg.get("DSB_TSALARIES")</p>
             </div>
         </div>
     </div>
@@ -101,13 +101,13 @@
     <div class="boxrows-container">
         <div class="bigbox box">
             <div class="contentTitle">
-                <h6>Invoice Distribution</h6>
+                <h6>$msg.get("DSB_INVOICEDISTRIBUTION")</h6>
             </div>
             <div id="billTypeChart" class="chart"></div>
         </div>
         <div class="mediumbox box">
             <div class="contentTitle">
-                <h6 onclick="redirectWithPeriod('/reports/amortization')" class="clickable">Amortization</h6>
+                <h6 onclick="redirectWithPeriod('/reports/amortization')" class="clickable">$msg.get("DSB_AMORTIZATION")</h6>
             </div>
             <div id="amortizationBarChart" class="chart"></div>
         </div>
@@ -129,7 +129,7 @@
 
     function drawChart() {
         invoiceDistributionBarChartData = google.visualization.arrayToDataTable([
-            ['Bill type', 'Sales', 'Purchases', 'Investments', 'Salaries'],
+            ['Bill type', '$msg.get("DSB_SALES")', '$msg.get("DSB_PURCHASES")', '$msg.get("DSB_INVESTMENTS")', '$msg.get("DSB_SALARIES")'],
             ['Bill type', $billsDistributionBarChart.getCount('Sales'), $billsDistributionBarChart.getCount(
                 'Purchases'),
                 $billsDistributionBarChart.getCount('Investments'),$billsDistributionBarChart.getCount('Salaries')]
@@ -137,8 +137,8 @@
 
         invoiceDistributionBarChartOptions = {
             chart: {
-                title: 'Company Invoice distribution',
-                subtitle: 'Incomes, Expenses, Investments and Salaries: 2014-2017',
+                title: '$msg.get("DSB_COMPANYINVOICEDISTRIBUTION")',
+                subtitle: '$msg.get("DSB_IDCHARTDESC")' +' 2014-2017',
             },
             bars: 'horizontal', // Required for Material Bar Charts.
             backgroundColor: 'rgb(247,250,252)',
@@ -148,7 +148,7 @@
                     0: {label: ''} // Top x-axis.
                 },
                 x: {
-                    0: {label: 'Amount (€)'}
+                    0: {label: '$msg.get("DSB_AMOUNT") (€)'}
                 }
             }
         };
@@ -174,7 +174,7 @@
 
     function drawChart() {
         top5SalesBarChartData = google.visualization.arrayToDataTable([
-            ['Concept', 'Price'],
+            ['$msg.get("DSB_CONCEPT")', '$msg.get("DSB_PRICE")'],
             ['$top5sales.getTop5()[0].getConcept()',$top5sales.getTop5()[0].getTotal()],
             ['$top5sales.getTop5()[1].getConcept()',$top5sales.getTop5()[1].getTotal()],
             ['$top5sales.getTop5()[2].getConcept()',$top5sales.getTop5()[2].getTotal()],
@@ -191,7 +191,7 @@
                     0: {label: ''} // Top x-axis.
                 },
                 x: {
-                    0: {label: 'Amount (€)'}
+                    0: {label: '$msg.get("DSB_AMOUNT") (€)'}
                 }
             }
         };
@@ -241,13 +241,13 @@
 
     function drawChart() {
         profitAndLossBarChartData = google.visualization.arrayToDataTable([
-            ['Type', 'Incomes', 'Expenses'],
+            ['Type', '$msg.get("DSB_INCOMES")', '$msg.get("DSB_EXPENSES")'],
             ['Type', $profitReportBarChart.getCount('Incomes'), $profitReportBarChart.getCount('Expenses')]
         ]);
 
         profitAndLossBarChartOptions = {
             chart: {
-                title: 'Company Profit and Loss: 2014-2017',
+                title: '$msg.get("DSB_P&LCHARTTITLE"): 2014-2017',
             },
             bars: 'vertical', // Required for Material Bar Charts.
             backgroundColor: 'rgb(247,250,252)',
@@ -257,7 +257,7 @@
                     0: {label: ''} // Top x-axis.
                 },
                 x: {
-                    0: {label: 'Amount (€)'}
+                    0: {label: '$msg.get("DSB_AMOUNT") (€)'}
                 }
             }
         };
@@ -282,8 +282,8 @@
     function drawChart() {
         profitAndLossPieChartData = google.visualization.arrayToDataTable([
             ['Money', 'Amount',],
-            ['Incomes',$profitReportBarChart.getCount('Incomes')],
-            ['Expenses', $profitReportBarChart.getCount('Expenses')]
+            ['$msg.get("DSB_INCOMES")',$profitReportBarChart.getCount('Incomes')],
+            ['$msg.get("DSB_EXPENSES")', $profitReportBarChart.getCount('Expenses')]
         ]);
 
 

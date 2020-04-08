@@ -6,16 +6,16 @@
 
 <div class="content leftbox">
     <div class="contentTitle">
-        <h3>Filters</h3>
+        <h3>$msg.get("TMLN_FILTERS")</h3>
     </div>
     <br>
     <form id="compareForm" action="/timeline">
         <div class="container">
-            <h6><strong>Period</strong></h6>
+            <h6><strong>$msg.get("GNRL_PERIOD")</strong></h6>
             <br>
             <div class="row">
                 <div class="col">
-                    <p>Period start</p>
+                    <p>$msg.get("GNRL_PERIODSTART")</p>
                 </div>
                 <div class="col-8">
                     <input class="form-control" type="date" id="pStart1" value="2015-08-19" name="periodStart">
@@ -23,18 +23,18 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <p>Period end</p>
+                    <p>$msg.get("GNRL_PERIODEND")</p>
                 </div>
                 <div class="col-8">
                     <input class="form-control" type="date" id="pEnd1" value="2020-08-19" name="periodEnd">
                 </div>
             </div>
             <br>
-            <h6><strong>Price range</strong></h6>
+            <h6><strong>$msg.get("GNRL_PRICERANGE")</strong></h6>
             <br>
             <div class="row">
                 <div class="col">
-                    <p>Minimum</p>
+                    <p>$msg.get("GNRL_MINIMUM")</p>
                 </div>
                 <div class="col-8">
                     <input class="form-control" type="number" id="pMin" name="min">
@@ -42,55 +42,55 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <p>Maximum</p>
+                    <p>$msg.get("GNRL_MAXIMUM")</p>
                 </div>
                 <div class="col-8">
                     <input class="form-control" type="number" id="pMax" name="max">
                 </div>
             </div>
             <br>
-            <h6><strong>Bill type</strong></h6>
+            <h6><strong>$msg.get("GNRL_BILLTYPE")</strong></h6>
             <div class="form-check-inline">
                 <label class="form-check-label" for="check1">
-                    <input type="checkbox" class="form-check-input" name="incomes" id="bIncomes" value="true">Incomes
+                    <input type="checkbox" class="form-check-input" name="incomes" id="bIncomes" value="true">$msg.get("GNRL_INCOME")
                 </label>
             </div>
             <div class="form-check-inline">
                 <label class="form-check-label" for="check2">
-                    <input type="checkbox" class="form-check-input" name="expenses" id="bExpenses" value="true">Expenses
+                    <input type="checkbox" class="form-check-input" name="expenses" id="bExpenses" value="true">$msg.get("GNRL_EXPENSE")
                 </label>
             </div>
             <div class="form-check-inline">
                 <label class="form-check-label" for="check2">
-                    <input type="checkbox" class="form-check-input" name="investments" id="bInvestments" value="true">Investments
+                    <input type="checkbox" class="form-check-input" name="investments" id="bInvestments" value="true">$msg.get("GNRL_INVESTMENT")
                 </label>
             </div>
             <div class="form-check-inline">
                 <label class="form-check-label" for="check2">
-                    <input type="checkbox" class="form-check-input" name="salaries" id="bSalaries" value="true">Salaries
+                    <input type="checkbox" class="form-check-input" name="salaries" id="bSalaries" value="true">$msg.get("GNRL_SALARIE")
                 </label>
             </div>
             <br>
             <br>
-            <h6><strong>Bill order</strong></h6>
+            <h6><strong>$msg.get("GNRL_BILLORDER")</strong></h6>
             <div class="form-check-inline">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="ascendent" id="ascendent" value="true">Ascendent
+                    <input type="radio" class="form-check-input" name="ascendent" id="ascendent" value="true">$msg.get("TMLN_ASCENDENT")
                 </label>
             </div>
             <div class="form-check-inline">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="ascendent" id="descendent" value="false">Descendent
+                    <input type="radio" class="form-check-input" name="ascendent" id="descendent" value="false">$msg.get("TMLN_DESCENDENT")
                 </label>
             </div>
-            <input type="submit" class="btn btn-primary" value="Submit" style="float:right">
+            <input type="submit" class="btn btn-primary" value="$msg.get("TMLN_FILTER")" style="float:right">
         </div>
     </form>
 </div>
 <div class="content rightbox">
 <div class="timelineContainer" onscroll="handleScroll(this)">
     <div class="contentTitle" style="margin-bottom:1%; height:44px">
-        <h3 style="float:left">Bills Timeline</h3>
+        <h3 style="float:left">$msg.get("TMLN_BILLSTIMELINE")</h3>
         <div style="float:right; margin-right:1%">
             <button id="infoButton" data-toggle="modal" data-target="#legendModal"><i
                     class="fa fa-info-circle" aria-hidden="true"></i></button>
@@ -136,7 +136,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header" style="background-color: rgb(234,241,247)">
-                    <h4 class="modal-title">Timeline Legend</h4>
+                    <h4 class="modal-title">$msg.get("TMLN_LEGEND")</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -144,28 +144,28 @@
                 <div class="modal-body">
                     <div style="margin-left:38%">
                         <img src="/img/legendgreen.png" style="height:30px">
-                        <p style="display:inline">&nbsp&nbsp&nbspIncomes</p>
+                        <p style="display:inline">&nbsp&nbsp&nbsp$msg.get("GNRL_INCOME")</p>
                     </div>
                     <br>
                     <div style="margin-left:38%">
                         <img src="/img/legendred.png" style="height:30px">
-                        <p style="display:inline">&nbsp&nbsp&nbspExpenses</p>
+                        <p style="display:inline">&nbsp&nbsp&nbsp$msg.get("GNRL_EXPENSE")</p>
                     </div>
                     <br>
                     <div style="margin-left:38%">
                         <img src="/img/legendblue.png" style="height:30px">
-                        <p style="display:inline">&nbsp&nbsp&nbspInvestments</p>
+                        <p style="display:inline">&nbsp&nbsp&nbsp$msg.get("GNRL_INVESTMENT")</p>
                     </div>
                     <br>
                     <div style="margin-left:38%">
                         <img src="/img/legendyellow.png" style="height:30px">
-                        <p style="display:inline">&nbsp&nbsp&nbspSalaries</p>
+                        <p style="display:inline">&nbsp&nbsp&nbsp$msg.get("GNRL_SALARIE")</p>
                     </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer" style="background-color: rgb(234,241,247)">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">$msg.get("GNRL_CLOSE")</button>
                 </div>
             </div>
         </div>

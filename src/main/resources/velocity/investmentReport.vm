@@ -7,9 +7,9 @@
     <div class="content">
         <div class="contentTitle">
             <div class="row phonescrollable">
-                <div class="col-9"><h2>Investments report</h2></div>
+                <div class="col-9"><h2>$msg.get("IRPRT_INVESTMENTSREPORT")</h2></div>
                 <div class="col-3">
-                    <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare
+                    <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">$msg.get("RPRT_COMPARE")
                     </button>
                 </div>
             </div>
@@ -20,13 +20,13 @@
             <table class="table table-hover fixed_header" id="myTable">
                 <thead>
                 <tr>
-                    <th>Investments</th>
-                    <th><span class="numSpan" style="text-align: right">Total amount</span></th>
+                    <th>$msg.get("GNRL_INVESTMENTS")</th>
+                    <th><span class="numSpan" style="text-align: right">$msg.get("RPRT_TOTALAMOUNT")</span></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr id="buildings" class="opener">
-                    <td>Buildings</td>
+                    <td>$msg.get("IRPRT_BUILDINGS")</td>
                     <td><span class="numSpan">$number.format("currency",$report.getBuildingsBase())</span></td>
                 </tr>
                     #foreach($bill in $report.getBuildings())
@@ -38,7 +38,7 @@
                     </tr>
                     #end
                 <tr id="furniture" class="opener">
-                    <td>Furniture and office equipment</td>
+                    <td>$msg.get("IRPRT_FURNITURE")</td>
                     <td><span class="numSpan">$number.format("currency",$report.getOfficeEquipmentBase())</span></td>
                 </tr>
                     #foreach($bill in $report.getOfficeEquipment())
@@ -50,7 +50,7 @@
                     </tr>
                     #end
                 <tr id="transport" class="opener">
-                    <td>Transport equipment</td>
+                    <td>$msg.get("IRPRT_TRANSPORT")</td>
                     <td><span class="numSpan">$number.format("currency",$report.getTransportEquipmentBase())</span></td>
                 </tr>
                     #foreach($bill in $report.getTransportEquipment())
@@ -62,7 +62,7 @@
                     </tr>
                     #end
                 <tr id="computational" class="opener">
-                    <td>Computational equipment and accesories</td>
+                    <td>$msg.get("IRPRT_COMPUTATIONAL")</td>
                     <td><span class="numSpan">$number.format("currency",$report.getComputationalEquipmentBase())</span></td>
                 </tr>
                     #foreach($bill in $report.getComputationalEquipment())
@@ -74,7 +74,7 @@
                     </tr>
                     #end
                 <tr id="models" class="opener">
-                    <td>Models and Tools</td>
+                    <td>$msg.get("IRPRT_MODELS")</td>
                     <td><span class="numSpan">$number.format("currency",$report.getModelsAndToolsBase())</span></td>
                 </tr>
                     #foreach($bill in $report.getModelsAndTools())
@@ -86,7 +86,7 @@
                     </tr>
                     #end
                 <tr id="telephone" class="opener">
-                    <td>Telephone communications</td>
+                    <td>$msg.get("IRPRT_TELEPHONE")</td>
                     <td><span class="numSpan">$number.format("currency",$report.getTelephoneCommunicationsBase())</span></td>
                 </tr>
                     #foreach($bill in $report.getTelephoneCommunications())
@@ -98,7 +98,7 @@
                     </tr>
                     #end
                 <tr id="satellite" class="opener">
-                    <td>Satellite communications</td>
+                    <td>$msg.get("IRPRT_SATELLITE")</td>
                     <td><span class="numSpan">$number.format("currency",$report.getSatelliteCommunicationsBase())</span></td>
                 </tr>
                     #foreach($bill in $report.getSatelliteCommunications())
@@ -110,7 +110,7 @@
                     </tr>
                     #end
                 <tr id="other" class="opener">
-                    <td>Other machinery and equipment</td>
+                    <td>$msg.get("IRPRT_OTHER")</td>
                     <td><span class="numSpan">$number.format("currency",$report.getOtherMachineryAndEquipmentBase())</span></td>
                 </tr>
                     #foreach($bill in $report.getOtherMachineryAndEquipment())
@@ -122,7 +122,7 @@
                     </tr>
                     #end
                 <tr style="border-top:ridge;border-bottom:ridge;background-color: #f7f7f7; font-size:115%">
-                    <td><b>All investments</b></td>
+                    <td><b>$msg.get("IRPRT_ALL")</b></td>
                     <td style=""><span class="numSpan">$number.format("currency",$report.getBase())</span></td>
                 </tr>
                 </tbody>
@@ -135,13 +135,13 @@
 <div class="leftbox">
     <div class="content" style="margin-bottom:5%">
         <div>
-            <h4 class="contentTitle">Investment period</h4>
+            <h4 class="contentTitle">$msg.get("RPRT_PERIOD")</h4>
             <br>
             <div>
                 <form>
                     <div class="row">
                         <div class="col">
-                            <p>Period start</p>
+                            <p>$msg.get("GNRL_PERIODSTART")</p>
                         </div>
                         <div class="col-8">
                             <input class="form-control" type="date" value="2011-08-19" id="pStart" name="periodStart">
@@ -149,7 +149,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <p>Period end</p>
+                            <p>$msg.get("GNRL_PERIODEND")</p>
                         </div>
                         <div class="col-8">
                             <input class="form-control" type="date" value="2011-08-19" id="pEnd" name="periodEnd">
@@ -157,7 +157,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" value="Submit" class="btn btn-secondary" style="float:right">Submit
+                            <button type="submit" value="Submit" class="btn btn-secondary" style="float:right">$msg.get("GNRL_SUBMIT")
                             </button>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
     </div>
     <div class="content" style="height:60%; margin-bottom:5%">
         <div>
-            <h4 class="contentTitle">Investment Chart</h4>
+            <h4 class="contentTitle">$msg.get("GNRL_INVESTMENTS") $msg.get("GNRL_CHART")</h4>
         </div>
         <div id="piechart" style="height:90%"></div>
     </div>
@@ -180,7 +180,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header" style="background-color: rgb(234,241,247)">
-                <h4 class="modal-title">Select report periods</h4>
+                <h4 class="modal-title">$msg.get("RPRT_SELECTPERIODCOMPARE")</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -188,11 +188,11 @@
             <div class="modal-body">
                 <form id="compareForm" action="/reports/compare/investments">
                     <div class="container">
-                        <h6>Report 1</h6>
+                        <h6>$msg.get("RPRT_REPORT") 1</h6>
                         <br>
                         <div class="row">
                             <div class="col">
-                                <p>Period start</p>
+                                <p>$msg.get("GNRL_PERIODSTART")</p>
                             </div>
                             <div class="col-8">
                                 <input class="form-control" type="date" id="pStart1" value="2016-08-19"
@@ -201,17 +201,17 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p>Period end</p>
+                                <p>$msg.get("GNRL_PERIODEND")</p>
                             </div>
                             <div class="col-8">
                                 <input class="form-control" type="date" id="pEnd1" value="2017-08-19" name="periodEnd">
                             </div>
                         </div>
-                        <h6>Report 2</h6>
+                        <h6>$msg.get("RPRT_REPORT") 2</h6>
                         <br>
                         <div class="row">
                             <div class="col">
-                                <p>Period start</p>
+                                <p>$msg.get("GNRL_PERIODSTART")</p>
                             </div>
                             <div class="col-8">
                                 <input class="form-control" type="date" id="pStart2" value="2018-08-19"
@@ -220,7 +220,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p>Period end</p>
+                                <p>$msg.get("GNRL_PERIODEND")</p>
                             </div>
                             <div class="col-8">
                                 <input class="form-control" type="date" id="pEnd2" value="2019-08-19" name="periodEnd1">
@@ -232,8 +232,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer" style="background-color: rgb(234,241,247)">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="submit" form="compareForm" class="btn btn-success">Compare</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$msg.get("GNRL_CANCEL")</button>
+                <button type="submit" form="compareForm" class="btn btn-success">$msg.get("RPRT_COMPARE")</button>
             </div>
 
         </div>
@@ -254,14 +254,14 @@
 
     function drawChart() {
         data = google.visualization.arrayToDataTable([
-            ['Investment', 'Base'],
+            ['$msg.get("GNRL_INVESTMENT")', 'Base'],
             #foreach($key in $barChart)
                 ['$key',$barChart.getCount($key)],
             #end
         ]);
 
         options = {
-            title: 'Investments',
+            title: '$msg.get("GNRL_INVESTMENT")',
             backgroundColor: 'rgb(247,250,252)'
         };
 

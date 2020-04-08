@@ -43,14 +43,13 @@
                     <div style="margin-top:10%">
                         <div>
                             <button id="languageIcon" class="butn" style="width:123px"><i class="fa fa-language"
-                                                                                          aria-hidden="true"></i>&nbspLanguage
+                                                                                          aria-hidden="true"></i>&nbsp$msg.get("NAV_LANGUAGE")
                             </button>
                         </div>
                         <br>
                         <form id="logOutForm" action="/logout" method="post" style="display:none"></form>
                         <button onclick="submitLogOutForm()" class="butn" style="width:123px"><i class="fa fa-sign-out"
-                                                                                                 aria-hidden="true"></i>&nbspLog
-                            out
+                                                                                                 aria-hidden="true"></i>&nbsp$msg.get("NAV_LOGOUT")
                         </button>
                     </div>
                 </div>
@@ -59,18 +58,18 @@
                 <div class="popover-content" id="languagePanel">
                     <div style="border-bottom: 1px solid darkgrey">
                         <i class="fa fa-language fa-2x" aria-hidden="true"></i>
-                        <p class="popover-message">Select language</p>
+                        <p class="popover-message">$msg.get("NAV_SELECTLANGUAGE")</p>
                     </div>
                     <div style="margin-top:10%">
                         <form id="esLanguageForm" style="display:none"><input name="locale" value="es"></form>
                         <form id="enLanguageForm" style="display:none"><input name="locale" value="en"></form>
                         <button name="locale" value="es" onclick="submitLanguageForm('en')" class="butn"
-                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspEnglish
+                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbsp$msg.get("NAV_ENLAN")
                         </button>
                         <br>
                         <br>
                         <button name="locale" value="es" onclick="submitLanguageForm('es')" class="butn"
-                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbspSpanish
+                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbsp$msg.get("NAV_ESLAN")
                         </button>
                     </div>
                 </div>

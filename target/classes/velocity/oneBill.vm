@@ -6,49 +6,49 @@
     #if($redirected)
         #if($emailSent)
             <div class="container content" style="background-color:lightblue">
-                <h6>You have succesfully sent the e-mail</h6>
+                <h6>$msg.get("BILL_SUCCESFULSENT")</h6>
             </div>
         #else
             <div class="container content" style="background-color:lightcoral">
-                <h6>There was an error while sending the e-mail</h6>
+                <h6>$msg.get("BILL_ERRORSENT")</h6>
             </div>
         #end
     #end
 
     <div class="content container" style="margin-bottom:50px">
         <div class="contentTitle">
-            <h2>Bill $bill.getUUID()</h2>
+            <h2>$msg.get("GNRL_BILL") $bill.getUUID()</h2>
         </div>
         <br>
 
         <br>
         <div class="row">
             <div class="col">
-                <h5>Date</h5>
+                <h5>$msg.get("GNRL_DATE")</h5>
                 <p>$dateTool.format('long',$bill.getDate(),$locale)</p>
             </div>
             <div class="col">
-                <h5>Type</h5>
+                <h5>$msg.get("GNRL_TYPE")</h5>
                 <p>$bill.getType()</p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h5>Use</h5>
+                <h5>$msg.get("GNRL_USE")</h5>
                 <p>$bill.getUse()</p>
             </div>
             <div class="col">
-                <h5>Concept</h5>
+                <h5>$msg.get("GNRL_CONCEPT")</h5>
                 <p>$bill.getConcept()</p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h5>Postal Code</h5>
+                <h5>$msg.get("GNRL_POSTALCODE")</h5>
                 <p>$bill.getPC()</p>
             </div>
             <div class="col">
-                <h5>Location</h5>
+                <h5>$msg.get("GNRL_LOCATION")</h5>
                 #if($location)
                     <p>$location.getName() , $location.getState() , $location.getAdminState()</p>
                 #else
@@ -58,21 +58,21 @@
         </div>
         <div class="row">
             <div class="col">
-                <h5>Issuer Name</h5>
+                <h5>$msg.get("GNRL_ISSUERNAME")</h5>
                 <p>$bill.getIssuerName()</p>
             </div>
             <div class="col">
-                <h5>Issuer RFC</h5>
+                <h5>$msg.get("GNRL_ISSUERRFC")</h5>
                 <p>$bill.getIssuerRFC()</p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h5>Receiver Name</h5>
+                <h5>$msg.get("GNRL_RECEIVERNAME")</h5>
                 <p>$bill.getReceiverName()</p>
             </div>
             <div class="col">
-                <h5>Receiver RFC</h5>
+                <h5>$msg.get("GNRL_RECEIVERRFC")</h5>
                 <p>$bill.getReceiverRFC()</p>
             </div>
         </div>
@@ -88,11 +88,11 @@
         </div>
         <div class="row">
             <div class="col">
-                <h5>Tax rate</h5>
+                <h5>$msg.get("GNRL_TAXRATE")</h5>
                 <p>$bill.getTaxRate()</p>
             </div>
             <div class="col">
-                <h5>Currency</h5>
+                <h5>$msg.get("GNRL_CURRENCY")</h5>
                 <p>$bill.getCurrency()</p>
             </div>
         </div>
@@ -102,10 +102,10 @@
         <div class="bill-buttons-container">
             <br>
             <a href="$bill.getUUID()/bill.xml" download="$bill.getUUID()">
-                <button class="btn btn-primary btn-lg">Download XML</button>
+                <button class="btn btn-primary btn-lg">$msg.get("BILL_DOWNLOADXML")</button>
             </a>
 
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Send bill by email
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">$msg.get("BILL_SENDBYEMAIL")
             </button>
         </div>
 
@@ -117,20 +117,20 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Send bill by e-mail</h4>
+                    <h4 class="modal-title">$msg.get("BILL_SENDBYEMAIL")</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="$msg.get("BILL_INTRODUCEEMAIL")" name="email">
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="button" id="send" class="btn btn-success">Send</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">$msg.get("GNRL_CANCEL")</button>
+                    <button type="button" id="send" class="btn btn-success">$msg.get("GNRL_SEND")</button>
                 </div>
 
             </div>

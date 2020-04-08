@@ -23,7 +23,7 @@ function animateOnDrop() {
         $('#dragAndDropText').animate({
             'opacity': 0
         }, 400, function () {
-            $(this).html('Files attached.<br> Press "Start Uploading" to start upload').animate({'opacity': 1}, 400);
+            $(this).html(messageBundle.get("UPLOAD_FILESATTACHED")+ '<br> '+messageBundle.get("UPLOAD_PRESSSTART")).animate({'opacity': 1}, 400);
         });
     });
 }
@@ -42,7 +42,7 @@ $(document).ready(function () {
         $('#dragAndDropText').animate({
             'opacity': 0
         }, 400, function () {
-            $(this).html('Files attached.<br> Press "Start Uploading" to start upload').animate({'opacity': 1}, 400);
+            $(this).html(messageBundle.get("UPLOAD_FILESATTACHED")+ '<br> '+messageBundle.get("UPLOAD_PRESSSTART")).animate({'opacity': 1}, 400);
         });
     });
 
@@ -66,7 +66,7 @@ $(document).ready(function () {
         $('#dragAndDropText').animate({
             'opacity': 0
         }, 400, function () {
-            $(this).html("Uploading files, please wait...").animate({'opacity': 1}, 400);
+            $(this).html(messageBundle.get("UPLOAD_UPLOADING")).animate({'opacity': 1}, 400);
         });
     });
 });
@@ -113,7 +113,7 @@ function dropFiles(ev) {
 
 function openModalError() {
     document.getElementById("modalTitle").innerText = "Error";
-    document.getElementById("modalContent").innerText = "Couldn't attach file because is not an XML file. Only XML files can be attached";
+    document.getElementById("modalContent").innerText = messageBundle.get("UPLOAD_NOTXML");
     $(document).ready(function () {
         $("#myModal").modal()
     });
@@ -191,13 +191,13 @@ function processResponseText(responseText) {
         console.log(responseSplit[0]);
         console.log(responseSplit[1]);
         if (responseSplit[1] == 'Yes') {
-            appendOnTable(responseSplit[0], "Uploaded succesfully", "Uploaded", true, true);
+            appendOnTable(responseSplit[0], messageBundle.get("UPLOAD_SUCCESSFUL"), "Uploaded", true, true);
         }
         if (responseSplit[1] == 'Already') {
-            appendOnTable(responseSplit[0], "Bill already in database", "Already", false, true);
+            appendOnTable(responseSplit[0], messageBundle.get("UPLOAD_ALREADY"), "Already", false, true);
         }
         if (responseSplit[1] == 'Invalid') {
-            appendOnTable(responseSplit[0], "Bill hasn't got a valid signature", "Invalid", false);
+            appendOnTable(responseSplit[0], messageBundle.get("UPLOAD_ERROR"), "Invalid", false);
         }
 
     }
@@ -206,15 +206,15 @@ function processResponseText(responseText) {
 function appendOnTable(filename, content, status, valid, already) {
     $(document).ready(function () {
         if (valid) {
-            var popover = '<a style="color:darkgreen" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="' + content + '">' + filename + '</a>'
+            var popover = '<a style="color:darkgreen" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="'+messageBundle.get("UPLOAD_UPLOADINFO")+'" data-content="' + content + '">' + filename + '</a>'
             var append = '<tr class="table-success"><td>' + popover + '</td><td>' + '<div class="text-center"><i style="color:darkgreen" class="fas fa-check"></i></div>' + '</td></tr>';
         } else {
 
             if (already) {
-                var popover = '<a style="color:rgb(156,101,36);" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="' + content + '">' + filename + '</a>'
+                var popover = '<a style="color:rgb(156,101,36);" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="'+messageBundle.get("UPLOAD_UPLOADINFO")+'" data-content="' + content + '">' + filename + '</a>'
                 var append = '<tr class="table-warning"><td>' + popover + '</td><td>' + '<div class="text-center"><i style="color:rgb(166,101,36)" class="fas fa-exclamation-circle"></i></div>' + '</td></tr>';
             } else {
-                var popover = '<a style="color:darkred" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Upload info" data-content="' + content + '">' + filename + '</a>'
+                var popover = '<a style="color:darkred" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="'+messageBundle.get("UPLOAD_UPLOADINFO")+'" data-content="' + content + '">' + filename + '</a>'
                 var append = '<tr class="table-danger"><td>' + popover + '</td><td>' + '<div class="text-center"><i style="color:darkred" class="fas fa-times"></i></div>' + '</td></tr>';
             }
 

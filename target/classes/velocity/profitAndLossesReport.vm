@@ -8,9 +8,9 @@
     <div class="content">
         <div class="contentTitle">
             <div class="row phonescrollable">
-                <div class="col-9"><h2>Profit and Losses report</h2></div>
+                <div class="col-9"><h2>$msg.get("PRPRT_PROFITANDLOSSESREPORT")</h2></div>
                 <div class="col-3">
-                    <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">Compare
+                    <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">$msg.get("RPRT_COMPARE")
                     </button>
                 </div>
             </div>
@@ -21,22 +21,22 @@
         <table class="table table-hover fixed_header" id="myTable">
             <thead>
             <tr>
-                <th>Accounting name</th>
-                <th><span class="numSpan" style="text-align: right">Total amount</span></th>
+                <th>$msg.get("PRPRT_ACCOUNTINGNAME")</th>
+                <th><span class="numSpan" style="text-align: right">$msg.get("RPRT_TOTALAMOUNT")</span></th>
             </tr>
             </thead>
             <tbody>
             <tr class="mainResult">
-                <td>Sales and incomes</td>
+                <td>$msg.get("PRPRT_SALESANDINCOMES")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getSalesAndIncomesBase())</span></td>
             </tr>
             <tr style="font-size:115%">
                 <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net sales"
-                                           data-content="Base= Gross sales base - Sales returns base">Net sales</a></td>
+                                           data-content="Base= Gross sales base - Sales returns base">$msg.get("PRPRT_NETSALES")</a></td>
                 <td><span class="numSpan">$number.format("currency",$report.getNetSalesBase())</span></td>
             </tr>
             <tr id="grossSales" class="opener">
-                <td>Gross sales</td>
+                <td>$msg.get("PRPRT_GROSSSALES")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getGrossSalesBase())</span></td>
             </tr>
                 #foreach($bill in $report.getGrossSales())
@@ -48,7 +48,7 @@
                 </tr>
                 #end
             <tr id="salesReturns" class="opener">
-                <td>Sales returns</td>
+                <td>$msg.get("PRPRT_SALESRETURNS")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getSalesReturnsBase())</span></td>
             </tr>
                 #foreach($bill in $report.getSalesReturns())
@@ -60,17 +60,16 @@
                 </tr>
                 #end
             <tr class="mainResult">
-                <td>Purchases and expenses</td>
+                <td>$msg.get("PRPRT_PURCHASESANDEXPENSES")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getPurchasesAndExpensesBase())</span></td>
             </tr>
             <tr style="font-size: 115%">
-                <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="Net purchases"
-                                           data-content="Base= Gross purchases base - Purchases returns base">Net
-                    purchases</a></td>
+                <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="$msg.get("PRPRT_NETPURCHASES")"
+                                           data-content="Base= Gross purchases base - Purchases returns base">$msg.get("PRPRT_NETPURCHASES")</a></td>
                 <td><span class="numSpan">$number.format("currency",$report.getNetPurchasesBase())</span></td>
             </tr>
             <tr id="grossPurchases" class="opener">
-                <td>Gross purchases</td>
+                <td>$msg.get("PRPRT_GROSSPURCHASES")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getGrossPurchasesBase())</span></td>
             </tr>
                 #foreach($bill in $report.getGrossPurchases())
@@ -82,7 +81,7 @@
                 </tr>
                 #end
             <tr id="purchasesReturns" class="opener">
-                <td>Purchases returns</td>
+                <td>$msg.get("PRPRT_PURCHASESRETURNS")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getPurchasesReturnsBase())</span></td>
             </tr>
                 #foreach($bill in $report.getPurchasesReturns())
@@ -94,7 +93,7 @@
                 </tr>
                 #end
             <tr id="externalServices" class="opener">
-                <td>External services</td>
+                <td>$msg.get("PRPRT_EXTERNALSERVICES")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getExternalServicesBase())</span></td>
             </tr>
                 #foreach($bill in $report.getExternalServices())
@@ -106,7 +105,7 @@
                 </tr>
                 #end
             <tr id="salariesAndWages" class="opener">
-                <td>Salaries and Wages</td>
+                <td>$msg.get("PRPRT_SALARIESANDWAGES")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getSalariesAndWagesBase())</span></td>
             </tr>
                 #foreach($bill in $report.getSalariesAndWages())
@@ -118,7 +117,7 @@
                 </tr>
                 #end
             <tr class="mainResult">
-                <td>Total profit</td>
+                <td>$msg.get("PRPRT_TOTALPROFIT")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getProfit())</span></td>
             </tr>
             </tbody>
@@ -130,13 +129,13 @@
 <div class="leftbox">
     <div class="content" style="margin-bottom:5%">
         <div>
-            <h4 class="contentTitle">Profit and Losses period</h4>
+            <h4 class="contentTitle">$msg.get("RPRT_PERIOD")</h4>
             <br>
             <div>
                 <form>
                     <div class="row">
                         <div class="col">
-                            <p>Period start</p>
+                            <p>$msg.get("GNRL_PERIODSTART")</p>
                         </div>
                         <div class="col-8">
                             <input class="form-control" type="date" value="2011-08-19" id="pStart" name="periodStart">
@@ -144,7 +143,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <p>Period end</p>
+                            <p>$msg.get("GNRL_PERIODEND")</p>
                         </div>
                         <div class="col-8">
                             <input class="form-control" type="date" value="2011-08-19" id="pEnd" name="periodEnd">
@@ -152,7 +151,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" value="Submit" class="btn btn-secondary" style="float:right">Submit
+                            <button type="submit" value="Submit" class="btn btn-secondary" style="float:right">$msg.get("GNRL_SUBMIT")
                             </button>
                         </div>
                     </div>
@@ -163,7 +162,7 @@
     </div>
     <div class="content" style="height:60%; margin-bottom:5%">
         <div>
-            <h4 class="contentTitle">Profit and Losses Chart</h4>
+            <h4 class="contentTitle">$msg.get("PRPRT_PROFITANDLOSSESCHART")</h4>
         </div>
         <div id="piechart" style="height:95%"></div>
     </div>
@@ -176,7 +175,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header" style="background-color: rgb(234,241,247)">
-                <h4 class="modal-title">Select report periods</h4>
+                <h4 class="modal-title">$msg.get("RPRT_SELECTPERIODCOMPARE")</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -184,11 +183,11 @@
             <div class="modal-body">
                 <form id="compareForm" action="/reports/compare/profitandlosses">
                     <div class="container">
-                        <h6>Report 1</h6>
+                        <h6>$msg.get("RPRT_REPORT") 1</h6>
                         <br>
                         <div class="row">
                             <div class="col">
-                                <p>Period start</p>
+                                <p>$msg.get("GNRL_PERIODSTART")</p>
                             </div>
                             <div class="col-8">
                                 <input class="form-control" type="date" id="pStart1" value="2016-08-19"
@@ -197,17 +196,17 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p>Period end</p>
+                                <p>$msg.get("GNRL_PERIODEND")</p>
                             </div>
                             <div class="col-8">
                                 <input class="form-control" type="date" id="pEnd1" value="2017-08-19" name="periodEnd">
                             </div>
                         </div>
-                        <h6>Report 2</h6>
+                        <h6>$msg.get("RPRT_REPORT") 2</h6>
                         <br>
                         <div class="row">
                             <div class="col">
-                                <p>Period start</p>
+                                <p>$msg.get("GNRL_PERIODSTART")</p>
                             </div>
                             <div class="col-8">
                                 <input class="form-control" type="date" id="pStart2" value="2017-08-19"
@@ -216,7 +215,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <p>Period end</p>
+                                <p>$msg.get("GNRL_PERIODEND")</p>
                             </div>
                             <div class="col-8">
                                 <input class="form-control" type="date" id="pEnd2" value="2018-08-19" name="periodEnd1">
@@ -228,8 +227,8 @@
 
             <!-- Modal footer -->
             <div class="modal-footer" style="background-color: rgb(234,241,247)">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="submit" form="compareForm" class="btn btn-success">Compare</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">$msg.get("GNRL_CANCEL")</button>
+                <button type="submit" form="compareForm" class="btn btn-success">$msg.get("RPRT_COMPARE")</button>
             </div>
 
         </div>
@@ -252,14 +251,14 @@
 
     function drawChart() {
         data = google.visualization.arrayToDataTable([
-            ['Money', 'Base'],
+            ['$msg.get("DSB_AMOUNT")', 'Base'],
             #foreach($key in $barChart)
                 ['$key',$barChart.getCount($key)],
             #end
         ]);
 
         options = {
-            title: 'Sales vs Expenses',
+            title: '$msg.get("PRPRT_SALESVSEXPENSES")',
             backgroundColor: 'rgb(247,250,252)',
             slices: {
                 1: {color: 'rgb(23,164,111)'},

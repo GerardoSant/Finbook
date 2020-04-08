@@ -21,7 +21,7 @@
             <div id="progress"></div>
         </div>
 
-        <button id="startUploadButton" class="btn btn-outline-primary btn-lg">Start uploading</button>
+        <button id="startUploadButton" class="btn btn-outline-primary btn-lg">$msg.get("UPLOAD_STARTUPLOADING")</button>
 
         <br>
         <br>
@@ -60,14 +60,14 @@
 </div>
 
 <div class="container rightbox" id="right">
-    <h2>File uploads <span class="badge badge-success">
-		<a id="fileUploadsNum" href="#" title=" New files uploaded" data-toggle="popover" data-trigger="hover"
-           data-content="Hover over filename to check upload info" style="color:white"></a></span></h2>
+    <h2>$msg.get("UPLOAD_FILEUPLOADS")<span class="badge badge-success">
+		<a id="fileUploadsNum" href="#" title="$msg.get("UPLOAD_NEWFILESUPLOADED")" data-toggle="popover" data-trigger="hover"
+           data-content="$msg.get("UPLOAD_HOVER")" style="color:white"></a></span></h2>
     <table class="table" id="fileTable">
         <thead class="thead-dark">
         <tr>
-            <th>Bill name</th>
-            <th>Status</th>
+            <th>$msg.get("UPLOAD_FILENAME")</th>
+            <th>$msg.get("UPLOAD_STATUS")</th>
         </tr>
         </thead>
         <tbody>
@@ -79,7 +79,15 @@
 
 <script>
     var messageBundleMap = new Map([["UPLOAD_MSG", "$msg.get("UPLOAD_DAD")"],
-        ["example", "example"]]);
+        ["UPLOAD_FILESATTACHED", "$msg.get("UPLOAD_FILESATTACHED")"],
+        ["UPLOAD_UPLOADING", "$msg.get("UPLOAD_UPLOADING")"],
+        ["UPLOAD_UPLOADINFO", "$msg.get("UPLOAD_UPLOADINFO")"],
+        ["UPLOAD_SUCCESSFUL", "$msg.get("UPLOAD_SUCCESSFUL")"],
+        ["UPLOAD_ALREADY", "$msg.get("UPLOAD_ALREADY")"],
+        ["UPLOAD_ERROR", "$msg.get("UPLOAD_ERROR")"],
+        ["UPLOAD_NOTXML", "$msg.get("UPLOAD_NOTXML")"],
+        ["UPLOAD_PRESSSTART", "$msg.get("UPLOAD_PRESS")"]
+    ]);
     initMessageBundle(messageBundleMap);
 </script>
 

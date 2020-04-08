@@ -8,7 +8,7 @@
     <div class="content">
         <div class="contentTitle">
             <div class="row phonescrollable">
-                <div class="col-9"><h2>Amortization report</h2></div>
+                <div class="col-9"><h2>$msg.get("ARPRT_AMORTIZATIONREPORT")</h2></div>
             </div>
         </div>
 
@@ -17,17 +17,17 @@
             <table class="table table-hover fixed_header" id="myTable">
                 <thead>
                 <tr>
-                    <th>Investment</th>
-                    <th>Date</th>
+                    <th>$msg.get("GNRL_INVESTMENT")</th>
+                    <th>$msg.get("GNRL_DATE")</th>
                     <th>Subtotal</th>
-                    <th>% Amortization</th>
-                    <th>Amortization</th>
-                    <th>Period amortization</th>
+                    <th>% $msg.get("GNRL_AMORTIZATION")</th>
+                    <th>$msg.get("GNRL_AMORTIZATION")</th>
+                    <th>$msg.get("ARPRT_PERIODAMORTIZATION")</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr id="buildings" class="opener">
-                    <td>Buildings</td>
+                    <td>$msg.get("IRPRT_BUILDINGS")</td>
                     <td></td>
                     <td>$number.format("currency",$report.calculateBase($report.getBuildings()))</td>
                     <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getBuildings()))%
@@ -48,7 +48,7 @@
                     </tr>
                     #end
                 <tr id="furniture" class="opener">
-                    <td>Furniture and office equipment</td>
+                    <td>$msg.get("IRPRT_FURNITURE")</td>
                     <td></td>
                     <td>$number.format("currency",$report.calculateBase($report.getOfficeEquipment()))</td>
                     <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getOfficeEquipment()))
@@ -72,7 +72,7 @@
                     </tr>
                     #end
                 <tr id="transport" class="opener">
-                    <td>Transport equipment</td>
+                    <td>$msg.get("IRPRT_TRANSPORT")</td>
                     <td></td>
                     <td>$number.format("currency",$report.calculateBase($report.getTransportEquipment()))</td>
                     <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getTransportEquipment()))
@@ -96,7 +96,7 @@
                     </tr>
                     #end
                 <tr id="computational" class="opener">
-                    <td>Computational equipment and accesories</td>
+                    <td>$msg.get("IRPRT_COMPUTATIONAL")</td>
                     <td></td>
                     <td>$number.format("currency",$report.calculateBase($report.getComputationalEquipment()))</td>
                     <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getComputationalEquipment()))
@@ -120,7 +120,7 @@
                     </tr>
                     #end
                 <tr id="models" class="opener">
-                    <td>Models and Tools</td>
+                    <td>$msg.get("IRPRT_MODELS")</td>
                     <td></td>
                     <td>$number.format("currency",$report.calculateBase($report.getModelsAndTools()))</td>
                     <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getModelsAndTools()))
@@ -143,7 +143,7 @@
                     </tr>
                     #end
                 <tr id="telephone" class="opener">
-                    <td>Telephone communications</td>
+                    <td>$msg.get("IRPRT_TELEPHONE")</td>
                     <td></td>
                     <td>$number.format("currency",$report.calculateBase($report.getTelephoneCommunications()))</td>
                     <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getTelephoneCommunications()))
@@ -167,7 +167,7 @@
                     </tr>
                     #end
                 <tr id="satellite" class="opener">
-                    <td>Satellite communications</td>
+                    <td>$msg.get("IRPRT_SATELLITE")</td>
                     <td></td>
                     <td>$number.format("currency",$report.calculateBase($report.getSatelliteCommunications()))</td>
                     <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getSatelliteCommunications()))
@@ -191,7 +191,7 @@
                     </tr>
                     #end
                 <tr id="other" class="opener">
-                    <td>Other machinery and equipment</td>
+                    <td>$msg.get("IRPRT_OTHER")</td>
                     <td></td>
                     <td>$number.format("currency",$report.calculateBase($report.getOtherMachineryAndEquipment()))</td>
                     <td>$math.roundTo(2,$report.calculateAccumulatedAmortizationPercentage($report.getOtherMachineryAndEquipment()))
@@ -225,13 +225,13 @@
 <div class="leftbox">
     <div class="content" style="margin-bottom:5%">
         <div>
-            <h4 class="contentTitle">Amortization period</h4>
+            <h4 class="contentTitle">$msg.get("ARPRT_PERIODAMORTIZATION")</h4>
             <br>
             <div>
                 <form>
                     <div class="row">
                         <div class="col">
-                            <p>Period start</p>
+                            <p>$msg.get("GNRL_PERIODSTART")</p>
                         </div>
                         <div class="col-8">
                             <input class="form-control" type="date" value="2011-08-19" id="pStart" name="periodStart">
@@ -239,7 +239,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <p>Period end</p>
+                            <p>$msg.get("GNRL_PERIODEND")</p>
                         </div>
                         <div class="col-8">
                             <input class="form-control" type="date" value="2011-08-19" id="pEnd" name="periodEnd">
@@ -258,7 +258,7 @@
     </div>
     <div class="content" style="height:60%; margin-bottom:5%">
         <div>
-            <h4 class="contentTitle">Amortization Chart</h4>
+            <h4 class="contentTitle">$msg.get("ARPRT_AMORTIZATIONCHART")</h4>
         </div>
         <div id="piechart" style="height:90%"></div>
     </div>
@@ -276,14 +276,14 @@
 
     function drawChart() {
         data = google.visualization.arrayToDataTable([
-            ['Investment', 'amortization', {role: 'annotation'}, { role: 'style' }],
+            ['$msg.get("GNRL_INVESTMENT")', 'amortization', {role: 'annotation'}, { role: 'style' }],
             #foreach($key in $barChart)
                 ['$key',$math.roundTo(2,$barChart.getCount($key)), '$math.roundTo(2,$barChart.getCount($key)) %', 'rgb(121,202,207)'],
             #end
         ]);
 
         options = {
-            title: 'Investments',
+            title: '$msg.get("GNRL_AMORTIZATION")',
             backgroundColor: 'rgb(247,250,252)',
             legend: {position:'none'}
         };

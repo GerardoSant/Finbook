@@ -119,64 +119,64 @@
 
 <div class="container content leftbox">
     <div class="contentTitle">
-        <h2>Filters</h2>
+        <h2>$msg.get("MYBILLS_FILTERS")</h2>
     </div>
     <br>
     <div class="filters">
-        <span>Type : </span>
+        <span>$msg.get("GNRL_TYPE")</span>
         <br>
         <select class="filter" id="classSelect" onchange="updateFilters()">
             #if($received)
-                <option value="issued">Issued</option>
-                <option value="received" selected>Received</option>
+                <option value="issued">$msg.get("MYBILLS_ISSUED")</option>
+                <option value="received" selected>$msg.get("MYBILLS_RECEIVED")</option>
             #else
-                <option value="issued" selected>Issued</option>
-                <option value="received">Received</option>
+                <option value="issued" selected>$msg.get("MYBILLS_ISSUED")</option>
+                <option value="received">$msg.get("MYBILLS_RECEIVED")</option>
             #end
 
         </select>
         <br>
         #if($received)
-            <span>Issuer</span>
+            <span>$msg.get("GNRL_ISSUER")</span>
             <br>
             <input class="filter" style="padding-bottom: 0px; margin-bottom: 0px" type="text" id="issuerInput"
-                   onkeyup="filter()" placeholder="Search for issuer name">
+                   onkeyup="filter()" placeholder="$msg.get("MYBILLS_SEARCHISSUER")">
         #else
-            <span>Receiver</span>
+            <span>$msg.get("GNRL_RECEIVER")</span>
             <br>
             <input class="filter" style="padding-bottom: 0px; margin-bottom: 0px" type="text" id="receiverInput"
-                   onkeyup="filter()" placeholder="Search for receiver name">
+                   onkeyup="filter()" placeholder="$msg.get("MYBILLS_SEARCHRECEIVER")">
         #end
 
         <br>
         <div>
             <span>Total: </span>
             <br>
-            <input class="filter" type="number" id="minTotalInput" onkeyup="filter()" placeholder="Minimum total"><br>
-            <input class="filter" type="number" id="maxTotalInput" onkeyup="filter()" placeholder="Maximum total">
+            <input class="filter" type="number" id="minTotalInput" onkeyup="filter()" placeholder="$msg.get("GNRL_MINIMUM") total"><br>
+            <input class="filter" type="number" id="maxTotalInput" onkeyup="filter()" placeholder="$msg.get("GNRL_MAXIMUM") total">
         </div>
         <div>
-            <span>Date: </span>
+            <span>$msg.get("GNRL_DATE"): </span>
             <br>
             <input class="filter" type="date" id="pStart" name="periodStart" onkeyup="filter()"><br>
             <input class="filter" type="date" id="pEnd" name="periodStart" onkeyup="filter()">
         </div>
-        <span>PC: </span>
+        <span>$msg.get("GNRL_POSTALCODE") </span>
         <br>
-        <input class="filter" type="text" id="pcInput" onkeyup="filter()" placeholder="Search for Postal Code">
+        <input class="filter" type="text" id="pcInput" onkeyup="filter()" placeholder="$msg.get("MYBILLS_SEARCHPC")">
         <br>
-        <span>Bill type : </span>
+        <span>$msg.get("MYBILLS_BILLTYPE") : </span>
         <br>
         <select class="filter" id="billTypeInput" onchange="filter()">
             <option value="all">All</option>
             #if($received)
-                <option value="purchases">Purchases</option>
-                <option value="services">Services</option>
-                <option value="investments">Investments</option>
+                <option value="purchases">$msg.get("GNRL_PURCHASE")</option>
+                <option value="services">$msg.get("GNRL_EXTERNALSERVICE")</option>
+                <option value="investments">$msg.get("GNRL_INVESTMENTS")</option>
             #else
-                <option value="income">Ingreso</option>
-                <option value="egress">Egreso</option>
-                <option value="payroll">Nomina</option>
+                <option value="income">$msg.get("GNRL_INCOME")</option>
+                <option value="egress">$msg.get("GNRL_OUTCOME")</option>
+                <option value="payroll">$msg.get("GNRL_PAYROLL")</option>
             #end
 
 
@@ -187,7 +187,7 @@
 
 <div class="container content rightbox">
     <div class="contentTitle">
-        <h2>My Bills</h2>
+        <h2>$msg.get("MYBILLS_MYBILLS")</h2>
     </div>
 
     <br>
@@ -196,16 +196,16 @@
             #if($bills)
                 <thead class="thead-dark">
                 <tr>
-                    <th onclick="changeOrder(this)" id="date">Fecha <i class="fas fa-sort"></i></th>
-                    <th onclick="changeOrder(this)" id="pc">Lugar <i class="fas fa-sort"></i></th>
-                    <th onclick="changeOrder(this)" id="billType">Tipo <i class="fas fa-sort"></i></th>
+                    <th onclick="changeOrder(this)" id="date">$msg.get("GNRL_DATE") <i class="fas fa-sort"></i></th>
+                    <th onclick="changeOrder(this)" id="pc">$msg.get("GNRL_LOCATION") <i class="fas fa-sort"></i></th>
+                    <th onclick="changeOrder(this)" id="billType">$msg.get("GNRL_TYPE") <i class="fas fa-sort"></i></th>
                     #if($received)
-                        <th onclick="changeOrder(this)" id="issuer">Emisor <i class="fas fa-sort"></i></th>
+                        <th onclick="changeOrder(this)" id="issuer">$msg.get("GNRL_ISSUER") <i class="fas fa-sort"></i></th>
                     #else
-                        <th onclick="changeOrder(this)" id="receiver">Receptor <i class="fas fa-sort"></i></th>
+                        <th onclick="changeOrder(this)" id="receiver">$msg.get("GNRL_RECEIVER") <i class="fas fa-sort"></i></th>
                     #end
                     <th onclick="changeOrder(this)" id="total">Total <i class="fas fa-sort"></i></th>
-                    <th onclick="changeOrder(this)" id="currency">Currency <i class="fas fa-sort"></i></th>
+                    <th onclick="changeOrder(this)" id="currency">$msg.get("GNRL_CURRENCY") <i class="fas fa-sort"></i></th>
                 </tr>
                 </thead>
                 <tbody>

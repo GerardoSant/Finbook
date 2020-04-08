@@ -8,7 +8,7 @@
 </form>
 <div class="centered-div">
     <div class="text-center">
-        <h2>Waiting for sign</h2>
+        <h2>$msg.get("SA_WAITINGFORSIGN")</h2>
         <br>
         <br>
         <div class="spinner-border blue-spinner" role="status">
