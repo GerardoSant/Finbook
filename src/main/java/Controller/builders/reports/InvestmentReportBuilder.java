@@ -21,12 +21,19 @@ public class InvestmentReportBuilder extends ReportBuilder {
 
     public InvestmentsReport buildReport() {
         billList=generateBillsFromPeriod(billList);
-        return new InvestmentsReport(periodStart, periodEnd, RFC,
-                generateInvestmentsByUseCode("I01"), BillCalculator.calculateBase(generateInvestmentsByUseCode("I01")),generateInvestmentsByUseCode("I02"), BillCalculator.calculateBase(generateInvestmentsByUseCode("I02")),
-                generateInvestmentsByUseCode("I03"),BillCalculator.calculateBase(generateInvestmentsByUseCode("I03")), generateInvestmentsByUseCode("I04"),BillCalculator.calculateBase(generateInvestmentsByUseCode("I04")),
-                generateInvestmentsByUseCode("I05"),BillCalculator.calculateBase(generateInvestmentsByUseCode("I05")), generateInvestmentsByUseCode("I06"),BillCalculator.calculateBase(generateInvestmentsByUseCode("I06")),
-                generateInvestmentsByUseCode("I07"),BillCalculator.calculateBase(generateInvestmentsByUseCode("I07")),
-                generateInvestmentsByUseCode("I08"),BillCalculator.calculateBase(generateInvestmentsByUseCode("I08")));
+        return generateInvestmentReport(generateInvestmentsByUseCode("I01"),generateInvestmentsByUseCode("I02"),generateInvestmentsByUseCode("I03"),generateInvestmentsByUseCode("I04"),generateInvestmentsByUseCode("I05"),
+                generateInvestmentsByUseCode("I06"),generateInvestmentsByUseCode("I07"),generateInvestmentsByUseCode("I08"));
+    }
+
+    private InvestmentsReport generateInvestmentReport(List<Bill> buildings,List<Bill> officeEquipment, List<Bill> transportEquipment, List<Bill> computationalEquipment, List<Bill> modelsAndTools,
+    List<Bill> telephoneCommunications,List<Bill> satelliteCommunications, List<Bill> otherMachineryAndEquipment){
+        return new InvestmentsReport(periodStart,periodEnd,RFC,buildings,calculateBase(buildings),officeEquipment, calculateBase(officeEquipment),transportEquipment, calculateBase(transportEquipment),
+                computationalEquipment, calculateBase(computationalEquipment), modelsAndTools, calculateBase(modelsAndTools),telephoneCommunications, calculateBase(telephoneCommunications),
+                satelliteCommunications, calculateBase(satelliteCommunications),otherMachineryAndEquipment, calculateBase(otherMachineryAndEquipment));
+    }
+
+    private double calculateBase(List<Bill> bills) {
+        return BillCalculator.calculateBase(bills);
     }
 
     private List<Bill> generateInvestmentsByUseCode(String useCode) {

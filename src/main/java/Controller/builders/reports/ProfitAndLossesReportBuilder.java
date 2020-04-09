@@ -4,7 +4,6 @@ import Model.Bills.Bill;
 import Model.Reports.ProfitAndLossesReport;
 import Controller.util.BillCalculator;
 import Controller.util.BillFilter;
-
 import java.util.Date;
 import java.util.List;
 
@@ -22,14 +21,21 @@ public class ProfitAndLossesReportBuilder extends ReportBuilder {
     @Override
     public ProfitAndLossesReport buildReport() {
         billList= generateBillsFromPeriod(billList);
-        return new ProfitAndLossesReport(periodStart, periodEnd, RFC,
-                generateGrossSales(), BillCalculator.calculateBase(generateGrossSales()),generateSalesReturns(), BillCalculator.calculateBase(generateSalesReturns()),
-                generatePurchases("G01"), BillCalculator.calculateBase(generatePurchases("G01")),
-                generatePurchases("G02"), BillCalculator.calculateBase(generatePurchases("G02")),
-                generatePurchases("G03"), BillCalculator.calculateBase(generatePurchases("G03")),
-                generateSalaries(),BillCalculator.calculateBase(generateSalaries())
-                );
+        return generateProfitAndLossesReport(generateGrossSales(),generateSalesReturns(),generatePurchases("G01"),generatePurchases("G02"),generatePurchases("G03"),
+                generateSalaries());
 
+    }
+
+    private ProfitAndLossesReport generateProfitAndLossesReport(List<Bill> grossSales,List<Bill> salesReturns, List<Bill> grossPurchases, List<Bill> purchasesReturns,
+    List<Bill> externalServices, List<Bill> salariesAndWages){
+        return new ProfitAndLossesReport(periodStart,periodEnd,RFC,grossSales, calculateBase(grossSales),
+                salesReturns, calculateBase(salesReturns), grossPurchases, calculateBase(grossPurchases),
+                purchasesReturns, calculateBase(purchasesReturns),externalServices, calculateBase(externalServices),
+                salariesAndWages, calculateBase(salariesAndWages));
+    }
+
+    private double calculateBase(List<Bill> bills){
+        return BillCalculator.calculateBase(bills);
     }
 
     private List<Bill> generateSalaries() {
