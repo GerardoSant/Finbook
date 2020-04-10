@@ -53,4 +53,26 @@ public class ProfitAndLossesReportBuilder extends ReportBuilder {
     private List<Bill> generateGrossSales(){
         return BillFilter.filterByGrossSales(billList, RFC);
     }
+
+    public ProfitAndLossesReport buildReducedReport(){
+        billList= generateBillsFromPeriod(billList);
+        return generateReducedProfitAndLossesReport(generateGrossSales(),generateSalesReturns(),generatePurchases("G01"),generatePurchases("G02"),generatePurchases("G03"),
+                generateSalaries());
+    }
+
+    private ProfitAndLossesReport generateReducedProfitAndLossesReport(List<Bill> grossSales,List<Bill> salesReturns, List<Bill> grossPurchases, List<Bill> purchasesReturns,
+                                                                       List<Bill> externalServices, List<Bill> salariesAndWages) {
+        return new ProfitAndLossesReport(periodStart,periodEnd,RFC,reduceList(grossSales), calculateBase(grossSales),
+                reduceList(salesReturns), calculateBase(salesReturns), reduceList(grossPurchases), calculateBase(grossPurchases),
+                reduceList(purchasesReturns), calculateBase(purchasesReturns),reduceList(externalServices), calculateBase(externalServices),
+                reduceList(salariesAndWages), calculateBase(salariesAndWages));
+    }
+
+    private List<Bill> reduceList(List<Bill> list) {
+        try{
+            return list.subList(0,15);
+        } catch(Exception e) {
+            return list;
+        }
+    }
 }

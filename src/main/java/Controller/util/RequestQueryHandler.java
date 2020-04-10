@@ -23,6 +23,14 @@ public class RequestQueryHandler {
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
                         new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))).buildReport();
     }
+    public static ProfitAndLossesReport generateReducedProfitAndLossesReport(Request request) throws ParseException {
+        List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
+        return !thereIsPeriodQuery(request) ?
+                new ProfitAndLossesReportBuilder(billList,request.session().attribute("currentUser")).buildReducedReport() :
+                new ProfitAndLossesReportBuilder(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
+                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))).buildReducedReport();
+    }
 
     public static AmortizationReport generateAmortizationReport(Request request) throws ParseException {
         List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();

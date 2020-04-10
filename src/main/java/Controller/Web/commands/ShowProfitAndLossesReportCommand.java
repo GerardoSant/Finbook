@@ -9,11 +9,9 @@ import Model.Charts.BarChart;
 import Model.Reports.ProfitAndLossesReport;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;
-
 import java.text.ParseException;
 import java.util.HashMap;
-
-import static Controller.util.RequestQueryHandler.generateProfitAndLossesReport;
+import static Controller.util.RequestQueryHandler.generateReducedProfitAndLossesReport;
 
 public class ShowProfitAndLossesReportCommand extends FrontCommand {
 
@@ -21,7 +19,7 @@ public class ShowProfitAndLossesReportCommand extends FrontCommand {
     public String process() throws ParseException {
         LoginController.ensureUserIsLoggedIn(request, response);
         HashMap<String, Object> model = new HashMap<>();
-        ProfitAndLossesReport report = generateProfitAndLossesReport(request);
+        ProfitAndLossesReport report = generateReducedProfitAndLossesReport(request);
         BarChart barChart = new ProfitAndLossesBarChartBuilder().build(report);
         model.put("report", report);
         model.put("barChart", barChart);
