@@ -399,5 +399,32 @@
         window.location = "/bills?class=" + document.getElementById("classSelect").value;
     }
 </script>
+    <script src="/javascript/queryHandler.js"></script>
+<script>
+    refreshIfRedirected();
+
+    function refreshPeriodDates() {
+        document.getElementById("pStart").value = getFirstPeriodStart();
+        document.getElementById("pEnd").value = getFirstPeriodEnd();
+    }
+
+    function refreshBillType() {
+        document.getElementById("billTypeInput");
+        for (var opt, j = 0; opt = billTypeInput.options[j]; j++) {
+            if (opt.value == getQueryParam("billType")) {
+                billTypeInput.selectedIndex = j;
+                break;
+            }
+        }
+    }
+
+    function refreshIfRedirected(){
+        if (getQueryParam("redirected")=="true"){
+            refreshPeriodDates();
+            refreshBillType();
+            applyFilters();
+        }
+    }
+</script>
 
 #end

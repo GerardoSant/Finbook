@@ -47,6 +47,12 @@
                     <td><span class="numSpan">$number.format("currency",$bill.getSubtotal())</span></td>
                 </tr>
                 #end
+                <tr class="hidden grossSales bill" onclick="redirectToSeeMoreBills('grossSales')">
+                    <td>
+                        <i class="fas fa-long-arrow-alt-right"></i><span class="see-more">See more bills</span>
+                    </td>
+                    <td><span class="numSpan"></span></td>
+                </tr>
             <tr id="salesReturns" class="opener">
                 <td>$msg.get("PRPRT_SALESRETURNS")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getSalesReturnsBase())</span></td>
@@ -59,6 +65,12 @@
                     <td><span class="numSpan">$number.format("currency",$bill.getSubtotal())</span></td>
                 </tr>
                 #end
+                <tr class="hidden salesReturns bill" onclick="redirectToSeeMoreBills('salesReturns')">
+                    <td>
+                        <i class="fas fa-long-arrow-alt-right"></i><span class="see-more">See more bills</span>
+                    </td>
+                    <td><span class="numSpan"></span></td>
+                </tr>
             <tr class="mainResult">
                 <td>$msg.get("PRPRT_PURCHASESANDEXPENSES")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getPurchasesAndExpensesBase())</span></td>
@@ -80,6 +92,12 @@
                     <td><span class="numSpan">$number.format("currency",$bill.getSubtotal())</span></td>
                 </tr>
                 #end
+                <tr class="hidden grossPurchases bill" onclick="redirectToSeeMoreBills('grossPurchases')">
+                    <td>
+                        <i class="fas fa-long-arrow-alt-right"></i><span class="see-more">See more bills</span>
+                    </td>
+                    <td><span class="numSpan"></span></td>
+                </tr>
             <tr id="purchasesReturns" class="opener">
                 <td>$msg.get("PRPRT_PURCHASESRETURNS")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getPurchasesReturnsBase())</span></td>
@@ -92,6 +110,12 @@
                     <td><span class="numSpan">$number.format("currency",$bill.getSubtotal())</span></td>
                 </tr>
                 #end
+                <tr class="hidden purchasesReturns bill" onclick="redirectToSeeMoreBills('purchasesReturns')">
+                    <td>
+                        <i class="fas fa-long-arrow-alt-right"></i><span class="see-more">See more bills</span>
+                    </td>
+                    <td><span class="numSpan"></span></td>
+                </tr>
             <tr id="externalServices" class="opener">
                 <td>$msg.get("PRPRT_EXTERNALSERVICES")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getExternalServicesBase())</span></td>
@@ -104,6 +128,12 @@
                     <td><span class="numSpan">$number.format("currency",$bill.getSubtotal())</span></td>
                 </tr>
                 #end
+                <tr class="hidden externalServices bill" onclick="redirectToSeeMoreBills('externalServices')">
+                    <td>
+                        <i class="fas fa-long-arrow-alt-right"></i><span class="see-more">See more bills</span>
+                    </td>
+                    <td><span class="numSpan"></span></td>
+                </tr>
             <tr id="salariesAndWages" class="opener">
                 <td>$msg.get("PRPRT_SALARIESANDWAGES")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getSalariesAndWagesBase())</span></td>
@@ -116,6 +146,12 @@
                     <td><span class="numSpan">$number.format("currency",$bill.getSubtotal())</span></td>
                 </tr>
                 #end
+                <tr class="hidden salariesAndWages bill" onclick="redirectToSeeMoreBills('salariesAndWages')">
+                    <td>
+                        <i class="fas fa-long-arrow-alt-right"></i><span class="see-more">See more bills</span>
+                    </td>
+                    <td><span class="numSpan"></span></td>
+                </tr>
             <tr class="mainResult">
                 <td>$msg.get("PRPRT_TOTALPROFIT")</td>
                 <td><span class="numSpan">$number.format("currency",$report.getProfit())</span></td>
@@ -290,6 +326,7 @@
 </script>
 
 <script src="/javascript/reportsControl.js"></script>
+<script src="/javascript/profitAndLossesReportControl.js"></script>
 
 <script>
     setPeriodStartDate($report.getPeriodStart().getYear(),$report.getPeriodStart().getMonth(),$report.getPeriodStart().getDate())
