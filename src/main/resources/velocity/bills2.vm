@@ -100,6 +100,11 @@
         min-width:110px;
     }
 
+    .download-button{
+        margin-left:30px;
+        color: rgb(62,68,74)
+    }
+
     #scrollablePanel{
         overflow-y: scroll;
         height:65vh
@@ -206,6 +211,7 @@
                     #end
                     <th onclick="changeOrder(this)" id="total">Total <i class="fas fa-sort"></i></th>
                     <th onclick="changeOrder(this)" id="currency">$msg.get("GNRL_CURRENCY") <i class="fas fa-sort"></i></th>
+                    <th>Download</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -221,6 +227,11 @@
                         #end
                         <td>$math.roundTo(2, $bill.getTotal())</td>
                         <td>$bill.getCurrency()</td>
+                        <td>
+                            <a href="bills/$bill.getUUID()/bill.xml" download="$bill.getUUID()">
+                            <i class="fas fa-download download-button" onclick="preventRedirect()"></i>
+                            </a>
+                        </td>
                     </tr>
                     #end
                 </tbody>
@@ -233,7 +244,11 @@
 
 </div>
 
-
+<script>
+    document.getElementById("download_button").addEventListener("click", function(event){
+        event.preventDefault();
+    });
+</script>
 <script>
    function handleScroll(elem){
        var elemScrollPosition = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
@@ -282,10 +297,18 @@
 </script>
 
 <script>
-
+    var redirectPrevented;
+    function preventRedirect(){
+        redirectPrevented=true;
+    }
 
     $('#myTable').on('click', '*[data-href]', function () {
-        window.location = /bills/ + $(this).data("href");
+        if (redirectPrevented) {
+            redirectPrevented=false;
+        } else{
+            window.location = /bills/ + $(this).data("href");
+        }
+
     })
 </script>
 
@@ -389,6 +412,10 @@
         newCell5.innerHTML = bill.total.toFixed(2);
         var newCell6 = newRow.insertCell(5);
         newCell6.innerHTML = bill.currency;
+        var newCell7 = newRow.insertCell(6);
+        $(newCell7).append('<a href="bills/'+bill.UUID+'/bill.xml" download="'+bill.UUID+'">\n' +
+                '<i class="fas fa-download download-button" onclick="preventRedirect()"></i>\n' +
+                '</a>');
 
     }
 </script>
