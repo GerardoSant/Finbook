@@ -6,13 +6,29 @@ $(document).ready(function ($) {
     });
 });
 
+
+
+
 //Redireccionar con los clicks en boxes a algun reporte.
+
+const urlParams = new URLSearchParams(window.location.search);
+
 function redirectWithPeriod(route) {
-    const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('periodStart') == null) window.location = route;
     else window.location = route + "?periodStart=" + urlParams.get('periodStart') + "&" + "periodEnd=" + urlParams.get('periodEnd');
 }
 
+
+//Actualizar modal
+
+function updateModal(){
+    if (urlParams.get('periodStart') != null) {
+        document.getElementById("pStart").value=urlParams.get('periodStart');
+        document.getElementById("pEnd").value=urlParams.get('periodEnd');
+    }
+}
+
+updateModal()
 
 //Resizing de charts
 
