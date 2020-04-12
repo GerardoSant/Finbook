@@ -75,6 +75,8 @@
                 </div>
             </div>
         </ul>
+    #else
+        <ul class="navbar-nav ml-auto"></ul>
     #end
 
 
