@@ -40,7 +40,6 @@ public class LoginController {
                 response.redirect(Path.Web.LOGIN);
             }
         } else{
-            request.session().attribute("currentUser", getQueryUsername(request));
             request.session().attribute("user", new UserDao().getUser(getQueryUsername(request)));
             response.redirect(Path.Web.DASHBOARD);
         }

@@ -13,7 +13,7 @@
     #parse("/velocity/layout/overlay.vm")
 </header>
 
-<div style="height:80%">
+<div id="bodyContent">
     $bodyContent
 </div>
 

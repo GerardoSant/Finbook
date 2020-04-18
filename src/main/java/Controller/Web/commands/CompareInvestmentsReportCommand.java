@@ -18,6 +18,8 @@ import Controller.util.ViewUtil;
 import java.util.HashMap;
 import java.util.List;
 
+import static Controller.util.RequestQueryHandler.generateInvestmentsReport;
+
 public class CompareInvestmentsReportCommand extends FrontCommand {
 
     @Override
@@ -37,20 +39,7 @@ public class CompareInvestmentsReportCommand extends FrontCommand {
         return ViewUtil.render(request, model, Path.Template.COMPARE_INVESTMENTS_REPORT);
     }
 
-    private static InvestmentsReport generateInvestmentsReport(Request request, String report) {
-        try{
-            List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
-            return request.queryParams("periodStart")== null ?
-                    new InvestmentReportBuilder(billList,request.session().attribute("currentUser")).buildReport():
-                    new InvestmentReportBuilder(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
-                            new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart"+report)),
-                            new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"+report))
-                    ).buildReport();
-        } catch(Exception e){
-            return null;
-        }
 
-    }
 
 
 }

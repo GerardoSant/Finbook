@@ -14,8 +14,8 @@ public class SQLiteUserLoader extends SQLiteLoader implements UserLoader {
     }
 
     private User selectUser(String RFC) {
-        RFC="\"" + RFC + "\"";
-        String sql = "SELECT * FROM empresas where receiverRFC=" + RFC;
+        String queryRFC="\"" + RFC + "\"";
+        String sql = "SELECT * FROM empresas where receiverRFC=" + queryRFC;
         try (Connection conn = this.connect();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)){

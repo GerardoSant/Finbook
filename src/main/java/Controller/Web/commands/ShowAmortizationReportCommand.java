@@ -20,6 +20,8 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
+import static Controller.util.RequestQueryHandler.generateAmortizationReport;
+
 public class ShowAmortizationReportCommand extends FrontCommand {
 
     @Override
@@ -36,11 +38,5 @@ public class ShowAmortizationReportCommand extends FrontCommand {
         return ViewUtil.render(request,model, Path.Template.AMORTIZATION_REPORT);
     }
 
-    private static AmortizationReport generateAmortizationReport(Request request) throws ParseException {
-        List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
-        return request.queryParams("periodStart")== null ?
-                new AmortizationReportBuilder(billList,request.session().attribute("currentUser")).buildReport() :
-                new AmortizationReportBuilder(billList, request.session().attribute("currentUser"), new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
-                        new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))).buildReport();
-    }
+
 }

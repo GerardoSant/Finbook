@@ -16,11 +16,11 @@ public class SendBillByEmailCommand extends FrontCommand {
     public String process() {
         LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
-        Bill bill = new BillsDao(getSessionCurrentUser(request)).getBillByUUID(getParamUUID(request));
+        Bill bill = new BillsDao(getSessionUser(request).getCompanyRFC()).getBillByUUID(getParamUUID(request));
         model.put("bill", bill);
         request.session().attribute("redirected", true);
         try {
-            new SMTPMailSender().sendBillByMail(getParamEmail(request), bill, request.session().attribute("user"));
+            new SMTPMailSender().sendBillByMail(getParamEmail(request), bill, getSessionUser(request));
             request.session().attribute("emailSent", true);
         } catch (Exception e) {
         }

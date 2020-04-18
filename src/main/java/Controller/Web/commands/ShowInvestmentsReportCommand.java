@@ -17,6 +17,9 @@ import Controller.util.ViewUtil;
 import java.util.HashMap;
 import java.util.List;
 
+import static Controller.util.RequestQueryHandler.generateInvestmentsReport;
+import static Controller.util.RequestUtil.getSessionUser;
+
 public class ShowInvestmentsReportCommand extends FrontCommand {
     @Override
     public String process() {
@@ -30,17 +33,5 @@ public class ShowInvestmentsReportCommand extends FrontCommand {
         return ViewUtil.render(request,model, Path.Template.INVESTMENT_REPORT);
     }
 
-    private static InvestmentsReport generateInvestmentsReport(Request request) {
-        try{
-            List<Bill> billList =new BillsDao(request.session().attribute("currentUser")).getAllBills();
-            return request.queryParams("periodStart")== null ?
-                    new InvestmentReportBuilder(billList,request.session().attribute("currentUser")).buildReport():
-                    new InvestmentReportBuilder(new BillsDao(request.session().attribute("currentUser")).getAllBills(),request.session().attribute("currentUser"),
-                            new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")),
-                            new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd"))
-                    ).buildReport();
-        } catch(Exception e){
-            return null;
-        }
-    }
+
 }

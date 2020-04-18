@@ -18,7 +18,7 @@ public class ShowBillCommand extends FrontCommand {
     public String process() {
         LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
-        Bill bill = new BillsDao(request.session().attribute("currentUser")).getBillByUUID(getParamUUID(request));
+        Bill bill = new BillsDao(getSessionUser(request).getCompanyRFC()).getBillByUUID(getParamUUID(request));
         model.put("bill", bill);
         model.put("redirected", removeSessionAttrLoginRedirect(request));
         model.put("emailSent", removeSessionAttrEmailSent(request));

@@ -16,9 +16,9 @@ import Controller.util.ViewUtil;
 import java.util.HashMap;
 import java.util.List;
 
+import static Controller.util.RequestQueryHandler.generateBillTimeline;
+import static Controller.util.RequestUtil.*;
 import static java.lang.Double.parseDouble;
-import static Controller.util.RequestUtil.getSessionCurrentUser;
-import static Controller.util.RequestUtil.queryParamIsTrue;
 
 public class ShowBillsTimelineCommand extends FrontCommand {
     @Override
@@ -31,7 +31,7 @@ public class ShowBillsTimelineCommand extends FrontCommand {
         model.put("timeline", timeline);
         model.put("math", new MathTool());
         model.put("dateTool", new DateTool());
-        model.put("RFC", getSessionCurrentUser(request));
+        model.put("RFC", getSessionUser(request).getCompanyRFC());
         model.put("number", new NumberTool());
         return ViewUtil.render(request, model, Path.Template.BILLS_TIMELINE);
     }
@@ -44,28 +44,5 @@ public class ShowBillsTimelineCommand extends FrontCommand {
         }
     }
 
-    private static BillTimeline generateBillTimeline(Request request) {
-        try{
-            List<Bill> billList = new BillsDao(getSessionCurrentUser(request)).getAllBills();
-            if (request.queryParams("min") == null && request.queryParams("periodStart") == null) {
-                return new BillTimelineBuilder().build(getSessionCurrentUser(request), billList, queryParamIsTrue(request,"ascendent"), true, true, true, true);
-            }
-            if (request.queryParams("min") != null && !request.queryParams("min").isEmpty()) {
-                if (!request.queryParams("periodStart").isEmpty()) {
-                    return new BillTimelineBuilder().build(getSessionCurrentUser(request), billList, new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")), new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd")), queryParamIsTrue(request,"ascendent"), parseDouble(request.queryParams("min")), parseDouble(request.queryParams("max")), queryParamIsTrue(request, "incomes"), queryParamIsTrue(request, "expenses"), queryParamIsTrue(request, "investments"), queryParamIsTrue(request, "salaries"));
-                } else {
-                    return new BillTimelineBuilder().build(getSessionCurrentUser(request), billList, queryParamIsTrue(request,"ascendent"), parseDouble(request.queryParams("min")), parseDouble(request.queryParams("max")), queryParamIsTrue(request, "incomes"), queryParamIsTrue(request, "expenses"), queryParamIsTrue(request, "investments"), queryParamIsTrue(request, "salaries"));
-                }
-            } else {
-                if (request.queryParams("periodStart") != null && !request.queryParams("periodStart").isEmpty()) {
-                    return new BillTimelineBuilder().build(getSessionCurrentUser(request), billList, new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodStart")), new DateParser("yyyy-MM-dd").parseDate(request.queryParams("periodEnd")), queryParamIsTrue(request,"ascendent"), queryParamIsTrue(request, "incomes"), queryParamIsTrue(request, "expenses"), queryParamIsTrue(request, "investments"), queryParamIsTrue(request, "salaries"));
-                } else {
-                    return new BillTimelineBuilder().build(getSessionCurrentUser(request), billList, queryParamIsTrue(request,"ascendent"), queryParamIsTrue(request, "incomes"), queryParamIsTrue(request, "expenses"), queryParamIsTrue(request, "investments"), queryParamIsTrue(request, "salaries"));
-                }
-            }
-        } catch (Exception e){
-            return null;
-        }
 
-    }
 }

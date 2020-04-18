@@ -14,12 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import static Controller.util.RequestUtil.getSessionCurrentUser;
+import static Controller.util.RequestUtil.getSessionUser;
 
 public class ShowBillsCommand extends FrontCommand {
     @Override
     public String process() {
         LoginController.ensureUserIsLoggedIn(request,response);
-        List<Bill> billList = new BillsDao(getSessionCurrentUser(request)).getAllBills();
+        List<Bill> billList = new BillsDao(getSessionUser(request).getCompanyRFC()).getAllBills();
         HashMap<String, Object> model = new HashMap<>();
         billList=  handleQuery(billList, model);
         List<Bill> initialBillList = billList.subList(0,30);
@@ -35,9 +36,9 @@ public class ShowBillsCommand extends FrontCommand {
         if(request.queryParams("class")!=null){
             if (request.queryParams("class").equals("received")) {
                 model.put("received", true);
-                return BillFilter.filterByReceived(billList, getSessionCurrentUser(request));
+                return BillFilter.filterByReceived(billList, getSessionUser(request).getCompanyRFC());
             }
         }
-        return BillFilter.filterByIssued(billList,getSessionCurrentUser(request));
+        return BillFilter.filterByIssued(billList,getSessionUser(request).getCompanyRFC());
     }
 }
