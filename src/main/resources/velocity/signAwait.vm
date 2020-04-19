@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/signAwait.css">
 
 <form id="logInForm" action="/login" method="post">
-    <input class="form-control" id="id" name="id" value="$textToSign">
+    <input class="form-control" name="sign" value="$textToSign">
 </form>
 <div class="centered-div">
     <div class="text-center">

@@ -50,6 +50,15 @@ public class FrontController {
     }
 
 
+
+
+
+
+
+
+
+    /* AS */
+
     public static Route doGet = (Request request, Response response) -> {
       FrontCommand command = getCommand(request);
       command.init(request,response);

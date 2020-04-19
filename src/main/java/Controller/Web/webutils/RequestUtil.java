@@ -1,6 +1,7 @@
 package Controller.Web.webutils;
 
 import Model.User.User;
+import View.daos.UserDao;
 import spark.Request;
 
 public class RequestUtil {
@@ -13,6 +14,10 @@ public class RequestUtil {
     }
 
     public static User getSessionUser(Request request) { return request.session().attribute("user");}
+
+    public static void setSessionUser(Request request, User user){
+        request.session().attribute("user", user);
+    }
 
     public static String getQueryLocale(Request request) {
         return request.queryParams("locale");

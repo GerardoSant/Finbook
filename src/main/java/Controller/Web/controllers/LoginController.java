@@ -15,6 +15,7 @@ import java.util.Map;
 import static Controller.Web.webutils.RequestUtil.*;
 
 public class LoginController {
+
     public static Route serveLoginPage = (request, response ) -> {
         Map<String, Object> model = new HashMap<>();
         model.put("loggedOut", removeSessionAttrLoggedOut(request));
@@ -23,34 +24,50 @@ public class LoginController {
     };
 
     public static Route handleLoginPost = (request, response) -> {
-        if (request.queryParams("id")!=null) {
-            byte[] sign = SignWebSocket.messages.get(request.queryParams("id"));
-            for (byte b : sign) {
-                System.out.print(b+",");
-            }
-            SignWebSocket.messages.remove(request.queryParams("id"));
-            if (/*new Verifier(sign).validateSign()*/true) {
-                request.session().attribute("currentUser", "E-5756930");
-                request.session().attribute("user", new UserDao().getUser("E-5756930"));
-                response.redirect(Path.Web.DASHBOARD);
-            } else{
-                response.redirect(Path.Web.LOGIN);
-            }
-        } else{
-            request.session().attribute("user", new UserDao().getUser(getQueryUsername(request)));
-            response.redirect(Path.Web.DASHBOARD);
+        if(userLogInBySign(request)){
+            handleLogInBySign(request, response); }
+        else{
+            handleStandardLogIn(request, response);
         }
         return null;
     };
 
+    private static void handleLogInBySign(Request request, Response response) {
+        byte[] sign = SignWebSocket.messages.get(request.queryParams("sign"));
+        SignWebSocket.messages.remove(request.queryParams("sign"));
+        if (/*new Verifier(sign).validateSign()*/true) {
+            setSessionUser(request,new UserDao().getUser("E-5756930"));
+            redirecToDashboard(response);
+        } else{
+            response.redirect(Path.Web.LOGIN);
+        }
+    }
+
+    private static void handleStandardLogIn(Request request, Response response) {
+        logInUser(request, getQueryUsername(request));
+        redirecToDashboard(response);
+    }
+
+    private static void logInUser(Request request, String userRFC) {
+        setSessionUser(request,new UserDao().getUser(userRFC));
+    }
+
+
+    private static boolean userLogInBySign(Request request) {
+        return request.queryParams("sign")!=null;
+    }
+
     public static Route handleLogoutPost = (request, response ) -> {
-        Map<String, Object> model = new HashMap<>();
-        request.session().removeAttribute("currentUser");
-        request.session().removeAttribute("user");
-        request.session().attribute("loggedOut", true);
-        response.redirect(Path.Web.LOGIN);
+        logOutUser(request, response);
+        redirectToLogin(response);
         return null;
     };
+
+    private static void logOutUser(Request request, Response response) {
+        request.session().removeAttribute("user");
+        request.session().attribute("loggedOut", true);
+    }
+
     public static Route serveSignAwait = (request, response ) -> {
         Map<String, Object> model = new HashMap<>();
         model.put("textToSign", TextGenerator.generateRandomText());
@@ -59,9 +76,22 @@ public class LoginController {
 
 
     public static void ensureUserIsLoggedIn(Request request, Response response) {
-        if (request.session().attribute("user") == null){
+        if (userIsNotLoggedIn(request)){
             request.session().attribute("redirected", true);
-            response.redirect(Path.Web.LOGIN);
+            redirectToLogin(response);
         }
     }
+    private static boolean userIsNotLoggedIn(Request request) {
+        return getSessionUser(request) == null;
+    }
+
+    private static void redirectToLogin(Response response) {
+        response.redirect(Path.Web.LOGIN);
+    }
+
+    private static void redirecToDashboard(Response response){
+        response.redirect(Path.Web.DASHBOARD);
+    }
+
+
 }

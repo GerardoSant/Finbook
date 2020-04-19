@@ -34,21 +34,24 @@ public class SparkApp {
 
     }
 
+    private static void configureSpark() {
+        staticFiles.location("/public");
+        staticFiles.expireTime(600L);
+        port(8080);
+    }
+
+    private static void configureWebSocket() {
+        webSocket("/echo", SignWebSocket.class);
+    }
+
+    private static void setUpBeforeFilters() {
+        before("*", SparkFilters.handleLocaleChange);
+    }
+
     private static void setUpRoutes() {
         setUpGetRoutes();
         setUpPostRoutes();
         setUpAjaxPostRoutes();
-    }
-
-    private static void setUpPostRoutes() {
-        post(Path.Web.LOGIN, LoginController.handleLoginPost);
-        post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
-    }
-
-    private static void setUpAjaxPostRoutes() {
-        post(Path.Web.UPLOAD, FrontController.runCommand("UploadBills"));
-        post(Path.Web.FILTER_BILLS, FrontController.runCommand("FilterBills"));
-        post(Path.Web.LOAD_BILLS, FrontController.runCommand("LoadBills"));
     }
 
     private static void setUpGetRoutes() {
@@ -74,17 +77,22 @@ public class SparkApp {
         get(Path.Web.SIGN_AWAIT, LoginController.serveSignAwait);
     }
 
-    private static void setUpBeforeFilters() {
-        before("*", SparkFilters.handleLocaleChange);
+    private static void setUpPostRoutes() {
+        post(Path.Web.LOGIN, LoginController.handleLoginPost);
+        post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
     }
 
-    private static void configureWebSocket() {
-        webSocket("/echo", SignWebSocket.class);
+    private static void setUpAjaxPostRoutes() {
+        post(Path.Web.UPLOAD, FrontController.runCommand("UploadBills"));
+        post(Path.Web.FILTER_BILLS, FrontController.runCommand("FilterBills"));
+        post(Path.Web.LOAD_BILLS, FrontController.runCommand("LoadBills"));
     }
 
-    private static void configureSpark() {
-        staticFiles.location("/public");
-        staticFiles.expireTime(600L);
-        port(8080);
-    }
+
+
+
+
+
+
+
 }
