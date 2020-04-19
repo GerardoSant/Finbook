@@ -3,6 +3,8 @@ package Controller.builders.charts;
 import Model.Charts.BarChart;
 import Model.Bills.BillsDistribution;
 
+import static Controller.util.BillConstants.Type.*;
+
 public class BillsDistributionBarChartBuilder {
     public BarChart build(BillsDistribution billsDistribution){
         BarChart barChart = new BarChart();
@@ -11,10 +13,10 @@ public class BillsDistributionBarChartBuilder {
     }
 
     private void addValues(BarChart barChart, BillsDistribution billsDistribution){
-        barChart.addBar("Sales",billsDistribution.getSalesAmount());
-        barChart.addBar("Purchases", billsDistribution.getPurchasesAndServicesAmount());
-        barChart.addBar("Investments", billsDistribution.getInvestmentsAmount());
-        barChart.addBar("Salaries", billsDistribution.getSalariesAmount());
+        barChart.addBar(SALES,billsDistribution.getSalesAmount());
+        barChart.addBar(PURCHASES, billsDistribution.getPurchasesAndServicesAmount());
+        barChart.addBar(INVESTMENTS, billsDistribution.getInvestmentsAmount());
+        barChart.addBar(SALARIES, billsDistribution.getSalariesAmount());
     }
 
 }

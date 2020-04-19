@@ -4,6 +4,9 @@ import Model.Charts.BarChart;
 import Model.Reports.ProfitAndLossesReport;
 import Model.Reports.Report;
 
+import static Controller.util.BillConstants.Report.EXPENSES;
+import static Controller.util.BillConstants.Report.INCOMES;
+
 public class ProfitAndLossesBarChartBuilder implements ReportBarChartBuilder {
     @Override
     public BarChart build(Report report) {
@@ -14,7 +17,7 @@ public class ProfitAndLossesBarChartBuilder implements ReportBarChartBuilder {
     }
 
     private void addValues(BarChart barChart, ProfitAndLossesReport profitAndLossesReport) {
-        barChart.addBar("Incomes", profitAndLossesReport.getSalesAndIncomesBase());
-        barChart.addBar("Expenses", profitAndLossesReport.getPurchasesAndExpensesBase());
+        barChart.addBar(INCOMES, profitAndLossesReport.getSalesAndIncomesBase());
+        barChart.addBar(EXPENSES, profitAndLossesReport.getPurchasesAndExpensesBase());
     }
 }

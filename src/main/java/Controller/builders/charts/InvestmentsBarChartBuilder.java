@@ -4,6 +4,8 @@ import Model.Charts.BarChart;
 import Model.Reports.InvestmentsReport;
 import Model.Reports.Report;
 
+import static Controller.util.BillConstants.Report.*;
+
 public class InvestmentsBarChartBuilder implements ReportBarChartBuilder {
     @Override
     public BarChart build(Report report) {
@@ -14,14 +16,14 @@ public class InvestmentsBarChartBuilder implements ReportBarChartBuilder {
     }
 
     private void addValues(BarChart barChart, InvestmentsReport investmentsReport) {
-        barChart.addBar("Buildings", investmentsReport.calculateBase(investmentsReport.getBuildings()));
-        barChart.addBar("Office",investmentsReport.calculateBase(investmentsReport.getOfficeEquipment()));
-        barChart.addBar("Transport", investmentsReport.calculateBase(investmentsReport.getTransportEquipment()));
-        barChart.addBar("Computational", investmentsReport.calculateBase(investmentsReport.getComputationalEquipment()));
-        barChart.addBar("Models&Tools", investmentsReport.calculateBase(investmentsReport.getModelsAndTools()));
-        barChart.addBar("Telephone", investmentsReport.calculateBase(investmentsReport.getTelephoneCommunications()));
-        barChart.addBar("Satellite", investmentsReport.calculateBase(investmentsReport.getSatelliteCommunications()));
-        barChart.addBar("Machinery&Others", investmentsReport.calculateBase(investmentsReport.getOtherMachineryAndEquipment()));
+        barChart.addBar(BUILDINGS, investmentsReport.calculateBase(investmentsReport.getBuildings()));
+        barChart.addBar(OFFICE,investmentsReport.calculateBase(investmentsReport.getOfficeEquipment()));
+        barChart.addBar(TRANSPORT, investmentsReport.calculateBase(investmentsReport.getTransportEquipment()));
+        barChart.addBar(COMPUTATIONAL, investmentsReport.calculateBase(investmentsReport.getComputationalEquipment()));
+        barChart.addBar(MODELS_AND_TOOLS, investmentsReport.calculateBase(investmentsReport.getModelsAndTools()));
+        barChart.addBar(TELEPHONE, investmentsReport.calculateBase(investmentsReport.getTelephoneCommunications()));
+        barChart.addBar(SATELLITE, investmentsReport.calculateBase(investmentsReport.getSatelliteCommunications()));
+        barChart.addBar(MACHINERY_AND_OTHERS, investmentsReport.calculateBase(investmentsReport.getOtherMachineryAndEquipment()));
     }
 
 

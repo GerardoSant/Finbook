@@ -4,6 +4,8 @@ import Model.Reports.AmortizationReport;
 import Model.Charts.BarChart;
 import Model.Reports.Report;
 
+import static Controller.util.BillConstants.Report.*;
+
 public class AmortizationBarChartBuilder implements ReportBarChartBuilder {
 
     @Override
@@ -15,14 +17,14 @@ public class AmortizationBarChartBuilder implements ReportBarChartBuilder {
     }
 
     private void addValues(BarChart barChart, AmortizationReport amortizationReport) {
-        barChart.addBar("Buildings", amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getBuildings()));
-        barChart.addBar("Office", amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getOfficeEquipment()));
-        barChart.addBar("Transport", amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getTransportEquipment()));
-        barChart.addBar("Computational", amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getComputationalEquipment()));
-        barChart.addBar("Models&Tools", amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getModelsAndTools()));
-        barChart.addBar("Telephone", amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getTelephoneCommunications()));
-        barChart.addBar("Satellite", amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getSatelliteCommunications()));
-        barChart.addBar("Machinery&Others", amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getOtherMachineryAndEquipment()));
+        barChart.addBar(BUILDINGS, amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getBuildings()));
+        barChart.addBar(OFFICE, amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getOfficeEquipment()));
+        barChart.addBar(TRANSPORT, amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getTransportEquipment()));
+        barChart.addBar(COMPUTATIONAL, amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getComputationalEquipment()));
+        barChart.addBar(MODELS_AND_TOOLS, amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getModelsAndTools()));
+        barChart.addBar(TELEPHONE, amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getTelephoneCommunications()));
+        barChart.addBar(SATELLITE, amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getSatelliteCommunications()));
+        barChart.addBar(MACHINERY_AND_OTHERS, amortizationReport.calculateAccumulatedAmortizationPercentage(amortizationReport.getOtherMachineryAndEquipment()));
     }
 
 

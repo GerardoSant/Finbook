@@ -10,13 +10,13 @@ import java.util.List;
 
 public class BillTimelineBuilder {
     public BillTimeline build(String RFC, List<Bill> billList, boolean ascendent, double minTotal, double maxTotal, boolean incomes, boolean expenses, boolean investments, boolean salaries) {
-        billList = buildBillList(RFC, billList, minTotal, maxTotal, incomes, expenses, investments, salaries);
+        billList = filterBillList(RFC, billList, minTotal, maxTotal, incomes, expenses, investments, salaries);
         return new BillTimeline(billList,ascendent);
     }
 
     public BillTimeline build(String RFC, List<Bill> billList, Date periodStart, Date periodEnd,
                               boolean ascendent, double minTotal, double maxTotal, boolean incomes, boolean expenses, boolean investments, boolean salaries) {
-        billList = buildBillList(RFC, billList, minTotal, maxTotal, incomes, expenses, investments, salaries);
+        billList = filterBillList(RFC, billList, minTotal, maxTotal, incomes, expenses, investments, salaries);
         return new BillTimeline(billList,ascendent,periodStart,periodEnd);
     }
 
@@ -31,7 +31,7 @@ public class BillTimelineBuilder {
     }
 
 
-    private List<Bill> buildBillList(String RFC, List<Bill> billList, double minTotal, double maxTotal, boolean incomes, boolean expenses, boolean investments, boolean salaries) {
+    private List<Bill> filterBillList(String RFC, List<Bill> billList, double minTotal, double maxTotal, boolean incomes, boolean expenses, boolean investments, boolean salaries) {
         billList = BillFilter.filterByTotalRange(billList, minTotal, maxTotal);
         billList = filterByBillType(RFC, billList, incomes, expenses, investments, salaries);
         return billList;
