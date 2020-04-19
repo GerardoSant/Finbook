@@ -15,11 +15,7 @@ public class JSONParser {
 
     public byte[] getByteArray(String key){
         String[] stringArray= splitByCommas(jsonObject.get(key).toString());
-        byte[] byteArray = new byte[stringArray.length];
-        for (int i = 0; i<byteArray.length;i++){
-            byteArray[i]= Byte.parseByte(stringArray[i]);
-        }
-        return byteArray;
+        return toByteArray(stringArray);
     }
 
     private String[] splitByCommas(String text) {
@@ -29,4 +25,16 @@ public class JSONParser {
     private String removeBrackets(String text) {
         return text.substring(1,text.length()-1);
     }
+
+    private byte[] toByteArray(String[] stringArray) {
+        byte[] byteArray = new byte[stringArray.length];
+        for (int i = 0; i<byteArray.length;i++){
+            byteArray[i]= Byte.parseByte(stringArray[i]);
+        }
+        return byteArray;
+    }
+
+
+
+
 }
