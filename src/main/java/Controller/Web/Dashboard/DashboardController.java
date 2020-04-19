@@ -1,13 +1,9 @@
 package Controller.Web.Dashboard;
 
-import View.daos.BillsDao;
 import Controller.builders.charts.AmortizationBarChartBuilder;
 import Controller.builders.charts.ProfitAndLossesBarChartBuilder;
 import Controller.builders.charts.BillsDistributionBarChartBuilder;
 import Controller.builders.charts.Top5SalesBarChartBuilder;
-import Controller.builders.reports.AmortizationReportBuilder;
-import Controller.builders.reports.ProfitAndLossesReportBuilder;
-import Model.Bills.Bill;
 import Model.Bills.BillsDistribution;
 import Model.Bills.Top5Sales;
 import Model.Charts.BarChart;
@@ -16,18 +12,14 @@ import Model.Reports.ProfitAndLossesReport;
 import Controller.Web.login.LoginController;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.NumberTool;
-import spark.Request;
 import spark.Route;
-import Controller.util.DateParser;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 
-import java.text.ParseException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static Controller.util.RequestQueryHandler.*;
+import static Controller.Web.webutils.RequestQueryHandler.*;
 
 public class DashboardController {
 

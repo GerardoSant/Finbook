@@ -4,12 +4,12 @@ import Controller.Web.login.LoginController;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 
 import java.util.HashMap;
 
-import static Controller.util.RequestUtil.getSessionCurrentUser;
+import static Controller.Web.webutils.RequestUtil.getSessionCurrentUser;
 
 public class ShinyController {
     public static Route shinyExample = (Request request, Response response) -> {

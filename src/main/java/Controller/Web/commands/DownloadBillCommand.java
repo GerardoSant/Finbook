@@ -5,8 +5,8 @@ import Controller.Web.login.LoginController;
 import Model.Bills.Bill;
 import View.daos.BillsDao;
 
-import static Controller.util.RequestUtil.getParamUUID;
-import static Controller.util.RequestUtil.getSessionUser;
+import static Controller.Web.webutils.RequestUtil.getParamUUID;
+import static Controller.Web.webutils.RequestUtil.getSessionUser;
 
 public class DownloadBillCommand extends FrontCommand {
     @Override

@@ -3,24 +3,18 @@ package Controller.Web.commands;
 import Controller.Web.FrontCommand;
 import Controller.Web.login.LoginController;
 import Controller.builders.charts.AmortizationBarChartBuilder;
-import Controller.builders.reports.AmortizationReportBuilder;
-import Controller.util.DateParser;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
-import Model.Bills.Bill;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 import Model.Charts.BarChart;
 import Model.Reports.AmortizationReport;
-import View.daos.BillsDao;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;
-import spark.Request;
 
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.List;
 
-import static Controller.util.RequestQueryHandler.generateAmortizationReport;
+import static Controller.Web.webutils.RequestQueryHandler.generateAmortizationReport;
 
 public class ShowAmortizationReportCommand extends FrontCommand {
 

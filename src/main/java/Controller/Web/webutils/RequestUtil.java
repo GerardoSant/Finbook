@@ -1,4 +1,4 @@
-package Controller.util;
+package Controller.Web.webutils;
 
 import Model.User.User;
 import spark.Request;

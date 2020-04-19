@@ -1,6 +1,6 @@
-package Controller.util;
+package Controller.Web.webutils;
 
-import View.daos.UserDao;
+import Controller.util.MessageBundle;
 import org.apache.velocity.app.VelocityEngine;
 import org.eclipse.jetty.http.HttpStatus;
 import spark.ModelAndView;
@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import static Controller.util.RequestUtil.getSessionCurrentUser;
-import static Controller.util.RequestUtil.getSessionLocale;
+import static Controller.Web.webutils.RequestUtil.getSessionCurrentUser;
+import static Controller.Web.webutils.RequestUtil.getSessionLocale;
 
 public class ViewUtil {
     public static String render(Request request, Map model, String templatePath){

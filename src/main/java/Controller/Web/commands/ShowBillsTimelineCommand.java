@@ -1,24 +1,17 @@
 package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
-import Model.Bills.Bill;
 import Model.Bills.BillTimeline;
-import Controller.builders.other.BillTimelineBuilder;
-import View.daos.BillsDao;
 import Controller.Web.login.LoginController;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;
-import spark.Request;
-import Controller.util.DateParser;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 import java.util.HashMap;
-import java.util.List;
 
-import static Controller.util.RequestQueryHandler.generateBillTimeline;
-import static Controller.util.RequestUtil.*;
-import static java.lang.Double.parseDouble;
+import static Controller.Web.webutils.RequestQueryHandler.generateBillTimeline;
+import static Controller.Web.webutils.RequestUtil.*;
 
 public class ShowBillsTimelineCommand extends FrontCommand {
     @Override

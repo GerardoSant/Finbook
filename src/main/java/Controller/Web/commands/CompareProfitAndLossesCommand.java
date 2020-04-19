@@ -3,23 +3,17 @@ package Controller.Web.commands;
 import Controller.Web.FrontCommand;
 import Controller.Web.login.LoginController;
 import Controller.builders.charts.ProfitAndLossesBarChartBuilder;
-import Controller.builders.reports.ProfitAndLossesReportBuilder;
-import Controller.util.DateParser;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
-import Model.Bills.Bill;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 import Model.Charts.BarChart;
 import Model.Reports.ProfitAndLossesReport;
-import View.daos.BillsDao;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;
-import spark.Request;
 
 import java.text.ParseException;
 import java.util.HashMap;
-import java.util.List;
 
-import static Controller.util.RequestQueryHandler.generateProfitAndLossesReport;
+import static Controller.Web.webutils.RequestQueryHandler.generateProfitAndLossesReport;
 
 public class CompareProfitAndLossesCommand extends FrontCommand {
     @Override

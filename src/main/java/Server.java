@@ -8,11 +8,11 @@ import Controller.Web.Dashboard.DashboardController;
 import Controller.Web.reports.ReportController;
 
 import WebSocket.EchoWebSocket;
-import Controller.util.SparkFilters;
-import Controller.util.Path;
+import Controller.Web.webutils.SparkFilters;
+import Controller.Web.webutils.Path;
 import static spark.Spark.*;
 
-import static Controller.util.ViewUtil.notFound;
+import static Controller.Web.webutils.ViewUtil.notFound;
 
 public class Server {
     public static void main(String[] args) {

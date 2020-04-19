@@ -1,10 +1,10 @@
-package Controller.util;
+package Controller.Web.webutils;
 
 import spark.Filter;
 import spark.Request;
 import spark.Response;
 
-import static Controller.util.RequestUtil.getQueryLocale;
+import static Controller.Web.webutils.RequestUtil.getQueryLocale;
 
 public class SparkFilters {
 

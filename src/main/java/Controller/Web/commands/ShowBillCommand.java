@@ -5,13 +5,13 @@ import Controller.Web.login.LoginController;
 import Model.Bills.Bill;
 import View.daos.BillsDao;
 import Implementations.GeoNamesLocationLoader;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 import org.apache.velocity.tools.generic.DateTool;
 
 import java.util.HashMap;
 
-import static Controller.util.RequestUtil.*;
+import static Controller.Web.webutils.RequestUtil.*;
 
 public class ShowBillCommand extends FrontCommand {
     @Override

@@ -3,13 +3,11 @@ package Controller.Web.index;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static Controller.util.RequestUtil.getSessionLocale;
 
 public class IndexController{
     

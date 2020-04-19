@@ -14,15 +14,15 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 import Controller.util.DateParser;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 
 import static java.lang.Double.parseDouble;
-import static Controller.util.RequestUtil.*;
+import static Controller.Web.webutils.RequestUtil.*;
 
 public class BillsController {
     public static Route fetchAllBills = (Request request, Response response) -> {

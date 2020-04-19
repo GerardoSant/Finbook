@@ -1,9 +1,11 @@
-package Controller.util;
+package Controller.Web.webutils;
 
 import Controller.builders.other.BillTimelineBuilder;
 import Controller.builders.reports.AmortizationReportBuilder;
 import Controller.builders.reports.InvestmentReportBuilder;
 import Controller.builders.reports.ProfitAndLossesReportBuilder;
+import Controller.util.BillFilter;
+import Controller.util.DateParser;
 import Model.Bills.Bill;
 import Model.Bills.BillTimeline;
 import Model.Bills.BillsDistribution;
@@ -18,8 +20,8 @@ import spark.Request;
 import java.text.ParseException;
 import java.util.List;
 
-import static Controller.util.RequestUtil.*;
-import static Controller.util.RequestUtil.queryParamIsTrue;
+import static Controller.Web.webutils.RequestUtil.*;
+import static Controller.Web.webutils.RequestUtil.queryParamIsTrue;
 import static java.lang.Double.parseDouble;
 
 public class RequestQueryHandler {

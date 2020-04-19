@@ -8,7 +8,7 @@ import View.senders.SMTPMailSender;
 
 import java.util.HashMap;
 
-import static Controller.util.RequestUtil.*;
+import static Controller.Web.webutils.RequestUtil.*;
 
 public class SendBillByEmailCommand extends FrontCommand {
 

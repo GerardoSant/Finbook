@@ -2,8 +2,8 @@ import Controller.Web.FrontServlet;
 import Controller.Web.login.LoginController;
 
 import WebSocket.EchoWebSocket;
-import Controller.util.SparkFilters;
-import Controller.util.Path;
+import Controller.Web.webutils.SparkFilters;
+import Controller.Web.webutils.Path;
 import static spark.Spark.*;
 
 public class Server2 {

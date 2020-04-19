@@ -5,8 +5,8 @@ import Controller.Web.FrontCommand;
 import View.writers.ErrorLogWriter;
 import Implementations.FileErrorLogWriter;
 import org.eclipse.jetty.http.HttpStatus;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 
 import java.util.HashMap;
 

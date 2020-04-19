@@ -1,8 +1,8 @@
 package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 import Implementations.FileErrorLogWriter;
 import View.writers.ErrorLogWriter;
 import org.eclipse.jetty.http.HttpStatus;

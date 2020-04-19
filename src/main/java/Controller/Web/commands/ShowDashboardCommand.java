@@ -6,8 +6,8 @@ import Controller.builders.charts.AmortizationBarChartBuilder;
 import Controller.builders.charts.BillsDistributionBarChartBuilder;
 import Controller.builders.charts.ProfitAndLossesBarChartBuilder;
 import Controller.builders.charts.Top5SalesBarChartBuilder;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 import Model.Bills.BillsDistribution;
 import Model.Bills.Top5Sales;
 import Model.Charts.BarChart;
@@ -20,8 +20,8 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static Controller.util.RequestQueryHandler.*;
-import static Controller.util.RequestQueryHandler.generateTop5Sales;
+import static Controller.Web.webutils.RequestQueryHandler.*;
+import static Controller.Web.webutils.RequestQueryHandler.generateTop5Sales;
 
 public class ShowDashboardCommand extends FrontCommand {
     @Override

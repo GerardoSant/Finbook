@@ -3,15 +3,15 @@ package Controller.Web.commands;
 import Controller.Web.FrontCommand;
 import Controller.Web.login.LoginController;
 import Controller.builders.charts.ProfitAndLossesBarChartBuilder;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 import Model.Charts.BarChart;
 import Model.Reports.ProfitAndLossesReport;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;
 import java.text.ParseException;
 import java.util.HashMap;
-import static Controller.util.RequestQueryHandler.generateReducedProfitAndLossesReport;
+import static Controller.Web.webutils.RequestQueryHandler.generateReducedProfitAndLossesReport;
 
 public class ShowProfitAndLossesReportCommand extends FrontCommand {
 

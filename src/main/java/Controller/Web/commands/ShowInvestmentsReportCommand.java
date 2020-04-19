@@ -1,24 +1,17 @@
 package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
-import Model.Bills.Bill;
-import View.daos.BillsDao;
 import Model.Charts.BarChart;
-import Controller.builders.reports.InvestmentReportBuilder;
 import Controller.builders.charts.InvestmentsBarChartBuilder;
 import Model.Reports.InvestmentsReport;
 import Controller.Web.login.LoginController;
 import org.apache.velocity.tools.generic.NumberTool;
-import spark.Request;
-import Controller.util.DateParser;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 
 import java.util.HashMap;
-import java.util.List;
 
-import static Controller.util.RequestQueryHandler.generateInvestmentsReport;
-import static Controller.util.RequestUtil.getSessionUser;
+import static Controller.Web.webutils.RequestQueryHandler.generateInvestmentsReport;
 
 public class ShowInvestmentsReportCommand extends FrontCommand {
     @Override

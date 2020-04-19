@@ -1,21 +1,18 @@
 package Controller.Web.login;
 
-import Model.User.User;
 import View.daos.UserDao;
 import WebSocket.EchoWebSocket;
 import io.finbook.TextGenerator;
-import io.finbook.Verifier;
-import org.w3c.dom.Text;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static Controller.util.RequestUtil.*;
+import static Controller.Web.webutils.RequestUtil.*;
 
 public class LoginController {
     public static Route serveLoginPage = (request, response ) -> {

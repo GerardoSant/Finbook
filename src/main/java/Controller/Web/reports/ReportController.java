@@ -20,8 +20,8 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 import Controller.util.DateParser;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 
 import java.text.ParseException;
 import java.util.HashMap;

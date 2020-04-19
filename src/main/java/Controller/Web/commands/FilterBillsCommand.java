@@ -4,13 +4,12 @@ import Controller.Web.FrontCommand;
 import Controller.util.BillFilter;
 import Controller.util.BillOrdenator;
 import Controller.util.DateParser;
-import Controller.util.RequestUtil;
+import Controller.Web.webutils.RequestUtil;
 import Model.Bills.Bill;
 import com.google.gson.Gson;
 import java.util.List;
 
-import static Controller.util.RequestUtil.getSessionCurrentUser;
-import static Controller.util.RequestUtil.getSessionUser;
+import static Controller.Web.webutils.RequestUtil.getSessionUser;
 import static java.lang.Boolean.parseBoolean;
 
 

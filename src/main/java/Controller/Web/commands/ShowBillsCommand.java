@@ -7,14 +7,13 @@ import View.daos.BillsDao;
 import Controller.Web.login.LoginController;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
-import Controller.util.Path;
-import Controller.util.ViewUtil;
+import Controller.Web.webutils.Path;
+import Controller.Web.webutils.ViewUtil;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static Controller.util.RequestUtil.getSessionCurrentUser;
-import static Controller.util.RequestUtil.getSessionUser;
+import static Controller.Web.webutils.RequestUtil.getSessionUser;
 
 public class ShowBillsCommand extends FrontCommand {
     @Override
