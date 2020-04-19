@@ -6,10 +6,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Date;
 
-public class FileErrorLogWriter implements ErrorLogWriter {
+public class TxtFileErrorLogWriter implements ErrorLogWriter {
     private String filePath;
 
-    public FileErrorLogWriter(String filePath) {
+    public TxtFileErrorLogWriter(String filePath) {
         this.filePath = filePath;
     }
 

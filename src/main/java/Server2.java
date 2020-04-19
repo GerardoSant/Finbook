@@ -1,4 +1,4 @@
-import Controller.Web.FrontServlet;
+import Controller.Web.FrontController;
 import Controller.Web.controllers.LoginController;
 
 import WebSocket.EchoWebSocket;
@@ -22,7 +22,7 @@ public class Server2 {
 
         //AS
         
-        get("/mainPage",  FrontServlet.doGet);
+        get("/mainPage",  FrontController.doGet);
 
         //get("*",notFound);
 
@@ -40,9 +40,9 @@ public class Server2 {
     }
 
     private static void configureAjaxPostRoutes() {
-        post(Path.Web.UPLOAD, FrontServlet.runCommand("UploadBills"));
-        post(Path.Web.FILTER_BILLS, FrontServlet.runCommand("FilterBills"));
-        post(Path.Web.LOAD_BILLS, FrontServlet.runCommand("LoadBills"));
+        post(Path.Web.UPLOAD, FrontController.runCommand("UploadBills"));
+        post(Path.Web.FILTER_BILLS, FrontController.runCommand("FilterBills"));
+        post(Path.Web.LOAD_BILLS, FrontController.runCommand("LoadBills"));
     }
 
     private static void configureGetRoutes() {
@@ -52,18 +52,18 @@ public class Server2 {
         });
 
         get(Path.Web.LOGIN, LoginController.serveLoginPage);
-        get(Path.Web.BILLS_UPLOAD, FrontServlet.runCommand("ShowUploadBills"));
-        get(Path.Web.BILLS, FrontServlet.runCommand("ShowBills"));
-        get(Path.Web.ONE_BILL, FrontServlet.runCommand("ShowBill"));
-        get(Path.Web.DOWNLOAD_ONE_BILL, FrontServlet.runCommand("DownloadBill"));
-        get(Path.Web.ONE_BILL_EMAIL, FrontServlet.runCommand("SendBillByEmail"));
-        get(Path.Web.BILLS_TIMELINE, FrontServlet.runCommand("ShowBillsTimeline"));
-        get(Path.Web.REPORT_INVESTMENTS, FrontServlet.runCommand("ShowInvestmentsReport"));
-        get(Path.Web.REPORT_COMPARE_INVESTMENTS, FrontServlet.runCommand("CompareInvestmentsReport"));
-        get(Path.Web.REPORT_PROFITANDLOSSES, FrontServlet.runCommand("ShowProfitAndLossesReport"));
-        get(Path.Web.REPORT_COMPARE_PROFITANDLOSSES, FrontServlet.runCommand("CompareProfitAndLosses"));
-        get(Path.Web.REPORT_AMORTIZATION, FrontServlet.runCommand("ShowAmortizationReport"));
-        get(Path.Web.DASHBOARD, FrontServlet.runCommand("ShowDashboard"));
+        get(Path.Web.BILLS_UPLOAD, FrontController.runCommand("ShowUploadBills"));
+        get(Path.Web.BILLS, FrontController.runCommand("ShowBills"));
+        get(Path.Web.ONE_BILL, FrontController.runCommand("ShowBill"));
+        get(Path.Web.DOWNLOAD_ONE_BILL, FrontController.runCommand("DownloadBill"));
+        get(Path.Web.ONE_BILL_EMAIL, FrontController.runCommand("SendBillByEmail"));
+        get(Path.Web.BILLS_TIMELINE, FrontController.runCommand("ShowBillsTimeline"));
+        get(Path.Web.REPORT_INVESTMENTS, FrontController.runCommand("ShowInvestmentsReport"));
+        get(Path.Web.REPORT_COMPARE_INVESTMENTS, FrontController.runCommand("CompareInvestmentsReport"));
+        get(Path.Web.REPORT_PROFITANDLOSSES, FrontController.runCommand("ShowProfitAndLossesReport"));
+        get(Path.Web.REPORT_COMPARE_PROFITANDLOSSES, FrontController.runCommand("CompareProfitAndLosses"));
+        get(Path.Web.REPORT_AMORTIZATION, FrontController.runCommand("ShowAmortizationReport"));
+        get(Path.Web.DASHBOARD, FrontController.runCommand("ShowDashboard"));
 
         get(Path.Web.SIGN_AWAIT, LoginController.serveSignAwait);
     }

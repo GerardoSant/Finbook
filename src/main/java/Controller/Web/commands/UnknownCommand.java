@@ -3,7 +3,7 @@ package Controller.Web.commands;
 import Controller.exceptions.CommandNotFoundException;
 import Controller.Web.FrontCommand;
 import View.writers.ErrorLogWriter;
-import Implementations.FileErrorLogWriter;
+import Implementations.TxtFileErrorLogWriter;
 import org.eclipse.jetty.http.HttpStatus;
 import Controller.Web.webutils.Path;
 import Controller.Web.webutils.ViewUtil;
@@ -26,7 +26,7 @@ public class UnknownCommand extends FrontCommand {
     }
 
     private void writeErrorOnLog() {
-        ErrorLogWriter errorWriter = new FileErrorLogWriter("src/main/resources/error/ErrorLog.txt");
+        ErrorLogWriter errorWriter = new TxtFileErrorLogWriter("src/main/resources/error/ErrorLog.txt");
         errorWriter.write(exception);
     }
 }
