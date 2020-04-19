@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Collection;
 
-import static Controller.Web.upload.CFDIVerifier.verify;
+import static Controller.util.CFDIVerifier.verify;
 
 public class UploadBillsCommand extends FrontCommand {
 
