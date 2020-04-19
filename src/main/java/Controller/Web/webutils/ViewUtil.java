@@ -14,22 +14,30 @@ import java.util.Locale;
 import java.util.Map;
 
 import static Controller.Web.webutils.RequestUtil.getSessionLocale;
+import static Controller.Web.webutils.RequestUtil.getSessionUser;
 
 public class ViewUtil {
     public static String render(Request request, Map model, String templatePath){
-        model.put("msg", new MessageBundle(getSessionLocale(request)));
-        model.put("locale", new Locale(getSessionLocale(request)));
-        if(request.session().attribute("user")!=null) model.put("user",request.session().attribute("user"));
-        return strictVelocityEngine().render(new ModelAndView(model, templatePath));
+        return strictVelocityEngine().render(new ModelAndView(fillModel(model,request), templatePath));
     }
 
-
     private static VelocityTemplateEngine strictVelocityEngine() {
-        VelocityEngine configuredEngine = new VelocityEngine();
+        VelocityEngine velocityEngine = new VelocityEngine();
+        configureEngine(velocityEngine);
+        return new VelocityTemplateEngine(velocityEngine);
+    }
+
+    private static void configureEngine(VelocityEngine configuredEngine) {
         configuredEngine.setProperty("runtime.references.strict", true);
         configuredEngine.setProperty("resource.loader", "class");
         configuredEngine.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
-        return new VelocityTemplateEngine(configuredEngine);
+    }
+
+    private static Map fillModel(Map model, Request request) {
+        model.put("msg", new MessageBundle(getSessionLocale(request)));
+        model.put("locale", new Locale(getSessionLocale(request)));
+        model.put("user",getSessionUser(request));
+        return model;
     }
 
     public static Route notFound = (Request request, Response response) -> {

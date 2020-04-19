@@ -1,7 +1,7 @@
 package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
-import Controller.Web.login.LoginController;
+import Controller.Web.controllers.LoginController;
 import Model.Bills.Bill;
 import View.daos.BillsDao;
 import Implementations.GeoNamesLocationLoader;

@@ -1,4 +1,4 @@
-package Controller.Web.login;
+package Controller.Web.controllers;
 
 import View.daos.UserDao;
 import WebSocket.EchoWebSocket;

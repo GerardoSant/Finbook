@@ -1,6 +1,6 @@
-package Controller.Web.Shiny;
+package Controller.Web.controllers;
 
-import Controller.Web.login.LoginController;
+import Controller.Web.controllers.LoginController;
 import spark.Request;
 import spark.Response;
 import spark.Route;

@@ -1,4 +1,4 @@
-package Controller.Web.index;
+package Controller.Web.controllers;
 
 import spark.Request;
 import spark.Response;

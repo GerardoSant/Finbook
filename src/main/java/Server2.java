@@ -1,5 +1,5 @@
 import Controller.Web.FrontServlet;
-import Controller.Web.login.LoginController;
+import Controller.Web.controllers.LoginController;
 
 import WebSocket.EchoWebSocket;
 import Controller.Web.webutils.SparkFilters;

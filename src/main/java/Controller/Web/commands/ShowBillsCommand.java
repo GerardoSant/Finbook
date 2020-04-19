@@ -4,7 +4,7 @@ import Controller.Web.FrontCommand;
 import Controller.util.BillFilter;
 import Model.Bills.Bill;
 import View.daos.BillsDao;
-import Controller.Web.login.LoginController;
+import Controller.Web.controllers.LoginController;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import Controller.Web.webutils.Path;

@@ -2,7 +2,7 @@ package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
 import Model.Bills.BillTimeline;
-import Controller.Web.login.LoginController;
+import Controller.Web.controllers.LoginController;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;

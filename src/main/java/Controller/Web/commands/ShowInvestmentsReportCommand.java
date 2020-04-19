@@ -4,7 +4,7 @@ import Controller.Web.FrontCommand;
 import Model.Charts.BarChart;
 import Controller.builders.charts.InvestmentsBarChartBuilder;
 import Model.Reports.InvestmentsReport;
-import Controller.Web.login.LoginController;
+import Controller.Web.controllers.LoginController;
 import org.apache.velocity.tools.generic.NumberTool;
 import Controller.Web.webutils.Path;
 import Controller.Web.webutils.ViewUtil;

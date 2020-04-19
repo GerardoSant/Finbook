@@ -1,7 +1,7 @@
 package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
-import Controller.Web.login.LoginController;
+import Controller.Web.controllers.LoginController;
 import Controller.builders.charts.AmortizationBarChartBuilder;
 import Controller.builders.charts.BillsDistributionBarChartBuilder;
 import Controller.builders.charts.ProfitAndLossesBarChartBuilder;
