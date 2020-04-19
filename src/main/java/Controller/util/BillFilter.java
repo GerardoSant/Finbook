@@ -1,7 +1,6 @@
 package Controller.util;
 
 import Model.Bills.Bill;
-
 import java.util.Date;
 import java.util.List;
 import java.util.function.Predicate;

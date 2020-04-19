@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 public class DateCalculator {
 
-
     public int daysBetween(Date firstDate, Date secondDate){
         long diff = firstDate.getTime() - secondDate.getTime();
         return (int) Math.abs(TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS));

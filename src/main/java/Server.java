@@ -8,7 +8,7 @@ import Controller.Web.Dashboard.DashboardController;
 import Controller.Web.reports.ReportController;
 
 import WebSocket.EchoWebSocket;
-import Controller.util.Filters;
+import Controller.util.SparkFilters;
 import Controller.util.Path;
 import static spark.Spark.*;
 
@@ -28,7 +28,7 @@ public class Server {
 
         // Set up before-filters (called before each get/post)
 
-        before("*", Filters.handleLocaleChange);
+        before("*", SparkFilters.handleLocaleChange);
 
 
         // Set up routes

@@ -1,11 +1,8 @@
-import Controller.Web.FrontCommand;
 import Controller.Web.FrontServlet;
-import Controller.Web.upload.UploadController;
 import Controller.Web.login.LoginController;
-import Controller.Web.index.IndexController;
 
 import WebSocket.EchoWebSocket;
-import Controller.util.Filters;
+import Controller.util.SparkFilters;
 import Controller.util.Path;
 import static spark.Spark.*;
 
@@ -72,7 +69,7 @@ public class Server2 {
     }
 
     private static void configureBeforeFilters() {
-        before("*", Filters.handleLocaleChange);
+        before("*", SparkFilters.handleLocaleChange);
     }
 
     private static void configureWebSocket() {

@@ -1,7 +1,6 @@
 package Controller.util;
 
 import Model.Bills.Bill;
-
 import java.util.List;
 
 public class BillCalculator {

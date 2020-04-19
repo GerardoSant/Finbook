@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateParser {
+
     private String format;
 
     public DateParser(String format) {
