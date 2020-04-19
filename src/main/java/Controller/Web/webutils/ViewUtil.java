@@ -13,19 +13,12 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import static Controller.Web.webutils.RequestUtil.getSessionCurrentUser;
 import static Controller.Web.webutils.RequestUtil.getSessionLocale;
 
 public class ViewUtil {
     public static String render(Request request, Map model, String templatePath){
-        if(getSessionLocale(request)!=null){
-            model.put("msg", new MessageBundle(getSessionLocale(request)));
-        } else{
-            model.put("msg", new MessageBundle("en"));
-        }
-
+        model.put("msg", new MessageBundle(getSessionLocale(request)));
         model.put("locale", new Locale(getSessionLocale(request)));
-        model.put("currentUser", getSessionCurrentUser(request));
         if(request.session().attribute("user")!=null) model.put("user",request.session().attribute("user"));
         return strictVelocityEngine().render(new ModelAndView(model, templatePath));
     }

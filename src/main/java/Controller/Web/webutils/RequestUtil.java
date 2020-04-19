@@ -7,15 +7,12 @@ public class RequestUtil {
     public static String getQueryUsername(Request request){
         return request.queryParams("username");
     }
+
     public static String getQueryPassword(Request request){
         return request.queryParams("pswd");
     }
 
     public static User getSessionUser(Request request) { return request.session().attribute("user");}
-
-    public static String getSessionCurrentUser(Request request){
-        return request.session().attribute("currentUser");
-    }
 
     public static String getQueryLocale(Request request) {
         return request.queryParams("locale");
