@@ -1,4 +1,4 @@
-package Controller.util;
+package Controller.util.bill;
 
 public class BillConstants {
     public static class Report{

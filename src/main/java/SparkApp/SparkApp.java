@@ -1,24 +1,30 @@
+package SparkApp;
+
 import Controller.Web.FrontController;
 import Controller.Web.controllers.LoginController;
 
-import WebSocket.EchoWebSocket;
 import Controller.Web.webutils.SparkFilters;
 import Controller.Web.webutils.Path;
 import static spark.Spark.*;
 
-public class Server2 {
-    public static void main(String[] args) {
+public class SparkApp {
+
+    public SparkApp() {
+    }
+
+    public static void start(){
         //Configure Spark
+
         configureSpark();
         configureWebSocket();
 
         // Set up before-filters (called before each get/post)
 
-        configureBeforeFilters();
+        setUpBeforeFilters();
 
         // Set up routes
 
-        configureRoutes();
+        setUpRoutes();
 
         //AS
         
@@ -28,24 +34,24 @@ public class Server2 {
 
     }
 
-    private static void configureRoutes() {
-        configureGetRoutes();
-        configurePostRoutes();
-        configureAjaxPostRoutes();
+    private static void setUpRoutes() {
+        setUpGetRoutes();
+        setUpPostRoutes();
+        setUpAjaxPostRoutes();
     }
 
-    private static void configurePostRoutes() {
+    private static void setUpPostRoutes() {
         post(Path.Web.LOGIN, LoginController.handleLoginPost);
         post(Path.Web.LOGOUT, LoginController.handleLogoutPost);
     }
 
-    private static void configureAjaxPostRoutes() {
+    private static void setUpAjaxPostRoutes() {
         post(Path.Web.UPLOAD, FrontController.runCommand("UploadBills"));
         post(Path.Web.FILTER_BILLS, FrontController.runCommand("FilterBills"));
         post(Path.Web.LOAD_BILLS, FrontController.runCommand("LoadBills"));
     }
 
-    private static void configureGetRoutes() {
+    private static void setUpGetRoutes() {
         get("/", (request, response) -> {
             response.redirect("/login");
             return null;
@@ -68,12 +74,12 @@ public class Server2 {
         get(Path.Web.SIGN_AWAIT, LoginController.serveSignAwait);
     }
 
-    private static void configureBeforeFilters() {
+    private static void setUpBeforeFilters() {
         before("*", SparkFilters.handleLocaleChange);
     }
 
     private static void configureWebSocket() {
-        webSocket("/echo", EchoWebSocket.class);
+        webSocket("/echo", SignWebSocket.class);
     }
 
     private static void configureSpark() {

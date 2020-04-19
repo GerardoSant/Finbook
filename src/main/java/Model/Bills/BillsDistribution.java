@@ -1,6 +1,6 @@
 package Model.Bills;
 
-import Controller.util.BillFilter;
+import Controller.util.bill.BillFilter;
 
 import java.util.List;
 

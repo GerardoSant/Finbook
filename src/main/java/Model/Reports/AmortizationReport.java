@@ -1,6 +1,6 @@
 package Model.Reports;
 
-import Controller.util.DateCalculator;
+import Controller.util.date.DateCalculator;
 import Model.Bills.Bill;
 
 import java.util.Date;

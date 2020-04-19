@@ -1,4 +1,4 @@
-package Controller.util;
+package Controller.util.date;
 
 import java.text.DateFormat;
 import java.text.ParseException;

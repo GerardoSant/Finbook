@@ -4,8 +4,8 @@ import Model.Charts.BarChart;
 import Model.Reports.ProfitAndLossesReport;
 import Model.Reports.Report;
 
-import static Controller.util.BillConstants.Report.EXPENSES;
-import static Controller.util.BillConstants.Report.INCOMES;
+import static Controller.util.bill.BillConstants.Report.EXPENSES;
+import static Controller.util.bill.BillConstants.Report.INCOMES;
 
 public class ProfitAndLossesBarChartBuilder implements ReportBarChartBuilder {
     @Override

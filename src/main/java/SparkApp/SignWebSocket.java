@@ -1,4 +1,4 @@
-package WebSocket;
+package SparkApp;
 
 import Controller.util.JSONParser;
 import org.eclipse.jetty.websocket.api.*;
@@ -10,9 +10,8 @@ import java.util.*;
 import java.util.concurrent.*;
 
 @WebSocket
-public class EchoWebSocket {
+public class SignWebSocket {
 
-    // Store sessions if you want to, for example, broadcast a message to all users
     private static final Queue<Session> sessions = new ConcurrentLinkedQueue<>();
     public static final Map<String, byte[]> messages = new HashMap<>();
 

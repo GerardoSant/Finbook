@@ -1,9 +1,9 @@
 package Controller.builders.reports;
 
 import Model.Bills.Bill;
-import Controller.util.PeriodFinder;
+import Controller.util.date.PeriodFinder;
 import Model.Reports.Report;
-import Controller.util.BillFilter;
+import Controller.util.bill.BillFilter;
 
 import java.util.Date;
 import java.util.List;

@@ -3,7 +3,7 @@ package Controller.builders.charts;
 import Model.Charts.BarChart;
 import Model.Bills.BillsDistribution;
 
-import static Controller.util.BillConstants.Type.*;
+import static Controller.util.bill.BillConstants.Type.*;
 
 public class BillsDistributionBarChartBuilder {
     public BarChart build(BillsDistribution billsDistribution){

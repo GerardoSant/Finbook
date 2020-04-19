@@ -2,7 +2,7 @@ package Controller.builders.other;
 
 import Model.Bills.Bill;
 import Model.Bills.BillTimeline;
-import Controller.util.BillFilter;
+import Controller.util.bill.BillFilter;
 
 import java.util.ArrayList;
 import java.util.Date;

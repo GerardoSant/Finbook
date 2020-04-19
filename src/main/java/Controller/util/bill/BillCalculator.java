@@ -1,4 +1,4 @@
-package Controller.util;
+package Controller.util.bill;
 
 import Model.Bills.Bill;
 import java.util.List;

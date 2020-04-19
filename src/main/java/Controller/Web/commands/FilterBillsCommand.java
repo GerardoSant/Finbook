@@ -1,9 +1,9 @@
 package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
-import Controller.util.BillFilter;
-import Controller.util.BillOrdenator;
-import Controller.util.DateParser;
+import Controller.util.bill.BillFilter;
+import Controller.util.bill.BillOrdenator;
+import Controller.util.date.DateParser;
 import Controller.Web.webutils.RequestUtil;
 import Model.Bills.Bill;
 import com.google.gson.Gson;

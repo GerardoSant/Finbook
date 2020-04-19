@@ -2,7 +2,7 @@ package Controller.builders.reports;
 
 import Model.Reports.AmortizationReport;
 import Model.Bills.Bill;
-import Controller.util.BillFilter;
+import Controller.util.bill.BillFilter;
 
 import java.util.Date;
 import java.util.List;

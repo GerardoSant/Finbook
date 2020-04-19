@@ -4,7 +4,7 @@ import Model.Charts.BarChart;
 import Model.Reports.InvestmentsReport;
 import Model.Reports.Report;
 
-import static Controller.util.BillConstants.Report.*;
+import static Controller.util.bill.BillConstants.Report.*;
 
 public class InvestmentsBarChartBuilder implements ReportBarChartBuilder {
     @Override

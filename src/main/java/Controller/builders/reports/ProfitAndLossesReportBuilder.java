@@ -2,8 +2,8 @@ package Controller.builders.reports;
 
 import Model.Bills.Bill;
 import Model.Reports.ProfitAndLossesReport;
-import Controller.util.BillCalculator;
-import Controller.util.BillFilter;
+import Controller.util.bill.BillCalculator;
+import Controller.util.bill.BillFilter;
 import java.util.Date;
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package Implementations.SQLite;
 
 import Model.Bills.Bill;
-import Controller.util.DateParser;
+import Controller.util.date.DateParser;
 import View.loaders.BillsLoader;
 
 import java.sql.*;

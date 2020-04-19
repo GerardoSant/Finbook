@@ -1,7 +1,7 @@
 package Controller.Web.controllers;
 
 import View.daos.UserDao;
-import WebSocket.EchoWebSocket;
+import SparkApp.SignWebSocket;
 import io.finbook.TextGenerator;
 import spark.Request;
 import spark.Response;
@@ -24,11 +24,11 @@ public class LoginController {
 
     public static Route handleLoginPost = (request, response) -> {
         if (request.queryParams("id")!=null) {
-            byte[] sign = EchoWebSocket.messages.get(request.queryParams("id"));
+            byte[] sign = SignWebSocket.messages.get(request.queryParams("id"));
             for (byte b : sign) {
                 System.out.print(b+",");
             }
-            EchoWebSocket.messages.remove(request.queryParams("id"));
+            SignWebSocket.messages.remove(request.queryParams("id"));
             if (/*new Verifier(sign).validateSign()*/true) {
                 request.session().attribute("currentUser", "E-5756930");
                 request.session().attribute("user", new UserDao().getUser("E-5756930"));

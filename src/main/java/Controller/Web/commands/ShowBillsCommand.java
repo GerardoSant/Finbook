@@ -1,7 +1,7 @@
 package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
-import Controller.util.BillFilter;
+import Controller.util.bill.BillFilter;
 import Model.Bills.Bill;
 import View.daos.BillsDao;
 import Controller.Web.controllers.LoginController;
