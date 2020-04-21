@@ -12,25 +12,54 @@ import org.apache.velocity.tools.generic.NumberTool;
 
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Map;
 
+import static Controller.Web.controllers.LoginController.ensureUserIsLoggedIn;
 import static Controller.Web.webutils.RequestQueryHandler.generateProfitAndLossesReport;
 
 public class CompareProfitAndLossesCommand extends FrontCommand {
+
+    private ProfitAndLossesReport firstProfitAndLossesReport;
+    private BarChart firstProfitAndLossesReportChart;
+    private ProfitAndLossesReport secondProfitAndLossesReport;
+    private BarChart secondProfitAndLossesReportChart;
+
     @Override
     public String process() throws ParseException {
-        LoginController.ensureUserIsLoggedIn(request, response);
+        ensureUserIsLoggedIn(request, response);
+        generateReports();
+        generateBarCharts();
+        return ViewUtil.render(request, model(), Path.Template.COMPARE_PROFITANDLOSSES_REPORT);
+    }
+
+
+    private void generateReports() throws ParseException {
+        firstProfitAndLossesReport= generateProfitAndLossesReport(request,"");
+        secondProfitAndLossesReport= generateProfitAndLossesReport(request,"1");
+    }
+
+    private void generateBarCharts() {
+        firstProfitAndLossesReportChart= new ProfitAndLossesBarChartBuilder().build(firstProfitAndLossesReport);
+        secondProfitAndLossesReportChart= new ProfitAndLossesBarChartBuilder().build(secondProfitAndLossesReport);
+    }
+
+    private Map model() {
         HashMap<String, Object> model = new HashMap<>();
-        ProfitAndLossesReport report1 = generateProfitAndLossesReport(request,"");
-        BarChart barChart = new ProfitAndLossesBarChartBuilder().build(report1);
-        model.put("report1", report1);
-        model.put("barChart1", barChart);
-        ProfitAndLossesReport report2 = generateProfitAndLossesReport(request,"1");
-        BarChart barChart2 = new ProfitAndLossesBarChartBuilder().build(report2);
-        model.put("report2", report2);
-        model.put("barChart2", barChart2);
+        fillModel(model);
+        addToolsToModel(model);
+        return model;
+    }
+
+    private void fillModel(HashMap<String, Object> model) {
+        model.put("report1", firstProfitAndLossesReport);
+        model.put("barChart1", firstProfitAndLossesReportChart);
+        model.put("report2", secondProfitAndLossesReport);
+        model.put("barChart2", secondProfitAndLossesReportChart);
+    }
+
+    private void addToolsToModel(Map model) {
         model.put("math", new MathTool());
         model.put("number", new NumberTool());
-        return ViewUtil.render(request, model, Path.Template.COMPARE_PROFITANDLOSSES_REPORT);
     }
 
 

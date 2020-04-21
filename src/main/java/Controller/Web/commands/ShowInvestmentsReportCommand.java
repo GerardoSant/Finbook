@@ -10,21 +10,39 @@ import Controller.Web.webutils.Path;
 import Controller.Web.webutils.ViewUtil;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static Controller.Web.webutils.RequestQueryHandler.generateInvestmentsReport;
 
 public class ShowInvestmentsReportCommand extends FrontCommand {
+
+    private InvestmentsReport investmentsReport;
+    private BarChart investmentsReportBarChart;
+
     @Override
     public String process() {
         LoginController.ensureUserIsLoggedIn(request,response);
-        HashMap<String, Object> model = new HashMap<>();
-        InvestmentsReport report = generateInvestmentsReport(request);
-        BarChart barChart = new InvestmentsBarChartBuilder().build(report);
-        model.put("report",report);
-        model.put("barChart", barChart);
-        model.put("number", new NumberTool());
-        return ViewUtil.render(request,model, Path.Template.INVESTMENT_REPORT);
+        investmentsReport = generateInvestmentsReport(request);
+        investmentsReportBarChart = new InvestmentsBarChartBuilder().build(investmentsReport);
+        return ViewUtil.render(request,model(), Path.Template.INVESTMENT_REPORT);
     }
+
+    private Map model() {
+        HashMap<String,Object> model = new HashMap<>();
+        fillModel(model);
+        addToolsToModel(model);
+        return model;
+    }
+
+    private void fillModel(HashMap<String, Object> model) {
+        model.put("report",investmentsReport);
+        model.put("barChart", investmentsReportBarChart);
+    }
+
+    private void addToolsToModel(HashMap<String, Object> model) {
+        model.put("number", new NumberTool());
+    }
+
 
 
 }

@@ -6,7 +6,8 @@ import Model.Bills.Bill;
 import View.daos.BillsDao;
 import View.senders.SMTPMailSender;
 
-import java.util.HashMap;
+import javax.mail.MessagingException;
+import java.io.IOException;
 
 import static Controller.Web.webutils.RequestUtil.*;
 
@@ -14,17 +15,30 @@ public class SendBillByEmailCommand extends FrontCommand {
 
     @Override
     public String process() {
-        LoginController.ensureUserIsLoggedIn(request,response);
-        HashMap<String, Object> model = new HashMap<>();
-        Bill bill = new BillsDao(getSessionUser(request).getCompanyRFC()).getBillByUUID(getParamUUID(request));
-        model.put("bill", bill);
-        request.session().attribute("redirected", true);
+        LoginController.ensureUserIsLoggedIn(request, response);
         try {
-            new SMTPMailSender().sendBillByMail(getParamEmail(request), bill, getSessionUser(request));
-            request.session().attribute("emailSent", true);
+            sendBillByEmail(getBillToSent());
         } catch (Exception e) {
         }
-        response.redirect("/bills/" + getParamUUID(request));
+        redirectToBillView();
         return null;
     }
+
+    private void sendBillByEmail(Bill bill) throws MessagingException, IOException {
+        new SMTPMailSender().sendBillByMail(getParamEmail(request), bill, getSessionUser(request));
+        request.session().attribute("emailSent", true);
+    }
+
+    private Bill getBillToSent() {
+        return new BillsDao(getSessionUser(request).getCompanyRFC()).getBillByUUID(getParamUUID(request));
+    }
+
+    private void redirectToBillView() {
+        request.session().attribute("redirected", true);
+        response.redirect("/bills/" + getParamUUID(request));
+    }
+
+
+
+
 }

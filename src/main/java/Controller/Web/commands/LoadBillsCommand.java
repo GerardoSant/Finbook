@@ -12,18 +12,31 @@ public class LoadBillsCommand extends FrontCommand {
     private final static int PAGE_SIZE=30;
     @Override
     public String process() throws ParseException {
-        List<Bill> billList= request.session().attribute("currentBillList");
-        int pageNumber = Integer.parseInt(request.queryParams("page"));
-        if (pageNumber*PAGE_SIZE<billList.size()){
-            return new Gson().toJson(getPageBillList(billList, pageNumber));
+        if (requestedPageNumber()*PAGE_SIZE<currentBillList().size()){
+            return pageAsJson();
         } else{
-            return new Gson().toJson("End");
+            return notifyEnd();
         }
-
-
     }
 
-    private List<Bill> getPageBillList(List<Bill> billList, int pageNumber) {
+    private String pageAsJson() {
+        return new Gson().toJson(getBillListPage(currentBillList(), requestedPageNumber()));
+    }
+
+    private List<Bill> currentBillList() {
+        return request.session().attribute("currentBillList");
+    }
+
+    private int requestedPageNumber() {
+        return Integer.parseInt(request.queryParams("page"));
+    }
+
+    private String notifyEnd() {
+        return new Gson().toJson("End");
+    }
+
+
+    private List<Bill> getBillListPage(List<Bill> billList, int pageNumber) {
         try{
             return billList.subList(pageNumber*PAGE_SIZE,pageNumber*PAGE_SIZE+PAGE_SIZE);
         } catch(IndexOutOfBoundsException exception){
