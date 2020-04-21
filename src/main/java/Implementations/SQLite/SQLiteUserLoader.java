@@ -7,23 +7,32 @@ import java.sql.*;
 
 public class SQLiteUserLoader extends SQLiteLoader implements UserLoader {
 
-
     @Override
     public User loadUser(String RFC) {
-        return selectUser(RFC);
+        return getUser(RFC);
     }
 
-    private User selectUser(String RFC) {
-        String queryRFC="\"" + RFC + "\"";
-        String sql = "SELECT * FROM empresas where receiverRFC=" + queryRFC;
+    private User getUser(String RFC) {
         try {
-            Connection conn = this.connect();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            return new User(rs.getString("receiverName"),RFC);
+            return getUserFromDB(RFC);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
         }
+    }
+
+    private User getUserFromDB(String RFC) throws SQLException {
+        Connection connection = this.connect();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery(sqlQuery(RFC));
+        return new User(rs.getString("receiverName"), RFC);
+    }
+
+    private String sqlQuery(String RFC) {
+        return "SELECT * FROM empresas where receiverRFC=" + queryRFC(RFC);
+    }
+
+    private String queryRFC(String RFC) {
+        return "\"" + RFC + "\"";
     }
 }
