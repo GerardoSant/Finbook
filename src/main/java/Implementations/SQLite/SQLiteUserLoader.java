@@ -16,10 +16,11 @@ public class SQLiteUserLoader extends SQLiteLoader implements UserLoader {
     private User selectUser(String RFC) {
         String queryRFC="\"" + RFC + "\"";
         String sql = "SELECT * FROM empresas where receiverRFC=" + queryRFC;
-        try (Connection conn = this.connect();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)){
-             return new User(rs.getString("receiverName"),RFC);
+        try {
+            Connection conn = this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            return new User(rs.getString("receiverName"),RFC);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
