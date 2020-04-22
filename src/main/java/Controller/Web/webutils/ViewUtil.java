@@ -17,8 +17,8 @@ import static Controller.Web.webutils.RequestUtil.getSessionLocale;
 import static Controller.Web.webutils.RequestUtil.getSessionUser;
 
 public class ViewUtil {
-    public static String render(Request request, Map model, String templatePath){
-        return strictVelocityEngine().render(new ModelAndView(fillModel(model,request), templatePath));
+    public static String render(Request request, Map model, String templatePath) {
+        return strictVelocityEngine().render(new ModelAndView(fillModel(model, request), templatePath));
     }
 
     private static VelocityTemplateEngine strictVelocityEngine() {
@@ -36,7 +36,7 @@ public class ViewUtil {
     private static Map fillModel(Map model, Request request) {
         model.put("msg", new MessageBundle(getSessionLocale(request)));
         model.put("locale", new Locale(getSessionLocale(request)));
-        model.put("user",getSessionUser(request));
+        model.put("user", getSessionUser(request));
         return model;
     }
 
@@ -45,7 +45,7 @@ public class ViewUtil {
         return render(request, new HashMap<>(), Path.Template.NOT_FOUND);
     };
 
-    public static Route internalError = (Request request, Response response)-> {
+    public static Route internalError = (Request request, Response response) -> {
         response.status(HttpStatus.INTERNAL_SERVER_ERROR_500);
         return render(request, new HashMap<>(), Path.Template.INTERNAL_ERROR);
     };

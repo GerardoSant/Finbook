@@ -14,12 +14,24 @@ public class GeoNamesLocationLoader implements LocationLoader {
 
     @Override
     public Location load(int postalCode, String countryCode) {
-        String xml =getWebDocument(searchLink(postalCode,countryCode)).html();
+        String xml = getXMLApiResponse(searchLink(postalCode,countryCode)).html();
         try {
             return getLocationFromXML(xml);
         } catch(Exception e){
             return null;
         }
+    }
+
+    private Document getXMLApiResponse(String link){
+        try{
+            return Jsoup.connect(link).get();
+        } catch (Exception e){
+            return getXMLApiResponse(link);
+        }
+    }
+
+    private String searchLink(int postalCode, String countryCode) {
+        return "http://api.geonames.org/postalCodeSearch?postalcode=" + postalCode + "&country=" + countryCode + "&maxRows=1&username=" + APIKey;
     }
 
     private Location getLocationFromXML(String xml) {
@@ -33,16 +45,7 @@ public class GeoNamesLocationLoader implements LocationLoader {
         return xml.substring(xml.indexOf("<"+tag+">")+tag.length()+2,xml.indexOf("</"+tag+">")).trim();
     }
 
-    private String searchLink(int postalCode, String countryCode) {
-        return "http://api.geonames.org/postalCodeSearch?postalcode=" + postalCode + "&country=" + countryCode + "&maxRows=1&username=" + APIKey;
-    }
 
 
-    private Document getWebDocument(String link){
-        try{
-            return Jsoup.connect(link).get();
-        } catch (Exception e){
-            return getWebDocument(link);
-        }
-    }
+
 }

@@ -22,14 +22,19 @@ public class ShowBillCommand extends FrontCommand {
 
     @Override
     public String process() {
-        LoginController.ensureUserIsLoggedIn(request,response);
+        LoginController.ensureUserIsLoggedIn(request, response);
         bill = getRequestedBill();
-        location= new GeoNamesLocationLoader().load(bill.getPC(), "ES");
+        location = loadLocation();
         return ViewUtil.render(request, model(), Path.Template.BILLS_ONE);
     }
 
+
     private Bill getRequestedBill() {
         return new BillsDao(getSessionUser(request).getCompanyRFC()).getBillByUUID(getParamUUID(request));
+    }
+
+    private Location loadLocation() {
+        return new GeoNamesLocationLoader().load(bill.getPC(), "ES");
     }
 
     private Map model() {

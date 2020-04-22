@@ -27,11 +27,19 @@ public class SignWebSocket {
 
     @OnWebSocketMessage
     public void message(Session senderSession, String message) throws IOException {
-        messages.put(getId(message), getSign(message));
+        saveMessage(message);
         for (Session session : sessions) {
-            session.getRemote().sendString(message);
+            sendMessageToSessions(message, session);
         }
 
+    }
+
+    private void saveMessage(String message) {
+        messages.put(getId(message), getSign(message));
+    }
+
+    private void sendMessageToSessions(String message, Session session) throws IOException {
+        session.getRemote().sendString(message);
     }
 
     private String getId(String message) {

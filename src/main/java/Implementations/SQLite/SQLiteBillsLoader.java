@@ -27,9 +27,9 @@ public class SQLiteBillsLoader extends SQLiteLoader implements BillsLoader {
 
     private List<Bill> getBillsFromDB(String RFC) throws SQLException, ParseException {
         Connection conn = this.connect();
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(sqlQuery(RFC));
-        return parseResultSetToListOfBills(rs);
+        Statement statement = conn.createStatement();
+        ResultSet resultSet = statement.executeQuery(sqlQuery(RFC));
+        return billListFromResultSet(resultSet);
     }
 
     private String sqlQuery(String RFC) {
@@ -40,7 +40,7 @@ public class SQLiteBillsLoader extends SQLiteLoader implements BillsLoader {
         return "\"" + RFC + "\"";
     }
 
-    private List<Bill> parseResultSetToListOfBills(ResultSet resultSet) throws SQLException, ParseException {
+    private List<Bill> billListFromResultSet(ResultSet resultSet) throws SQLException, ParseException {
         List<Bill> billsList = new ArrayList<>();
         while(resultSet.next()){
             billsList.add(getBillFromResultSet(resultSet));

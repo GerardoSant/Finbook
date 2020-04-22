@@ -4,6 +4,7 @@ import View.writers.ErrorLogWriter;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 
 public class TxtFileErrorLogWriter implements ErrorLogWriter {
@@ -15,28 +16,30 @@ public class TxtFileErrorLogWriter implements ErrorLogWriter {
 
     @Override
     public void write(Exception exception) {
-        File file = new File(filePath);
         try{
-            FileWriter fr =new FileWriter(file,true);
-            fr.write(errorText(exception));
-            fr.close();
+            writeExceptionOnFile(exception, new File(filePath));
         } catch(Exception e){
             e.printStackTrace();
         }
-
     }
 
-    private String errorText(Exception exception) {
-        String result= new Date().toString() + "\n" + "Error message:\n" + exception.getMessage() + "\n" + "Error Stack Trace:\n"+
+    private void writeExceptionOnFile(Exception exception, File file) throws IOException {
+        FileWriter fr =new FileWriter(file,true);
+        fr.write(errorLog(exception));
+        fr.close();
+    }
+
+    private String errorLog(Exception exception) {
+        String errorText= new Date().toString() + "\n" + "Error message:\n" + exception.getMessage() + "\n" + "Error Stack Trace:\n"+
                 exception.getStackTrace() + "\n" + getStrackTraceText(exception) + "\n" +  "----------------\n";
-        return result;
+        return errorText;
     }
 
     private String getStrackTraceText(Exception exception) {
-        String result="";
+        String stackTraceText="";
         for (StackTraceElement stackTraceElement : exception.getStackTrace()) {
-            result += stackTraceElement.toString() + "\n";
+            stackTraceText += stackTraceElement.toString() + "\n";
         }
-        return result;
+        return stackTraceText;
     }
 }

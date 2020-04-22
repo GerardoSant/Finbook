@@ -4,7 +4,6 @@ import Controller.Web.FrontCommand;
 import Model.Charts.BarChart;
 import Controller.builders.charts.InvestmentsBarChartBuilder;
 import Model.Reports.InvestmentsReport;
-import Controller.Web.controllers.LoginController;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;
 import Controller.Web.webutils.Path;
@@ -18,7 +17,6 @@ import static Controller.Web.webutils.RequestQueryHandler.generateInvestmentsRep
 
 public class CompareInvestmentsReportCommand extends FrontCommand {
 
-    private HashMap<String, Object> model = new HashMap<>();
     private InvestmentsReport firstInvestmentsReport;
     private BarChart firstInvestmentsReportChart;
     private InvestmentsReport secondInvestmentsReport;
@@ -33,8 +31,8 @@ public class CompareInvestmentsReportCommand extends FrontCommand {
     }
 
     private void generateReports() {
-        firstInvestmentsReport= generateInvestmentsReport(request, "");
-        secondInvestmentsReport=generateInvestmentsReport(request, "1");
+        firstInvestmentsReport = generateInvestmentsReport(request, "");
+        secondInvestmentsReport = generateInvestmentsReport(request, "1");
     }
 
     private void generateBarCharts() {

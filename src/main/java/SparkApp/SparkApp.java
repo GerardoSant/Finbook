@@ -9,6 +9,9 @@ import static spark.Spark.*;
 
 public class SparkApp {
 
+    private static final int PORT_NUMBER = 8080;
+
+
     public SparkApp() {
     }
 
@@ -37,7 +40,7 @@ public class SparkApp {
     private static void configureSpark() {
         staticFiles.location("/public");
         staticFiles.expireTime(600L);
-        port(8080);
+        port(PORT_NUMBER);
     }
 
     private static void configureWebSocket() {
@@ -56,7 +59,7 @@ public class SparkApp {
 
     private static void setUpGetRoutes() {
         get("/", (request, response) -> {
-            response.redirect("/login");
+            response.redirect("");
             return null;
         });
 
