@@ -41,25 +41,41 @@ public class SMTPMailSender implements MailSender{
 
     private MimeMessage message(String mailTo, User from, File billXMLFile) throws MessagingException {
         MimeMessage message = new MimeMessage(session());
-        message.setFrom(new InternetAddress(USER));
-        message.addRecipient(Message.RecipientType.TO,new InternetAddress(mailTo));
-        message.setSubject("FinBook Notification - You have received a bill from " + from.getCompanyName());
-        DataSource source = new FileDataSource(billXMLFile);
-        message.setDataHandler(new DataHandler(source));
-        message.setFileName(billXMLFile.getName());
+        addMessage(mailTo, from, message);
+        addFile(billXMLFile, message);
         return message;
     }
 
+    private void addMessage(String mailTo, User from, MimeMessage message) throws MessagingException {
+        message.setFrom(new InternetAddress(USER));
+        message.addRecipient(Message.RecipientType.TO,new InternetAddress(mailTo));
+        message.setSubject("FinBook Notification - You have received a bill from " + from.getCompanyName());
+    }
+
+    private void addFile(File billXMLFile, MimeMessage message) throws MessagingException {
+        DataSource source = new FileDataSource(billXMLFile);
+        message.setDataHandler(new DataHandler(source));
+        message.setFileName(billXMLFile.getName());
+    }
+
     private File billXMLFile(Bill bill) throws IOException {
+        File billXMLFile = createFile(bill);
+        writeOnFile(bill, billXMLFile);
+        return billXMLFile;
+    }
+
+    private File createFile(Bill bill) throws IOException {
         File billXMLFile = new File(bill.getUUID() + ".xml");
         billXMLFile.createNewFile();
+        return billXMLFile;
+    }
+
+    private void writeOnFile(Bill bill, File billXMLFile) throws IOException {
         Path path = Paths.get(billXMLFile.getPath());
         BufferedWriter writer = Files.newBufferedWriter(path);
         writer.write(bill.getXmlFile());
         writer.close();
-        return billXMLFile;
     }
-
 
     private Session session() {
         return Session.getDefaultInstance(properties(),
