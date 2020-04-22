@@ -1,11 +1,12 @@
 package Controller.Web;
 
+import Controller.Command;
 import spark.Request;
 import spark.Response;
 
 import java.text.ParseException;
 
-public abstract class FrontCommand {
+public abstract class FrontCommand implements Command {
     protected Request request;
     protected Response response;
 
@@ -14,5 +15,5 @@ public abstract class FrontCommand {
         this.response=response;
     }
 
-    abstract public String process() throws Exception;
+    abstract public String execute() throws Exception;
 }

@@ -20,7 +20,7 @@ public class ShowBillsTimelineCommand extends FrontCommand {
     BillTimeline timeline;
 
     @Override
-    public String process() {
+    public String execute() {
         LoginController.ensureUserIsLoggedIn(request, response);
         timeline = generateBillTimeline(request);
         saveTimelineToSession();

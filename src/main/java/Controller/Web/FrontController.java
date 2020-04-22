@@ -36,7 +36,7 @@ public class FrontController {
 
     private static Object processCommand(Request request, Response response, FrontCommand command) {
         try{
-            return command.process();
+            return command.execute();
         } catch(Exception e){
             e.printStackTrace();
             return runErrorCommand(request, response, e);
@@ -46,7 +46,7 @@ public class FrontController {
     private static Object runErrorCommand(Request request, Response response, Exception e) {
         ErrorCommand errorCommand = new ErrorCommand(e);
         errorCommand.init(request, response);
-        return errorCommand.process();
+        return errorCommand.execute();
     }
 
 
@@ -63,11 +63,11 @@ public class FrontController {
       FrontCommand command = getCommand(request);
       command.init(request,response);
       try{
-          return command.process();
+          return command.execute();
       } catch(Exception e){
           ErrorCommand errorCommand = new ErrorCommand(e);
           errorCommand.init(request,response);
-          return errorCommand.process();
+          return errorCommand.execute();
       }
     };
 

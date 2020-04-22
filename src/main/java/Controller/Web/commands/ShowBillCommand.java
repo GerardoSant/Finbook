@@ -21,7 +21,7 @@ public class ShowBillCommand extends FrontCommand {
     Location location;
 
     @Override
-    public String process() {
+    public String execute() {
         LoginController.ensureUserIsLoggedIn(request, response);
         bill = getRequestedBill();
         location = loadLocation();

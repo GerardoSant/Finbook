@@ -19,7 +19,7 @@ public class UnknownCommand extends FrontCommand {
     }
 
     @Override
-    public String process() {
+    public String execute() {
         response.status(HttpStatus.NOT_FOUND_404);
         writeErrorOnLog();
         return ViewUtil.render(request, new HashMap<>(), Path.Template.NOT_FOUND);

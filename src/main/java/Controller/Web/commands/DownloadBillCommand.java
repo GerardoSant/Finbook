@@ -10,7 +10,7 @@ import static Controller.Web.webutils.RequestUtil.getSessionUser;
 
 public class DownloadBillCommand extends FrontCommand {
     @Override
-    public String process() {
+    public String execute() {
         ensureUserIsLoggedIn(request, response);
         response.type("text/xml");
         return billInXML();

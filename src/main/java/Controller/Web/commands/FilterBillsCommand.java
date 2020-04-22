@@ -15,7 +15,7 @@ import static java.lang.Boolean.parseBoolean;
 
 public class FilterBillsCommand extends FrontCommand {
     @Override
-    public String process() {
+    public String execute() {
         List<Bill> billList = request.session().attribute("billList");
         billList = applyFilters(billList);
         request.session().attribute("currentBillList",billList);

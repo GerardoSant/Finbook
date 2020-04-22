@@ -23,7 +23,7 @@ public class CompareInvestmentsReportCommand extends FrontCommand {
     private BarChart secondInvestmentsReportChart;
 
     @Override
-    public String process() {
+    public String execute() {
         ensureUserIsLoggedIn(request, response);
         generateReports();
         generateBarCharts();

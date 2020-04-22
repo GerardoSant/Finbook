@@ -21,7 +21,7 @@ public class ShowProfitAndLossesReportCommand extends FrontCommand {
     private BarChart profitAndLossesReportBarChart;
 
     @Override
-    public String process() throws ParseException {
+    public String execute() throws ParseException {
         LoginController.ensureUserIsLoggedIn(request, response);
         profitAndLossesReport = generateReducedProfitAndLossesReport(request);
         profitAndLossesReportBarChart = new ProfitAndLossesBarChartBuilder().build(profitAndLossesReport);

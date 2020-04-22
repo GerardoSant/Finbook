@@ -23,7 +23,7 @@ public class ShowAmortizationReportCommand extends FrontCommand {
     BarChart amortizationReportBarChart;
 
     @Override
-    public String process() throws ParseException {
+    public String execute() throws ParseException {
         LoginController.ensureUserIsLoggedIn(request,response);
         amortizationReport= generateAmortizationReport(request);
         amortizationReportBarChart= new AmortizationBarChartBuilder().build(amortizationReport);

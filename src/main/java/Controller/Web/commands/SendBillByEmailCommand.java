@@ -14,7 +14,7 @@ import static Controller.Web.webutils.RequestUtil.*;
 public class SendBillByEmailCommand extends FrontCommand {
 
     @Override
-    public String process() {
+    public String execute() {
         LoginController.ensureUserIsLoggedIn(request, response);
         try {
             sendBillByEmail(getBillToSent());

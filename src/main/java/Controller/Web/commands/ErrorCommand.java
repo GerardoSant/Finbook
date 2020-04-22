@@ -20,7 +20,7 @@ public class ErrorCommand extends FrontCommand {
 
 
     @Override
-    public String process() {
+    public String execute() {
         response.status(HttpStatus.INTERNAL_SERVER_ERROR_500);
         writeErrorOnLog();
         return ViewUtil.render(request, new HashMap<>(), Path.Template.INTERNAL_ERROR);

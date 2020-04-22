@@ -11,7 +11,7 @@ public class LoadBillsCommand extends FrontCommand {
 
     private final static int PAGE_SIZE=30;
     @Override
-    public String process() throws ParseException {
+    public String execute() throws ParseException {
         if (requestedPageNumber()*PAGE_SIZE<currentBillList().size()){
             return pageAsJson();
         } else{

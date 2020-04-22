@@ -25,7 +25,7 @@ import static Controller.Web.webutils.RequestQueryHandler.generateTop5Sales;
 
 public class ShowDashboardCommand extends FrontCommand {
     @Override
-    public String process() throws ParseException {
+    public String execute() throws ParseException {
         LoginController.ensureUserIsLoggedIn(request,response);
         Map<String, Object> model = new HashMap<>();
         model.put("number", new NumberTool());

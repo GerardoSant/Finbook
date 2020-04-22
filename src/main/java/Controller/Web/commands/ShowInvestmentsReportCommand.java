@@ -20,7 +20,7 @@ public class ShowInvestmentsReportCommand extends FrontCommand {
     private BarChart investmentsReportBarChart;
 
     @Override
-    public String process() {
+    public String execute() {
         LoginController.ensureUserIsLoggedIn(request,response);
         investmentsReport = generateInvestmentsReport(request);
         investmentsReportBarChart = new InvestmentsBarChartBuilder().build(investmentsReport);

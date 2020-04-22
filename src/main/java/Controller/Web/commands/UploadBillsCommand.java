@@ -18,7 +18,7 @@ public class UploadBillsCommand extends FrontCommand {
     private static String[] resBody={""};
 
     @Override
-    public String process() throws Exception {
+    public String execute() throws Exception {
         resBody[0]="";
         request.attribute("org.eclipse.jetty.multipartConfig", new MultipartConfigElement("/temp"));
         try (InputStream is = request.raw().getPart("sampleFile").getInputStream()) {

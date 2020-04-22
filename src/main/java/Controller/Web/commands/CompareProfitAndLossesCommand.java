@@ -25,7 +25,7 @@ public class CompareProfitAndLossesCommand extends FrontCommand {
     private BarChart secondProfitAndLossesReportChart;
 
     @Override
-    public String process() throws ParseException {
+    public String execute() throws ParseException {
         ensureUserIsLoggedIn(request, response);
         generateReports();
         generateBarCharts();

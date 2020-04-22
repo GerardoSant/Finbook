@@ -19,7 +19,7 @@ public class ShowBillsCommand extends FrontCommand {
 
     List<Bill> billList;
     @Override
-    public String process() {
+    public String execute() {
         LoginController.ensureUserIsLoggedIn(request,response);
         HashMap<String, Object> model = new HashMap<>();
         billList=  handleQuery(getRequestBillList(), model);
