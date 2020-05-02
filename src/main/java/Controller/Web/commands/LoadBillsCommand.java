@@ -10,6 +10,7 @@ import java.util.List;
 public class LoadBillsCommand extends FrontCommand {
 
     private final static int PAGE_SIZE=30;
+
     @Override
     public String execute() throws ParseException {
         if (requestedPageNumber()*PAGE_SIZE<currentBillList().size()){

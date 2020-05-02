@@ -16,14 +16,25 @@ import static java.lang.Boolean.parseBoolean;
 public class FilterBillsCommand extends FrontCommand {
     @Override
     public String execute() {
-        List<Bill> billList = request.session().attribute("billList");
-        billList = applyFilters(billList);
-        request.session().attribute("currentBillList",billList);
+        List<Bill> billList = applyFilters(getSessionBillList());
+        saveBillListInSession(billList);
+        return billListAsJson(billList);
+    }
+
+    private String billListAsJson(List<Bill> billList) {
         try {
             return new Gson().toJson(billList.subList(0,30));
         } catch(IndexOutOfBoundsException e){
             return new Gson().toJson(billList.subList(0,billList.size()));
         }
+    }
+
+    private void saveBillListInSession(List<Bill> billList) {
+        request.session().attribute("currentBillList",billList);
+    }
+
+    private List<Bill> getSessionBillList() {
+        return request.session().attribute("billList");
     }
 
     private List<Bill> applyFilters(List<Bill> billList) {

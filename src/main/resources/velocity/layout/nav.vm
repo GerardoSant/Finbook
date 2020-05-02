@@ -43,13 +43,15 @@
                     <div style="margin-top:10%">
                         <div>
                             <button id="languageIcon" class="butn" style="width:123px"><i class="fa fa-language"
-                                                                                          aria-hidden="true"></i>&nbsp$msg.get("NAV_LANGUAGE")
+                                                                                          aria-hidden="true"></i>&nbsp$msg.get(
+                                "NAV_LANGUAGE")
                             </button>
                         </div>
                         <br>
                         <form id="logOutForm" action="/logout" method="post" style="display:none"></form>
                         <button onclick="submitLogOutForm()" class="butn" style="width:123px"><i class="fa fa-sign-out"
-                                                                                                 aria-hidden="true"></i>&nbsp$msg.get("NAV_LOGOUT")
+                                                                                                 aria-hidden="true"></i>&nbsp$msg.get(
+                            "NAV_LOGOUT")
                         </button>
                     </div>
                 </div>
@@ -64,12 +66,14 @@
                         <form id="esLanguageForm" style="display:none"><input name="locale" value="es"></form>
                         <form id="enLanguageForm" style="display:none"><input name="locale" value="en"></form>
                         <button name="locale" value="es" onclick="submitLanguageForm('en')" class="butn"
-                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbsp$msg.get("NAV_ENLAN")
+                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbsp$msg.get(
+                            "NAV_ENLAN")
                         </button>
                         <br>
                         <br>
                         <button name="locale" value="es" onclick="submitLanguageForm('es')" class="butn"
-                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbsp$msg.get("NAV_ESLAN")
+                                style="width:121px"><i class="fa fa-language" aria-hidden="true"></i>&nbsp$msg.get(
+                            "NAV_ESLAN")
                         </button>
                     </div>
                 </div>

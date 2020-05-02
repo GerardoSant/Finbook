@@ -12,6 +12,14 @@ thead {
     font-size: 117%
 }
 
+.form-control{
+    background-color: #d2d8dd;
+    margin-bottom:1%;
+}
+.btn{
+    margin-top:2%;
+}
+
 .opener {
     cursor: pointer;
     font-size: 115%;

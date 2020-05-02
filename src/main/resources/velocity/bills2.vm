@@ -3,11 +3,17 @@
 
 <style>
 
+    thead {
+        background-color: rgb(0, 51, 102);
+        color: white;
+        ##font-size: 117%
+    }
+
     [data-href] {
         cursor: pointer;
     }
 
-    span {
+    .filters span {
         border-bottom: 1px solid lightgray;
     }
 
@@ -18,9 +24,11 @@
     .filter {
         width: 100%;
         border-radius: 3px;
-        border: 1px solid lightgray;
+        border: 2px solid lightgray;
         padding: 4px;
-        margin-top: 2px
+        margin-top: 2px;
+        background-color: #d2d8dd;
+        opacity:0.95;
     }
 
     .leftbox {
@@ -110,6 +118,12 @@
         height:65vh
     }
 
+    .numSpan{
+        text-align: right;
+        width: 60px;
+        display: inline-block;
+    }
+
 
 
 
@@ -197,9 +211,9 @@
 
     <br>
     <div id="scrollablePanel" onscroll="handleScroll(this)">
-        <table class="table table-hover fixed_header" id="myTable" style="">
+        <table class="table table-hover fixed_header" id="billsTable">
             #if($bills)
-                <thead class="thead-dark">
+                <thead>
                 <tr>
                     <th onclick="changeOrder(this)" id="date">$msg.get("GNRL_DATE") <i class="fas fa-sort"></i></th>
                     <th onclick="changeOrder(this)" id="pc">$msg.get("GNRL_LOCATION") <i class="fas fa-sort"></i></th>
@@ -225,7 +239,7 @@
                         #else
                             <td>$bill.getReceiverName()</td>
                         #end
-                        <td>$math.roundTo(2, $bill.getTotal())</td>
+                        <td><span class="numSpan">$math.roundTo(2, $bill.getTotal())</span></td>
                         <td>$bill.getCurrency()</td>
                         <td>
                             <a href="bills/$bill.getUUID()/bill.xml" download="$bill.getUUID()">
@@ -302,7 +316,7 @@
         redirectPrevented=true;
     }
 
-    $('#myTable').on('click', '*[data-href]', function () {
+    $('#billsTable').on('click', '*[data-href]', function () {
         if (redirectPrevented) {
             redirectPrevented=false;
         } else{
@@ -355,26 +369,26 @@
     }
 
     function removeRowsFromTable() {
-        $("#myTable tbody tr").remove();
+        $("#billsTable tbody tr").remove();
     }
 </script>
 
 <script>
     //AJAX
-    var requestNumber = 1;
+    var pageNumber = 1;
     var endResponse=false;
 
     function loadNewBillPage() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState === 4 && this.status === 200) {
                 lastJsonResponse=this.responseText;
                 processJson(this.responseText);
             }
         };
-        xhttp.open("POST", "/loadbills?page=" + requestNumber, true);
+        xhttp.open("POST", "/loadbills?page=" + pageNumber, true);
         xhttp.send();
-        requestNumber++;
+        pageNumber++;
     }
 
 
@@ -388,7 +402,7 @@
         }
     }
 
-    var billsTable = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+    var billsTable = document.getElementById('billsTable').getElementsByTagName('tbody')[0];
     ;
 
     function appendToTable(bill) {
@@ -409,7 +423,7 @@
             newCell4.innerHTML = bill.receiverName;
         }
         var newCell5 = newRow.insertCell(4);
-        newCell5.innerHTML = bill.total.toFixed(2);
+        $(newCell5).append('<span class="numSpan">'+bill.total.toFixed(2)+'</span>');
         var newCell6 = newRow.insertCell(5);
         newCell6.innerHTML = bill.currency;
         var newCell7 = newRow.insertCell(6);

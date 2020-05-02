@@ -30,7 +30,7 @@ public class ShowDashboardCommand extends FrontCommand {
         Map<String, Object> model = new HashMap<>();
         model.put("number", new NumberTool());
         ProfitAndLossesReport report = generateProfitAndLossesReport(request);
-        model.put("profitreport",report);
+        model.put("profitAndLossesReport",report);
         BarChart profitAndLossesBarChart = new ProfitAndLossesBarChartBuilder().build(report);
         model.put("profitReportBarChart", profitAndLossesBarChart);
         AmortizationReport amortizationReport = generateAmortizationReport(request);

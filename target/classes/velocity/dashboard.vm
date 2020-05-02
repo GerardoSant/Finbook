@@ -4,28 +4,28 @@
 <link rel="stylesheet" href="/css/dashboard.css">
 
 <div class="boxrows-container">
-    #if($profitreport.getProfit()>0)
+    #if($profitAndLossesReport.getProfit()>0)
     <div class="minibox minibox-medium box greenbox" onclick="redirectWithPeriod('reports/profitandlosses')">
     #else
     <div class="minibox minibox-medium box redbox" onclick="redirectWithPeriod('reports/profitandlosses')">
     #end
     <i class="fa fa-chart-line"></i>
     <div class="minibox-text">
-        <h3>$number.format("currency",$profitreport.getProfit())</h3>
+        <h3>$number.format("currency",$profitAndLossesReport.getProfit())</h3>
         <p>$msg.get("DSB_TPROFIT")</p>
     </div>
 </div>
     <div class="minibox minibox-medium box lightgreenbox" onclick="redirectWithPeriod('reports/profitandlosses')">
         <i class="fa fa-chart-bar"></i>
         <div class="minibox-text">
-            <h3>$number.format("currency",$profitreport.getSalesAndIncomesBase())</h3>
+            <h3>$number.format("currency",$profitAndLossesReport.getSalesAndIncomesBase())</h3>
             <p>$msg.get("DSB_TINCOMES")</p>
         </div>
     </div>
     <div class="minibox minibox-medium box lightredbox" onclick="redirectWithPeriod('reports/profitandlosses')">
         <i class="fa fa-chart-bar"></i>
         <div class="minibox-text">
-            <h3>$number.format("currency",$profitreport.getPurchasesAndExpensesBase())</h3>
+            <h3>$number.format("currency",$profitAndLossesReport.getPurchasesAndExpensesBase())</h3>
             <p>$msg.get("DSB_TEXPENSES")</p>
         </div>
     </div>
@@ -186,7 +186,7 @@
         invoiceDistributionBarChartOptions = {
             chart: {
                 title: '$msg.get("DSB_COMPANYINVOICEDISTRIBUTION")',
-                subtitle: '$msg.get("DSB_IDCHARTDESC")' +' 2014-2017',
+                subtitle: '$msg.get("DSB_IDCHARTDESC")' +' $date.format("dd/MM/yyyy",$profitAndLossesReport.getPeriodStart()) - $date.format("dd/MM/yyyy",$profitAndLossesReport.getPeriodEnd())',
             },
             bars: 'horizontal', // Required for Material Bar Charts.
             backgroundColor: 'rgb(247,250,252)',
@@ -295,7 +295,7 @@
 
         profitAndLossBarChartOptions = {
             chart: {
-                title: '$msg.get("DSB_P&LCHARTTITLE"): 2014-2017',
+                title: '$msg.get("DSB_P&LCHARTTITLE"): $date.format("dd/MM/yyyy",$profitAndLossesReport.getPeriodStart()) - $date.format("dd/MM/yyyy",$profitAndLossesReport.getPeriodEnd())',
             },
             bars: 'vertical', // Required for Material Bar Charts.
             backgroundColor: 'rgb(247,250,252)',

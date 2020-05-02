@@ -2,6 +2,10 @@
     border-top: double lightgray
 }
 
+.modal-border{
+    background-color: rgb(234,241,247);
+}
+
 @media screen and (max-height: 950px) {
     footer{
         display:none

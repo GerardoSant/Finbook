@@ -15,7 +15,7 @@
             <span class="sr-only">Loading...</span>
         </div>
     </div>
-    <iframe src="MyCompanyProtocol: $textToSign ws://localhost:8080/echo"></iframe>
+    <iframe src="finbSign: $textToSign ws://localhost:8080/echo"></iframe>
 </div>
 
 <script src="/javascript/websocketControl.js">

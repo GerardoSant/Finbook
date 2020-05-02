@@ -70,9 +70,7 @@ function openNav() {
     } else {
         sideMenu.style.width = "250px";
         document.getElementsByClassName("main")[0].style.marginLeft = "250px";
-        document.getElementsByClassName("main")[1].style.marginLeft = "250px";
     }
-
 }
 
 function closeNav() {
