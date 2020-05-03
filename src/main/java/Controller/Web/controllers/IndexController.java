@@ -29,4 +29,8 @@ public class IndexController{
         Map<String, Object> model = new HashMap<>();
         return ViewUtil.render(request, model, Path.Template.REPORTSINDEX);
     };
+    public static Route serveLandingPage = (Request request, Response response) -> {
+        Map<String, Object> model = new HashMap<>();
+        return ViewUtil.render(request, model, Path.Template.LANDING_PAGE);
+    };
 }

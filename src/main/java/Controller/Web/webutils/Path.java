@@ -26,6 +26,7 @@ public class Path {
         public static final String REPORT_AMORTIZATION = "/reports/amortization";
         public static final String DASHBOARD = "/dashboard";
         public static final String SIGN_AWAIT = "/login/signawait";
+        public static final String LANDING_PAGE = "/landingPage";
     }
 
     public static class Template {
@@ -48,5 +49,6 @@ public class Path {
         public static final String COMPARE_INVESTMENTS_REPORT = "velocity/compareInvestmentsReport.vm";
         public static final String DASHBOARD = "velocity/dashboard.vm";
         public static final String SIGNAWAIT = "velocity/signAwait.vm";
+        public static final String LANDING_PAGE = "velocity/landingPage.vm";
     }
 }

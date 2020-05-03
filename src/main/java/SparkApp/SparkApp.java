@@ -1,6 +1,7 @@
 package SparkApp;
 
 import Controller.Web.FrontController;
+import Controller.Web.controllers.IndexController;
 import Controller.Web.controllers.LoginController;
 
 import Controller.Web.webutils.SparkFilters;
@@ -59,7 +60,7 @@ public class SparkApp {
 
     private static void setUpGetRoutes() {
         get("/", (request, response) -> {
-            response.redirect("");
+            response.redirect("/login");
             return null;
         });
 
@@ -76,6 +77,7 @@ public class SparkApp {
         get(Path.Web.REPORT_COMPARE_PROFITANDLOSSES, FrontController.runCommand("CompareProfitAndLosses"));
         get(Path.Web.REPORT_AMORTIZATION, FrontController.runCommand("ShowAmortizationReport"));
         get(Path.Web.DASHBOARD, FrontController.runCommand("ShowDashboard"));
+        get(Path.Web.LANDING_PAGE, IndexController.serveLandingPage);
 
         get(Path.Web.SIGN_AWAIT, LoginController.serveSignAwait);
     }

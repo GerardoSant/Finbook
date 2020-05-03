@@ -23,7 +23,6 @@ public class ProfitAndLossesReportBuilder extends ReportBuilder {
         billList= generateBillsFromPeriod(billList);
         return generateProfitAndLossesReport(generateGrossSales(),generateSalesReturns(),generatePurchases("G01"),generatePurchases("G02"),generatePurchases("G03"),
                 generateSalaries());
-
     }
 
     private ProfitAndLossesReport generateProfitAndLossesReport(List<Bill> grossSales,List<Bill> salesReturns, List<Bill> grossPurchases, List<Bill> purchasesReturns,
