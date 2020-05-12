@@ -8,7 +8,7 @@
         <div class="row phonescrollable">
             <div class="col-9"><h2>$msg.get("CMPR_INVESTMENT")</h2></div>
             <div class="col-3">
-                <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#myModal">$msg.get("RPRT_COMPARE")
+                <button class="btn btn-secondary" data-toggle="modal" data-target="#myModal">$msg.get("RPRT_COMPARE")
                 </button>
             </div>
         </div>
@@ -20,74 +20,74 @@
             <thead>
             <tr>
                 <th>$msg.get("GNRL_INVESTMENT")</th>
-                <th><span class="numSpan" style="text-align: right">$msg.get("CMPR_PERIODBASE") 1</span></th>
-                <th><span class="numSpan" style="text-align: right">$msg.get("CMPR_PERIODBASE") 2</span></th>
+                <th><span class="large-numSpan" id="firstPeriodth">$msg.get("CMPR_PERIODBASE") 1</span></th>
+                <th><span class="large-numSpan" id="secondPeriodth">$msg.get("CMPR_PERIODBASE") 2</span></th>
                 <th><span class="numSpan" style="text-align: right">$msg.get("CMPR_DIFFERENCE")</span></th>
             </tr>
             </thead>
             <tbody>
             <tr class="field">
                 <td>$msg.get("IRPRT_BUILDINGS")</td>
-                <td><span class="numSpan">$number.format("currency",$report1.getBuildingsBase())</span></td>
-                <td><span class="numSpan">$number.format("currency",$report2.getBuildingsBase())</span></td>
+                <td><span class="large-numSpan">$number.format("currency",$report1.getBuildingsBase())</span></td>
+                <td><span class="large-numSpan">$number.format("currency",$report2.getBuildingsBase())</span></td>
                 <td><span class="numSpan"></span></td>
             </tr>
             <tr class="field">
                 <td>$msg.get("IRPRT_FURNITURE")</td>
-                <td><span class="numSpan">$number.format("currency",$report1.getOfficeEquipmentBase())</span></td>
-                <td><span class="numSpan">$number.format("currency",$report2.getOfficeEquipmentBase())</span></td>
+                <td><span class="large-numSpan">$number.format("currency",$report1.getOfficeEquipmentBase())</span></td>
+                <td><span class="large-numSpan">$number.format("currency",$report2.getOfficeEquipmentBase())</span></td>
                 <td><span class="numSpan"></span></td>
             </tr>
             <tr class="field">
                 <td>$msg.get("IRPRT_TRANSPORT")</td>
-                <td><span class="numSpan">$number.format("currency",$report1.getTransportEquipmentBase())</span>
+                <td><span class="large-numSpan">$number.format("currency",$report1.getTransportEquipmentBase())</span>
                 </td>
-                <td><span class="numSpan">$number.format("currency",$report2.getTransportEquipmentBase())</span>
+                <td><span class="large-numSpan">$number.format("currency",$report2.getTransportEquipmentBase())</span>
                 </td>
                 <td><span class="numSpan"></span></td>
             </tr>
             <tr class="field">
                 <td>$msg.get("IRPRT_COMPUTATIONAL")</td>
-                <td><span class="numSpan">$number.format("currency",$report1.getComputationalEquipmentBase())</span>
+                <td><span class="large-numSpan">$number.format("currency",$report1.getComputationalEquipmentBase())</span>
                 </td>
-                <td><span class="numSpan">$number.format("currency",$report2.getComputationalEquipmentBase())</span>
+                <td><span class="large-numSpan">$number.format("currency",$report2.getComputationalEquipmentBase())</span>
                 </td>
                 <td><span class="numSpan"></span></td>
             </tr>
             <tr class="field">
                 <td>$msg.get("IRPRT_MODELS")</td>
-                <td><span class="numSpan">$number.format("currency",$report1.getModelsAndToolsBase())</span></td>
-                <td><span class="numSpan">$number.format("currency",$report2.getModelsAndToolsBase())</span></td>
+                <td><span class="large-numSpan">$number.format("currency",$report1.getModelsAndToolsBase())</span></td>
+                <td><span class="large-numSpan">$number.format("currency",$report2.getModelsAndToolsBase())</span></td>
                 <td><span class="numSpan"></span></td>
             </tr>
             <tr class="field">
                 <td>$msg.get("IRPRT_TELEPHONE")</td>
-                <td><span class="numSpan">$number.format(
+                <td><span class="large-numSpan">$number.format(
                     "currency",$report1.getTelephoneCommunicationsBase())</span></td>
-                <td><span class="numSpan">$number.format(
+                <td><span class="large-numSpan">$number.format(
                     "currency",$report2.getTelephoneCommunicationsBase())</span></td>
                 <td><span class="numSpan"></span></td>
             </tr>
             <tr class="field">
                 <td>$msg.get("IRPRT_SATELLITE")</td>
-                <td><span class="numSpan">$number.format(
+                <td><span class="large-numSpan">$number.format(
                     "currency",$report1.getSatelliteCommunicationsBase())</span></td>
-                <td><span class="numSpan">$number.format(
+                <td><span class="large-numSpan">$number.format(
                     "currency",$report2.getSatelliteCommunicationsBase())</span></td>
                 <td><span class="numSpan"></span></td>
             </tr>
             <tr class="field">
                 <td>$msg.get("IRPRT_OTHER")</td>
-                <td><span class="numSpan">$number.format(
+                <td><span class="large-numSpan">$number.format(
                     "currency",$report1.getOtherMachineryAndEquipmentBase())</span></td>
-                <td><span class="numSpan">$number.format(
+                <td><span class="large-numSpan">$number.format(
                     "currency",$report2.getOtherMachineryAndEquipmentBase())</span></td>
                 <td><span class="numSpan"></span></td>
             </tr>
             <tr class="mainResult">
                 <td>$msg.get("IRPRT_ALL")</td>
-                <td><span class="numSpan">$number.format("currency",$report1.getBase())</span></td>
-                <td><span class="numSpan">$number.format("currency",$report2.getBase())</span></td>
+                <td><span class="large-numSpan">$number.format("currency",$report1.getBase())</span></td>
+                <td><span class="large-numSpan">$number.format("currency",$report2.getBase())</span></td>
                 <td><span class="numSpan"></span></td>
             </tr>
             </tbody>
@@ -180,6 +180,8 @@
 <script>
     addPercentageChangeToTable();
     dateFromQueryToModal();
+    document.getElementById("firstPeriodth").innerHTML=getFirstPeriodString();
+    document.getElementById("secondPeriodth").innerHTML=getSecondPeriodString();
 </script>
 
 <script>
@@ -200,7 +202,8 @@
 
         options = {
             title: '$msg.get("GNRL_INVESTMENTS")',
-            backgroundColor: 'rgb(247,250,252)'
+            backgroundColor: 'rgb(247,250,252)',
+            colors: ['rgb(255,127,63)','rgb(0,63,132)']
         };
 
         chart = new google.visualization.BarChart(document.getElementById('comparisonChart'));

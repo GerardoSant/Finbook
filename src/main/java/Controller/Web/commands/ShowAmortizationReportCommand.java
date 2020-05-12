@@ -7,6 +7,7 @@ import Controller.Web.webutils.Path;
 import Controller.Web.webutils.ViewUtil;
 import Model.Charts.BarChart;
 import Model.Reports.AmortizationReport;
+import Model.User.User;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;

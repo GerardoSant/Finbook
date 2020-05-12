@@ -375,7 +375,7 @@
 
 <script>
     //AJAX
-    var pageNumber = 1;
+    var requestNumber = 1;
     var endResponse=false;
 
     function loadNewBillPage() {
@@ -386,9 +386,9 @@
                 processJson(this.responseText);
             }
         };
-        xhttp.open("POST", "/loadbills?page=" + pageNumber, true);
+        xhttp.open("POST", "/loadbills?page=" + requestNumber, true);
         xhttp.send();
-        pageNumber++;
+        requestNumber++;
     }
 
 

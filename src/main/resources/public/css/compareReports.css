@@ -46,6 +46,16 @@ footer{
     float:none;
 }
 
+.table{
+    white-space: nowrap
+}
+
+.large-numSpan{
+    width:207px;
+    text-align: right;
+    display: inline-block;
+}
+
 .numSpan{
     text-align: right;
     width:135px;

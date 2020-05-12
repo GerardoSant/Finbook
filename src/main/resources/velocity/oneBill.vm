@@ -102,10 +102,10 @@
         <div class="bill-buttons-container">
             <br>
             <a href="$bill.getUUID()/bill.xml" download="$bill.getUUID()">
-                <button class="btn btn-primary btn-lg">$msg.get("BILL_DOWNLOADXML")</button>
+                <button class="btn btn-secondary btn-lg">$msg.get("BILL_DOWNLOADXML")</button>
             </a>
 
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">$msg.get("BILL_SENDBYEMAIL")
+            <button class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#myModal">$msg.get("BILL_SENDBYEMAIL")
             </button>
         </div>
 

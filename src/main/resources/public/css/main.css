@@ -249,3 +249,12 @@ nav{
 #bodyContent{
     height:80%;
 }
+
+.btn-secondary{
+    background-color: rgb(53,106,142);
+    color:white;
+}
+
+.btn-secondary:hover{
+    background-color: rgb(40,80,106);
+}

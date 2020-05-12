@@ -28,8 +28,8 @@
                 </label>
             </div>
         </form>
-        <button type="submit" form="logInForm" class="btn btn-primary">$msg.get("LOG_LOGIN")</button>
-        <button class="btn btn-primary" onclick="locationToSignAwait()">$msg.get("LOG_LOGINBYSIGN")</button>
+        <button type="submit" form="logInForm" class="btn btn-secondary">$msg.get("LOG_LOGIN")</button>
+        <button class="btn btn-secondary" onclick="locationToSignAwait()">$msg.get("LOG_LOGINBYSIGN")</button>
     </div>
 </div>
 <script>

@@ -16,9 +16,6 @@ thead {
     background-color: #d2d8dd;
     margin-bottom:1%;
 }
-.btn{
-    margin-top:2%;
-}
 
 .opener {
     cursor: pointer;
@@ -30,6 +27,10 @@ thead {
     display: none;
 }
 
+
+.btn-secondary{
+    margin-top:2%;
+}
 .mainResult {
     border-top: ridge;
     border-bottom: ridge;
@@ -121,3 +122,4 @@ footer {
     margin-left:1.3%;
     cursor:pointer;
 }
+

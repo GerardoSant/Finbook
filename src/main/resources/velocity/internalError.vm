@@ -7,7 +7,7 @@
     <br>
     <br>
     <h1>500</h1>
-    <h4>$msg.get("PAGE_NOT_FOUND")</h4>
+    <h4>$msg.get("PAGE_LOAD_ERROR")</h4>
     <h6>$msg.get("ERROR_500")</h6>
 </div>
 

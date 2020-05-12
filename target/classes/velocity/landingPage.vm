@@ -160,6 +160,15 @@
             -webkit-animation-duration: 1s;
             visibility: visible;
         }
+
+        #testing button{
+            background-color: rgb(210, 225, 238);
+            color:rgb(74,74,74);
+        }
+
+        #testing button:hover{
+            background-color: rgb(115,160,202);
+        }
         @keyframes slide {
             0% {
                 opacity: 0;
@@ -214,6 +223,7 @@
                 <li><a href="#about">SOBRE NOSOTROS</a></li>
                 <li><a href="#portfolio">APLICACIÓN WEB</a></li>
                 <li><a href="#services">CARACTERÍSTICAS</a></li>
+                <li><a href="#testing">PRUEBA</a></li>
                 <li><a href="#pricing">PRECIOS</a></li>
                 <li><a href="#contact">CONTACTO</a></li>
             </ul>
@@ -234,12 +244,14 @@
     <div class="row">
         <div class="col-sm-8">
             <h2>SOBRE Finbook</h2><br>
-            <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <br><button class="btn btn-default btn-lg">Get in Touch</button>
+            <h4>Finbook es una solución software que permite automatizar muchos de los procesos relacionados con la gestión de la facturación mediante una aplicación web y móvil.</h4><br>
+            <p>Las facturas conllevan ciertos problemas de control y gestión: dificultad para organizarlas, clasificarlas, ordenarlas, extraer información: gastos, ingresos, nóminas… etc.
+                Finbook te propone no perder ni un segundo más con tus facturas.
+                Si eres una empresa o autónomo, podrás subir todas tus facturas a nuestro servicio y disfrutar de manera inmediata de funcionalidades que supondrán un ahorro de tu tiempo y dinero.</p>
+            <br><button class="btn btn-default btn-lg">Saber más</button>
         </div>
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-signal logo"></span>
+            <span class="glyphicon glyphicon-briefcase logo"></span>
         </div>
     </div>
 </div>
@@ -247,16 +259,15 @@
 <div class="container-fluid bg-grey">
     <div class="row">
         <div class="col-sm-4">
-            <span class="glyphicon glyphicon-globe logo slideanim"></span>
+            <span class="glyphicon glyphicon-signal logo slideanim"></span>
         </div>
         <div class="col-sm-8">
             <h2>QUÉ OFRECEMOS</h2><br>
-            <h4><strong>BUSCADOR/GESTOR DE FACTURAS:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-            <h4><strong>ESTADÍSTICAS DE TU EMPRESA:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-            <h4><strong>LIQUIDACIÓN DEL IVA:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-            <h4><strong>CÁLCULO DE ESTADOS FINANCIEROS:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-            <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h4><strong>BUSCADOR/GESTOR DE FACTURAS:</strong> Gestión de facturas más cómoda que nunca: Sistema de búsqueda  archivado, visualización , descarga y mailing de facturas.</h4><br>
+            <h4><strong>ESTADÍSTICAS DE TU EMPRESA:</strong>Obtén estadísticas automatizadas acerca del ejercicio de tu empresa: visualiza tus ventas, gastos, balances , ratios financieros,etc, con gráficos y estadísticas interactivos y generados de manera automática.</h4><br>
+            <h4><strong>LIQUIDACIÓN DEL IVA:</strong> Olvídate de asesorías para realizar tus liquidaciones de IVA. Finbook provee un sistema de liquidación del IVA que cumple con los estándares españoles.</h4><br>
+            <h4><strong>CÁLCULO DE ESTADOS FINANCIEROS:</strong> Conoce al 100% el estado de las finanzas de tu empresa. Finbook generará los informes de pérdidas y ganancias, los informes de inversiones y los informes de amortización de tu empresa a partir de las facturas alojadas en el servicio.</h4><br>
+            <p><strong>SERVICIO PERSONALIZADO:</strong> ¿Necesitas alguna funcionalidad algo más personalizada acorde con las necesidades de tu empresa? ¡Contacta con nosotros!</p>
         </div>
     </div>
 </div>
@@ -302,14 +313,14 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
+            <div class="item">
+                <h4>"Servicio cómodo, sencillo y eficaz."<br><span>Armiche Rodríguez, Administrador de peluquería, We Are Glad You Aren't Bald</span></h4>
+            </div>
             <div class="item active">
-                <h4>"Agüita niño, que barbaridad de servicio"<br><span>Armiche el Boliche, Mendigo, Mendigo's Life</span></h4>
+                <h4>"Desde que uso Finbook, el control y gestión de mis facturas es mucho más cómodo. No he ahorrado solo en tiempo, también dinero."<br><span>Cristina Sánchez, Directora de tienda online, PCKomponentes </span></h4>
             </div>
             <div class="item">
-                <h4>"Desde que uso esta delicia de servicio, tengo 5cm más de bíceps"<br><span>Ronnie Coleman, Bodybuilder, Tralla Sana</span></h4>
-            </div>
-            <div class="item">
-                <h4>"Finbook me ha cambiado la vida, he pasado de cajero del Mercadona a presidente del gobierno"<br><span>Pedro Sánchez, Político, PSOE</span></h4>
+                <h4>"Antes las facturas llegaban a ser un quebradero de cabeza. Ahora con Finbook, ¡hasta les sacamos provecho!"<br><span>Carlos Ruíz, Director cadena restaurantes, Paco Chiringo</span></h4>
             </div>
         </div>
 
@@ -367,8 +378,20 @@
     </div>
 </div>
 
+<!-- Container (Testing session Section) -->
+<div id="testing" class="container-fluid bg">
+    <div class="text-center">
+        <h2>PERIODO DE PRUEBA GRATUITO</h2>
+        <h4>¿Quieres probar la aplicación? Regístrate y obtén un periodo de prueba gratuito de 1 mes, sin ataduras.</h4>
+    </div>
+
+    <div class="text-center slideanim">
+        <button class="btn btn-lg">PROBAR AHORA</button>
+    </div>
+</div>
+
 <!-- Container (Pricing Section) -->
-<div id="pricing" class="container-fluid">
+<div id="pricing" class="container-fluid bg-grey">
     <div class="text-center">
         <h2>Precios</h2>
         <h4>Elige un plan de pago que se de adapte a las necesidades de tu empresa</h4>
@@ -434,8 +457,11 @@
     </div>
 </div>
 
+
+
+
 <!-- Container (Contact Section) -->
-<div id="contact" class="container-fluid bg-grey">
+<div id="contact" class="container-fluid bg">
     <h2 class="text-center">CONTACTO</h2>
     <div class="row">
         <div class="col-sm-5">
@@ -463,14 +489,14 @@
     </div>
 </div>
 
-<!-- Image of location/map -->
-<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
 
-<footer class="container-fluid text-center">
+
+
+
+<footer class="container-fluid text-center bg-grey">
     <a href="#myPage" title="To Top">
-        <span class="glyphicon glyphicon-chevron-up"></span>
+        <span class="glyphicon glyphicon-chevron-up" ></span>
     </a>
-    <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
 </footer>
 
 <script>
