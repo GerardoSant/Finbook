@@ -13,7 +13,7 @@
         </div>
         <br>
         <form ref='uploadForm' id='uploadForm'
-              action='upload' method='post' encType="multipart/form-data">
+              action='' method='post' encType="multipart/form-data">
             <input type="file" class="form-control-file border" name="sampleFile" id="fileInput" accept="text/xml"
                    multiple/>
         </form>

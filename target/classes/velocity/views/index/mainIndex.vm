@@ -1,4 +1,4 @@
-#parse("/velocity/layout.vm")
+#parse("/velocity/views/layout.vm")
 #mainLayout()
 <html>
 	<style>

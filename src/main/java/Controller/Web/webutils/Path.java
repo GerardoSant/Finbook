@@ -30,25 +30,25 @@ public class Path {
     }
 
     public static class Template {
-        public static final String UPLOAD_BILLS= "velocity/uploadBills.vm";
-        public static final String MAININDEX= "velocity/mainIndex.vm";
-        public static final String LOGIN = "velocity/login.vm";
-        public static final String BILLS = "velocity/bills.vm";
-        public static final String BILLS2 = "velocity/bills2.vm";
-        public static final String BILLS_ONE = "velocity/oneBill.vm";
-        public static final String BILLS_TIMELINE = "velocity/billsTimeline.vm";
-        public static final String NOT_FOUND= "velocity/notFound.vm";
-        public static final String INTERNAL_ERROR= "velocity/internalError.vm";
-        public static final String EXAMPLE_SHINY= "velocity/exampleShiny.vm";
-        public static final String INVESTMENT_REPORT= "velocity/investmentReport.vm";
-        public static final String PROFITANDLOSSES_REPORT = "velocity/profitAndLossesReport.vm";
-        public static final String AMORTIZATION_REPORT = "velocity/amortizationReport.vm";
-        public static final String BILLSINDEX = "velocity/billsIndex.vm";
-        public static final String REPORTSINDEX = "velocity/reportsIndex.vm";
-        public static final String COMPARE_PROFITANDLOSSES_REPORT = "velocity/compareProfitAndLossesReport.vm";
-        public static final String COMPARE_INVESTMENTS_REPORT = "velocity/compareInvestmentsReport.vm";
-        public static final String DASHBOARD = "velocity/dashboard.vm";
-        public static final String SIGNAWAIT = "velocity/signAwait.vm";
-        public static final String LANDING_PAGE = "velocity/landingPage.vm";
+        public static final String UPLOAD_BILLS= "velocity/views/upload/uploadBills.vm";
+        public static final String MAININDEX= "velocity/views/index/mainIndex.vm";
+        public static final String LOGIN = "velocity/views/login/login.vm";
+        public static final String BILLS = "velocity/views/bills/bills.vm";
+        public static final String BILLS2 = "velocity/views/bills/bills2.vm";
+        public static final String BILLS_ONE = "velocity/views/bills/oneBill.vm";
+        public static final String BILLS_TIMELINE = "velocity/views/bills/billsTimeline.vm";
+        public static final String NOT_FOUND= "velocity/views/error/notFound.vm";
+        public static final String INTERNAL_ERROR= "velocity/views/error/internalError.vm";
+        public static final String EXAMPLE_SHINY= "velocity/views/others/exampleShiny.vm";
+        public static final String INVESTMENT_REPORT= "velocity/views/reports/investmentReport.vm";
+        public static final String PROFITANDLOSSES_REPORT = "velocity/views/reports/profitAndLossesReport.vm";
+        public static final String AMORTIZATION_REPORT = "velocity/views/reports/amortizationReport.vm";
+        public static final String BILLSINDEX = "velocity/views/index/billsIndex.vm";
+        public static final String REPORTSINDEX = "velocity/views/index/reportsIndex.vm";
+        public static final String COMPARE_PROFITANDLOSSES_REPORT = "velocity/views/reports/compareProfitAndLossesReport.vm";
+        public static final String COMPARE_INVESTMENTS_REPORT = "velocity/views/reports/compareInvestmentsReport.vm";
+        public static final String DASHBOARD = "velocity/views/dashboard/dashboard.vm";
+        public static final String SIGNAWAIT = "velocity/views/login/signAwait.vm";
+        public static final String LANDING_PAGE = "velocity/views/others/landingPage.vm";
     }
 }
