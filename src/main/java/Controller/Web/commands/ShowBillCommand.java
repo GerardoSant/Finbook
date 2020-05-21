@@ -9,6 +9,8 @@ import Implementations.GeoNamesLocationLoader;
 import Controller.Web.webutils.Path;
 import Controller.Web.webutils.ViewUtil;
 import org.apache.velocity.tools.generic.DateTool;
+import org.apache.velocity.tools.generic.MathTool;
+import org.apache.velocity.tools.generic.NumberTool;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -59,6 +61,7 @@ public class ShowBillCommand extends FrontCommand {
 
     private void addToolsToModel(HashMap<String, Object> model) {
         model.put("dateTool", new DateTool());
+        model.put("numberTool", new NumberTool());
     }
 
 

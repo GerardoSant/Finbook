@@ -9,6 +9,7 @@ import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import Controller.Web.webutils.Path;
 import Controller.Web.webutils.ViewUtil;
+import org.apache.velocity.tools.generic.NumberTool;
 
 import java.util.HashMap;
 import java.util.List;
@@ -65,7 +66,7 @@ public class ShowBillsCommand extends FrontCommand {
     }
 
     private void addToolsToModel(HashMap<String, Object> model) {
-        model.put("math", new MathTool());
+        model.put("numberTool", new NumberTool());
         model.put("dateTool", new DateTool());
     }
 

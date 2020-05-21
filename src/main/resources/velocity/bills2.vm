@@ -120,7 +120,7 @@
 
     .numSpan{
         text-align: right;
-        width: 60px;
+        width: 80px;
         display: inline-block;
     }
 
@@ -239,7 +239,7 @@
                         #else
                             <td>$bill.getReceiverName()</td>
                         #end
-                        <td><span class="numSpan">$math.roundTo(2, $bill.getTotal())</span></td>
+                        <td><span class="numSpan">$numberTool.currency($bill.getTotal())</span></td>
                         <td>$bill.getCurrency()</td>
                         <td>
                             <a href="bills/$bill.getUUID()/bill.xml" download="$bill.getUUID()">
@@ -423,7 +423,7 @@
             newCell4.innerHTML = bill.receiverName;
         }
         var newCell5 = newRow.insertCell(4);
-        $(newCell5).append('<span class="numSpan">'+bill.total.toFixed(2)+'</span>');
+        $(newCell5).append('<span class="numSpan">'+ formatToCurrency(bill.total)+'</span>');
         var newCell6 = newRow.insertCell(5);
         newCell6.innerHTML = bill.currency;
         var newCell7 = newRow.insertCell(6);
@@ -431,6 +431,14 @@
                 '<i class="fas fa-download download-button" onclick="preventRedirect()"></i>\n' +
                 '</a>');
 
+    }
+
+    function formatToCurrency(number){
+        var formatter = new Intl.NumberFormat('de-DE', {
+            style: 'currency',
+            currency: 'EUR',
+        });
+        return formatter.format(number);
     }
 </script>
 
