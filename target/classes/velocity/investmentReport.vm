@@ -166,7 +166,7 @@
 
         </div>
     </div>
-    <div class="content" style="height:60%; margin-bottom:5%">
+    <div class="content report-chart-container">
         <div>
             <h4 class="contentTitle">$msg.get("GNRL_INVESTMENTS") $msg.get("GNRL_CHART")</h4>
         </div>

@@ -98,16 +98,26 @@ footer {
     position: fixed;
 }
 
+.report-chart-container{
+    height:60%;
+    margin-bottom:5%;
+    width:100%
+}
+
+.combo-tr{
+    font-size:115%;
+}
 
 @media screen and (max-height: 650px) {
-    .leftbox {
-        position: static;
-    }
+
 }
 
 @media screen and (max-width: 650px) {
     .phonescrollable {
         overflow-x: scroll;
+    }
+    .leftbox {
+        position: static;
     }
 }
 

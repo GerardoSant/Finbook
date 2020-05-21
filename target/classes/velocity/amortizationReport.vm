@@ -278,11 +278,11 @@
 
         </div>
     </div>
-    <div class="content" style="height:60%; margin-bottom:5%">
+    <div class="content report-chart-container" style="height:60%; margin-bottom:5%">
         <div>
             <h4 class="contentTitle">$msg.get("ARPRT_AMORTIZATIONCHART")</h4>
         </div>
-        <div id="piechart" style="height:90%"></div>
+        <div id="reportchart" style="height:90%"></div>
     </div>
 </div>
 
@@ -310,13 +310,13 @@
             legend: {position:'none'}
         };
 
-        chart = new google.visualization.BarChart(document.getElementById('piechart'));
+        chart = new google.visualization.BarChart(document.getElementById('reportchart'));
 
         chart.draw(data, options);
     }
 
     function resize() {
-        chart = new google.visualization.BarChart(document.getElementById('piechart'));
+        chart = new google.visualization.BarChart(document.getElementById('reportchart'));
         chart.draw(data, options);
     }
 
