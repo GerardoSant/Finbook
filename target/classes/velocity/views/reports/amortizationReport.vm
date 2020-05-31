@@ -3,29 +3,8 @@
 
 
 <link rel="stylesheet" href="/css/reports.css">
-<style>
-    table {
-        white-space: nowrap;
-    }
+<link rel="stylesheet" href="/css/amortizationReport.css">
 
-    .td-small{
-        width:100px;
-        text-align:right;
-        display: inline-block;
-    }
-
-    .td-subtotal{
-        width:115px;
-        text-align:right;
-        display: inline-block;
-    }
-
-    .td-medium{
-        width:120px;
-        text-align:right;
-        display: inline-block;
-    }
-</style>
 
 <div class="rightbox">
     <div class="content">
@@ -36,7 +15,7 @@
         </div>
 
         <br>
-        <div style="overflow-x:scroll">
+        <div class="table-side-scrollable">
             <table class="table table-hover fixed_header" id="myTable">
                 <thead>
                 <tr>
@@ -245,7 +224,7 @@
 </div>
 
 <div class="leftbox">
-    <div class="content" style="margin-bottom:5%">
+    <div class="content left-content">
         <div>
             <h4 class="contentTitle">$msg.get("ARPRT_PERIODAMORTIZATION")</h4>
             <br>
@@ -269,7 +248,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" value="Submit" class="btn btn-secondary" style="float:right">Submit
+                            <button type="submit" value="Submit" class="btn btn-secondary" id="submitButton">Submit
                             </button>
                         </div>
                     </div>
@@ -278,7 +257,7 @@
 
         </div>
     </div>
-    <div class="content report-chart-container" style="height:60%; margin-bottom:5%">
+    <div class="content report-chart-container">
         <div>
             <h4 class="contentTitle">$msg.get("ARPRT_AMORTIZATIONCHART")</h4>
         </div>

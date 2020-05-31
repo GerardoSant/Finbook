@@ -1,0 +1,25 @@
+table {
+    white-space: nowrap;
+}
+
+.td-small{
+    width:100px;
+    text-align:right;
+    display: inline-block;
+}
+
+.td-subtotal{
+    width:115px;
+    text-align:right;
+    display: inline-block;
+}
+
+.td-medium{
+    width:120px;
+    text-align:right;
+    display: inline-block;
+}
+
+.table-side-scrollable{
+    overflow-x: scroll;
+}

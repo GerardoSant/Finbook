@@ -21,7 +21,7 @@
                 <thead>
                 <tr>
                     <th>$msg.get("GNRL_INVESTMENTS")</th>
-                    <th><span class="numSpan" style="text-align: right">$msg.get("RPRT_TOTALAMOUNT")</span></th>
+                    <th><span class="numSpan">$msg.get("RPRT_TOTALAMOUNT")</span></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -121,9 +121,9 @@
                         <td><span class="numSpan">$number.format("currency",$bill.getSubtotal())</span></td>
                     </tr>
                     #end
-                <tr style="border-top:ridge;border-bottom:ridge;background-color: #f7f7f7; font-size:115%">
-                    <td><b>$msg.get("IRPRT_ALL")</b></td>
-                    <td style=""><span class="numSpan">$number.format("currency",$report.getBase())</span></td>
+                <tr class="mainResult">
+                    <td>$msg.get("IRPRT_ALL")</td>
+                    <td><span class="numSpan">$number.format("currency",$report.getBase())</span></td>
                 </tr>
                 </tbody>
             </table>
@@ -133,7 +133,7 @@
 </div>
 
 <div class="leftbox">
-    <div class="content" style="margin-bottom:5%">
+    <div class="content left-content">
         <div>
             <h4 class="contentTitle">$msg.get("RPRT_PERIOD")</h4>
             <br>
@@ -157,7 +157,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <button type="submit" value="Submit" class="btn btn-secondary" style="float:right">$msg.get("GNRL_SUBMIT")
+                            <button type="submit" value="Submit" class="btn btn-secondary" id="submitButton">$msg.get("GNRL_SUBMIT")
                             </button>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
         <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header" style="background-color: rgb(234,241,247)">
+            <div class="modal-header">
                 <h4 class="modal-title">$msg.get("RPRT_SELECTPERIODCOMPARE")</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -231,7 +231,7 @@
             </div>
 
             <!-- Modal footer -->
-            <div class="modal-footer" style="background-color: rgb(234,241,247)">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">$msg.get("GNRL_CANCEL")</button>
                 <button type="submit" form="compareForm" class="btn btn-success">$msg.get("RPRT_COMPARE")</button>
             </div>

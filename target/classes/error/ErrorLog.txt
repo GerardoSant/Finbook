@@ -34332,3 +34332,372 @@ org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
 java.base/java.lang.Thread.run(Thread.java:834)
 
 ----------------
+Sun May 31 15:18:17 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@20483009
+Controller.Web.webutils.RequestQueryHandler.generateProfitAndLossesReport(RequestQueryHandler.java:35)
+Controller.Web.commands.ShowDashboardCommand.execute(ShowDashboardCommand.java:32)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:22:20 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@4bc5a914
+Controller.Web.webutils.RequestQueryHandler.generateReducedProfitAndLossesReport(RequestQueryHandler.java:44)
+Controller.Web.commands.ShowProfitAndLossesReportCommand.execute(ShowProfitAndLossesReportCommand.java:26)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:22:38 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@55140d1e
+Controller.Web.webutils.RequestQueryHandler.generateReducedProfitAndLossesReport(RequestQueryHandler.java:44)
+Controller.Web.commands.ShowProfitAndLossesReportCommand.execute(ShowProfitAndLossesReportCommand.java:26)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:23:49 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@441f75bb
+Controller.Web.webutils.RequestQueryHandler.generateAmortizationReport(RequestQueryHandler.java:54)
+Controller.Web.commands.ShowAmortizationReportCommand.execute(ShowAmortizationReportCommand.java:29)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:24:27 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@582e7e0f
+Controller.Web.webutils.RequestQueryHandler.generateAmortizationReport(RequestQueryHandler.java:54)
+Controller.Web.commands.ShowAmortizationReportCommand.execute(ShowAmortizationReportCommand.java:29)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:24:46 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@7a57a4a0
+Controller.Web.commands.ShowBillCommand.getRequestedBill(ShowBillCommand.java:35)
+Controller.Web.commands.ShowBillCommand.execute(ShowBillCommand.java:28)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:24:57 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@4aae608
+Controller.Web.webutils.RequestQueryHandler.generateProfitAndLossesReport(RequestQueryHandler.java:35)
+Controller.Web.commands.ShowDashboardCommand.execute(ShowDashboardCommand.java:32)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:26:20 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@1f2480cd
+Controller.Web.webutils.RequestQueryHandler.generateAmortizationReport(RequestQueryHandler.java:54)
+Controller.Web.commands.ShowAmortizationReportCommand.execute(ShowAmortizationReportCommand.java:29)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:27:06 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@6b8b5792
+Controller.builders.charts.InvestmentsBarChartBuilder.addValues(InvestmentsBarChartBuilder.java:19)
+Controller.builders.charts.InvestmentsBarChartBuilder.build(InvestmentsBarChartBuilder.java:14)
+Controller.Web.commands.ShowInvestmentsReportCommand.execute(ShowInvestmentsReportCommand.java:26)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:29:53 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@eb9ad2f
+Controller.builders.charts.InvestmentsBarChartBuilder.addValues(InvestmentsBarChartBuilder.java:19)
+Controller.builders.charts.InvestmentsBarChartBuilder.build(InvestmentsBarChartBuilder.java:14)
+Controller.Web.commands.ShowInvestmentsReportCommand.execute(ShowInvestmentsReportCommand.java:26)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:30:37 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@397d16f4
+Controller.builders.charts.InvestmentsBarChartBuilder.addValues(InvestmentsBarChartBuilder.java:19)
+Controller.builders.charts.InvestmentsBarChartBuilder.build(InvestmentsBarChartBuilder.java:14)
+Controller.Web.commands.ShowInvestmentsReportCommand.execute(ShowInvestmentsReportCommand.java:26)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:31:22 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@36f0eda2
+Controller.builders.charts.InvestmentsBarChartBuilder.addValues(InvestmentsBarChartBuilder.java:19)
+Controller.builders.charts.InvestmentsBarChartBuilder.build(InvestmentsBarChartBuilder.java:14)
+Controller.Web.commands.ShowInvestmentsReportCommand.execute(ShowInvestmentsReportCommand.java:26)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------
+Sun May 31 15:32:21 CEST 2020
+Error message:
+null
+Error Stack Trace:
+[Ljava.lang.StackTraceElement;@6116d520
+Controller.builders.charts.InvestmentsBarChartBuilder.addValues(InvestmentsBarChartBuilder.java:19)
+Controller.builders.charts.InvestmentsBarChartBuilder.build(InvestmentsBarChartBuilder.java:14)
+Controller.Web.commands.ShowInvestmentsReportCommand.execute(ShowInvestmentsReportCommand.java:26)
+Controller.Web.FrontController.processCommand(FrontController.java:39)
+Controller.Web.FrontController.lambda$runCommand$0(FrontController.java:17)
+spark.RouteImpl$1.handle(RouteImpl.java:72)
+spark.http.matching.Routes.execute(Routes.java:61)
+spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:134)
+spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1568)
+org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:144)
+org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:61)
+org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+org.eclipse.jetty.server.Server.handle(Server.java:503)
+org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:364)
+org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:260)
+org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:305)
+org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:103)
+org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:118)
+org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:765)
+org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:683)
+java.base/java.lang.Thread.run(Thread.java:834)
+
+----------------

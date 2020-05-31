@@ -130,3 +130,19 @@ footer {
     cursor:pointer;
 }
 
+.left-content{
+    margin-bottom:5%
+}
+
+#submitButton{
+    float:right;
+}
+
+
+.modal-header{
+    background-color: rgb(234,241,247)
+}
+
+.modal-footer{
+    background-color: rgb(234,241,247)
+}
