@@ -118,7 +118,7 @@
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header" style="background-color: rgb(234,241,247)">
+                <div class="modal-header">
                     <h4 class="modal-title">$msg.get("DSB_SELECTDBPERIOD")</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -149,7 +149,7 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="background-color: rgb(234,241,247)">
+                <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">$msg.get("GNRL_CANCEL")</button>
                     <button type="submit" form="compareForm" class="btn btn-success">$msg.get("GNRL_CHANGE")</button>
                 </div>

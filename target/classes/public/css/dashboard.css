@@ -207,3 +207,11 @@ footer {
     padding-right:0 !important;
 }
 
+.modal-header{
+    background-color: rgb(234,241,247)
+}
+
+.modal-footer{
+    background-color: rgb(234,241,247)
+}
+
