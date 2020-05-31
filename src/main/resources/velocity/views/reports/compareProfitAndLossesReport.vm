@@ -22,7 +22,7 @@
                 <th>$msg.get("PRPRT_ACCOUNTINGNAME")</th>
                 <th><span class="large-numSpan" id="firstPeriodth"></span></th>
                 <th><span class="large-numSpan" id="secondPeriodth"></span></th>
-                <th><span class="numSpan" style="text-align: right">$msg.get("CMPR_DIFFERENCE")</span></th>
+                <th><span class="numSpan">$msg.get("CMPR_DIFFERENCE")</span></th>
             </tr>
             </thead>
             <tbody>
@@ -32,7 +32,7 @@
                 <td><span class="large-numSpan">$number.format("currency",$report2.getSalesAndIncomesBase())</span></td>
                 <td><span class="numSpan"></span></td>
             </tr>
-            <tr style="font-size:115%">
+            <tr class="main-row">
                 <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="$msg.get("PRPRT_NETSALES")"
                                            data-content="Base= Gross sales base - Sales returns base">$msg.get("PRPRT_NETSALES")</a>
                 </td>
@@ -60,7 +60,7 @@
                 </td>
                 <td><span class="numSpan"></span></td>
             </tr>
-            <tr style="font-size: 115%">
+            <tr class="main-row">
                 <td class="comboResult"><a data-toggle="popover" data-trigger="hover" title="$msg.get("PRPRT_NETPURCHASES")"
                                            data-content="Base= Gross purchases base - Purchases returns base">$msg.get("PRPRT_NETPURCHASES")</a></td>
                 <td><span class="large-numSpan">$number.format("currency",$report1.getNetPurchasesBase())</span></td>
@@ -106,7 +106,7 @@
     <div>
         <h4 class="contentTitle">$msg.get("CMPR_PROFIT&LOSSCHART")</h4>
     </div>
-    <div id="comparisonChart" style="height:90%"></div>
+    <div id="comparisonChart"></div>
 </div>
 
 
@@ -116,7 +116,7 @@
         <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header" style="background-color: rgb(234,241,247)">
+            <div class="modal-header">
                 <h4 class="modal-title">$msg.get("RPRT_SELECTPERIODCOMPARE")</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -169,7 +169,7 @@
             </div>
 
             <!-- Modal footer -->
-            <div class="modal-footer" style="background-color: rgb(234,241,247)">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">$msg.get("GNRL_CANCEL")</button>
                 <button type="submit" form="compareForm" class="btn btn-success">$msg.get("RPRT_COMPARE")</button>
             </div>

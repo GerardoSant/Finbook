@@ -22,7 +22,7 @@
                 <th>$msg.get("GNRL_INVESTMENT")</th>
                 <th><span class="large-numSpan" id="firstPeriodth">$msg.get("CMPR_PERIODBASE") 1</span></th>
                 <th><span class="large-numSpan" id="secondPeriodth">$msg.get("CMPR_PERIODBASE") 2</span></th>
-                <th><span class="numSpan" style="text-align: right">$msg.get("CMPR_DIFFERENCE")</span></th>
+                <th><span class="numSpan">$msg.get("CMPR_DIFFERENCE")</span></th>
             </tr>
             </thead>
             <tbody>
@@ -99,7 +99,7 @@
     <div>
         <h4 class="contentTitle">$msg.get("CMPR_INVESTMENTCHART")</h4>
     </div>
-    <div id="comparisonChart" style="height:90%"></div>
+    <div id="comparisonChart"></div>
 </div>
 
 
@@ -109,7 +109,7 @@
         <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header" style="background-color: rgb(234,241,247)">
+            <div class="modal-header">
                 <h4 class="modal-title">$msg.get("RPRT_SELECTPERIODCOMPARE")</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
@@ -161,7 +161,7 @@
             </div>
 
             <!-- Modal footer -->
-            <div class="modal-footer" style="background-color: rgb(234,241,247)">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">$msg.get("GNRL_CANCEL")</button>
                 <button type="submit" form="compareForm" class="btn btn-success">$msg.get("RPRT_COMPARE")</button>
             </div>
