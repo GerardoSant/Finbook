@@ -37,6 +37,7 @@ public class SMTPMailSender implements MailSender{
 
     private void sendEmail(String mailTo, Bill bill, User from) throws IOException, MessagingException {
         Transport.send(message(mailTo, from, billXMLFile(bill)));
+        clearTemporaryFile(billXMLFile(bill)); //Once message is sended, bill file created for send is deleted.
     }
 
     private MimeMessage message(String mailTo, User from, File billXMLFile) throws MessagingException {
@@ -93,5 +94,9 @@ public class SMTPMailSender implements MailSender{
         props.put("mail.smtp.auth", "true"); //enable authentication
         props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
         return props;
+    }
+
+    private void clearTemporaryFile(File temporaryBillFile) {
+        temporaryBillFile.delete();
     }
 }
