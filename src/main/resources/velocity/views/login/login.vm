@@ -1,20 +1,22 @@
 #parse("/velocity/layout/mainLayout.vm")
 #@mainLayout()
+<link rel="stylesheet" href="/css/login.css">
+
 <div class="singleBox">
     #if($loggedOut)
-        <div class="container content" style="background-color:lightblue">
+        <div class="container content" id="successfulContainer">
             <h6>$msg.get("LOG_OUT")</h6>
         </div>
     #end
     #if($redirected)
-        <div class="container content" style="background-color:lightcoral">
+        <div class="container content" id="errorContainer">
             <h6>$msg.get("LOG_REDIRECT")</h6>
         </div>
     #end
     <div class="container content">
         <h2>$msg.get("LOG_LOGIN")</h2>
         <form action="/login" method="post" id="logInForm">
-            <div class="form-group" style="float:none">
+            <div class="form-group">
                 <label for="Username">$msg.get("LOG_USERNAME")</label>
                 <input class="form-control" id="username" placeholder="$msg.get("LOG_ENTERUSERNAME")" name="username">
             </div>
@@ -32,11 +34,7 @@
         <button class="btn btn-secondary" onclick="locationToSignAwait()">$msg.get("LOG_LOGINBYSIGN")</button>
     </div>
 </div>
-<script>
-    function locationToSignAwait() {
-        location.replace(location.pathname + "/signawait");
-    }
-</script>
+<script src="/javascript/loginControl.js"></script>
 
 #end
 	
