@@ -34,11 +34,5 @@ public abstract class Report {
         return billList.stream().map(bill -> bill.getSubtotal()).reduce(0.0, (subtotal, bill) -> subtotal + bill);
     };
 
-    protected List<Bill> billsFromPeriod(List<Bill> billList){
-        return billList.stream().filter(bill -> bill.getDate().compareTo(periodStart)>=0 && bill.getDate().compareTo(periodEnd)<=0).collect(Collectors.toList());
-    }
-
-
-
 
 }

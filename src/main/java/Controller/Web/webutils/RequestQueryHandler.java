@@ -113,9 +113,15 @@ public class RequestQueryHandler {
             }
             if (request.queryParams("min") != null && !request.queryParams("min").isEmpty()) {
                 if (!request.queryParams(PERIOD_START_QUERY_PARAM).isEmpty()) {
-                    return new BillTimelineBuilder().build(getSessionUser(request).getCompanyRFC(), billList, new DateParser(DATE_INTL_STD_FORMAT).parseDate(request.queryParams(PERIOD_START_QUERY_PARAM)), new DateParser(DATE_INTL_STD_FORMAT).parseDate(request.queryParams(PERIOD_END_QUERY_PARAM)), queryParamIsTrue(request,"ascendent"), parseDouble(request.queryParams("min")), parseDouble(request.queryParams("max")), queryParamIsTrue(request, "incomes"), queryParamIsTrue(request, "expenses"), queryParamIsTrue(request, "investments"), queryParamIsTrue(request, "salaries"));
+                    return new BillTimelineBuilder().build(getSessionUser(request).getCompanyRFC(), billList, new DateParser(DATE_INTL_STD_FORMAT).parseDate(request.queryParams(PERIOD_START_QUERY_PARAM)),
+                            new DateParser(DATE_INTL_STD_FORMAT).parseDate(request.queryParams(PERIOD_END_QUERY_PARAM)), queryParamIsTrue(request,"ascendent"),
+                            parseDouble(request.queryParams("min")), parseDouble(request.queryParams("max")), queryParamIsTrue(request, "incomes"),
+                            queryParamIsTrue(request, "expenses"), queryParamIsTrue(request, "investments"), queryParamIsTrue(request, "salaries"));
                 } else {
-                    return new BillTimelineBuilder().build(getSessionUser(request).getCompanyRFC(), billList, queryParamIsTrue(request,"ascendent"), parseDouble(request.queryParams("min")), parseDouble(request.queryParams("max")), queryParamIsTrue(request, "incomes"), queryParamIsTrue(request, "expenses"), queryParamIsTrue(request, "investments"), queryParamIsTrue(request, "salaries"));
+                    return new BillTimelineBuilder().build(getSessionUser(request).getCompanyRFC(), billList, queryParamIsTrue(request,"ascendent"), parseDouble(request.queryParams("min")),
+                            parseDouble(request.queryParams("max")), queryParamIsTrue(request, "incomes"),
+                            queryParamIsTrue(request, "expenses"),
+                            queryParamIsTrue(request, "investments"), queryParamIsTrue(request, "salaries"));
                 }
             } else {
                 if (request.queryParams(PERIOD_START_QUERY_PARAM) != null && !request.queryParams(PERIOD_START_QUERY_PARAM).isEmpty()) {

@@ -108,9 +108,6 @@ footer {
     font-size:115%;
 }
 
-@media screen and (max-height: 650px) {
-
-}
 
 @media screen and (max-width: 650px) {
     .phonescrollable {
