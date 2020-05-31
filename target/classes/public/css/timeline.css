@@ -278,3 +278,40 @@ footer {
         padding-left: 40%;
     }
 }
+
+#submitButton{
+    float:right
+}
+
+.contentTitle{
+    margin-bottom:1%; height:44px
+}
+
+.contentTitle h3{
+    float:left;
+}
+.contentTitle div{
+    float:right; margin-right:1%
+}
+
+.billContainer-content{
+    background-color: white; opacity:0.9
+}
+
+.modal-header{
+    background-color: rgb(234,241,247)
+}
+
+.modal-body p{
+    display:inline;
+}
+
+.modal-body img{
+    height:30px;
+}
+.modal-body div{
+    margin-left:38%
+}
+.modal-footer{
+    background-color: rgb(234,241,247)
+}

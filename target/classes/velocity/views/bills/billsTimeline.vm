@@ -83,15 +83,15 @@
                     <input type="radio" class="form-check-input" name="ascendent" id="descendent" value="false">$msg.get("TMLN_DESCENDENT")
                 </label>
             </div>
-            <input type="submit" class="btn btn-primary" value="$msg.get("TMLN_FILTER")" style="float:right">
+            <input type="submit" class="btn btn-primary" id="submitButton" value="$msg.get("TMLN_FILTER")">
         </div>
     </form>
 </div>
 <div class="content rightbox">
 <div class="timelineContainer" onscroll="handleScroll(this)">
-    <div class="contentTitle" style="margin-bottom:1%; height:44px">
-        <h3 style="float:left">$msg.get("TMLN_BILLSTIMELINE")</h3>
-        <div style="float:right; margin-right:1%">
+    <div class="contentTitle">
+        <h3>$msg.get("TMLN_BILLSTIMELINE")</h3>
+        <div>
             <button id="infoButton" data-toggle="modal" data-target="#legendModal"><i
                     class="fa fa-info-circle" aria-hidden="true"></i></button>
         </div>
@@ -119,7 +119,7 @@
         <div>
             <h2>$dateTool.format("medium",$bill.getDate(),$locale)</h2>
         </div>
-        <div style="background-color: white; opacity:0.9">
+        <div class="billContainer-content">
             <h4>$bill.getConcept()</h4>
             <div class="billContainerAmount"><h4>$number.format("currency",$bill.getTotal())</h4></div>
         </div>
@@ -135,36 +135,36 @@
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header" style="background-color: rgb(234,241,247)">
+                <div class="modal-header">
                     <h4 class="modal-title">$msg.get("TMLN_LEGEND")</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <div style="margin-left:38%">
-                        <img src="/img/legendgreen.png" style="height:30px">
-                        <p style="display:inline">&nbsp&nbsp&nbsp$msg.get("GNRL_INCOME")</p>
+                    <div>
+                        <img src="/img/legendgreen.png">
+                        <p>&nbsp&nbsp&nbsp$msg.get("GNRL_INCOME")</p>
                     </div>
                     <br>
-                    <div style="margin-left:38%">
-                        <img src="/img/legendred.png" style="height:30px">
-                        <p style="display:inline">&nbsp&nbsp&nbsp$msg.get("GNRL_EXPENSE")</p>
+                    <div>
+                        <img src="/img/legendred.png">
+                        <p>&nbsp&nbsp&nbsp$msg.get("GNRL_EXPENSE")</p>
                     </div>
                     <br>
-                    <div style="margin-left:38%">
-                        <img src="/img/legendblue.png" style="height:30px">
-                        <p style="display:inline">&nbsp&nbsp&nbsp$msg.get("GNRL_INVESTMENT")</p>
+                    <div>
+                        <img src="/img/legendblue.png">
+                        <p>&nbsp&nbsp&nbsp$msg.get("GNRL_INVESTMENT")</p>
                     </div>
                     <br>
-                    <div style="margin-left:38%">
-                        <img src="/img/legendyellow.png" style="height:30px">
-                        <p style="display:inline">&nbsp&nbsp&nbsp$msg.get("GNRL_SALARIE")</p>
+                    <div>
+                        <img src="/img/legendyellow.png">
+                        <p >&nbsp&nbsp&nbsp$msg.get("GNRL_SALARIE")</p>
                     </div>
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="background-color: rgb(234,241,247)">
+                <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">$msg.get("GNRL_CLOSE")</button>
                 </div>
             </div>
