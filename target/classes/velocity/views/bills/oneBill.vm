@@ -5,17 +5,17 @@
 <div class="singleBox">
     #if($redirected)
         #if($emailSent)
-            <div class="container content" style="background-color:lightblue">
+            <div class="container content" id="successfulContainer">
                 <h6>$msg.get("BILL_SUCCESFULSENT")</h6>
             </div>
         #else
-            <div class="container content" style="background-color:lightcoral">
+            <div class="container content error-container" id="errorContainer">
                 <h6>$msg.get("BILL_ERRORSENT")</h6>
             </div>
         #end
     #end
 
-    <div class="content container" style="margin-bottom:50px">
+    <div class="content container">
         <div class="contentTitle">
             <h2>$msg.get("GNRL_BILL") $bill.getUUID()</h2>
         </div>
@@ -139,17 +139,9 @@
 
 </div>
 
+<script src="/javascript/oneBillControl.js"></script>
 <script>
-    jQuery(document).ready(function ($) {
-        $("#send").on('click', function () {
-            console.log("hejka");
-            var str = "$bill.getUUID()";
-            window.location = /bills/ + str + "/" + document.getElementById("email").value + "/";
-        });
-    });
-
-	window.addEventListener("resize", function(){console.log(window.innerHeight)});
-
+    handleEmailSend("$bill.getUUID()")
 </script>
 
 #end
