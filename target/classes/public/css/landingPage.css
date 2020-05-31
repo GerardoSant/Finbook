@@ -192,3 +192,20 @@ footer .glyphicon {
         font-size: 150px;
     }
 }
+
+#highConcept{
+    font-style: italic;
+}
+
+#mainImg{
+    height:100px;
+    margin-bottom:60px
+}
+
+.title-primary{
+    color: rgb(176,35,25)
+}
+
+.title-secondary{
+    color: rgb(7,33,92)
+}
