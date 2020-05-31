@@ -70,3 +70,14 @@
         display:none;
     }
 }
+
+#progressdiv{
+    visibility:hidden
+}
+
+#fileUploadsNum{
+    color:white
+}
+.progress-container{
+    text-align: left;
+}

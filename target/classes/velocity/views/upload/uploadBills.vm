@@ -17,7 +17,7 @@
             <input type="file" class="form-control-file border" name="sampleFile" id="fileInput" accept="text/xml"
                    multiple/>
         </form>
-        <div style="text-align: left;">
+        <div class="progress-container">
             <div id="progress"></div>
         </div>
 
@@ -26,7 +26,7 @@
         <br>
         <br>
 
-        <div class="progress" id="progressdiv" style="visibility:hidden">
+        <div class="progress" id="progressdiv">
             <div id="progressbar" class="progress-bar progress-bar-striped progress-bar-animated"
                  >0%
             </div>
@@ -62,7 +62,7 @@
 <div class="container rightbox" id="right">
     <h2>$msg.get("UPLOAD_FILEUPLOADS")<span class="badge badge-success">
 		<a id="fileUploadsNum" href="#" title="$msg.get("UPLOAD_NEWFILESUPLOADED")" data-toggle="popover" data-trigger="hover"
-           data-content="$msg.get("UPLOAD_HOVER")" style="color:white"></a></span></h2>
+           data-content="$msg.get("UPLOAD_HOVER")"></a></span></h2>
     <table class="table" id="fileTable">
         <thead class="thead-dark">
         <tr>
