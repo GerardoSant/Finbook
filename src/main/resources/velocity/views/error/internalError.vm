@@ -1,7 +1,9 @@
 #parse("/velocity/layout/mainLayout.vm")
 #@mainLayout()
 
-<div class="container content" style="text-align: center">
+<link rel="stylesheet" href="/css/errors.css">
+
+<div class="container content">
     <img src="/img/error.png" alt="error" class="error-img">
     <br>
     <br>
