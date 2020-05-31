@@ -214,6 +214,12 @@ nav{
     visibility: hidden;
 }
 
+.popover-content button{
+    width:125px;
+}
+.popover-content form{
+    display: none;
+}
 
 .butn {
     background-color: lightgrey;
