@@ -1,6 +1,6 @@
 <div id="myNav" class="overlay">
     <div class="overlay-title">
-        <p style="display:inline">Menu</p>
+        <p>Menu</p>
         <a href="javascript:void(0)" id="closeMenuBtn" class="overlay-closebtn" onclick="closeNav()">x</a>
     </div>
     <div class="overlay-content">
