@@ -2,23 +2,23 @@
 
     <!-- Button for open side Menu -->
 
-    <a class="nav-link menuBtn"><img src="/img/openMenu.png" alt="logo" style="height:20px" id="menuBtn"
+    <a class="nav-link menuBtn"><img src="/img/openMenu.png" alt="logo" id="menuBtn"
                                      onclick="navHandler()"></a>
 
     <!-- Brand/logo -->
     #if($user)
         <a class="navbar-brand" href="/dashboard">
-            <img src="/img/favicon28.png" alt="logo" style="height:30px ">
+            <img src="/img/favicon28.png" alt="logo" id="navLogo">
         </a>
     #else
         <a class="navbar-brand" href="/login">
-            <img src="/img/favicon28.png" alt="logo" style="height:30px ">
+            <img src="/img/favicon28.png" alt="logo" id="navLogo">
         </a>
     #end
 
     <!-- Brand WebPage name -->
 
-    <span class="nav-title">Fin</span><span class="nav-title" style="color: rgb(7,33,92); ">book</span>
+    <span class="nav-title">Fin</span><span class="nav-title" id="navSecondaryName">book</span>
 
 
     <!-- User Icon  -->
@@ -36,11 +36,11 @@
 
                 <!--  User Panel when User Icon is clicked -->
                 <div class="popover-content" id="userPanel">
-                    <div style="border-bottom: 1px solid darkgrey">
+                    <div class="popover-content-header">
                         <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
                         <p class="popover-message">$user.getCompanyName()</p>
                     </div>
-                    <div style="margin-top:10%">
+                    <div class="popover-content-body">
                         <div>
                             <button id="languageIcon" class="butn"><i class="fa fa-language"
                                                                       aria-hidden="true"></i>&nbsp$msg.get(
@@ -58,11 +58,11 @@
 
                 <!--  Language Panel when Language Button is clicked -->
                 <div class="popover-content" id="languagePanel">
-                    <div style="border-bottom: 1px solid darkgrey">
+                    <div class="popover-content-header">
                         <i class="fa fa-language fa-2x" aria-hidden="true"></i>
                         <p class="popover-message">$msg.get("NAV_SELECTLANGUAGE")</p>
                     </div>
-                    <div style="margin-top:10%">
+                    <div class="popover-content-body">
                         <form id="esLanguageForm"><input name="locale" value="es"></form>
                         <form id="enLanguageForm"><input name="locale" value="en"></form>
                         <button name="locale" value="es" onclick="submitLanguageForm('en')" class="butn">

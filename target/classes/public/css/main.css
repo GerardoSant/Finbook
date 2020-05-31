@@ -182,8 +182,9 @@ nav{
     }
 }
 
-.menuBtn {
-    cursor: pointer
+#menuBtn {
+    cursor: pointer;
+    height:20px;
 }
 
 .menuBtn:hover {
@@ -219,6 +220,14 @@ nav{
 }
 .popover-content form{
     display: none;
+}
+
+.popover-content-header{
+    border-bottom: 1px solid darkgrey
+}
+
+.popover-content-body{
+    margin-top:10%
 }
 
 .butn {
@@ -263,4 +272,12 @@ nav{
 
 .btn-secondary:hover{
     background-color: rgb(40,80,106);
+}
+
+#navLogo{
+    height:30px;
+}
+
+#navSecondaryName{
+    color: rgb(7,33,92);
 }
