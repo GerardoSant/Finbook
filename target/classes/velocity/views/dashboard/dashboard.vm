@@ -149,7 +149,7 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer">
+                <div class="modal-footer" >
                     <button type="button" class="btn btn-danger" data-dismiss="modal">$msg.get("GNRL_CANCEL")</button>
                     <button type="submit" form="compareForm" class="btn btn-success">$msg.get("GNRL_CHANGE")</button>
                 </div>
@@ -163,19 +163,152 @@
 
 
 
-
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
 
-    google.charts.load('current', {'packages': ['bar']});
-    google.charts.setOnLoadCallback(drawChart);
+    google.charts.load('47', {'packages': ['bar', 'corechart']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+
+    var profitAndLossBarChartData;
+    var profitAndLossBarChartOptions;
+    var profitAndLossBarChart;
 
     var invoiceDistributionBarChartData;
     var invoiceDistributionBarChartOptions;
     var invoiceDistributionBarChart;
 
-    function drawChart() {
+    var top5SalesBarChartData;
+    var top5SalesBarChartOptions;
+    var top5SalesBarChart;
+
+    var profitAndLossPieChartData;
+    var profitAndLossPieChartOptions;
+    var profitAndLossPieChart;
+
+    var amortizationBarChartData;
+    var amortizationBarChartOptions;
+    var amortizationBarChart;
+
+    function drawCharts() {
+        drawTop5SalesChart();
+        drawProfitAndLossBarChart();
+        drawProfitAndLossPieChart();
+        drawAmortizationChart();
+        drawInvoiceDistributionChart();
+    }
+
+    function drawTop5SalesChart(){
+        top5SalesBarChartData = google.visualization.arrayToDataTable([
+            ['$msg.get("DSB_CONCEPT")', '$msg.get("DSB_PRICE")'],
+            ['$top5sales.getTop5()[0].getConcept()',$top5sales.getTop5()[0].getTotal()],
+            ['$top5sales.getTop5()[1].getConcept()',$top5sales.getTop5()[1].getTotal()],
+            ['$top5sales.getTop5()[2].getConcept()',$top5sales.getTop5()[2].getTotal()],
+            ['$top5sales.getTop5()[3].getConcept()',$top5sales.getTop5()[3].getTotal()],
+            ['$top5sales.getTop5()[4].getConcept()',$top5sales.getTop5()[4].getTotal()]
+        ]);
+
+        top5SalesBarChartOptions = {
+            bars: 'vertical', // Required for Material Bar Charts.
+            backgroundColor: 'rgb(247,250,252)',
+            colors: ['rgb(23,164,111)', 'rgb(235,107,107)', 'rgb(121,202,207)', 'rgb(222,160,52)'],
+            axes: {
+                y: {
+                    0: {label: ''} // Top x-axis.
+                },
+                x: {
+                    0: {label: '$msg.get("DSB_AMOUNT") (€)'}
+                }
+            }
+        };
+
+        top5SalesBarChart = new google.charts.Bar(document.getElementById('top5barchart'));
+
+        top5SalesBarChart.draw(top5SalesBarChartData, google.charts.Bar.convertOptions(top5SalesBarChartOptions));
+    }
+
+    function drawProfitAndLossBarChart(){
+        profitAndLossBarChartData = google.visualization.arrayToDataTable([
+            ['Type', '$msg.get("DSB_INCOMES")', '$msg.get("DSB_EXPENSES")'],
+            ['Type', $profitReportBarChart.getCount('Incomes'), $profitReportBarChart.getCount('Expenses')]
+        ]);
+
+        profitAndLossBarChartOptions = {
+            chart: {
+                title: '$msg.get("DSB_P&LCHARTTITLE"): $date.format("dd/MM/yyyy",$profitAndLossesReport.getPeriodStart()) - $date.format("dd/MM/yyyy",$profitAndLossesReport.getPeriodEnd())',
+            },
+            bars: 'vertical', // Required for Material Bar Charts.
+            backgroundColor: 'rgb(247,250,252)',
+            colors: ['rgb(23,164,111)', 'rgb(235,107,107)'],
+            axes: {
+                y: {
+                    0: {label: ''} // Top x-axis.
+                },
+                x: {
+                    0: {label: '$msg.get("DSB_AMOUNT") (€)'}
+                }
+            }
+        };
+
+        profitAndLossBarChart = new google.charts.Bar(document.getElementById('profitandlosschart'));
+
+        profitAndLossBarChart.draw(profitAndLossBarChartData, google.charts.Bar.convertOptions(profitAndLossBarChartOptions));
+    }
+
+    function drawProfitAndLossPieChart(){
+        profitAndLossPieChartData = google.visualization.arrayToDataTable([
+            ['Money', 'Amount',],
+            ['$msg.get("DSB_INCOMES")',$profitReportBarChart.getCount('Incomes')],
+            ['$msg.get("DSB_EXPENSES")', $profitReportBarChart.getCount('Expenses')]
+        ]);
+
+
+        profitAndLossPieChartOptions = {
+            is3D: true,
+            backgroundColor: 'rgb(247,250,252)',
+            slices: {
+                0: {color: 'rgb(23,164,111)'},
+                1: {color: 'rgb(235,107,108)'}
+            }
+        };
+
+
+        profitAndLossPieChart = new google.visualization.PieChart(document.getElementById('profitandlosspiechart'));
+        profitAndLossPieChart.draw(profitAndLossPieChartData, profitAndLossPieChartOptions);
+    }
+
+
+    function drawAmortizationChart(){
+        amortizationBarChartData = google.visualization.arrayToDataTable([
+            ['Investment', 'Amortization'],
+            #foreach($key in $amortizationReportBarChart)
+                ['$key',$amortizationReportBarChart.getCount($key)],
+            #end
+
+        ]);
+
+        amortizationBarChartOptions = {
+            bars: 'horizontal', // Required for Material Bar Charts.
+            backgroundColor: 'rgb(247,250,252)',
+            colors: ['rgb(121,202,207)'],
+            axes: {
+                y: {
+                    0: {label: ''} // Top x-axis.
+                },
+                x: {
+                    0: {label: 'Percentage (%)'}
+                }
+            },
+            legend: {position: "none"},
+        };
+
+        amortizationBarChart = new google.charts.Bar(document.getElementById('amortizationBarChart'));
+
+        amortizationBarChart.draw(amortizationBarChartData, google.charts.Bar.convertOptions(amortizationBarChartOptions));
+    }
+
+    function drawInvoiceDistributionChart(){
         invoiceDistributionBarChartData = google.visualization.arrayToDataTable([
             ['Bill type', '$msg.get("DSB_SALES")', '$msg.get("DSB_PURCHASES")', '$msg.get("DSB_INVESTMENTS")', '$msg.get("DSB_SALARIES")'],
             ['Bill type', $billsDistributionBarChart.getCount('Sales'), $billsDistributionBarChart.getCount(
@@ -209,49 +342,6 @@
 
 </script>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-
-
-    google.charts.load('current', {'packages': ['bar']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    var top5SalesBarChartData;
-    var top5SalesBarChartOptions;
-    var top5SalesBarChart;
-
-    function drawChart() {
-        top5SalesBarChartData = google.visualization.arrayToDataTable([
-            ['$msg.get("DSB_CONCEPT")', '$msg.get("DSB_PRICE")'],
-            ['$top5sales.getTop5()[0].getConcept()',$top5sales.getTop5()[0].getTotal()],
-            ['$top5sales.getTop5()[1].getConcept()',$top5sales.getTop5()[1].getTotal()],
-            ['$top5sales.getTop5()[2].getConcept()',$top5sales.getTop5()[2].getTotal()],
-            ['$top5sales.getTop5()[3].getConcept()',$top5sales.getTop5()[3].getTotal()],
-            ['$top5sales.getTop5()[4].getConcept()',$top5sales.getTop5()[4].getTotal()]
-        ]);
-
-        top5SalesBarChartOptions = {
-            bars: 'vertical', // Required for Material Bar Charts.
-            backgroundColor: 'rgb(247,250,252)',
-            colors: ['rgb(23,164,111)', 'rgb(235,107,107)', 'rgb(121,202,207)', 'rgb(222,160,52)'],
-            axes: {
-                y: {
-                    0: {label: ''} // Top x-axis.
-                },
-                x: {
-                    0: {label: '$msg.get("DSB_AMOUNT") (€)'}
-                }
-            }
-        };
-
-        top5SalesBarChart = new google.charts.Bar(document.getElementById('top5barchart'));
-
-        top5SalesBarChart.draw(top5SalesBarChartData, google.charts.Bar.convertOptions(top5SalesBarChartOptions));
-    }
-
-
-</script>
-
 <script>
     //Resizign de charts
 
@@ -276,122 +366,7 @@
 
 </script>
 
-
-<script>
-
-
-    google.charts.load('current', {'packages': ['bar']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    var profitAndLossBarChartData;
-    var profitAndLossBarChartOptions;
-    var profitAndLossBarChart;
-
-    function drawChart() {
-        profitAndLossBarChartData = google.visualization.arrayToDataTable([
-            ['Type', '$msg.get("DSB_INCOMES")', '$msg.get("DSB_EXPENSES")'],
-            ['Type', $profitReportBarChart.getCount('Incomes'), $profitReportBarChart.getCount('Expenses')]
-        ]);
-
-        profitAndLossBarChartOptions = {
-            chart: {
-                title: '$msg.get("DSB_P&LCHARTTITLE"): $date.format("dd/MM/yyyy",$profitAndLossesReport.getPeriodStart()) - $date.format("dd/MM/yyyy",$profitAndLossesReport.getPeriodEnd())',
-            },
-            bars: 'vertical', // Required for Material Bar Charts.
-            backgroundColor: 'rgb(247,250,252)',
-            colors: ['rgb(23,164,111)', 'rgb(235,107,107)'],
-            axes: {
-                y: {
-                    0: {label: ''} // Top x-axis.
-                },
-                x: {
-                    0: {label: '$msg.get("DSB_AMOUNT") (€)'}
-                }
-            }
-        };
-
-        profitAndLossBarChart = new google.charts.Bar(document.getElementById('profitandlosschart'));
-
-        profitAndLossBarChart.draw(profitAndLossBarChartData, google.charts.Bar.convertOptions(profitAndLossBarChartOptions));
-    }
-
-</script>
-
-
-<script type="text/javascript">
-
-    var profitAndLossPieChartData;
-    var profitAndLossPieChartOptions;
-    var profitAndLossPieChart;
-
-    google.charts.load("current", {packages: ["corechart"]});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-        profitAndLossPieChartData = google.visualization.arrayToDataTable([
-            ['Money', 'Amount',],
-            ['$msg.get("DSB_INCOMES")',$profitReportBarChart.getCount('Incomes')],
-            ['$msg.get("DSB_EXPENSES")', $profitReportBarChart.getCount('Expenses')]
-        ]);
-
-
-        profitAndLossPieChartOptions = {
-            is3D: true,
-            backgroundColor: 'rgb(247,250,252)',
-            slices: {
-                0: {color: 'rgb(23,164,111)'},
-                1: {color: 'rgb(235,107,108)'}
-            }
-        };
-
-
-        profitAndLossPieChart = new google.visualization.PieChart(document.getElementById('profitandlosspiechart'));
-        profitAndLossPieChart.draw(profitAndLossPieChartData, profitAndLossPieChartOptions);
-    }
-</script>
-
-
-<script type="text/javascript">
-
-    google.charts.load('current', {'packages': ['bar']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    var amortizationBarChartData;
-    var amortizationBarChartOptions;
-    var amortizationBarChart;
-
-    function drawChart() {
-        amortizationBarChartData = google.visualization.arrayToDataTable([
-            ['Investment', 'Amortization'],
-            #foreach($key in $amortizationReportBarChart)
-                ['$key',$amortizationReportBarChart.getCount($key)],
-            #end
-
-        ]);
-
-        amortizationBarChartOptions = {
-            bars: 'horizontal', // Required for Material Bar Charts.
-            backgroundColor: 'rgb(247,250,252)',
-            colors: ['rgb(121,202,207)'],
-            axes: {
-                y: {
-                    0: {label: ''} // Top x-axis.
-                },
-                x: {
-                    0: {label: 'Percentage (%)'}
-                }
-            },
-            legend: {position: "none"},
-        };
-
-        amortizationBarChart = new google.charts.Bar(document.getElementById('amortizationBarChart'));
-
-        amortizationBarChart.draw(amortizationBarChartData, google.charts.Bar.convertOptions(amortizationBarChartOptions));
-    }
-
-
-</script>
-
+    
 
 <script src="/javascript/dashboardControl.js"></script>
 
