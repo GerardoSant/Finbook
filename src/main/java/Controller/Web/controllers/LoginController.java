@@ -3,7 +3,7 @@ package Controller.Web.controllers;
 import Controller.util.sign.FinbookSignValidator;
 import View.daos.UserDao;
 import SparkApp.SignWebSocket;
-import io.finbook.TextGenerator;
+//import io.finbook.TextGenerator;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -87,7 +87,8 @@ public class LoginController {
 
     public static Route serveSignAwait = (request, response) -> {
         Map<String, Object> model = new HashMap<>();
-        model.put("textToSign", TextGenerator.generateRandomText());
+        //model.put("textToSign", TextGenerator.generateRandomText());
+        model.put("textToSign", "testText");
         return ViewUtil.render(request, model, Path.Template.SIGNAWAIT);
     };
 
