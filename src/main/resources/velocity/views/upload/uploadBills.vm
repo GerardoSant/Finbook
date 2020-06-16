@@ -60,19 +60,22 @@
 </div>
 
 <div class="container rightbox" id="right">
-    <h2>$msg.get("UPLOAD_FILEUPLOADS")<span class="badge badge-success">
+    <h2>$msg.get("UPLOAD_FILEUPLOADS")<span style="margin-left:20px"class="badge badge-success">
 		<a id="fileUploadsNum" href="#" title="$msg.get("UPLOAD_NEWFILESUPLOADED")" data-toggle="popover" data-trigger="hover"
            data-content="$msg.get("UPLOAD_HOVER")"></a></span></h2>
-    <table class="table" id="fileTable">
-        <thead class="thead-dark">
-        <tr>
-            <th>$msg.get("UPLOAD_FILENAME")</th>
-            <th>$msg.get("UPLOAD_STATUS")</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <div style="overflow-y:scroll;height:70vh; display: block;">
+        <table class="table" id="fileTable">
+            <thead class="thead-dark">
+            <tr>
+                <th>$msg.get("UPLOAD_FILENAME")</th>
+                <th>$msg.get("UPLOAD_STATUS")</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
 </div>
 
 <script src="/javascript/uploadBillsControl.js"></script>

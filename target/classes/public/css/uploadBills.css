@@ -24,7 +24,7 @@
 }
 
 #fileTable{
-    overflow-y:scroll;height:70vh;display:block
+    /*overflow-y:scroll;height:70vh; display: block;*/
 }
 
 #progressbar{

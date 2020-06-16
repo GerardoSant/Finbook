@@ -188,8 +188,6 @@ function processResponseText(responseText) {
     addBadgeUploadInfo(responses);
     for (var i = 0; i < responses.length; i++) {
         var responseSplit = responses[i].split(":");
-        console.log(responseSplit[0]);
-        console.log(responseSplit[1]);
         if (responseSplit[1] == 'Yes') {
             appendOnTable(responseSplit[0], messageBundle.get("UPLOAD_SUCCESSFUL"), "Uploaded", true, true);
         }
@@ -199,7 +197,6 @@ function processResponseText(responseText) {
         if (responseSplit[1] == 'Invalid') {
             appendOnTable(responseSplit[0], messageBundle.get("UPLOAD_ERROR"), "Invalid", false);
         }
-
     }
 }
 
@@ -207,15 +204,15 @@ function appendOnTable(filename, content, status, valid, already) {
     $(document).ready(function () {
         if (valid) {
             var popover = '<a style="color:darkgreen" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="'+messageBundle.get("UPLOAD_UPLOADINFO")+'" data-content="' + content + '">' + filename + '</a>'
-            var append = '<tr class="table-success"><td>' + popover + '</td><td>' + '<div class="text-center"><i style="color:darkgreen" class="fas fa-check"></i></div>' + '</td></tr>';
+            var append = '<tr class="table-success"><td>' + popover + '</td><td>' + '<div><i style="color:darkgreen; padding-left:16px" class="fas fa-check"></i></div>' + '</td></tr>';
         } else {
 
             if (already) {
                 var popover = '<a style="color:rgb(156,101,36);" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="'+messageBundle.get("UPLOAD_UPLOADINFO")+'" data-content="' + content + '">' + filename + '</a>'
-                var append = '<tr class="table-warning"><td>' + popover + '</td><td>' + '<div class="text-center"><i style="color:rgb(166,101,36)" class="fas fa-exclamation-circle"></i></div>' + '</td></tr>';
+                var append = '<tr class="table-warning"><td>' + popover + '</td><td>' + '<div><i style="color:rgb(166,101,36); padding-left:15px" class="fas fa-exclamation-circle"></i></div>' + '</td></tr>';
             } else {
                 var popover = '<a style="color:darkred" href="#" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="'+messageBundle.get("UPLOAD_UPLOADINFO")+'" data-content="' + content + '">' + filename + '</a>'
-                var append = '<tr class="table-danger"><td>' + popover + '</td><td>' + '<div class="text-center"><i style="color:darkred" class="fas fa-times"></i></div>' + '</td></tr>';
+                var append = '<tr class="table-danger"><td>' + popover + '</td><td>' + '<div><i style="color:darkred; padding-left:17px" class="fas fa-times"></i></div>' + '</td></tr>';
             }
 
         }
@@ -223,6 +220,10 @@ function appendOnTable(filename, content, status, valid, already) {
         $('[data-toggle="popover"]').popover();
     });
 }
+
+
+
+
 
 function addBadgeUploadInfo(response) {
     var uploads = response.length;
