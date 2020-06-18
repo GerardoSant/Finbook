@@ -60,7 +60,7 @@ public class SparkApp {
 
     private static void setUpGetRoutes() {
         get("/", (request, response) -> {
-            response.redirect("/login");
+            response.redirect(Path.Web.DASHBOARD);
             return null;
         });
 

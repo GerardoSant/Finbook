@@ -2,7 +2,7 @@ package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
 import Model.Charts.BarChart;
-import Controller.builders.charts.InvestmentsBarChartBuilder;
+import View.builders.charts.InvestmentsBarChartBuilder;
 import Model.Reports.InvestmentsReport;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;

@@ -1,8 +1,7 @@
 package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
-import Controller.Web.controllers.LoginController;
-import Controller.builders.charts.ProfitAndLossesBarChartBuilder;
+import View.builders.charts.ProfitAndLossesBarChartBuilder;
 import Controller.Web.webutils.Path;
 import Controller.Web.webutils.ViewUtil;
 import Model.Charts.BarChart;

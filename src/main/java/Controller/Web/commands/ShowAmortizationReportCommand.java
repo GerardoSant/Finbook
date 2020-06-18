@@ -2,12 +2,11 @@ package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
 import Controller.Web.controllers.LoginController;
-import Controller.builders.charts.AmortizationBarChartBuilder;
+import View.builders.charts.AmortizationBarChartBuilder;
 import Controller.Web.webutils.Path;
 import Controller.Web.webutils.ViewUtil;
 import Model.Charts.BarChart;
 import Model.Reports.AmortizationReport;
-import Model.User.User;
 import org.apache.velocity.tools.generic.DateTool;
 import org.apache.velocity.tools.generic.MathTool;
 import org.apache.velocity.tools.generic.NumberTool;

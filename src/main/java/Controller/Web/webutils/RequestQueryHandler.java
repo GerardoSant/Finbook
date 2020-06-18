@@ -1,9 +1,9 @@
 package Controller.Web.webutils;
 
-import Controller.builders.other.BillTimelineBuilder;
-import Controller.builders.reports.AmortizationReportBuilder;
-import Controller.builders.reports.InvestmentReportBuilder;
-import Controller.builders.reports.ProfitAndLossesReportBuilder;
+import View.builders.other.BillTimelineBuilder;
+import View.builders.reports.AmortizationReportBuilder;
+import View.builders.reports.InvestmentReportBuilder;
+import View.builders.reports.ProfitAndLossesReportBuilder;
 import Controller.util.bill.BillFilter;
 import Controller.util.date.DateParser;
 import Model.Bills.Bill;

@@ -2,10 +2,10 @@ package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
 import Controller.Web.controllers.LoginController;
-import Controller.builders.charts.AmortizationBarChartBuilder;
-import Controller.builders.charts.BillsDistributionBarChartBuilder;
-import Controller.builders.charts.ProfitAndLossesBarChartBuilder;
-import Controller.builders.charts.Top5SalesBarChartBuilder;
+import View.builders.charts.AmortizationBarChartBuilder;
+import View.builders.charts.BillsDistributionBarChartBuilder;
+import View.builders.charts.ProfitAndLossesBarChartBuilder;
+import View.builders.charts.Top5SalesBarChartBuilder;
 import Controller.Web.webutils.Path;
 import Controller.Web.webutils.ViewUtil;
 import Model.Bills.BillsDistribution;
