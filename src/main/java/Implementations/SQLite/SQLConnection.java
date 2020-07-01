@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class SQLConnection {
 
     //public static final String databasePath = "jdbc:sqlite:src\\main\\resources\\db\\facturasSQLite.db";
-    public static final String databasePath = "jdbc:sqlite:C:\\Users\\pezpo\\IdeaProjects\\FinSingle\\src\\main\\resources\\db\\facturasSQLite.db";
+    public static final String databasePath = "jdbc:sqlite:C:\\Users\\pezpo\\IdeaProjects\\FinSingle\\src\\main\\resources\\db\\backup\\facturasSQLite.db";
 
     private static Connection connection=null;
 

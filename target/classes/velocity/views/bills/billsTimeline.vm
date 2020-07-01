@@ -103,33 +103,6 @@
         <div class="billContainer left">
             #set($even=false)
         #else
-        <div class="billContainer right">
-            #set($even=true)
-        #end
-        #if($bill.getType()!="nomina" && $bill.getIssuerRFC()==$RFC)
-        <div class="box green" data-href="$bill.getUUID()">
-        #elseif ($bill.getType()=="nomina" && $bill.getIssuerRFC()==$RFC)
-        <div class="box orange" data-href="$bill.getUUID()">
-        #elseif($bill.getUse()=="G01" || $bill.getUse()=="G02" || $bill.getUse()=="G03")
-        <div class="box red" data-href="$bill.getUUID()">
-        #else
-        <div class="box blue" data-href="$bill.getUUID()">
-        #end
-
-        <div>
-            <h2>$dateTool.format("medium",$bill.getDate(),$locale)</h2>
-        </div>
-        <div class="billContainer-content">
-            <h4>$bill.getConcept()</h4>
-            <div class="billContainerAmount"><h4>$number.format("currency",$bill.getTotal())</h4></div>
-        </div>
-    </div>
-    </div>
-    #end
-</div>
-</div>
-</div>
-
     <div class="modal fade" id="legendModal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -170,6 +143,33 @@
             </div>
         </div>
     </div>
+
+        <div class="billContainer right">
+            #set($even=true)
+        #end
+        #if($bill.getType()!="payroll" && $bill.getIssuerRFC()==$RFC)
+        <div class="box green" data-href="$bill.getUUID()">
+        #elseif ($bill.getType()=="payroll" && $bill.getIssuerRFC()==$RFC)
+        <div class="box orange" data-href="$bill.getUUID()">
+        #elseif($bill.getUse()=="G01" || $bill.getUse()=="G02" || $bill.getUse()=="G03")
+        <div class="box red" data-href="$bill.getUUID()">
+        #else
+        <div class="box blue" data-href="$bill.getUUID()">
+        #end
+
+        <div>
+            <h2>$dateTool.format("medium",$bill.getDate(),$locale)</h2>
+        </div>
+        <div class="billContainer-content">
+            <h4>$bill.getConcept()</h4>
+            <div class="billContainerAmount"><h4>$number.format("currency",$bill.getTotal())</h4></div>
+        </div>
+    </div>
+    </div>
+    #end
+</div>
+</div>
+</div>
 
     <script src="/javascript/timelineControl.js"></script>
     <script src="/javascript/ajaxUtils.js"></script>

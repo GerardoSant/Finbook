@@ -25,11 +25,11 @@ public class SQLiteUserLoader extends SQLiteLoader implements UserLoader {
         Connection connection = this.connect();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sqlQuery(RFC));
-        return new User(rs.getString("receiverName"), RFC);
+        return new User(rs.getString("Name"), RFC);
     }
 
     private String sqlQuery(String RFC) {
-        return "SELECT * FROM empresas where receiverRFC=" + queryRFC(RFC);
+        return "SELECT * FROM Companies where RFC=" + queryRFC(RFC);
     }
 
     private String queryRFC(String RFC) {

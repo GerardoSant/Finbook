@@ -33,7 +33,7 @@ public class SQLiteBillsLoader extends SQLiteLoader implements BillsLoader {
     }
 
     private String sqlQuery(String RFC) {
-        return "SELECT * FROM facturas where issuerRFC=" + queryRFC(RFC) + " OR " + "receiverRFC=" + queryRFC(RFC);
+        return "SELECT * FROM Bills where issuerRFC=" + queryRFC(RFC) + " OR " + "receiverRFC=" + queryRFC(RFC);
     }
 
     private String queryRFC(String RFC) {

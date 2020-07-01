@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 public class BillFilter {
 
     private static final String INVESTMENTS_CODE_REGEX ="I0[1-8]+";
-    private static final String PAYROLL="nomina";
-    private static final String OUTCOME="egreso";
+    private static final String PAYROLL="payroll";
+    private static final String OUTCOME="egress";
     private static final String PURCHASES_CODE="G01";
     private static final String EXTERNAL_SERVICES_CODE="G03";
 
