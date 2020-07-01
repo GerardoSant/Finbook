@@ -124,10 +124,36 @@
             <version>2.8.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.intino.alexandria</groupId>
+            <artifactId>core-framework</artifactId>
+            <version>2.0.4</version>
+        </dependency>
 
+        <dependency>
+            <groupId>io.finbook</groupId>
+            <artifactId>sign-verify</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.finbook.datahub</groupId>
+            <artifactId>sensor-terminal</artifactId>
+            <version>2.0.0</version>
+        </dependency>
 
-
+        <dependency>
+            <groupId>io.finbook.datahub</groupId>
+            <artifactId>datamart-terminal</artifactId>
+            <version>2.0.0</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>intino-maven</id>
+            <url>https://artifactory.intino.io/artifactory/releases</url>
+        </repository>
+    </repositories>
 
 
 </project>

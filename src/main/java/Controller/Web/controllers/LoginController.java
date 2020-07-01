@@ -4,6 +4,8 @@ import Controller.util.sign.FinbookSignValidator;
 import View.daos.UserDao;
 import SparkApp.SignWebSocket;
 //import io.finbook.TextGenerator;
+import io.finbook.TextGenerator;
+import io.finbook.Verifier;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -36,6 +38,7 @@ public class LoginController {
     private static void handleLogInBySign(Request request, Response response) {
         byte[] sign = getUserSign(request);
         if (signedTextEqualsToTextSentToSign(request, sign)) {
+            System.out.println(new Verifier(sign).validateSign());
             logInUser(request, getSignAuthor(sign));
             redirectToDashboard(response);
         } else {
@@ -87,8 +90,10 @@ public class LoginController {
 
     public static Route serveSignAwait = (request, response) -> {
         Map<String, Object> model = new HashMap<>();
-        //model.put("textToSign", TextGenerator.generateRandomText());
-        model.put("textToSign", "testText");
+        model.put("textToSign", TextGenerator.generateRandomText());
+        //model.put("textToSign", "testText");
+        //new Verifier().validateSign();
+
         return ViewUtil.render(request, model, Path.Template.SIGNAWAIT);
     };
 

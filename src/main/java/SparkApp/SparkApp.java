@@ -42,6 +42,7 @@ public class SparkApp {
         staticFiles.location("/public");
         staticFiles.expireTime(600L);
         port(PORT_NUMBER);
+        //ipAddress("192.168.56.1");
     }
 
     private static void configureWebSocket() {
