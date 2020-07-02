@@ -49,6 +49,12 @@ public class RequestUtil {
         return loginRedirect != null;
     }
 
+    public static boolean removeSessionAttrLoginFailed(Request request) {
+        Object loginFailed = request.session().attribute("failedLogin");
+        request.session().removeAttribute("failedLogin");
+        return loginFailed != null;
+    }
+
     public static boolean removeSessionAttrEmailSent(Request request) {
         Object emailSent = request.session().attribute("emailSent");
         request.session().removeAttribute("emailSent");

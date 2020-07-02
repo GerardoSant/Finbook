@@ -23,6 +23,7 @@ public class LoginController {
         Map<String, Object> model = new HashMap<>();
         model.put("loggedOut", removeSessionAttrLoggedOut(request));
         model.put("redirected", removeSessionAttrLoginRedirect(request));
+        model.put("failedLogin", removeSessionAttrLoginFailed(request));
         return ViewUtil.render(request, model, Path.Template.LOGIN);
     };
 
@@ -39,8 +40,7 @@ public class LoginController {
         byte[] sign = getUserSign(request);
         if (signedTextEqualsToTextSentToSign(request, sign)) {
             System.out.println(new Verifier(sign).validateSign());
-            logInUser(request, getSignAuthor(sign));
-            redirectToDashboard(response);
+            logInUser(request,response, getSignAuthor(sign));
         } else {
             redirectToLogin(response);
         }
@@ -64,12 +64,16 @@ public class LoginController {
     }
 
     private static void handleStandardLogIn(Request request, Response response) {
-        logInUser(request, getQueryUsername(request));
-        redirectToDashboard(response);
+        logInUser(request,response, getQueryUsername(request));
     }
 
-    private static void logInUser(Request request, String userRFC) {
+    private static void logInUser(Request request, Response response, String userRFC) {
         setSessionUser(request, new UserDao().getUser(userRFC));
+        if(userIsNotLoggedIn(request)) {
+            redirectToFailedLogin(request, response);
+        } else{
+            redirectToDashboard(response);
+        }
     }
 
 
@@ -109,6 +113,10 @@ public class LoginController {
         return getSessionUser(request) == null;
     }
 
+    private static void redirectToFailedLogin(Request request, Response response){
+        request.session().attribute("failedLogin", true);
+        response.redirect(Path.Web.LOGIN);
+    }
     private static void redirectToLogin(Response response) {
         response.redirect(Path.Web.LOGIN);
     }
