@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SQLiteBillsLoader extends SQLiteLoader implements BillsLoader {
+public class SQLiteBillsLoader extends SQLiteConnector implements BillsLoader {
 
     @Override
     public List<Bill> loadBills(String RFC) {

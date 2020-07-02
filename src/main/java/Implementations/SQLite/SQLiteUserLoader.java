@@ -5,7 +5,7 @@ import View.loaders.UserLoader;
 
 import java.sql.*;
 
-public class SQLiteUserLoader extends SQLiteLoader implements UserLoader {
+public class SQLiteUserLoader extends SQLiteConnector implements UserLoader {
 
     @Override
     public User loadUser(String RFC) {

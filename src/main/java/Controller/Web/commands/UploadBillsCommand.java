@@ -2,6 +2,7 @@ package Controller.Web.commands;
 
 import Controller.Web.FrontCommand;
 import Controller.util.bill.BillXMLVerifier;
+import View.PubSub.Publisher;
 import spark.Request;
 
 import javax.servlet.MultipartConfigElement;
@@ -69,6 +70,7 @@ public class UploadBillsCommand extends FrontCommand {
                 appendTextToFile(UUIDList.getPath(), getBillUIID(bill));
                 appendBilltoMainFile(bill);
                 resBody = resBody + "|" + file.getSubmittedFileName() + ":" + "Yes";
+                //Publisher.publish(bill);
             } else {
                 resBody = resBody + "|" + file.getSubmittedFileName() + ":" + "Invalid";
             }

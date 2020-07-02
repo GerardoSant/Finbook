@@ -17,6 +17,11 @@ public class DateParser {
         DateFormat df = new SimpleDateFormat(format);
         return df.parse(date);
     }
+
+    public String toString(Date date){
+        DateFormat df = new SimpleDateFormat(format);
+        return df.format(date);
+    }
     
     
 }

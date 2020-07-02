@@ -1,5 +1,6 @@
 package View.PubSub;
 
+import Implementations.SQLite.SQLiteBillWriter;
 import Model.Bills.Bill;
 import io.finbook.datahub.DatamartTerminal;
 import io.finbook.datahub.events.ProcessedInvoice;
@@ -28,6 +29,7 @@ public class Subscriber {
     public static void processInvoice(ProcessedInvoice e){
         Bill bill = new Bill(e.uUID(), Date.from(e.date()), e.pC(), e.type(), e.use(), e.concept(), e.issuerName(), e.issuerRFC(), e.receiverName(), e.receiverRFC(), e.subtotal(), e.taxRate(), e.total(), e.currency(),
                 e.xml());
+        new SQLiteBillWriter().writeBill(bill);
     }
 
 
