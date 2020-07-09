@@ -9,6 +9,6 @@ public class FinbookSignValidator implements SignValidator {
 
     @Override
     public String getSignAuthor(byte[] sign) {
-        return "E-5756930";
+        return "W-5725886";
     }
 }

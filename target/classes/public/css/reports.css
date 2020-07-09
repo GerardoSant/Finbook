@@ -71,7 +71,7 @@ thead {
 }
 
 footer {
-    display: none;
+    /*display: none;*/
 }
 
 @media screen and (max-width: 992px) {
@@ -88,6 +88,10 @@ footer {
         float: none;
         width: 90%;
 
+    }
+
+    footer {
+        display: none;
     }
 }
 

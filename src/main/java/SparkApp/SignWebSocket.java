@@ -27,6 +27,7 @@ public class SignWebSocket {
 
     @OnWebSocketMessage
     public void message(Session senderSession, String message) throws IOException {
+        System.out.println(message);
         saveMessage(message);
         for (Session session : sessions) {
             sendMessageToSessions(message, session);

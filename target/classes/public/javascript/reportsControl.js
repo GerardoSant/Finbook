@@ -7,6 +7,7 @@ jQuery(document).ready(function ($) {
     $('.opener').on('click', function () {
         var itemsToToggleClass = "." + jQuery(this).attr("id");
         jQuery(this).toggleClass("opened");
+        document.getElementById("footer").setAttribute("style", "display: none");
         $(itemsToToggleClass).toggleClass("hidden");
         //$(itemsToToggleClass).last().css( "border-bottom", "groove" );
     });

@@ -31,7 +31,6 @@
     <orderEntry type="library" name="Maven: com.sparkjava:spark-template-velocity:2.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.7" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.10" level="project" />
     <orderEntry type="library" name="Maven: mx.grupocorasa.cfdi:cfdi-base:3.3.2" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:r06" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.4" level="project" />
