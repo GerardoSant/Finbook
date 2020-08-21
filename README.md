@@ -37,23 +37,31 @@ Frontend
 ## Preview
 Some of the functionalities/user interface from the app are shown in the following images:
 
-Landing page
+* Landing page
 
 ![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/landingpage.gif)
 
-Dashboard
+ <br>
+
+* Dashboard
 
 ![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/dashboard.gif)
 
-Reports
+ <br>
+
+* Reports
 
 ![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/reports.gif)
 
-Search 
+ <br>
+
+* Search 
 
 ![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/search.gif)
 
-Invoices upload
+ <br>
+
+* Invoices upload
 
 ![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/uploadbills.gif)
 
