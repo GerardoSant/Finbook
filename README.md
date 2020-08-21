@@ -35,8 +35,27 @@ Frontend
 * [Apache Velocity](https://velocity.apache.org/) - Java-based template engine 
 
 ## Preview
+Some of the functionalities/user interface from the app are shown in the following images:
 
-![alt-text](https://github.com/GerardoSant/Personal-Website/blob/master/preview.gif)
+Landing page
+
+![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/landingpage.gif)
+
+Dashboard
+
+![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/dashboard.gif)
+
+Reports
+
+![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/reports.gif)
+
+Search 
+
+![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/search.gif)
+
+Invoices upload
+
+![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/uploadbills.gif)
 
 ## License
 
