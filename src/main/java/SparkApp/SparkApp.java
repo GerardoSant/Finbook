@@ -17,6 +17,8 @@ public class SparkApp {
     }
 
     public static void start(){
+
+
         //Configure Spark
 
         configureSpark();

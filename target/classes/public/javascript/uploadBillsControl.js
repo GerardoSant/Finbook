@@ -162,7 +162,7 @@ function upload(data) {
                     initInterface = false;
                 }
                 processResponseText(this.responseText);
-                document.getElementById("modalContent").innerText = splitResponseText(this.responseText);
+                document.getElementById("modalContent").innerText = "Files uploaded successfully.";
             }
         }
     }
