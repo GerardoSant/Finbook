@@ -65,6 +65,13 @@ Some of the functionalities/user interface from the app are shown in the followi
 
 ![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/uploadbills.gif)
 
+<br>
+
+* Responsive design
+
+![alt-text](https://github.com/GerardoSant/Finbook/blob/develop/gifs/responsive1.gif)
+
+
 ## License
 
 This project is licensed under the MIT License
