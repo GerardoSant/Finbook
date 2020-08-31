@@ -1,7 +1,7 @@
 # Finbook - Fintech Webapp
 
-This project consists of the development of the user environment
-and the business logic of an application oriented to the management and visualization of
+This project consists of the development of the user environment (front-end)
+and the business logic (back-end) of an application oriented to the management and visualization of
 digital invoices for self-employed workers and SMEs, called ‘Finbook’
 
 Finbook, by using digital invoices, automates functionalities and services that
